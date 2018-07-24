@@ -29,6 +29,7 @@ export class Home extends React.Component {
                         <InfoButton text="Learn More" />
                     </ContentWrapper>
                 </AboveFoldContent>
+                
             </HomePageWrapper>
         )
     }
