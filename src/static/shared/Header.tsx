@@ -6,9 +6,8 @@ import { DonateButton } from './DonateButton';
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
   height: 72px;
-  background-color: #505050;
+  background-color: #FFFFFF;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #ffffff;
   font-size:16px;
 `
 
@@ -37,9 +36,10 @@ const ButtonWrapper = styled.div`
  float: right;
  margin-top: 12px;
  margin-right: 40px;
+ width: 156px;
 `
 const StyledNavLink = styled(NavLink)`
-    color: white;
+  color: #36374E;
     text-decoration: none;
 
     &:focus, &:hover, &:visited, &:link, &:active {
@@ -55,7 +55,7 @@ export class Header extends React.Component {
                 <StyledNavLink to={'/'}>
                     <LogoContent>
                         <svg height="72" width="72">
-                            <circle cx="35" cy="35" r="20" fill="#ffffff" />
+                            <circle cx="35" cy="35" r="20" fill="#36374E" />
                         </svg>
                     </LogoContent>
                     <LogoText>Nuevo Foundation</LogoText>
@@ -68,7 +68,7 @@ export class Header extends React.Component {
                     <StyledNavLink to={'blog'} activeClassName="selected"><NavItem> Blog </NavItem></StyledNavLink>
                 </NavList>
                 <ButtonWrapper>
-                    <DonateButton />
+                    <DonateButton bColor={'#FF6A58'} textColor={'#FFFFFF'} />
                 </ButtonWrapper>
             </HeaderWrapper>
         )
