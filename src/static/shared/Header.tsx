@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { DonateButton } from './DonateButton';
 
@@ -29,6 +30,7 @@ const NavItem = styled.li`
   display: inline-block;
   font-size:20px;
   padding-right: 50px;
+  cursor:pointer;
 `
 
 const ButtonWrapper = styled.div`
@@ -36,23 +38,34 @@ const ButtonWrapper = styled.div`
  margin-top: 12px;
  margin-right: 40px;
 `
+const StyledNavLink = styled(NavLink)`
+    color: white;
+    text-decoration: none;
 
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
+
+// TODO: Implement selected nav item styling
 export class Header extends React.Component {
     public render() {
         return (
             <HeaderWrapper>
-                <LogoContent>
-                    <svg height="72" width="72">
-                        <circle cx="35" cy="35" r="20" fill="#ffffff" />
-                    </svg>
-                </LogoContent>
-                <LogoText>Nuevo Foundation</LogoText>
+                <StyledNavLink to={'/'}>
+                    <LogoContent>
+                        <svg height="72" width="72">
+                            <circle cx="35" cy="35" r="20" fill="#ffffff" />
+                        </svg>
+                    </LogoContent>
+                    <LogoText>Nuevo Foundation</LogoText>
+                </StyledNavLink>
                 <NavList>
-                    <NavItem> What we do </NavItem>
-                    <NavItem> About Us </NavItem>
-                    <NavItem> Support Us </NavItem>
-                    <NavItem> Connect </NavItem>
-                    <NavItem> Blog </NavItem>
+                    <StyledNavLink to={'what-we-do'} activeClassName="selected"> <NavItem> What we do </NavItem></StyledNavLink>
+                    <StyledNavLink to={'about-us'} activeClassName="selected"><NavItem> About Us </NavItem></StyledNavLink>
+                    <StyledNavLink to={'support-us'} activeClassName="selected"><NavItem> Support Us </NavItem></StyledNavLink>
+                    <StyledNavLink to={'connect'} activeClassName="selected"><NavItem> Connect </NavItem></StyledNavLink>
+                    <StyledNavLink to={'blog'} activeClassName="selected"><NavItem> Blog </NavItem></StyledNavLink>
                 </NavList>
                 <ButtonWrapper>
                     <DonateButton />
