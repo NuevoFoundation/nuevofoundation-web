@@ -4,7 +4,6 @@ import styled from 'styled-components';
 // will eventually be a react-router linkto component
 const DonateButtonWrapper = styled.div`
   height: 48px;
-  width: 156px;
   font-size: 18px;
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

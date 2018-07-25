@@ -19,6 +19,7 @@ class App extends React.Component {
           <Route path="/about-us" component={Home} />
           <Route path="/support-us" component={Home} />
           <Route path="/blog" component={Home} />
+          <Route path="/faq" component={Home} />
           {/* <Route component={NoMatch} /> */ }
         </Switch>
         <Footer />
