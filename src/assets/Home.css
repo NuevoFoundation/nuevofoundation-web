@@ -1,12 +1,6 @@
 .main-title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 36px;
-    font-weight: bold;
-} 
-.title-description {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24px;
     font-weight: normal;
-
-}
-
+    color:#ffffff;
+}  
