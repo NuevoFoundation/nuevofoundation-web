@@ -4,10 +4,12 @@ import './Footer.css';
 
 // https://www.iconfinder.com/iconsets/social-media-2198 (icons) 
 
-import facebook from './socialMediaIcons/fb.png'; 
-// import linkedin fron './socialMediaIcons/linkedin.png'; 
+import facebook from './socialMediaIcons/fb.png';  
 import insta from './socialMediaIcons/insta.png'; 
+import linkedin from './socialMediaIcons/linkedin.png'; 
 import twitter from './socialMediaIcons/twitter.png'; 
+// import { link } from 'fs';
+
 
 
 
@@ -29,7 +31,7 @@ class Footer extends React.Component {
                     <img src={insta} className="footer-pics" alt="instalogo" />
                 </a>
                 <a target="_blank" href="https://www.linkedin.com/company/nuevofoundation/">
-                    <img src={insta} className="footer-pics" alt="linkedinlogo" />
+                    <img src={linkedin} className="footer-pics" alt="linkedinlogo" />
                 </a>
 
                 </div>
