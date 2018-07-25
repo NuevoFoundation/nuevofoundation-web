@@ -2,11 +2,13 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
+import { WhatWeDo } from './static/pages/WhatWeDo';
 import { Home } from './static/pages/Home';
+
 import { Footer, Header } from './static/shared'
 
 const AppContainer = styled.div`
-  
+
 `
 class App extends React.Component {
   public render() {
@@ -15,7 +17,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route path="/" component={Home} />
-          <Route path="/what-we-do" component={Home} />
+          <Route path="/what-we-do" component={WhatWeDo} />
           <Route path="/about-us" component={Home} />
           <Route path="/support-us" component={Home} />
           <Route path="/blog" component={Home} />
