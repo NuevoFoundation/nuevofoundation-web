@@ -10,5 +10,6 @@ ReactDOM.render(
     <App />
   </Router>,
   document.getElementById('root') as HTMLElement
+
 );
 registerServiceWorker();
