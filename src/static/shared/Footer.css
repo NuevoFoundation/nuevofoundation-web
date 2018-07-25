@@ -1,0 +1,41 @@
+ .footer-pics {
+    height: 50px;
+    padding-right: 20px; 
+  }
+
+  
+.App-footer {
+    background-color: #808080;;
+    height: 260px; 
+    color: white;
+    font-family: "Segoe UI";
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  
+.App-footer-big{
+    font-size: 36px; 
+    font-weight: bold; 
+    padding-top: 25px; 
+  
+  }
+  
+.social-images{
+    padding: 25px; 
+  }
+  
+.App-footer-small {
+    font-size: 16px;   
+  
+    padding-bottom: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  
