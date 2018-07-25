@@ -49,6 +49,10 @@ const MissionText = styled.div`
   padding-bottom: 20px;
 `
 
+const MainButtonWrapper = styled.div`
+  padding-top:25px;
+`
+
 const MissionButtonWrapper = styled.div`
   padding-right: 20px;
 `
@@ -90,7 +94,7 @@ export class Home extends React.Component {
                 <AboveFoldContent>
                     <ContentWrapper>
                         <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
-                        <InfoButton > Learn More </InfoButton>
+                        <MainButtonWrapper><InfoButton > Learn More </InfoButton></MainButtonWrapper>
                     </ContentWrapper>
                 </AboveFoldContent>
                 <MissionLeftPanel>
