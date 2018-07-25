@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { Home } from './static/pages/Home';
+import { WhatWeDo } from './static/pages/WhatWeDo';
 import { Footer, Header } from './static/shared'
 
 class App extends React.Component {
@@ -8,8 +8,7 @@ class App extends React.Component {
     return (
       <div className="">
         <Header />
-        <Home />
-
+        <WhatWeDo />
         <Footer />
       </div>
     );
