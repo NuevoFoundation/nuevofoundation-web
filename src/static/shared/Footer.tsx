@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import '../../App.css'
 import './Footer.css';
 
 // https://www.iconfinder.com/iconsets/social-media-2198 (icons) 
@@ -8,10 +7,6 @@ import facebook from './socialMediaIcons/fb.png';
 import insta from './socialMediaIcons/insta.png'; 
 import linkedin from './socialMediaIcons/linkedin.png'; 
 import twitter from './socialMediaIcons/twitter.png'; 
-// import { link } from 'fs';
-
-
-
 
 class Footer extends React.Component {
   public render() {
