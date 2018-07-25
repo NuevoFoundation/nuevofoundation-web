@@ -3,9 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
 import { Home } from './static/pages/Home';
+import { Header } from './static/shared'
+import Footer from './static/shared/Footer';
 import { WhatWeDo } from './static/pages/WhatWeDo';
 
-import { Footer, Header } from './static/shared'
 
 const AppContainer = styled.div`
 
