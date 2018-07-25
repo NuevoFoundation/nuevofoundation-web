@@ -61,7 +61,12 @@ export class WhatWeDo extends React.Component {
             <div className= "right">
               <div className= "circle"><div className= "circle-text">visual element</div></div>
             </div>
-            <div className= "default-bold"><div className= "circle-text">visual element</div></div>
+            <div className= "left">
+              <div className= "default-bold">School Workshops</div>
+            </div>
+            <div className= "left">
+              <div className= "default-bold">Skype in the Classroom</div>
+            </div>
           </ContentWrapperPadded>
         </DarkWrapper>
       </WhatWeDoWrapper>
