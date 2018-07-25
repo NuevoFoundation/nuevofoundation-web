@@ -31,6 +31,12 @@ const NavItem = styled.li`
   padding-right: 50px;
 `
 
+const ButtonWrapper = styled.div`
+ float: right;
+ margin-top: 12px;
+ margin-right: 40px;
+`
+
 export class Header extends React.Component {
     public render() {
         return (
@@ -39,7 +45,6 @@ export class Header extends React.Component {
                     <svg height="72" width="72">
                         <circle cx="35" cy="35" r="20" fill="#ffffff" />
                     </svg>
-                   
                 </LogoContent>
                 <LogoText>Nuevo Foundation</LogoText>
                 <NavList>
@@ -49,7 +54,9 @@ export class Header extends React.Component {
                     <NavItem> Connect </NavItem>
                     <NavItem> Blog </NavItem>
                 </NavList>
-                <DonateButton />
+                <ButtonWrapper>
+                    <DonateButton />
+                </ButtonWrapper>
             </HeaderWrapper>
         )
     }

@@ -11,24 +11,27 @@ const InfoButtonWrapper = styled.div`
   background-color: #FFFFFF;
   cursor: pointer;
   text-align: center;
-  padding-top:20px;
+  border: 1px solid #FFFFFF;
 `
 
-interface InfoButtonProps {
-    text: string
+const ContentWrapper = styled.div`
+  padding-top:10px;
+`
+
+interface IInfoButtonProps {
+    bColor?: string;
+    textColor?: string;
 }
 
-export class InfoButton extends React.Component<InfoButtonProps, {}> {
-    constructor(props: InfoButtonProps) {
+export class InfoButton extends React.Component<IInfoButtonProps, {}> {
+    constructor(props: IInfoButtonProps) {
         super(props);
-        this.state = {
-            text: ''
-        }
     }
+
     public render() {
         return (
-            <InfoButtonWrapper>
-                {this.props.text}
+            <InfoButtonWrapper style={{ backgroundColor: this.props.bColor, color: this.props.textColor }}>
+                <ContentWrapper>{this.props.children}</ContentWrapper>
             </InfoButtonWrapper>
         )
     }
