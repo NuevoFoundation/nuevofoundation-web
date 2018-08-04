@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { DonateButton } from './DonateButton';
+import { DonateButtonCta } from './DonateButtonCta';
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -68,7 +68,7 @@ export class Header extends React.Component {
                     <StyledNavLink to={'blog'} activeClassName="selected"><NavItem> Blog </NavItem></StyledNavLink>
                 </NavList>
                 <ButtonWrapper>
-                    <DonateButton bColor={'#FF6A58'} textColor={'#FFFFFF'} />
+                    <DonateButtonCta bColor={'#FF6A58'} textColor={'#FFFFFF'} />
                 </ButtonWrapper>
             </HeaderWrapper>
         )

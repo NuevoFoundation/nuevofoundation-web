@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 // will eventually be a react-router linkto component
-const DonateButtonWrapper = styled.div`
+const DonateButtonCtaWrapper = styled.div`
   height: 48px;
   font-size: 18px;
   font-weight: bold;
@@ -16,22 +16,22 @@ const ContentWrapper = styled.div`
   text-align: center;
 `
 
-interface IDonateButtonProp {
+interface IDonateButtonCtaProp {
     bColor?: string
     textColor?: string
 }
 
-export class DonateButton extends React.Component<IDonateButtonProp, {}> {
+export class DonateButtonCta extends React.Component<IDonateButtonCtaProp, {}> {
 
-    constructor(props: IDonateButtonProp) {
+    constructor(props: IDonateButtonCtaProp) {
         super(props);
     }
 
     public render() {
         return (
-            <DonateButtonWrapper style={{ backgroundColor: this.props.bColor, color: this.props.textColor }}>
+            <DonateButtonCtaWrapper style={{ backgroundColor: this.props.bColor, color: this.props.textColor }}>
                 <ContentWrapper> Donate </ContentWrapper>
-            </DonateButtonWrapper>
+            </DonateButtonCtaWrapper>
         )
     }
 }
