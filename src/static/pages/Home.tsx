@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import '../../assets/Home.css';
-import { DonateButton } from '../shared/DonateButton';
+import { DonateButtonCta } from '../shared/DonateButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const contentHeight = 675;
@@ -106,7 +106,7 @@ export class Home extends React.Component {
                 </MissionRightPanel>
                 <DonateSection>
                     <DonateText>Because empowering students with knowledge is our goal!</DonateText>
-                    <DonateButtonWrapper><DonateButton bColor={'#FFFFFF'} textColor={'#00BED5'} /></DonateButtonWrapper>
+                    <DonateButtonWrapper><DonateButtonCta bColor={'#FFFFFF'} textColor={'#00BED5'} /></DonateButtonWrapper>
                 </DonateSection>
             </HomePageWrapper>
         )
