@@ -6,8 +6,9 @@
 # testing
 /coverage
 
-# production
-/build
+# production, tracking build because deploying 
+# from master branch through azure.
+# /build
 
 # misc
 .DS_Store
