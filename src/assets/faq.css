@@ -1,0 +1,40 @@
+.main-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+} 
+.title-description {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+
+}
+
+.category {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    font-weight:bold;
+    font-weight: normal;
+    display:inline-block;
+    padding-right: 20px;
+}
+
+.categoryNotClicked {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    display:inline-block;
+    padding-right: 20px;    
+
+}
+
+.question {
+    font-family: 'Segoe UI', Tahoma, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+}
+.questiontext {
+    font-family: 'Segoe UI', Tahoma, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+}

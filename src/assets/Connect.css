@@ -1,0 +1,32 @@
+.connect-title {
+    font-family: 'Segoe UI';
+    font-size: 36px;
+    font-weight: bold;
+    color: grey;
+}  
+
+.connect-text {
+    font-family: 'Segoe UI';
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.address-title {
+    font-family: 'Segoe UI';
+    font-size: 24px;
+    font-weight: bold;
+} 
+
+.square {
+    width:100px;
+    height:100px;
+    border:1px solid #000;
+    background: lightgrey;
+}
+
+.circle {
+    height: 50px;
+    width:50px;
+    border-radius:50px;
+    fill: grey;
+}
