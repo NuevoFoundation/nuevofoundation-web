@@ -1,7 +1,7 @@
 import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react';
-import './Footer.css';
+import '../../assets/Footer.css';
 
 
 class Footer extends React.Component {
