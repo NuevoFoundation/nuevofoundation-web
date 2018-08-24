@@ -10,6 +10,7 @@ import Footer from './static/shared/Footer';
 const AppContainer = styled.div`
 
 `
+//hello
 class App extends React.Component {
   public render() {
     return (
