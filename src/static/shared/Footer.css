@@ -1,6 +1,7 @@
  .footer-pics {
     height: 50px;
     padding-right: 20px; 
+    color:white;
   }
 
   
@@ -23,7 +24,7 @@
   
 .social-images{
     padding: 25px; 
-  }
+}
   
 .App-footer-small {
     font-size: 16px;   
