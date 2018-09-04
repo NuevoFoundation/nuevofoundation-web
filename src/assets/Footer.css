@@ -1,36 +1,30 @@
- .footer-pics {
+.footer-pics {
     height: 50px;
-    padding-right: 20px; 
+    padding-right: 50px; 
     color:white;
-  }
+}
 
-  
 .App-footer {
-    background-color: #808080;;
-    height: 260px; 
+    background-color: #29293C;
+    height: 260px;
     color: white;
-    font-family: "Segoe UI";
+    font-family: 'Lato', sans-serif;
     text-align: center;
     width: 100%;
-  }
+}
 
-  
 .App-footer-big{
-    font-size: 36px; 
-    font-weight: bold; 
-    padding-top: 25px; 
-  
-  }
-  
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 50px;
+}
+
 .social-images{
     padding: 25px; 
 }
-  
+
 .App-footer-small {
     font-size: 16px;   
-  
     padding-bottom: 50px;
     width: 100%;
-  }
-  
-  
+}

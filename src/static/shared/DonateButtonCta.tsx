@@ -1,12 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-// will eventually be a react-router linkto component
+// TODO: will eventually be a react-router linkto component
 const DonateButtonCtaWrapper = styled.div`
   height: 48px;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Lato', sans-serif;
   background-color: #E6E6E6;
   color: #0F0F0F;
   cursor: pointer;
@@ -17,8 +15,9 @@ const ContentWrapper = styled.div`
 `
 
 interface IDonateButtonCtaProp {
-    bColor?: string
+    backgroundColor?: string
     textColor?: string
+    borderColor?: string
 }
 
 export class DonateButtonCta extends React.Component<IDonateButtonCtaProp, {}> {
@@ -29,8 +28,8 @@ export class DonateButtonCta extends React.Component<IDonateButtonCtaProp, {}> {
 
     public render() {
         return (
-            <DonateButtonCtaWrapper style={{ backgroundColor: this.props.bColor, color: this.props.textColor }}>
-                <ContentWrapper> Donate </ContentWrapper>
+            <DonateButtonCtaWrapper style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor, border: `2px solid ${this.props.borderColor}`, borderRadius: `3px` }}>
+                <ContentWrapper> DONATE </ContentWrapper>
             </DonateButtonCtaWrapper>
         )
     }

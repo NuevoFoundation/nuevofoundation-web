@@ -5,6 +5,7 @@ import { DonateButtonCta } from '../shared/DonateButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const contentHeight = 675;
+
 const HomePageWrapper = styled.div`
 
 `
@@ -12,8 +13,6 @@ const HomePageWrapper = styled.div`
 const AboveFoldContent = styled.div`
   background-color: #D2D2D2;
   height: 675px;
-  background-image: url("./main.jpg");
-
 `
 
 const MissionLeftPanel = styled.div`
@@ -54,16 +53,17 @@ const MainButtonWrapper = styled.div`
 `
 
 const DonateSection = styled.div`
-  background-color: #00BED5;
-  height: 262px;
-  color: #FFFFFF;
+  background-color: #4BE1DE;
+  height: 396px;
+  color: #000000;
 `
 
 const DonateText = styled.div`
   padding-top: 60px;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 36px;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
 `
 
 const DonateButtonWrapper = styled.div`
@@ -106,7 +106,7 @@ export class Home extends React.Component {
                 </MissionRightPanel>
                 <DonateSection>
                     <DonateText>Because empowering students with knowledge is our goal!</DonateText>
-                    <DonateButtonWrapper><DonateButtonCta bColor={'#FFFFFF'} textColor={'#00BED5'} /></DonateButtonWrapper>
+                    <DonateButtonWrapper><DonateButtonCta backgroundColor={'#4BE1DE'} textColor={'#000000'}  /></DonateButtonWrapper>
                 </DonateSection>
             </HomePageWrapper>
         )
