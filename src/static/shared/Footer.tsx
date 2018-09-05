@@ -1,7 +1,7 @@
 import { faFacebookF, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react'; // TODO: Add bootstrap classes to footer
-import '../../assets/Footer.css';
+import '../../assets/stylesheets/Footer.css';
 
 
 class Footer extends React.Component {

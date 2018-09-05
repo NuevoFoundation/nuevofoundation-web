@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/Connect.css';
+import '../../assets/stylesheets/Connect.css';
 
 const contentHeight = 675;
 const HomePageWrapper = styled.div`

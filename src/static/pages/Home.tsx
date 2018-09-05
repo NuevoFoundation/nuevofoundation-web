@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/Home.css';
+import '../../assets/stylesheets/Home.css';
 import { DonateButtonCta } from '../shared/DonateButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 

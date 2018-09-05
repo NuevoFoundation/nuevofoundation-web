@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/SupportUs.css'
+import '../../assets/stylesheets/SupportUs.css'
 import {DonateButton} from '../shared/DonateButton'
 // import {InfoButton} from '../shared/InfoButton'
 // const contentHeight = 430;
