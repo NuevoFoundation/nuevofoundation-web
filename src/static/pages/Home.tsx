@@ -1,30 +1,28 @@
 import * as React from 'react';
+import { Col, Grid, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import '../../assets/stylesheets/Home.css';
-import { DonateButtonCta } from '../shared/DonateButtonCta';
+import { CollapseItem } from '../../components/CollapseItem';
+import { ButtonCta } from '../shared/ButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const contentHeight = 675;
 
-const HomePageWrapper = styled.div`
-
-`
-
 const AboveFoldContent = styled.div`
+  font-family: 'Lato', sans-serif;
+  font-weight: bolder;
   background-color: #D2D2D2;
   height: 675px;
 `
 
 const MissionLeftPanel = styled.div`
   width: 48%;
-  background-color: #FFFFFF;
-  float:left;
+  background-color: #433F79;
   height: 712px;
 `
 
 const MissionRightPanel = styled.div`
   background-color: #E6E6E6;
-  margin-left: 48%;
   height: 712px;
 `
 
@@ -34,22 +32,8 @@ const MissionLeftContent = styled.div`
   color: #505150;
 `
 
-const MissionTitle = styled.div`
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-  padding-bottom: 20px;
-`
-
-const MissionText = styled.div`
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 34px;
-  font-weight: normal;
-  padding-bottom: 20px;
-`
-
 const MainButtonWrapper = styled.div`
-  padding-top:25px;
+  padding-top:40px;
 `
 
 const DonateSection = styled.div`
@@ -86,29 +70,62 @@ const ImageWrapper = styled.div`
 `
 
 export class Home extends React.Component {
-    public render() {
-        return (
-            <HomePageWrapper>
-                <AboveFoldContent>
-                    <ContentWrapper>
-                        <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
-                        <MainButtonWrapper><InfoButton backgroundColor={'#FF6A58'} textColor={'#FFFFFF'} borderColor={'#FF6A58'}> Learn More </InfoButton></MainButtonWrapper>
-                    </ContentWrapper>
-                </AboveFoldContent>
-                <MissionLeftPanel>
-                    <MissionLeftContent>
-                        <MissionTitle> Mission </MissionTitle>
-                        <MissionText> Identifying resource gaps among underserved communities where technology can have an impact. </MissionText>
-                    </MissionLeftContent>
-                </MissionLeftPanel>
-                <MissionRightPanel>
-                    <ImageWrapper/>
-                </MissionRightPanel>
-                <DonateSection>
-                    <DonateText>Because empowering students with knowledge is our goal!</DonateText>
-                    <DonateButtonWrapper><DonateButtonCta backgroundColor={'#4BE1DE'} textColor={'#000000'}  /></DonateButtonWrapper>
-                </DonateSection>
-            </HomePageWrapper>
-        )
-    }
+  public collapseSections: any[] = [
+    {
+      content: 'Identifying resource gaps among underserved communities where technology can have an impact',
+      title: 'MISSION',
+    },
+    {
+      content: 'Nuevo Foundation is a non-profit that want to help the world’s disadvantaged societies and build solutions.',
+      title: 'WHO WE ARE',
+    },
+    {
+      content: 'We are working to offer workshops and Skype classes around the world.',
+      title: 'PARTICIPATE',
+    },
+  ];
+  public render() {
+    return (
+      <Grid>
+        <Row>
+          <Col xs={12} md={8}>
+            <AboveFoldContent>
+              <ContentWrapper>
+                <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
+                <MainButtonWrapper><InfoButton backgroundColor={'#F9BB08'} textColor={'#000000'} borderColor={'#F9BB08'}> LEARN MORE </InfoButton></MainButtonWrapper>
+              </ContentWrapper>
+            </AboveFoldContent>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={6}>
+            <MissionLeftPanel>
+              <MissionLeftContent>
+                {this.collapseSections.map((item: any, index: number) => {
+                  return (
+                    <CollapseItem key={index} title={item.title} content={item.content} />
+                  )
+                })}
+              </MissionLeftContent>
+            </MissionLeftPanel>
+          </Col>
+          <Col xs={6} md={6}>
+            <MissionRightPanel>
+              <ImageWrapper />
+            </MissionRightPanel>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={6}>
+            <DonateSection>
+              <DonateText>Because empowering students with knowledge is our goal!</DonateText>
+              <DonateButtonWrapper><ButtonCta text={'DONATE'} backgroundColor={'#4BE1DE'} textColor={'#000000'} border={'2px solid #000000'} /></DonateButtonWrapper>
+            </DonateSection>
+          </Col>
+
+        </Row>
+
+      </Grid>
+    )
+  }
 }

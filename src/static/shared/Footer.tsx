@@ -8,7 +8,7 @@ class Footer extends React.Component {
     public render() {
         return (
             <div className="App-footer">
-                <div className="App-footer-big"> Join the conversation on social media.</div>
+                <div className="App-footer-big">Join the conversation on social media.</div>
                 <div className="social-images">
                     <a target="_blank" href="https://www.twitter.com/">
                         <FontAwesomeIcon icon={faTwitter} className={"footer-pics fa-lg"} />

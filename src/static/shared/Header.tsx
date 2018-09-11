@@ -1,8 +1,10 @@
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import NuevoLogo from '../../assets/logos/nuevo-logo.png';
-import { DonateButtonCta } from './DonateButtonCta';
+import NuevoLogo from '../../assets/logos/Logo_medium.svg';
+import { ButtonCta } from './ButtonCta';
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -11,9 +13,12 @@ const HeaderWrapper = styled.div`
   font-size:16px; 
 `
 
+const NavLogo = styled.img`
+  float: left;
+`
+
 const NavList = styled.ul`
   float: left;
-  margin-left: 40px;
   text-align: center;
   padding-top: 5px;
 `
@@ -24,9 +29,13 @@ const NavItem = styled.li`
   cursor: pointer;
 `
 
+const NavIcon = styled.span`
+  padding-left: 10px;
+`
+
 const ButtonWrapper = styled.div`
  float: right;
- margin-top: 14px;
+ margin-top: 10px;
  margin-right: 40px;
  width: 200px;
  font-weight: bold;
@@ -42,12 +51,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const LogoImg = styled.img`
-  width: 5%;
-  display: block;
-`;
-
 interface INavItem {
+    dropdown: boolean;
     text: string;
     link: string;
 }
@@ -56,22 +61,27 @@ interface INavItem {
 export class Header extends React.Component {
     public navItems: INavItem[] = [
         {
+            dropdown: false,
             link: 'what-we-do',
             text: 'What we do',
         },
         {
+            dropdown: true,
             link: 'about-us',
             text: 'About Us',
         },
         {
+            dropdown: false,
             link: 'support-us',
             text: 'Support Us',
         },
         {
+            dropdown: false,
             link: 'contact',
             text: 'Contact',
         },
         {
+            dropdown: false,
             link: 'blog',
             text: 'Blog',
         }
@@ -80,21 +90,30 @@ export class Header extends React.Component {
     public renderNavItems(): JSX.Element[] {
         return (
             this.navItems.map((navItem: INavItem, index: number) => {
-                return <StyledNavLink key={index} to={navItem.link} > <NavItem> {navItem.text} </NavItem></StyledNavLink>
+                return (
+                    <StyledNavLink key={index} to={navItem.link} >
+                        <NavItem> {navItem.text}
+                            {navItem.dropdown &&
+                                <NavIcon>
+                                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm "} />
+                                </NavIcon>
+                            }
+                        </NavItem>
+                    </StyledNavLink>
+                )
             })
         )
     }
+
     public render() {
         return (
             <HeaderWrapper>
                 <StyledNavLink to={'/'}>
-                    <span>
-                        <LogoImg src={NuevoLogo} />
-                    </span>
+                    <NavLogo src={NuevoLogo} height={'75px'} width={''} />
                 </StyledNavLink>
                 <NavList> {this.renderNavItems()} </NavList>
                 <ButtonWrapper>
-                    <DonateButtonCta backgroundColor={'#FFFFFF'} textColor={'#000000'} borderColor={'#F9BB08'} />
+                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #F9BB08'} />
                 </ButtonWrapper>
             </HeaderWrapper>
         )

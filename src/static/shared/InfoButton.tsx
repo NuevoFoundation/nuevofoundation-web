@@ -6,8 +6,6 @@ const InfoButtonWrapper = styled.div`
   height: 48px;
   width: 186px;
   font-size: 18px;
-  font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #FFFFFF;
   cursor: pointer;
   text-align: center;
@@ -15,7 +13,7 @@ const InfoButtonWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  padding-top:10px;
+  padding-top:13px;
 `
 
 interface IInfoButtonProps {
