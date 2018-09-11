@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/WhatWeDo.css';
+import '../../assets/stylesheets/WhatWeDo.css';
 // import {InfoButton} from '../shared/InfoButton';
 
 const contentHeight = 430;

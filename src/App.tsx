@@ -16,12 +16,12 @@ class App extends React.Component {
       <AppContainer>
         <Header />
         <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/what-we-do" component={WhatWeDo} />
-          <Route path="/about-us" component={AboutUs} />
-          <Route path="/support-us" component={SupportUs} />
-          <Route path="/blog" component={Home} />
-          <Route path="/faq" component={Faq} />
+          <Route exact={true} path="/" component={Home} />
+          <Route exact={true} path="/what-we-do" component={WhatWeDo} />
+          <Route exact={true} path="/about-us" component={AboutUs} />
+          <Route exact={true} path="/support-us" component={SupportUs} />
+          <Route exact={true} path="/blog" component={Home} />
+          <Route exact={true} path="/faq" component={Faq} />
           {/* <Route component={NoMatch} /> */ }
         </Switch>
         <Footer />

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/AboutUs.css';
+import '../../assets/stylesheets/AboutUs.css';
 
 const contentHeight = 370;
 

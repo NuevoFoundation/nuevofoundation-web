@@ -1,74 +1,119 @@
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { DonateButtonCta } from './DonateButtonCta';
+import NuevoLogo from '../../assets/logos/Logo_medium.svg';
+import { ButtonCta } from './ButtonCta';
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
   height: 72px;
-  background-color: #FFFFFF;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size:16px;
+  font-family: 'Lato', sans-serif;
+  font-size:16px; 
 `
 
-const LogoContent = styled.div`
+const NavLogo = styled.img`
   float: left;
-`
-const LogoText = styled.div`
-  float: left;
-  padding-top:25px;
 `
 
 const NavList = styled.ul`
   float: left;
-  margin-left: 40px;
   text-align: center;
-  padding-top:5px;
+  padding-top: 5px;
 `
 const NavItem = styled.li`
   display: inline-block;
   font-size:20px;
   padding-right: 50px;
-  cursor:pointer;
+  cursor: pointer;
+`
+
+const NavIcon = styled.span`
+  padding-left: 10px;
 `
 
 const ButtonWrapper = styled.div`
  float: right;
- margin-top: 12px;
+ margin-top: 10px;
  margin-right: 40px;
- width: 156px;
+ width: 200px;
+ font-weight: bold;
 `
-const StyledNavLink = styled(NavLink)`
-  color: #36374E;
-    text-decoration: none;
 
-    &:focus, &:hover, &:visited, &:link, &:active {
-        text-decoration: none;
-    }
+const StyledNavLink = styled(NavLink)`
+  color: #535353;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
 `;
+
+interface INavItem {
+    dropdown: boolean;
+    text: string;
+    link: string;
+}
 
 // TODO: Implement selected nav item styling
 export class Header extends React.Component {
+    public navItems: INavItem[] = [
+        {
+            dropdown: false,
+            link: 'what-we-do',
+            text: 'What we do',
+        },
+        {
+            dropdown: true,
+            link: 'about-us',
+            text: 'About Us',
+        },
+        {
+            dropdown: false,
+            link: 'support-us',
+            text: 'Support Us',
+        },
+        {
+            dropdown: false,
+            link: 'contact',
+            text: 'Contact',
+        },
+        {
+            dropdown: false,
+            link: 'blog',
+            text: 'Blog',
+        }
+    ];
+
+    public renderNavItems(): JSX.Element[] {
+        return (
+            this.navItems.map((navItem: INavItem, index: number) => {
+                return (
+                    <StyledNavLink key={index} to={navItem.link} >
+                        <NavItem> {navItem.text}
+                            {navItem.dropdown &&
+                                <NavIcon>
+                                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm "} />
+                                </NavIcon>
+                            }
+                        </NavItem>
+                    </StyledNavLink>
+                )
+            })
+        )
+    }
+
     public render() {
         return (
             <HeaderWrapper>
                 <StyledNavLink to={'/'}>
-                    <LogoContent>
-                        <svg height="72" width="72">
-                            <circle cx="35" cy="35" r="20" fill="#36374E" />
-                        </svg>
-                    </LogoContent>
-                    <LogoText>Nuevo Foundation</LogoText>
+                    <NavLogo src={NuevoLogo} height={'75px'} width={''} />
                 </StyledNavLink>
-                <NavList>
-                    <StyledNavLink to={'what-we-do'} activeClassName="selected"> <NavItem> What we do </NavItem></StyledNavLink>
-                    <StyledNavLink to={'about-us'} activeClassName="selected"><NavItem> About Us </NavItem></StyledNavLink>
-                    <StyledNavLink to={'support-us'} activeClassName="selected"><NavItem> Support Us </NavItem></StyledNavLink>
-                    <StyledNavLink to={'connect'} activeClassName="selected"><NavItem> Connect </NavItem></StyledNavLink>
-                    <StyledNavLink to={'blog'} activeClassName="selected"><NavItem> Blog </NavItem></StyledNavLink>
-                </NavList>
+                <NavList> {this.renderNavItems()} </NavList>
                 <ButtonWrapper>
-                    <DonateButtonCta bColor={'#FF6A58'} textColor={'#FFFFFF'} />
+                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #F9BB08'} />
                 </ButtonWrapper>
             </HeaderWrapper>
         )
