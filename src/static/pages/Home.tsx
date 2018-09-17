@@ -1,34 +1,27 @@
 import * as React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Image, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import backgroundImage from '../../assets/images/2018_0814_Pattern_Adjusted.svg';
+import missionSectionImage from '../../assets/images/homepage-photo.png';
 import '../../assets/stylesheets/Home.css';
 import { CollapseItem } from '../../components/CollapseItem';
+import { Const } from '../../Const';
 import { ButtonCta } from '../shared/ButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const contentHeight = 675;
 
-const AboveFoldBackgroundImage = styled.div`
-  background-image: url(${backgroundImage});
-  background-repeat: no-repeat;
-  background-size: 100%;
-`
 const AboveFoldContent = styled.div`
+  background-image: url(${backgroundImage});
+  background-size: 100%;
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
   height: 675px;
 `
 
 const MissionLeftPanel = styled.div`
-  width: 48%;
   background-color: #433F79;
-  height: 712px;
-`
-
-const MissionRightPanel = styled.div`
-  background-color: #E6E6E6;
-  height: 712px;
+  min-height: 712px;
 `
 
 const MissionLeftContent = styled.div`
@@ -43,12 +36,13 @@ const MainButtonWrapper = styled.div`
 
 const DonateSection = styled.div`
   background-color: #4BE1DE;
+  display: table;
   height: 396px;
   color: #000000;
+  width:100%;
 `
 
 const DonateText = styled.div`
-  padding-top: 60px;
   text-align: center;
   font-family: 'Lato', sans-serif;
   font-weight: bold;
@@ -58,7 +52,7 @@ const DonateText = styled.div`
 const DonateButtonWrapper = styled.div`
   padding-top: 35px;
   margin: 0 auto;
-  width:200px;
+  width: 200px;
 `
 
 // stupid code
@@ -67,12 +61,6 @@ const ContentWrapper = styled.div`
   padding-top: ${contentHeight / 4}px;
 `
 
-const ImageWrapper = styled.div`
- background-image: url("./main-2.jpg");
- height:inherit;
- background-repeat: no-repeat;
- background-size: auto 712px;
-`
 interface IHomeState {
   collapseSections: any[]
 }
@@ -89,6 +77,7 @@ export class Home extends React.Component<{}, IHomeState> {
       btn: true,
       btnContent: 'About us',
       content: 'Nuevo Foundation is a non-profit that want to help the world’s disadvantaged societies and build solutions.',
+      link: Const.AboutUsPage,
       open: false,
       title: 'WHO WE ARE',
     },
@@ -96,6 +85,7 @@ export class Home extends React.Component<{}, IHomeState> {
       btn: true,
       btnContent: 'Learn more',
       content: 'We are working to offer workshops and Skype classes around the world.',
+      link: Const.SkypeInClassroomPage,
       open: false,
       title: 'PARTICIPATE',
     },
@@ -118,7 +108,7 @@ export class Home extends React.Component<{}, IHomeState> {
     })
     return openItemIndex;
   }
-  
+
   public openNextItem() {
     const openItemIndex = this.closeOpenedItem();
     const nextItemIndex = openItemIndex + 1;
@@ -141,56 +131,61 @@ export class Home extends React.Component<{}, IHomeState> {
       this.setState({
         collapseSections: this.openNextItem()
       });
-    }, 4000);
+    }, 4500);
   }
 
   public render() {
     this.collapseItemTimer();
     return (
-      <Grid>
+      <Grid fluid={true}>
         <Row>
-          <AboveFoldBackgroundImage>
-
-            <Col xs={12} md={8}>
-              <AboveFoldContent>
-                <ContentWrapper>
-                  <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
-                  <MainButtonWrapper><InfoButton backgroundColor={'#F9BB08'} textColor={'#000000'} borderColor={'#F9BB08'}> LEARN MORE </InfoButton></MainButtonWrapper>
-                </ContentWrapper>
-              </AboveFoldContent>
-            </Col>
-          </AboveFoldBackgroundImage>
-
+          <Col xs={12}>
+            <AboveFoldContent>
+              <ContentWrapper>
+                <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
+                <MainButtonWrapper><InfoButton backgroundColor={'#F9BB08'} textColor={'#000000'} borderColor={'#F9BB08'}> LEARN MORE </InfoButton></MainButtonWrapper>
+              </ContentWrapper>
+            </AboveFoldContent>
+          </Col>
         </Row>
-        <Row>
-          <Col xs={6} md={6}>
+        <Row >
+          <Col lg={6} md={6} xs={12}>
             <MissionLeftPanel>
               <MissionLeftContent>
                 {this.collapseSections.map((item: any, index: number, array: any[]) => {
                   const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
                   return (
-                    <CollapseItem key={index} btn={item.btn} btnContent={item.btnContent} open={item.open} title={item.title} content={item.content} last={last} />
+                    <CollapseItem
+                      key={index}
+                      btn={item.btn}
+                      btnContent={item.btnContent}
+                      btnLink={item.link} open={item.open}
+                      title={item.title} content={item.content}
+                      last={last}
+                    />
                   )
                 })}
               </MissionLeftContent>
             </MissionLeftPanel>
           </Col>
-          <Col xs={6} md={6}>
-            <MissionRightPanel>
-              <ImageWrapper />
-            </MissionRightPanel>
+          <Col lg={6} md={6} xs={12} >
+            <Image src={missionSectionImage} responsive={true} />
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={6}>
+          <Col xs={12}>
             <DonateSection>
-              <DonateText>Because empowering students with knowledge is our goal!</DonateText>
-              <DonateButtonWrapper><ButtonCta text={'DONATE'} backgroundColor={'#4BE1DE'} textColor={'#000000'} border={'2px solid #000000'} /></DonateButtonWrapper>
+              <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                <DonateText>Because empowering students with knowledge is our goal!</DonateText>
+                <DonateButtonWrapper>
+                  <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
+                    <ButtonCta text={'DONATE'} backgroundColor={'#4BE1DE'} textColor={'#000000'} border={'2px solid #000000'} />
+                  </a>
+                </DonateButtonWrapper>
+              </div>
             </DonateSection>
           </Col>
-
         </Row>
-
       </Grid>
     )
   }

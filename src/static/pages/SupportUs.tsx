@@ -41,9 +41,7 @@ export class SupportUs extends React.Component {
                 </SupportStatement>
                 <DonateWrapper>
                     <div className="donate">Select an amount </div>
-                    <DonateButton text="$20"/> <DonateButton text="$50"/> <DonateButton text="$100"/> <DonateButton text="$250"/> <DonateButton text="Other"/>
-
-                    
+                    <DonateButton text="$20"/> <DonateButton text="$50"/> <DonateButton text="$100"/> <DonateButton text="$250"/> <DonateButton text="Other"/>                    
                 </DonateWrapper>
         </SupportUsPageWrapper>
         )
