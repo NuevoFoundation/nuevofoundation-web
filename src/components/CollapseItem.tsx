@@ -1,12 +1,12 @@
 import Collapse from '@material-ui/core/Collapse';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ButtonCta } from '../static/shared/ButtonCta';
 
 const Item = styled.div`
   color: #FFFFFF;
   font-family: 'Lato', sans-serif;
-  width: 50%;
 `
 
 const Divider = styled.hr`
@@ -19,7 +19,6 @@ const TextContent = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: 20px;
   padding-bottom:50px;
-  width: 80%;
 `
 
 const SectionTitle = styled.h2`
@@ -28,7 +27,6 @@ const SectionTitle = styled.h2`
 `
 
 const ButtonCtaWrapper = styled.div`
-  width: 40%;
   padding-bottom:40px;
 `
 
@@ -42,6 +40,7 @@ interface ICollapseItemProps {
     open: boolean;
     btn?: boolean;
     btnContent?: string;
+    btnLink?: string;
     last: boolean;
 }
 
@@ -61,9 +60,11 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
                 <Collapse in={this.props.open}>
                     <TextContent>{this.props.content}</TextContent>
                     {this.props.btn &&
-                        <ButtonCtaWrapper>
-                            <ButtonCta text={this.props.btnContent} backgroundColor={'#433F79'} textColor={'#FFFFFF'} border={'2px solid #FFFFFF'} />
-                        </ButtonCtaWrapper>
+                        <Link to={this.props.btnLink!} style={{ textDecoration: 'none' }}>
+                            <ButtonCtaWrapper>
+                                <ButtonCta text={this.props.btnContent} backgroundColor={'#433F79'} textColor={'#FFFFFF'} border={'2px solid #FFFFFF'} />
+                            </ButtonCtaWrapper>
+                        </Link>
                     }
                 </Collapse>
                 {!this.props.last &&

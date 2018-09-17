@@ -1,9 +1,12 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
+import { Col, Grid, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import NuevoFoundationLogo from '../../assets/logos/Logo_long.svg';
 import NuevoLogo from '../../assets/logos/Logo_medium.svg';
+import { Const } from '../../Const';
 import { ButtonCta } from './ButtonCta';
 
 // TODO: replace this with flex later
@@ -20,12 +23,23 @@ const NavLogo = styled.img`
 const NavList = styled.ul`
   float: left;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 20px;
 `
 const NavItem = styled.li`
   display: inline-block;
   font-size:20px;
   padding-right: 50px;
+  cursor: pointer;
+`
+
+const SmallNavList = styled.ul`
+  text-align: center;
+  list-style: none;
+`
+
+const SmallNavItem = styled.li`
+  font-size:18px;
+  padding-bottom:15px;
   cursor: pointer;
 `
 
@@ -57,8 +71,12 @@ interface INavItem {
     link: string;
 }
 
+interface IHeaderState {
+    hamburgerMenuOpen: boolean;
+}
+
 // TODO: Implement selected nav item styling
-export class Header extends React.Component {
+export class Header extends React.Component<{}, IHeaderState> {
     public navItems: INavItem[] = [
         {
             dropdown: false,
@@ -87,6 +105,23 @@ export class Header extends React.Component {
         }
     ];
 
+    constructor(props: {}) {
+        super(props);
+
+        this.state = {
+            hamburgerMenuOpen: false,
+        };
+    }
+
+
+    public handleHamburgerIconClick = () => {
+        // tslint:disable-next-line:no-console
+        console.log(`menu open: ${!this.state.hamburgerMenuOpen}`);
+        this.setState({
+            hamburgerMenuOpen: !this.state.hamburgerMenuOpen,
+        });
+    }
+
     public renderNavItems(): JSX.Element[] {
         return (
             this.navItems.map((navItem: INavItem, index: number) => {
@@ -95,7 +130,7 @@ export class Header extends React.Component {
                         <NavItem> {navItem.text}
                             {navItem.dropdown &&
                                 <NavIcon>
-                                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm "} />
+                                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
                                 </NavIcon>
                             }
                         </NavItem>
@@ -105,17 +140,63 @@ export class Header extends React.Component {
         )
     }
 
+    public renderSmallNavItems(): JSX.Element[] {
+        return (
+            this.navItems.map((navItem: INavItem, index: number) => {
+                return (
+                    <Row key={index}>
+                        <Col xs={4} xsOffset={4} smHidden={true} mdHidden={true} lgHidden={true}>
+                            <StyledNavLink to={navItem.link} >
+                                <SmallNavItem> {navItem.text}
+                                    {navItem.dropdown &&
+                                        <NavIcon>
+                                            <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+                                        </NavIcon>
+                                    }
+                                </SmallNavItem>
+                            </StyledNavLink>
+                        </Col>
+                    </Row>
+                )
+            })
+        )
+    }
+
     public render() {
         return (
-            <HeaderWrapper>
-                <StyledNavLink to={'/'}>
-                    <NavLogo src={NuevoLogo} height={'75px'} width={''} />
-                </StyledNavLink>
-                <NavList> {this.renderNavItems()} </NavList>
-                <ButtonWrapper>
-                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #F9BB08'} />
-                </ButtonWrapper>
-            </HeaderWrapper>
+            <Grid fluid={true} >
+                <Row>
+                    <Col sm={12} xsHidden={true}>
+                        <HeaderWrapper>
+                            <StyledNavLink to={'/'}>
+                                <NavLogo src={NuevoLogo} height={'75px'} />
+                            </StyledNavLink>
+                            <NavList> {this.renderNavItems()} </NavList>
+                            <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
+                                <ButtonWrapper>
+                                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #F9BB08'} />
+                                </ButtonWrapper>
+                            </a>
+                        </HeaderWrapper>
+                    </Col>
+
+                    <Col xs={12} smHidden={true} mdHidden={true} lgHidden={true}>
+                        <Row>
+                            <Col xs={10} >
+                                <StyledNavLink to={'/'}>
+                                    <NavLogo src={NuevoFoundationLogo} height={'60%'} />
+                                </StyledNavLink>
+                            </Col >
+                            <Col onClick={this.handleHamburgerIconClick} xs={2} style={{ paddingTop: '4%', paddingLeft: '4%', cursor: 'pointer' }}>
+                                <FontAwesomeIcon icon={faBars} className={"fa-lg"} />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                {this.state.hamburgerMenuOpen &&
+                    <SmallNavList> {this.renderSmallNavItems()} </SmallNavList>
+                }
+            </Grid>
         )
     }
 }
