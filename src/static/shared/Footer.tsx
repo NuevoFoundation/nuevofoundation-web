@@ -10,18 +10,17 @@ class Footer extends React.Component {
             <div className="App-footer">
                 <div className="App-footer-big">Join the conversation on social media.</div>
                 <div className="social-images">
-                    <a target="_blank" href="https://www.twitter.com/">
+                    <a target="_blank" href="https://www.instagram.com/nuevofoundation">
+                        <FontAwesomeIcon icon={faInstagram} className={"footer-pics fa-lg"} />
+                    </a>
+                    <a target="_blank" href="https://twitter.com/nuevofoundation">
                         <FontAwesomeIcon icon={faTwitter} className={"footer-pics fa-lg"} />
                     </a>
 
-                    <a target="_blank" href="http://facebook.com">
+                    <a target="_blank" href="https://www.facebook.com/NuevoFoundation">
                         <FontAwesomeIcon icon={faFacebookF} className={"footer-pics fa-lg"} />
                     </a>
-
-                    <a target="_blank" href="https://www.instagram.com/nuevofoundation/">
-                        <FontAwesomeIcon icon={faInstagram} className={"footer-pics fa-lg"} />
-                    </a>
-                    <a target="_blank" href="https://www.linkedin.com/company/nuevofoundation/">
+                    <a target="_blank" href="https://www.linkedin.com/company/nuevofoundation">
                         <FontAwesomeIcon icon={faLinkedin} className={"footer-pics fa-lg"} />
                     </a>
                 </div>
