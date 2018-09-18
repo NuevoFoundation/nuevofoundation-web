@@ -25,8 +25,7 @@ const MissionLeftPanel = styled.div`
 `
 
 const MissionLeftContent = styled.div`
-  padding-top: 100px;
-  padding-left: 40px;
+  padding-top: 40px;
   color: #505150;
 `
 
@@ -149,26 +148,32 @@ export class Home extends React.Component<{}, IHomeState> {
           </Col>
         </Row>
         <Row >
-          <Col lg={6} md={6} xs={12}>
+          <Col md={6} xs={12}>
             <MissionLeftPanel>
-              <MissionLeftContent>
-                {this.collapseSections.map((item: any, index: number, array: any[]) => {
-                  const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
-                  return (
-                    <CollapseItem
-                      key={index}
-                      btn={item.btn}
-                      btnContent={item.btnContent}
-                      btnLink={item.link} open={item.open}
-                      title={item.title} content={item.content}
-                      last={last}
-                    />
-                  )
-                })}
-              </MissionLeftContent>
+              <Row>
+                <Col xsOffset={2}>
+
+                  <MissionLeftContent>
+                    {this.collapseSections.map((item: any, index: number, array: any[]) => {
+                      const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
+                      return (
+                        <CollapseItem
+                          key={index}
+                          btn={item.btn}
+                          btnContent={item.btnContent}
+                          btnLink={item.link} open={item.open}
+                          title={item.title} content={item.content}
+                          last={last}
+                        />
+                      )
+                    })}
+                  </MissionLeftContent>
+                </Col>
+
+              </Row>
             </MissionLeftPanel>
           </Col>
-          <Col lg={6} md={6} xs={12} >
+          <Col md={6} xs={12} >
             <Image src={missionSectionImage} responsive={true} />
           </Col>
         </Row>
