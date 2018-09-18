@@ -1,5 +1,6 @@
 import Collapse from '@material-ui/core/Collapse';
 import * as React from 'react';
+import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ButtonCta } from '../static/shared/ButtonCta';
@@ -58,17 +59,31 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
             <Item >
                 <SectionTitle>{this.props.title}</SectionTitle>
                 <Collapse in={this.props.open}>
-                    <TextContent>{this.props.content}</TextContent>
-                    {this.props.btn &&
-                        <Link to={this.props.btnLink!} style={{ textDecoration: 'none' }}>
-                            <ButtonCtaWrapper>
-                                <ButtonCta text={this.props.btnContent} backgroundColor={'#433F79'} textColor={'#FFFFFF'} border={'2px solid #FFFFFF'} />
-                            </ButtonCtaWrapper>
-                        </Link>
-                    }
+                    <Row>
+                        <Col xs={7}>
+                            <TextContent>{this.props.content}</TextContent>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4}>
+                            {this.props.btn &&
+                                <Link to={this.props.btnLink!} style={{ textDecoration: 'none' }}>
+                                    <ButtonCtaWrapper>
+                                        <ButtonCta text={this.props.btnContent} backgroundColor={'#433F79'} textColor={'#FFFFFF'} border={'2px solid #FFFFFF'} />
+                                    </ButtonCtaWrapper>
+                                </Link>
+                            }
+                        </Col>
+                    </Row>
                 </Collapse>
                 {!this.props.last &&
-                    <Divider />
+                    <Row>
+                        <Col xs={8}>
+                            <Divider />
+                        </Col>
+
+                    </Row>
+
                 }
             </Item>
         )
