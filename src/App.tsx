@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
 import { Const } from './Const';
-import { AboutUs, Faq, Home, SupportUs, WhatWeDo } from './static/pages';
+import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from './static/pages';
 import { Header } from './static/shared'
 import Footer from './static/shared/Footer';
 
@@ -24,6 +24,7 @@ class App extends React.Component {
           <Route exact={true} path={Const.SupportUsPage} component={SupportUs} />
           <Route exact={true} path={Const.BlogPage} component={Home} />
           <Route exact={true} path={Const.FaqPage} component={Faq} />
+          <Route exact={true} path={Const.ContactPage} component={Contact} />
           {/* <Route component={NoMatch} /> */ }
         </Switch>
         <Footer />
