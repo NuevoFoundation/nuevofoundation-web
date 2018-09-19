@@ -115,8 +115,6 @@ export class Header extends React.Component<{}, IHeaderState> {
 
 
     public handleHamburgerIconClick = () => {
-        // tslint:disable-next-line:no-console
-        console.log(`menu open: ${!this.state.hamburgerMenuOpen}`);
         this.setState({
             hamburgerMenuOpen: !this.state.hamburgerMenuOpen,
         });
