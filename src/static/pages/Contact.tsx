@@ -10,6 +10,10 @@ const Title = styled.div`
   padding-bottom:30px;
 `
 
+const Space = styled.div`
+    padding-bottom:10px;
+`
+
 interface IContactState {
     email: string;
     message: string;
@@ -27,12 +31,23 @@ export class Contact extends React.Component<{}, IContactState> {
         };
     }
 
-    public handleChange = (e: any) => {
+    public handleName = (e: any) => {
          this.setState({ name: e.target.value });
         // const change = {}
         // change[e.target.name] = e.target.value
         // this.setState(change)
-        //this.setState({ [e.target.type]: e.target.value });
+        // this.setState({ [e.target.type]: e.target.value });
+    }
+
+    public handleEmail = (e: any) => {
+        this.setState({ email: e.target.value });
+   }
+
+   public handleSubject = (e: any) => {
+        this.setState({ subject: e.target.value });
+    }
+    public handleMessage = (e: any) => {
+        this.setState({ message: e.target.value });
     }
 
     public render() {
@@ -54,29 +69,32 @@ export class Contact extends React.Component<{}, IContactState> {
                                     type="text"
                                     name="name"
                                     placeholder="Enter name"
-                                    onChange= {this.handleChange}
+                                    onChange= {this.handleName}
                                     value={this.state.name}
                                 />
+                                <Space/>
                                 <ControlLabel>Email</ControlLabel>
                                 <FormControl
                                     type="email"
                                     name="email"
                                     placeholder="Enter valid email"
-                                    onChange={this.handleChange}
+                                    onChange={this.handleEmail}
                                     value={this.state.email}
                                 />
+                                <Space/>
                                 <ControlLabel>Subject</ControlLabel>
                                 <FormControl
                                     type="text"
                                     placeholder="What are you interested in?"
-                                    onChange={this.handleChange}
+                                    onChange={this.handleSubject}
                                     value={this.state.subject}
                                 />
+                                <Space/>
                                 <ControlLabel>Message</ControlLabel>
                                 <FormControl
                                     type="textarea"
                                     placeholder="Enter message"
-                                    onChange={this.handleChange}
+                                    onChange={this.handleMessage}
                                     value={this.state.message}
                                 />
                             </FormGroup>
