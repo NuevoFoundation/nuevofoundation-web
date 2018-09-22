@@ -33,10 +33,6 @@ export class Contact extends React.Component<{}, IContactState> {
 
     public handleName = (e: any) => {
          this.setState({ name: e.target.value });
-        // const change = {}
-        // change[e.target.name] = e.target.value
-        // this.setState(change)
-        // this.setState({ [e.target.type]: e.target.value });
     }
 
     public handleEmail = (e: any) => {
@@ -48,6 +44,11 @@ export class Contact extends React.Component<{}, IContactState> {
     }
     public handleMessage = (e: any) => {
         this.setState({ message: e.target.value });
+    }
+
+    public handleSubmit = (e: any) => {
+        alert('Message was submitted')
+        e.preventDefault();
     }
 
     public render() {
@@ -97,6 +98,12 @@ export class Contact extends React.Component<{}, IContactState> {
                                     onChange={this.handleMessage}
                                     value={this.state.message}
                                 />
+                                <Space/>
+                                <Space/>
+                                <button
+                                    className="btn-submit"
+                                    type="submit"
+                                    onSubmit={this.handleSubmit}>Submit</button>
                             </FormGroup>
                         </form>
                     </Col>
@@ -104,8 +111,6 @@ export class Contact extends React.Component<{}, IContactState> {
                         <img src={''} />
                     </Col>
                 </Row>
-
-
             </Grid>
         )
     }
