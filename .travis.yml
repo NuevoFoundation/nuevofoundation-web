@@ -16,4 +16,9 @@ deploy:
   verbose: true
   on: master
   skip_cleanup: true
+- provider: azure_web_apps
+  site: nuevofoundation-web
+  verbose: true
+  on: release
+  skip_cleanup: true
 
