@@ -74,16 +74,16 @@ export class Home extends React.Component<{}, IHomeState> {
       image: MissionImage1
     },
     {
-      btn: true,
+      btn: false,
       btnContent: 'ABOUT US',
-      content: 'Nuevo Foundation is a group of passionate professionals empowering underrepresented communities with solutions for future success.',
+      content: 'Nuevo Foundation is a group of passionate professionals empowering underserved communities with solutions for future success.',
       link: Const.AboutUsPage,
       open: false,
       title: 'WHO WE ARE',
       image: MissionImage2
     },
     {
-      btn: true,
+      btn: false,
       btnContent: 'PARTICIPATE',
       content: 'We offer coding workshops locally and Skype in the Classroom session around the world. ',
       link: Const.SkypeInClassroomPage,
