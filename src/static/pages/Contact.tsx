@@ -1,3 +1,4 @@
+import { send } from 'emailjs-com';
 import * as React from 'react';
 import { Col, ControlLabel, FormControl, FormGroup, Grid, Row } from 'react-bootstrap';
 import styled from 'styled-components';
@@ -24,13 +25,13 @@ interface IContactState {
     name: string;
     subject: string;
 }
-const btnStyle = { 
-    backgroundColor: '#ABABAB', 
-    color: '#FFFFFF', 
+const btnStyle = {
+    backgroundColor: '#ABABAB',
+    color: '#FFFFFF',
     fontSize: '15px',
     fontWeight: 'bold',
-    height: '40px', 
-    width: '160px', 
+    height: '40px',
+    width: '160px',
 } as React.CSSProperties;
 
 export class Contact extends React.Component<{}, IContactState> {
@@ -60,8 +61,38 @@ export class Contact extends React.Component<{}, IContactState> {
     }
 
     public handleSubmit = (e: any) => {
-        alert('Message was submitted')
         e.preventDefault();
+        const { name, email, subject, message } = this.state;
+        if (name === "" || email === "" || subject === "" || message === "") {
+            return;
+        }
+
+        const templateParams = {
+            "name": name,
+            "reply": email,
+            "subject": subject,
+            "message": message
+        }
+
+        this.sendFeedback(
+            'template_nt0OyEy1',
+            templateParams)
+    }
+
+    public sendFeedback(templateId: string, templateParams: any) {
+        send(
+            'mailgun',
+            templateId,
+            templateParams,
+            'user_WIHlUqAJII4vopia1uIUe')
+            .then(() => {
+                this.setState({
+                    email: '',
+                    message: '',
+                    name: '',
+                    subject: ''
+                });
+            })
     }
 
     public render() {
@@ -119,7 +150,7 @@ export class Contact extends React.Component<{}, IContactState> {
                                             style={btnStyle}
                                             className="btn-submit"
                                             type="submit"
-                                            onSubmit={this.handleSubmit}>SEND</button>
+                                            onClick={this.handleSubmit}>SEND</button>
                                     </FormGroup>
                                 </form>
                             </Col>
