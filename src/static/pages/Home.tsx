@@ -13,17 +13,15 @@ import { Const } from '../../Const';
 import { ButtonCta } from '../shared/ButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
-const contentHeight = 675;
-
 const AboveFoldContent = styled.div`
   background-image: url(${backgroundImageWithNuvi});
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
-  height: 747px;
+  height: 675px;
 `
 
 const MissionLeftPanel = styled.div`
-  background-color: #433F79;
+  background-color: #FFFFFF;
   min-height: 712px;
 `
 
@@ -37,7 +35,7 @@ const MainButtonWrapper = styled.div`
 `
 
 const DonateSection = styled.div`
-  background-color: #4BE1DE;
+  background-color: #FBF500;
   display: table;
   height: 396px;
   color: #000000;
@@ -57,10 +55,8 @@ const DonateButtonWrapper = styled.div`
   width: 200px;
 `
 
-// stupid code
 const ContentWrapper = styled.div`
-  padding-left: 60px;
-  padding-top: ${contentHeight / 4}px;
+  padding-top: 100px;
 `
 
 interface IHomeState {
@@ -79,8 +75,8 @@ export class Home extends React.Component<{}, IHomeState> {
     },
     {
       btn: true,
-      btnContent: 'About us',
-      content: 'Nuevo Foundation is a non-profit that want to help the world’s disadvantaged societies and build solutions.',
+      btnContent: 'ABOUT US',
+      content: 'Nuevo Foundation is a group of passionate professionals empowering underrepresented communities with solutions for future success.',
       link: Const.AboutUsPage,
       open: false,
       title: 'WHO WE ARE',
@@ -88,8 +84,8 @@ export class Home extends React.Component<{}, IHomeState> {
     },
     {
       btn: true,
-      btnContent: 'Learn more',
-      content: 'We are working to offer workshops and Skype classes around the world.',
+      btnContent: 'PARTICIPATE',
+      content: 'We offer coding workshops locally and Skype in the Classroom session around the world. ',
       link: Const.SkypeInClassroomPage,
       open: false,
       title: 'PARTICIPATE',
@@ -157,14 +153,14 @@ export class Home extends React.Component<{}, IHomeState> {
     return (
       <Grid fluid={true}>
         <Row>
-          <Col xs={12}>
-            <AboveFoldContent>
+          <AboveFoldContent>
+            <Col xs={11} xsOffset={1}>
               <ContentWrapper>
                 <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
-                <MainButtonWrapper><InfoButton backgroundColor={'#F9BB08'} textColor={'#000000'} borderColor={'#F9BB08'}> LEARN MORE </InfoButton></MainButtonWrapper>
+                <MainButtonWrapper><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
               </ContentWrapper>
-            </AboveFoldContent>
-          </Col>
+            </Col>
+          </AboveFoldContent>
         </Row>
         <Row >
           <Col md={6} xs={12}>
@@ -191,8 +187,8 @@ export class Home extends React.Component<{}, IHomeState> {
               </Row>
             </MissionLeftPanel>
           </Col>
-          <Col md={6} xs={12} style={{maxHeight: '712px', overflow: 'hidden'}}>
-            <Image src={this.state.currentImage} style={{width: '180%'}}/>
+          <Col md={6} xs={12} style={{ maxHeight: '712px', overflow: 'hidden' }}>
+            <Image src={this.state.currentImage} style={{ width: '180%' }} />
           </Col>
         </Row>
         <Row>
@@ -202,7 +198,7 @@ export class Home extends React.Component<{}, IHomeState> {
                 <DonateText>Because empowering students with knowledge is our goal!</DonateText>
                 <DonateButtonWrapper>
                   <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
-                    <ButtonCta text={'DONATE'} backgroundColor={'#4BE1DE'} textColor={'#000000'} border={'2px solid #000000'} />
+                    <ButtonCta text={'DONATE'} backgroundColor={'#FBF500'} textColor={'#000000'} border={'3px solid #000000'} />
                   </a>
                 </DonateButtonWrapper>
               </div>

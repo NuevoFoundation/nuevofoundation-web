@@ -6,14 +6,14 @@ import styled from 'styled-components';
 import { ButtonCta } from '../static/shared/ButtonCta';
 
 const Item = styled.div`
-  color: #FFFFFF;
+  color: #000000;
   font-family: 'Lato', sans-serif;
 `
 
 const Divider = styled.hr`
   height:0; 
   border:0; 
-  border-top:2px solid #8A88AA; 
+  border-top:2px solid #EFEFEF; 
 `
 
 const TextContent = styled.div`
@@ -69,7 +69,7 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
                             {this.props.btn &&
                                 <Link to={this.props.btnLink!} style={{ textDecoration: 'none' }}>
                                     <ButtonCtaWrapper>
-                                        <ButtonCta text={this.props.btnContent} backgroundColor={'#433F79'} textColor={'#FFFFFF'} border={'2px solid #FFFFFF'} />
+                                        <ButtonCta text={this.props.btnContent} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'4px solid #000000'} />
                                     </ButtonCtaWrapper>
                                 </Link>
                             }

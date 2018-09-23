@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const InfoButtonWrapper = styled.div`
   height: 48px;
   width: 186px;
-  font-size: 18px;
+  font-size: 16px;
   background-color: #FFFFFF;
   cursor: pointer;
   text-align: center;
