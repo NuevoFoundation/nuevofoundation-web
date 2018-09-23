@@ -100,15 +100,14 @@ export class Header extends React.Component<{}, IHeaderState> {
         },*/
         {
             dropdown: false,
-            link: 'contact',
-            text: 'Contact',
+            link: 'faq',
+            text: 'FAQ',
         },
         {
             dropdown: false,
-            link: 'faq',
-            text: 'FAQ',
-        }
-
+            link: 'contact',
+            text: 'Contact',
+        },
     ];
 
     constructor(props: {}) {
@@ -178,7 +177,7 @@ export class Header extends React.Component<{}, IHeaderState> {
                             <NavList> {this.renderNavItems()} </NavList>
                             <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
                                 <ButtonWrapper>
-                                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #F9BB08'} />
+                                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #000000'} />
                                 </ButtonWrapper>
                             </a>
                         </HeaderWrapper>
