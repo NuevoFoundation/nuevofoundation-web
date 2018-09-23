@@ -3,9 +3,9 @@ import { Col, Grid, Image, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import backgroundImageWithNuvi from '../../assets/images/HomeBackgroundNuvi.png';
 
-import MissionImage1 from '../../assets/images/01_Mission.jpg';
+import MissionImage1 from '../../assets/images/01_Mission.png';
 import MissionImage2 from '../../assets/images/02_WhoWeAre.jpg';
-import MissionImage3 from '../../assets/images/03_GetInvolved.jpg';
+import MissionImage3 from '../../assets/images/03_GetInvolved-2.png';
 
 import '../../assets/stylesheets/Home.css';
 import { CollapseItem } from '../../components/CollapseItem';
@@ -22,7 +22,7 @@ const AboveFoldContent = styled.div`
 
 const MissionLeftPanel = styled.div`
   background-color: #FFFFFF;
-  min-height: 712px;
+  max-height: 712px;
 `
 
 const MissionLeftContent = styled.div`
@@ -188,7 +188,7 @@ export class Home extends React.Component<{}, IHomeState> {
             </MissionLeftPanel>
           </Col>
           <Col md={6} xs={12} style={{ maxHeight: '712px', overflow: 'hidden' }}>
-            <Image src={this.state.currentImage} style={{ width: '180%' }} />
+            <Image src={this.state.currentImage} style={{ width: '170%' }} />
           </Col>
         </Row>
         <Row>
