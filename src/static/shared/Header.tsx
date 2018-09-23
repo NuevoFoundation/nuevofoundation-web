@@ -78,7 +78,7 @@ interface IHeaderState {
 // TODO: Implement selected nav item styling
 export class Header extends React.Component<{}, IHeaderState> {
     public navItems: INavItem[] = [
-        {
+        /* {
             dropdown: false,
             link: 'what-we-do',
             text: 'What we do',
@@ -92,7 +92,12 @@ export class Header extends React.Component<{}, IHeaderState> {
             dropdown: false,
             link: 'support-us',
             text: 'Support Us',
-        },
+        }, 
+        {
+            dropdown: false,
+            link: 'blog',
+            text: 'Blog',
+        },*/
         {
             dropdown: false,
             link: 'contact',
@@ -100,9 +105,10 @@ export class Header extends React.Component<{}, IHeaderState> {
         },
         {
             dropdown: false,
-            link: 'blog',
-            text: 'Blog',
+            link: 'faq',
+            text: 'FAQ',
         }
+
     ];
 
     constructor(props: {}) {
