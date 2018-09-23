@@ -26,37 +26,19 @@ export class Faq extends React.Component {
                                 <div className="question">What does Nuevo Foundation offer?</div>
                             </ContentWrapper>
                             <ContentWrapper>
-                                <div className="questiontext">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                                    ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
-                                    aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
-                                    eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                                    Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-                            tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.</div>
+                                <div className="questiontext">Nuevo Foundation offers workshops for kids K-12 where they get to learn about coding and technology.</div>
                             </ContentWrapper>
                             <ContentWrapper>
                                 <div className="question">What is a virtual session?</div>
                             </ContentWrapper>
                             <ContentWrapper>
-                                <div className="questiontext">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                                    ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
-                                    aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
-                                    eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                                    Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-                            tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.</div>
+                                <div className="questiontext">A virtual session, or Skype in the Classroom, is an opportunity for your students to talk to someone at Microsoft over Sype who is excited and passionate about technology and sharing their experience at Microsoft. You can use this as a way for your students to learn about what it's like to work in technology. We also use the time to have the students ask questions about tech or anything they're curious about. </div>
                             </ContentWrapper>
                             <ContentWrapper>
                                 <div className="question">Who does Nuevo Foundation serve?</div>
                             </ContentWrapper>
                             <ContentWrapper>
-                                <div className="questiontext">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                                    ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
-                                    aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
-                                    eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                                    Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-                            tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.</div>
+                                <div className="questiontext">Nuevo Foundation was created by a passionate group of friends that are here to serve anyone that is interested in STEM with a focus on underserved communites.</div>
                             </ContentWrapper>
                         </FaqWrapper>
                     </Col>
