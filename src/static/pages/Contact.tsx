@@ -167,7 +167,7 @@ export class Contact extends React.Component<{}, IContactState> {
                                     The Nuevo Foundation is based in Seattle, Washington.<br /><br />
                                     To update your giving information or with any other questions please contact:<br /><br />
                                     Nuevo Foundation<br />
-                                    <a href="mailto:connect@nuevofoundation.org" target="_top">connect@nuevofoundation.org</a><br /><br /><br /><br />
+                                    <a href="mailto:connect@nuevofoundation.org" target="_top">contact@nuevofoundation.org</a><br /><br /><br /><br />
                                 </ContactInfo>
                             </Col>
                         </Row>
