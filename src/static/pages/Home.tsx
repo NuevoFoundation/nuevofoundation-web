@@ -3,9 +3,9 @@ import { Col, Grid, Image, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import backgroundImageWithNuvi from '../../assets/images/HomeBackgroundNuvi.png';
 
-import MissionImage1 from '../../assets/images/01_Mission.png';
-import MissionImage2 from '../../assets/images/02_WhoWeAre.jpg';
-import MissionImage3 from '../../assets/images/03_GetInvolved-2.png';
+import MissionImage1 from '../../assets/images/1.png';
+import MissionImage2 from '../../assets/images/2.png';
+import MissionImage3 from '../../assets/images/3.png';
 
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/Home.css';
@@ -15,6 +15,7 @@ import { ButtonCta } from '../shared/ButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const AboveFoldContent = styled.div`
+  background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
@@ -190,8 +191,8 @@ export class Home extends React.Component<{}, IHomeState> {
               </Row>
             </MissionLeftPanel>
           </Col>
-          <Col md={6} xs={12} style={{ maxHeight: '712px', overflow: 'hidden' }}>
-            <Image src={this.state.currentImage} style={{ width: '170%' }} />
+          <Col md={6} xs={12} style={{ overflow: 'hidden' }}>
+            <Image src={this.state.currentImage} style={{ width: '100%' }} />
           </Col>
         </Row>
         <Row>
