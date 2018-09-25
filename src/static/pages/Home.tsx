@@ -87,7 +87,7 @@ export class Home extends React.Component<{}, IHomeState> {
     {
       btn: false,
       btnContent: 'PARTICIPATE',
-      content: 'We offer coding workshops locally and Skype in the Classroom session around the world. ',
+      content: 'We offer coding workshops locally and Skype in the Classroom sessions around the world. ',
       link: Const.SkypeInClassroomPage,
       open: false,
       title: 'PARTICIPATE',
