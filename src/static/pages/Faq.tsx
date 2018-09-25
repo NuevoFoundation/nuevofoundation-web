@@ -32,7 +32,7 @@ export class Faq extends React.Component {
                                 <div className="question">What is a virtual session?</div>
                             </ContentWrapper>
                             <ContentWrapper>
-                                <div className="questiontext">A virtual session, or Skype in the Classroom, is an opportunity for your students to talk to someone at Microsoft over Sype who is excited and passionate about technology and sharing their experience at Microsoft. You can use this as a way for your students to learn about what it's like to work in technology. We also use the time to have the students ask questions about tech or anything they're curious about. </div>
+                                <div className="questiontext">A virtual session, or Skype in the Classroom, is an opportunity for your students to talk to someone at Microsoft over Skype who is excited and passionate about technology and sharing their experience at Microsoft. You can use this as a way for your students to learn about what it's like to work in technology. We also use the time to have the students ask questions about tech or anything they're curious about. </div>
                             </ContentWrapper>
                             <ContentWrapper>
                                 <div className="question">Who does Nuevo Foundation serve?</div>
