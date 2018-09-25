@@ -7,6 +7,7 @@ import MissionImage1 from '../../assets/images/01_Mission.png';
 import MissionImage2 from '../../assets/images/02_WhoWeAre.jpg';
 import MissionImage3 from '../../assets/images/03_GetInvolved-2.png';
 
+import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/Home.css';
 import { CollapseItem } from '../../components/CollapseItem';
 import { Const } from '../../Const';
@@ -157,7 +158,9 @@ export class Home extends React.Component<{}, IHomeState> {
             <Col xs={11} xsOffset={1}>
               <ContentWrapper>
                 <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
-                <MainButtonWrapper><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
+                <Link to={Const.FaqPage} style={{ textDecoration: 'none' }}>
+                  <MainButtonWrapper><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
+                </Link>
               </ContentWrapper>
             </Col>
           </AboveFoldContent>
