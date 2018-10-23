@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Col, Grid, Image, Row } from 'react-bootstrap';
+import Lottie from 'react-lottie';
 import styled from 'styled-components';
-import backgroundImageWithNuvi from '../../assets/images/HomeBackgroundNuvi.png';
-
+import { jsonAnimation } from '../../assets/animations/data'
 import MissionImage1 from '../../assets/images/1.png';
 import MissionImage2 from '../../assets/images/2.png';
+import backgroundImageWithNuvi from '../../assets/images/2018_0814_Pattern_Adjusted.svg';
 import MissionImage3 from '../../assets/images/3.png';
 
 import { Link } from 'react-router-dom';
@@ -15,11 +16,17 @@ import { ButtonCta } from '../shared/ButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const AboveFoldContent = styled.div`
+  position: relative;
   background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
   height: 675px;
+`
+
+const AnimationContainer = styled.div`
+  position: absolute;
+  bottom: 95px;
 `
 
 const MissionLeftPanel = styled.div`
@@ -151,6 +158,15 @@ export class Home extends React.Component<{}, IHomeState> {
   }
 
   public render() {
+    const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: jsonAnimation,
+      rendererSettings: {
+        preserveAspectRatio: true
+      }
+    };
+
     this.collapseItemTimer();
     return (
       <Grid fluid={true}>
@@ -164,6 +180,11 @@ export class Home extends React.Component<{}, IHomeState> {
                 </Link>
               </ContentWrapper>
             </Col>
+            <AnimationContainer>
+              <Lottie options={defaultOptions}
+                isStopped={false}
+                isPaused={false} />
+            </AnimationContainer>
           </AboveFoldContent>
         </Row>
         <Row >
