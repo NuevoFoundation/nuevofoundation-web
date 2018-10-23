@@ -82,7 +82,7 @@ export class Home extends React.Component<{}, IHomeState> {
   public collapseSections: any[] = [
     {
       btn: false,
-      content: 'Identifying resource gaps among underserved communities where technology can have an impact.',
+      content: 'Inspire kids to be curious, confident, and courageous by discovering the world of STEM.',
       open: true,
       title: 'MISSION',
       image: MissionImage1
@@ -90,7 +90,7 @@ export class Home extends React.Component<{}, IHomeState> {
     {
       btn: false,
       btnContent: 'ABOUT US',
-      content: 'Nuevo Foundation is a group of passionate professionals empowering underserved communities with solutions for future success.',
+      content: 'Nuevo Foundation is a nonprofit that is run by a group of passionate professionals. We empower underrepresented communities with solutions for future success.',
       link: Const.AboutUsPage,
       open: false,
       title: 'WHO WE ARE',
@@ -179,7 +179,7 @@ export class Home extends React.Component<{}, IHomeState> {
           <AboveFoldContent>
             <Col xs={11} xsOffset={1}>
               <ContentWrapper>
-                <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
+                <div className="main-title">Inspire your students using coding<br />and their creativity</div>
                 <Link to={Const.FaqPage} style={{ textDecoration: 'none' }}>
                   <MainButtonWrapper><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
                 </Link>
@@ -234,7 +234,7 @@ export class Home extends React.Component<{}, IHomeState> {
           <Col xs={12}>
             <DonateSection>
               <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
-                <DonateText>Because empowering students with knowledge is our goal!</DonateText>
+                <DonateText>Empowering students with knowledge is our goal!!</DonateText>
                 <DonateButtonWrapper>
                   <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
                     <ButtonCta text={'DONATE'} backgroundColor={'#FBF500'} textColor={'#000000'} border={'3px solid #000000'} />

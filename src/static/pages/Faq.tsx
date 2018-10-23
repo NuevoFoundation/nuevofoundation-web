@@ -21,7 +21,12 @@ export class Faq extends React.Component {
                     <Col xs={9} xsOffset={1} >
                         <FaqWrapper>
                             <div className="main-title">Frequently Asked Questions</div>
-                            <div className="title-description">Nuevo Foundation is a non-profit run by a group of passionate friends that want to help the world’s disadvantaged societies and build solutions that would enable them to have future opportunities.</div>
+                            <ContentWrapper>
+                                <div className="question">What is Nuevo Foundation?</div>
+                            </ContentWrapper>
+                            <ContentWrapper>
+                                <div className="questiontext">Nuevo Foundation is a non-profit run by a group of passionate friends that want to help the world’s disadvantaged societies and build solutions that would enable them to have future opportunities.</div>
+                            </ContentWrapper>
                             <ContentWrapper>
                                 <div className="question">What does Nuevo Foundation offer?</div>
                             </ContentWrapper>
@@ -38,7 +43,7 @@ export class Faq extends React.Component {
                                 <div className="question">Who does Nuevo Foundation serve?</div>
                             </ContentWrapper>
                             <ContentWrapper>
-                                <div className="questiontext">Nuevo Foundation was created by a passionate group of friends that are here to serve anyone that is interested in STEM with a focus on underserved communites.</div>
+                                <div className="questiontext">Anyone interested in STEM with a focus on underserved communities.</div>
                             </ContentWrapper>
                         </FaqWrapper>
                     </Col>
