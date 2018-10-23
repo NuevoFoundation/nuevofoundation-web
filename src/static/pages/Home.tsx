@@ -24,9 +24,14 @@ const AboveFoldContent = styled.div`
   height: 675px;
 `
 
-const AnimationContainer = styled.div`
+const AnimationContainerLg = styled.div`
   position: absolute;
-  bottom: 95px;
+  top: 95px;
+`
+
+const AnimationContainerSm = styled.div`
+  position: absolute;
+  bottom: 0;
 `
 
 const MissionLeftPanel = styled.div`
@@ -180,11 +185,20 @@ export class Home extends React.Component<{}, IHomeState> {
                 </Link>
               </ContentWrapper>
             </Col>
-            <AnimationContainer>
-              <Lottie options={defaultOptions}
-                isStopped={false}
-                isPaused={false} />
-            </AnimationContainer>
+            <Col xsHidden={true} smHidden={true}>
+              <AnimationContainerLg>
+                <Lottie options={defaultOptions}
+                  isStopped={false}
+                  isPaused={false} />
+              </AnimationContainerLg>
+            </Col>
+            <Col mdHidden={true} lgHidden={true}>
+              <AnimationContainerSm>
+                <Lottie options={defaultOptions}
+                  isStopped={false}
+                  isPaused={false} />
+              </AnimationContainerSm>
+            </Col>
           </AboveFoldContent>
         </Row>
         <Row >
