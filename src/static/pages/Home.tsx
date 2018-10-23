@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Col, Grid, Image, Row } from 'react-bootstrap';
+import Lottie from 'react-lottie';
 import styled from 'styled-components';
-import backgroundImageWithNuvi from '../../assets/images/HomeBackgroundNuvi.png';
-
+import { jsonAnimation } from '../../assets/animations/data'
 import MissionImage1 from '../../assets/images/1.png';
 import MissionImage2 from '../../assets/images/2.png';
+import backgroundImageWithNuvi from '../../assets/images/2018_0814_Pattern_Adjusted.svg';
 import MissionImage3 from '../../assets/images/3.png';
 
 import { Link } from 'react-router-dom';
@@ -15,11 +16,22 @@ import { ButtonCta } from '../shared/ButtonCta';
 import { InfoButton } from '../shared/InfoButton';
 
 const AboveFoldContent = styled.div`
+  position: relative;
   background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
   height: 675px;
+`
+
+const AnimationContainerLg = styled.div`
+  position: absolute;
+  top: 95px;
+`
+
+const AnimationContainerSm = styled.div`
+  position: absolute;
+  bottom: 0;
 `
 
 const MissionLeftPanel = styled.div`
@@ -70,7 +82,7 @@ export class Home extends React.Component<{}, IHomeState> {
   public collapseSections: any[] = [
     {
       btn: false,
-      content: 'Identifying resource gaps among underserved communities where technology can have an impact.',
+      content: 'Inspire kids to be curious, confident, and courageous by discovering the world of STEM.',
       open: true,
       title: 'MISSION',
       image: MissionImage1
@@ -78,7 +90,7 @@ export class Home extends React.Component<{}, IHomeState> {
     {
       btn: false,
       btnContent: 'ABOUT US',
-      content: 'Nuevo Foundation is a group of passionate professionals empowering underserved communities with solutions for future success.',
+      content: 'Nuevo Foundation is a nonprofit that is run by a group of passionate professionals. We empower underrepresented communities with solutions for future success.',
       link: Const.AboutUsPage,
       open: false,
       title: 'WHO WE ARE',
@@ -151,6 +163,15 @@ export class Home extends React.Component<{}, IHomeState> {
   }
 
   public render() {
+    const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: jsonAnimation,
+      rendererSettings: {
+        preserveAspectRatio: true
+      }
+    };
+
     this.collapseItemTimer();
     return (
       <Grid fluid={true}>
@@ -158,11 +179,25 @@ export class Home extends React.Component<{}, IHomeState> {
           <AboveFoldContent>
             <Col xs={11} xsOffset={1}>
               <ContentWrapper>
-                <div className="main-title">Inspire your students with learning<br />about new technologies.</div>
+                <div className="main-title">Inspire your students using coding<br />and their creativity</div>
                 <Link to={Const.FaqPage} style={{ textDecoration: 'none' }}>
                   <MainButtonWrapper><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
                 </Link>
               </ContentWrapper>
+            </Col>
+            <Col xsHidden={true} smHidden={true}>
+              <AnimationContainerLg>
+                <Lottie options={defaultOptions}
+                  isStopped={false}
+                  isPaused={false} />
+              </AnimationContainerLg>
+            </Col>
+            <Col mdHidden={true} lgHidden={true}>
+              <AnimationContainerSm>
+                <Lottie options={defaultOptions}
+                  isStopped={false}
+                  isPaused={false} />
+              </AnimationContainerSm>
             </Col>
           </AboveFoldContent>
         </Row>
@@ -199,7 +234,7 @@ export class Home extends React.Component<{}, IHomeState> {
           <Col xs={12}>
             <DonateSection>
               <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
-                <DonateText>Because empowering students with knowledge is our goal!</DonateText>
+                <DonateText>Empowering students with knowledge is our goal!!</DonateText>
                 <DonateButtonWrapper>
                   <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
                     <ButtonCta text={'DONATE'} backgroundColor={'#FBF500'} textColor={'#000000'} border={'3px solid #000000'} />
