@@ -26,7 +26,7 @@ export class Faq extends React.Component {
                                 <div className="question">What is Nuevo Foundation?</div>
                             </ContentWrapper>
                             <ContentWrapper>
-                                <div className="questiontext">Nuevo Foundation is a non-profit run by a group of passionate friends that want to help the world’s disadvantaged societies and build solutions that would enable them to have future opportunities.</div>
+                                <div className="questiontext">Nuevo Foundation is a nonprofit that is run by a group of passionate professionals. We empower underrepresented communities with solutions for future success.</div>
                             </ContentWrapper>
                             <ContentWrapper>
                                 <div className="question">What does Nuevo Foundation offer?</div>
