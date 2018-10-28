@@ -29,11 +29,6 @@ const AnimationContainerLg = styled.div`
   top: 95px;
 `
 
-const AnimationContainerSm = styled.div`
-  position: absolute;
-  bottom: 0;
-`
-
 const MissionLeftPanel = styled.div`
   background-color: #FFFFFF;
   max-height: 712px;
@@ -76,6 +71,7 @@ const ContentWrapper = styled.div`
 interface IHomeState {
   collapseSections: any[]
   currentImage: any
+  nuviTopPosition: number
 }
 
 export class Home extends React.Component<{}, IHomeState> {
@@ -109,10 +105,32 @@ export class Home extends React.Component<{}, IHomeState> {
 
   constructor(props: {}) {
     super(props);
+    const nuviTopPosition =this.calculateNuviTopPostion(window.innerWidth);
     this.state = {
       collapseSections: this.collapseSections,
       currentImage: this.collapseSections[0].image,
+      nuviTopPosition,
     }
+  }
+  public updateDimensions = () => {
+    const nuviTopPosition = this.calculateNuviTopPostion(window.innerWidth);
+    this.setState({ nuviTopPosition });
+  }
+
+  public componentWillMount = () => {
+    this.updateDimensions();
+  }
+
+  public componentDidMount() {
+    this.collapseItemTimer();
+    window.addEventListener("resize", this.updateDimensions);
+  }
+  public componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
+
+  public calculateNuviTopPostion(screenWidth: number) {
+    return 7.5067 * Math.pow(10, -8) * Math.pow(screenWidth, 3) -  0.000208154 * Math.pow(screenWidth, 2) - 0.234897 * screenWidth + 640.933;
   }
 
   public closeOpenedItem() {
@@ -158,7 +176,7 @@ export class Home extends React.Component<{}, IHomeState> {
       this.setState({
         collapseSections: sections,
         currentImage: sections[openItemIndex].image
-      });
+      }, this.collapseItemTimer);
     }, 5000);
   }
 
@@ -172,7 +190,6 @@ export class Home extends React.Component<{}, IHomeState> {
       }
     };
 
-    this.collapseItemTimer();
     return (
       <Grid fluid={true}>
         <Row>
@@ -185,19 +202,12 @@ export class Home extends React.Component<{}, IHomeState> {
                 </Link>
               </ContentWrapper>
             </Col>
-            <Col xsHidden={true} smHidden={true}>
-              <AnimationContainerLg>
+            <Col >
+              <AnimationContainerLg style={{ top: this.state.nuviTopPosition }}>
                 <Lottie options={defaultOptions}
                   isStopped={false}
                   isPaused={false} />
               </AnimationContainerLg>
-            </Col>
-            <Col mdHidden={true} lgHidden={true}>
-              <AnimationContainerSm>
-                <Lottie options={defaultOptions}
-                  isStopped={false}
-                  isPaused={false} />
-              </AnimationContainerSm>
             </Col>
           </AboveFoldContent>
         </Row>

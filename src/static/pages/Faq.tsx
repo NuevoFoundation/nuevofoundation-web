@@ -11,6 +11,7 @@ const FaqWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
+  
 `
 
 export class Faq extends React.Component {
@@ -20,7 +21,7 @@ export class Faq extends React.Component {
                 <Row>
                     <Col xs={9} xsOffset={1} >
                         <FaqWrapper>
-                            <div className="main-title">Frequently Asked Questions</div>
+                            <div className="main-title-faq">Frequently Asked Questions</div>
                             <ContentWrapper>
                                 <div className="question">What is Nuevo Foundation?</div>
                             </ContentWrapper>
