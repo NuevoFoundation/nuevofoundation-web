@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const ButtonCtaWrapper = styled.div`
   height: 48px;
   font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  line-height: 1.31;
   background-color: #E6E6E6;
   color: #0F0F0F;
   cursor: pointer;
@@ -29,7 +31,7 @@ export class ButtonCta extends React.Component<IButtonCtaProp, {}> {
 
     public render() {
         return (
-            <ButtonCtaWrapper style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor, border: `${this.props.border}`, borderRadius: `3px` }}>
+            <ButtonCtaWrapper style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor, border: `${this.props.border}`, borderRadius: `4px` }}>
                 <ContentWrapper> {this.props.text} </ContentWrapper>
             </ButtonCtaWrapper>
         )

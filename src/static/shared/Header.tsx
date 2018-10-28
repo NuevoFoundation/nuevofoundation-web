@@ -177,7 +177,7 @@ export class Header extends React.Component<{}, IHeaderState> {
                             <NavList> {this.renderNavItems()} </NavList>
                             <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
                                 <ButtonWrapper>
-                                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'3px solid #000000'} />
+                                    <ButtonCta text={'DONATE'} backgroundColor={'#FFFFFF'} textColor={'#000000'} border={'4px solid #fcca13'} />
                                 </ButtonWrapper>
                             </a>
                         </HeaderWrapper>
