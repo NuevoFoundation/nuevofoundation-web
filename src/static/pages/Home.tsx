@@ -117,7 +117,7 @@ export class Home extends React.Component<{}, IHomeState> {
     this.setState({ nuviTopPosition });
   }
 
-  public componentWillMount = () => {
+  public componentWillMount() {
     this.updateDimensions();
   }
 
@@ -203,7 +203,7 @@ export class Home extends React.Component<{}, IHomeState> {
               </ContentWrapper>
             </Col>
             <Col >
-              <AnimationContainerLg style={{ top: this.state.nuviTopPosition }}>
+              <AnimationContainerLg style={{ top: this.state.nuviTopPosition, width: "100%" }}>
                 <Lottie options={defaultOptions}
                   isStopped={false}
                   isPaused={false} />
