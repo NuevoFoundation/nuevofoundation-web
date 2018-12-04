@@ -9,6 +9,7 @@ export class Const {
     public static ContactPage: string = '/contact';
 
     public static SkypeInClassroomPage: string = '/'; // TODO: Update this link to Skype in Classroom
-    public static PayPalDonatePage: string = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8G6XC677U4G2    ';
+    public static PayPalDonatePage: string = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8G6XC677U4G2';
+    public static WordpressEndpoint: string = 'http://public-api.wordpress.com/rest/v1/sites/test645806179.wordpress.com';
 
   }

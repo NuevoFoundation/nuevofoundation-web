@@ -41,7 +41,7 @@ const BoardWrapper = styled.div`
 `
 
 export class AboutUs extends React.Component {
-  public render():any {
+  public render(): any {
     return (
       <AboutUsWrapper>
         <QuoteWrapper>
@@ -53,7 +53,7 @@ export class AboutUs extends React.Component {
           <div className="vision-title">Vision</div>
 
           <div className="vision-left-text">
-            <strong>Identifying resource gaps</strong> among<br/>underserved communities where<br/>
+            <strong>Identifying resource gaps</strong> among<br />underserved communities where<br />
             <strong>technology</strong> can have an impact.
           </div>
 
@@ -71,9 +71,9 @@ export class AboutUs extends React.Component {
           </div>
 
           <div className="visual-right-text">
-           “It is an incredibly exciting time to be in tech but the<br/>
-            bar to enter these industries is disproportionately<br/>
-            higher for low-income and minority groups.”<br/>
+            “It is an incredibly exciting time to be in tech but the<br />
+            bar to enter these industries is disproportionately<br />
+            higher for low-income and minority groups.”<br />
             - By Someone
           </div>
         </VisualWrapper>
@@ -93,7 +93,7 @@ export class AboutUs extends React.Component {
             technology can have an impact.
           </div>
         </MissionWrapper>
-          
+
         <MessageWrapper>
           <div className="message-image">jaldj</div>
           <div className="message-text">We started this foundation as we all realize that there are gaps in the technology
@@ -109,6 +109,5 @@ export class AboutUs extends React.Component {
       </AboutUsWrapper>
 
     );
-    // <IntroMessage/>
   }
 }
