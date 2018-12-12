@@ -67,6 +67,10 @@ const DonateButtonWrapper = styled.div`
 const ContentWrapper = styled.div`
   padding-top: 100px;
 `
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  z-index: 100;
+`
 
 interface IHomeState {
   collapseSections: any[]
@@ -105,7 +109,7 @@ export class Home extends React.Component<{}, IHomeState> {
 
   constructor(props: {}) {
     super(props);
-    const nuviTopPosition =this.calculateNuviTopPostion(window.innerWidth);
+    const nuviTopPosition = this.calculateNuviTopPostion(window.innerWidth);
     this.state = {
       collapseSections: this.collapseSections,
       currentImage: this.collapseSections[0].image,
@@ -130,7 +134,7 @@ export class Home extends React.Component<{}, IHomeState> {
   }
 
   public calculateNuviTopPostion(screenWidth: number) {
-    return 7.5067 * Math.pow(10, -8) * Math.pow(screenWidth, 3) -  0.000208154 * Math.pow(screenWidth, 2) - 0.234897 * screenWidth + 640.933;
+    return 7.5067 * Math.pow(10, -8) * Math.pow(screenWidth, 3) - 0.000208154 * Math.pow(screenWidth, 2) - 0.234897 * screenWidth + 640.933;
   }
 
   public closeOpenedItem() {
@@ -197,9 +201,9 @@ export class Home extends React.Component<{}, IHomeState> {
             <Col xs={11} xsOffset={1}>
               <ContentWrapper>
                 <div className="main-title">Inspire your students using coding<br />and their creativity</div>
-                <Link to={Const.FaqPage} style={{ textDecoration: 'none' }}>
-                  <MainButtonWrapper><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
-                </Link>
+                <StyledLink to={Const.FaqPage} >
+                  <MainButtonWrapper ><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
+                </StyledLink>
               </ContentWrapper>
             </Col>
             <Col >

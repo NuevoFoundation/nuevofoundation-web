@@ -5,6 +5,7 @@ export class Const {
     public static AboutUsPage: string = '/about-us';
     public static SupportUsPage: string = '/support-us';
     public static BlogPage: string = '/blog';
+    public static BlogPost: string = '/blog/post/:id';
     public static FaqPage: string = '/faq';
     public static ContactPage: string = '/contact';
 

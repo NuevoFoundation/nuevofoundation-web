@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
+import { Post } from './components/blog/Post';
 import { Const } from './Const';
 import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from './static/pages';
 import { Blog } from './static/pages/Blog';
@@ -10,7 +11,7 @@ import Footer from './static/shared/Footer';
 
 
 const AppContainer = styled.div`
-
+  height: 100vh;
 `
 
 class App extends React.Component {
@@ -24,6 +25,7 @@ class App extends React.Component {
           <Route exact={true} path={Const.AboutUsPage} component={AboutUs} />
           <Route exact={true} path={Const.SupportUsPage} component={SupportUs} />
           <Route exact={true} path={Const.BlogPage} component={Blog} />
+          <Route exact={true} path={Const.BlogPost} component={Post} />
           <Route exact={true} path={Const.FaqPage} component={Faq} />
           <Route exact={true} path={Const.ContactPage} component={Contact} />
           {/* <Route component={NoMatch} /> */ }
