@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import '../../assets/stylesheets/faq.css';
 
 import { Col, Grid, Row } from 'react-bootstrap';
-import '../shared/DonateButton.tsx'
-import '../shared/Header.tsx'
+import '../common/DonateButton.tsx'
+import '../common/Header.tsx'
 
 const FaqWrapper = styled.div`
   font-family: 'Lato', sans-serif;

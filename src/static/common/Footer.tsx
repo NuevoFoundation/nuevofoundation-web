@@ -1,11 +1,10 @@
 import { faFacebookF, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as React from 'react'; // TODO: Add bootstrap classes to footer
+import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import '../../assets/stylesheets/Footer.css';
 
-
-class Footer extends React.Component {
+export class Footer extends React.Component {
     public render() {
         return (
             <Grid fluid={true}>
@@ -28,7 +27,7 @@ class Footer extends React.Component {
                                     <FontAwesomeIcon icon={faLinkedin} className={"fa-2x"} />
                                 </a>
                             </div>
-                            <div className="App-footer-small">© Copyright 2018, All Rights Reserved by Nuevo Foundation, a 501(c)(3) nonprofit.</div>
+                            <div className="App-footer-small">© Copyright {new Date().getFullYear()}, All Rights Reserved by Nuevo Foundation, a 501(c)(3) nonprofit.</div>
                         </div>
                     </Col>
                 </Row>
@@ -36,5 +35,3 @@ class Footer extends React.Component {
         );
     }
 }
-
-export default Footer;

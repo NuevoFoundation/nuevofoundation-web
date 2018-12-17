@@ -1,17 +1,18 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { Col, Grid, Row } from 'react-bootstrap';
 import { BlogPosts } from '../../components/blog/BlogPosts';
-
-const BlogWrapper = styled.div`
-`;
 
 export class Blog extends React.Component {
 
     public render() {
         return (
-            <BlogWrapper>
-                <BlogPosts />
-            </BlogWrapper>
+            <Grid fluid={true}>
+                <Row>
+                    <Col xs={6} xsOffset={3}>
+                        <BlogPosts />
+                    </Col >
+                </Row>
+            </Grid>
         );
     }
 }

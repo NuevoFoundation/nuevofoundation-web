@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import '../../assets/stylesheets/WhatWeDo.css';
-// import {InfoButton} from '../shared/InfoButton';
 
 const contentHeight = 430;
 const WhatWeDoWrapper = styled.div`

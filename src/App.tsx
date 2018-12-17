@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import './App.css';
 import { Post } from './components/blog/Post';
 import { Const } from './Const';
+import { Footer, Header } from './static/common'
 import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from './static/pages';
 import { Blog } from './static/pages/Blog';
-import { Header } from './static/shared'
-import Footer from './static/shared/Footer';
 
 
 const AppContainer = styled.div`

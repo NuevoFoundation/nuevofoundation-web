@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/Home.css';
 import { CollapseItem } from '../../components/CollapseItem';
 import { Const } from '../../Const';
-import { ButtonCta } from '../shared/ButtonCta';
-import { InfoButton } from '../shared/InfoButton';
+import { ButtonCta } from '../common/ButtonCta';
+import { InfoButton } from '../common/InfoButton';
 
 const AboveFoldContent = styled.div`
   position: relative;
