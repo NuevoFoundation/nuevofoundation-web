@@ -54,7 +54,6 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
     }
 
     public render() {
-        //  const { checked } = this.state;
         return (
             <Item >
                 <SectionTitle>{this.props.title}</SectionTitle>
@@ -83,7 +82,6 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
                         </Col>
 
                     </Row>
-
                 }
             </Item>
         )

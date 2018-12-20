@@ -69,7 +69,9 @@ const ContentWrapper = styled.div`
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
-  z-index: 100;
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
 `
 
 interface IHomeState {
@@ -198,7 +200,7 @@ export class Home extends React.Component<{}, IHomeState> {
       <Grid fluid={true}>
         <Row>
           <AboveFoldContent>
-            <Col xs={11} xsOffset={1}>
+            <Col xs={11} xsOffset={1} style={{ zIndex: 10 }}>
               <ContentWrapper>
                 <div className="main-title">Inspire your students using coding<br />and their creativity</div>
                 <StyledLink to={Const.FaqPage} >
