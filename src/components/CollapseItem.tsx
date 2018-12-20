@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonCta } from '../static/shared/ButtonCta';
+import { ButtonCta } from '../static/common/ButtonCta';
 
 const Item = styled.div`
   color: #000000;
@@ -54,7 +54,6 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
     }
 
     public render() {
-        //  const { checked } = this.state;
         return (
             <Item >
                 <SectionTitle>{this.props.title}</SectionTitle>
@@ -83,7 +82,6 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
                         </Col>
 
                     </Row>
-
                 }
             </Item>
         )

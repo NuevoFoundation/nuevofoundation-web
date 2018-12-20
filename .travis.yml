@@ -9,7 +9,8 @@ cache:
 node_js:
 - '10'
 script:
-- npm run build
+- if [ "$TRAVIS_BRANCH" = "master" ]; then npm run build:staging; fi
+- if [ "$TRAVIS_BRANCH" = "release" ]; then npm run build; fi
 deploy:
 - provider: azure_web_apps
   site: nuevofoundation-web-staging
