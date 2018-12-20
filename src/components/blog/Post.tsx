@@ -59,7 +59,7 @@ export class Post extends React.Component<RouteComponentProps<IPostParams>, IPos
         return (
             <Grid fluid={true}>
                 <Row>
-                    <Col xs={6} xsOffset={3}>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
                         <PostWrapper>
                             <BlogPostItem>
                                 <BlogPostTitle>{post.title}</BlogPostTitle>
