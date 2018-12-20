@@ -13,6 +13,7 @@
     "@types/react-lottie": "^1.2.0",
     "@types/react-router-dom": "^4.3.1",
     "emailjs-com": "^2.2.4",
+    "env-cmd": "^8.0.2",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
     "react-bootstrap-validation": "^0.1.11",
@@ -26,6 +27,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
+    "build:staging": "env-cmd .env.staging npm run build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
