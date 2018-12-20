@@ -12,7 +12,7 @@ const ButtonCtaWrapper = styled.div`
   cursor: pointer;
 `
 const ContentWrapper = styled.div`
-  padding-top: 15px;
+  padding-top: 12px;
   text-align: center;
 `
 

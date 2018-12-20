@@ -8,16 +8,35 @@ interface IBlogPostsState {
     posts: any[];
 }
 
-const BlogPostItem = styled.div`
+const StyledLink = styled(Link)`
+  text-decoration: none;
 
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
 `
 
-const BlogPostTitle = styled.h2`
+const BlogPostsWrapper = styled.div`
+  min-height: 500px;
+`
 
+const BlogPostItem = styled.div`
+  
+`
+
+const BlogPostTitle = styled.h1`
+  color: #262626;
+  padding-bottom: 10px;
 `
 
 const BlogPostContent = styled.div`
+  color: #262626;  
+`
 
+const Divider = styled.hr`
+  height:0; 
+  border:0; 
+  border-top: 1px solid #C1C1C1; 
 `
 
 export class BlogPosts extends React.Component<{}, IBlogPostsState> {
@@ -42,22 +61,21 @@ export class BlogPosts extends React.Component<{}, IBlogPostsState> {
 
     public render() {
         return (
-            <React.Fragment>
-
+            <BlogPostsWrapper>
                 {this.state.posts.map((post: any) => {
                     return (
-                        <BlogPostItem key={post.ID}>
-                            <Link to={`/blog/post/${post.ID}`}>
-                                <BlogPostTitle>{post.title}</BlogPostTitle>
-                            </Link>
-                            <BlogPostContent>
-                                {/* TODO: inject content as html */}
-                                {post.content}
-                            </BlogPostContent>
-                        </BlogPostItem>
+                        <React.Fragment key={post.ID}>
+                            <BlogPostItem >
+                                <StyledLink to={`/blog/post/${post.ID}`}>
+                                    <BlogPostTitle>{post.title}</BlogPostTitle>
+                                </StyledLink>
+                                <BlogPostContent dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                            </BlogPostItem>
+                            <Divider />
+                        </ React.Fragment>
                     );
                 })}
-            </React.Fragment>
+            </BlogPostsWrapper>
         );
     }
 }

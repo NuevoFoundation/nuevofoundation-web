@@ -10,7 +10,7 @@ import { Blog } from './static/pages/Blog';
 
 
 const AppContainer = styled.div`
-  height: 100vh;
+
 `
 
 class App extends React.Component {

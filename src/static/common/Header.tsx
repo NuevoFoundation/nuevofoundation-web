@@ -95,17 +95,17 @@ export class Header extends React.Component<{}, IHeaderState> {
         },*/
         {
             dropdown: false,
-            link: 'blog',
+            link: '/blog',
             text: 'Blog',
         },
         {
             dropdown: false,
-            link: 'faq',
+            link: '/faq',
             text: 'FAQ',
         },
         {
             dropdown: false,
-            link: 'contact',
+            link: '/contact',
             text: 'Contact',
         },
     ];
