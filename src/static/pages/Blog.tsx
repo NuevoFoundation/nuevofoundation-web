@@ -8,7 +8,7 @@ export class Blog extends React.Component {
         return (
             <Grid fluid={true}>
                 <Row>
-                    <Col xs={6} xsOffset={3}>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
                         <BlogPosts />
                     </Col >
                 </Row>
