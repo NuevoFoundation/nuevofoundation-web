@@ -2,16 +2,19 @@ import * as React from 'react';
 import { Col, Grid, Image, Row } from 'react-bootstrap';
 import Lottie from 'react-lottie';
 import styled from 'styled-components';
-import { jsonAnimation } from '../../assets/animations/data'
-import MissionImage1 from '../../assets/images/1.png';
-import MissionImage2 from '../../assets/images/2.png';
-import backgroundImageWithNuvi from '../../assets/images/2018_0814_Pattern_Adjusted.svg';
-import MissionImage3 from '../../assets/images/3.png';
+import { jsonAnimation } from '../../../assets/animations/data'
+import MissionImage1 from '../../../assets/images/1.png';
+import MissionImage2 from '../../../assets/images/2.png';
+import backgroundImageWithNuvi from '../../../assets/images/2018_0814_Pattern_Adjusted.svg';
+import MissionImage3 from '../../../assets/images/3.png';
 
 import { Link } from 'react-router-dom';
-import '../../assets/stylesheets/Home.css';
-import { CollapseItem } from '../../components/CollapseItem';
-import { Const } from '../../Const';
+import RocketIcon from '../../../assets/icons/Icons_white-01.png'; 
+import PersonIcon from '../../../assets/icons/Icons_white-02.png';
+import HandIcon from '../../../assets/icons/Icons_white-06.png';
+import '../../../assets/stylesheets/Home.css';
+import { Const } from '../../../Const';
+import { CollapseItem } from '../../CollapseItem';
 import { ButtonCta } from '../common/ButtonCta';
 import { InfoButton } from '../common/InfoButton';
 
@@ -69,17 +72,21 @@ const StyledLink = styled(Link)`
 
 interface IHomeState {
   collapseSections: any[]
-  currentImage: any
+  currentImage: any,
+  collapseInterval: number
 }
 
 export class Home extends React.Component<{}, IHomeState> {
+  public timeoutHandle: number;
   public collapseSections: any[] = [
     {
       btn: false,
       content: 'Inspire kids to be curious, confident, and courageous by discovering the world of STEM.',
       open: true,
       title: 'MISSION',
-      image: MissionImage1
+      image: MissionImage1,
+      iconFill: '#F0000E',
+      iconImage: RocketIcon
     },
     {
       btn: false,
@@ -88,7 +95,9 @@ export class Home extends React.Component<{}, IHomeState> {
       link: Const.AboutUsPage,
       open: false,
       title: 'WHO WE ARE',
-      image: MissionImage2
+      image: MissionImage2,
+      iconFill: '#009A00',
+      iconImage: PersonIcon
     },
     {
       btn: false,
@@ -97,7 +106,9 @@ export class Home extends React.Component<{}, IHomeState> {
       link: Const.SkypeInClassroomPage,
       open: false,
       title: 'PARTICIPATE',
-      image: MissionImage3
+      image: MissionImage3,
+      iconFill: '#150BFF',
+      iconImage: HandIcon
     },
   ];
 
@@ -106,11 +117,16 @@ export class Home extends React.Component<{}, IHomeState> {
     this.state = {
       collapseSections: this.collapseSections,
       currentImage: this.collapseSections[0].image,
+      collapseInterval: 5000
     }
   }
 
   public componentDidMount() {
     this.collapseItemTimer();
+  }
+
+  public handleCollapseItemClick(itemIndex: number) {
+    this.collapseItemTimer(itemIndex);
   }
 
   public closeOpenedItem() {
@@ -124,9 +140,9 @@ export class Home extends React.Component<{}, IHomeState> {
     return openItemIndex;
   }
 
-  public openNextItem() {
+  public openNextItem(index?: number) {
     const openItemIndex = this.closeOpenedItem();
-    const nextItemIndex = openItemIndex + 1;
+    const nextItemIndex = index === undefined ? openItemIndex + 1 : index;
     const lastItemIndex = this.collapseSections.length - 1;
 
     if (nextItemIndex > lastItemIndex) {
@@ -141,9 +157,15 @@ export class Home extends React.Component<{}, IHomeState> {
     return this.collapseSections;
   }
 
-  public collapseItemTimer() {
-    const sections = this.openNextItem();
+  public collapseItemTimer(itemtoOpen?: number) {
+    let transitionTimeout = 5000;
+    if(itemtoOpen !== undefined) 
+    {
+      window.clearTimeout(this.timeoutHandle);
+      transitionTimeout = 0;
+    }
 
+    const sections = this.openNextItem(itemtoOpen);
     // Find open section index to set current image
     let openItemIndex = 0;
     sections.forEach((item: any, index: number) => {
@@ -152,12 +174,12 @@ export class Home extends React.Component<{}, IHomeState> {
       }
     })
 
-    setTimeout(() => {
+    this.timeoutHandle = window.setTimeout(() => {
       this.setState({
         collapseSections: sections,
         currentImage: sections[openItemIndex].image
       }, this.collapseItemTimer);
-    }, 5000);
+    }, transitionTimeout);
   }
 
   public render() {
@@ -211,12 +233,17 @@ export class Home extends React.Component<{}, IHomeState> {
                       const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
                       return (
                         <CollapseItem
+                          // tslint:disable-next-line:jsx-no-lambda
+                          handleClick={() => this.handleCollapseItemClick(index)}
                           key={index}
+                          itemIndex={index}
                           btn={item.btn}
                           btnContent={item.btnContent}
                           btnLink={item.link} open={item.open}
                           title={item.title} content={item.content}
                           last={last}
+                          iconFill={item.iconFill}
+                          iconImage={item.iconImage}
                         />
                       )
                     })}

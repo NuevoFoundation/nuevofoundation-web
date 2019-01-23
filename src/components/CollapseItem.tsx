@@ -3,11 +3,13 @@ import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonCta } from '../static/common/ButtonCta';
+import { ButtonCta } from './static/common/ButtonCta';
+import { CircleIcon } from './static/common/CircleIcon';
 
 const Item = styled.div`
   color: #000000;
   font-family: 'Lato', sans-serif;
+  cursor: pointer;
 `
 
 const Divider = styled.hr`
@@ -36,6 +38,7 @@ interface ICollapseItemState {
 }
 
 interface ICollapseItemProps {
+    handleClick: (itemIndex: number) => void;
     title: string;
     content: string;
     open: boolean;
@@ -43,6 +46,9 @@ interface ICollapseItemProps {
     btnContent?: string;
     btnLink?: string;
     last: boolean;
+    iconFill: string;
+    iconImage: any;
+    itemIndex: number;
 }
 
 export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseItemState> {
@@ -55,8 +61,12 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
 
     public render() {
         return (
-            <Item >
-                <SectionTitle>{this.props.title}</SectionTitle>
+            // tslint:disable-next-line:jsx-no-lambda
+            <Item onClick={() => this.props.handleClick(this.props.itemIndex)} >
+                <SectionTitle>
+                    <CircleIcon fill={this.props.iconFill} iconImage={this.props.iconImage} />
+                    {this.props.title}
+                </SectionTitle>
                 <Collapse in={this.props.open}>
                     <Row>
                         <Col xs={7}>

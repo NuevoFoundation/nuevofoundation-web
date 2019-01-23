@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/stylesheets/faq.css';
+import '../../../assets/stylesheets/faq.css';
 
 import { Col, Grid, Row } from 'react-bootstrap';
 import '../common/DonateButton.tsx'
