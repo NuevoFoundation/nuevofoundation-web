@@ -16,17 +16,10 @@ import { ButtonCta } from '../common/ButtonCta';
 import { InfoButton } from '../common/InfoButton';
 
 const AboveFoldContent = styled.div`
-  position: relative;
   background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
-  height: 675px;
-`
-
-const AnimationContainerLg = styled.div`
-  position: absolute;
-  top: 95px;
 `
 
 const MissionLeftPanel = styled.div`
@@ -77,7 +70,6 @@ const StyledLink = styled(Link)`
 interface IHomeState {
   collapseSections: any[]
   currentImage: any
-  nuviTopPosition: number
 }
 
 export class Home extends React.Component<{}, IHomeState> {
@@ -111,32 +103,14 @@ export class Home extends React.Component<{}, IHomeState> {
 
   constructor(props: {}) {
     super(props);
-    const nuviTopPosition = this.calculateNuviTopPostion(window.innerWidth);
     this.state = {
       collapseSections: this.collapseSections,
       currentImage: this.collapseSections[0].image,
-      nuviTopPosition,
     }
-  }
-  public updateDimensions = () => {
-    const nuviTopPosition = this.calculateNuviTopPostion(window.innerWidth);
-    this.setState({ nuviTopPosition });
-  }
-
-  public componentWillMount() {
-    this.updateDimensions();
   }
 
   public componentDidMount() {
     this.collapseItemTimer();
-    window.addEventListener("resize", this.updateDimensions);
-  }
-  public componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
-
-  public calculateNuviTopPostion(screenWidth: number) {
-    return 7.5067 * Math.pow(10, -8) * Math.pow(screenWidth, 3) - 0.000208154 * Math.pow(screenWidth, 2) - 0.234897 * screenWidth + 640.933;
   }
 
   public closeOpenedItem() {
@@ -192,31 +166,41 @@ export class Home extends React.Component<{}, IHomeState> {
       autoplay: true,
       animationData: jsonAnimation,
       rendererSettings: {
-        preserveAspectRatio: true
+        preserveAspectRatio: true,
+        viewBoxOnly: true,
+        viewBoxSize: "800 0 920 775",
       }
     };
 
     return (
       <Grid fluid={true}>
-        <Row>
-          <AboveFoldContent>
-            <Col xs={11} xsOffset={1} style={{ zIndex: 10 }}>
-              <ContentWrapper>
-                <div className="main-title">Inspire your students using coding<br />and their creativity</div>
-                <StyledLink to={Const.FaqPage} >
-                  <MainButtonWrapper ><InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton></MainButtonWrapper>
-                </StyledLink>
-              </ContentWrapper>
+        <AboveFoldContent>
+          <Row>
+
+            <Col xs={12} sm={12} md={6} lg={6}> 
+              <Row>
+                <Col xs={11} xsOffset={1} >
+                  <ContentWrapper>
+                    <div className="main-title">Inspire your students using coding<br />and their creativity</div>
+                  </ContentWrapper>
+                </Col>
+                <Col xs={1} xsOffset={1} >
+                  <MainButtonWrapper >
+                    <StyledLink to={Const.FaqPage} >
+                      <InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton>
+                    </StyledLink>
+                  </MainButtonWrapper>
+                </Col>
+              </Row>
             </Col>
-            <Col >
-              <AnimationContainerLg style={{ top: this.state.nuviTopPosition, width: "100%" }}>
-                <Lottie options={defaultOptions}
-                  isStopped={false}
-                  isPaused={false} />
-              </AnimationContainerLg>
+            <Col xs={8} xsOffset={4} sm={8} smOffset={4} md={6} mdOffset={0} lg={6} >
+              <Lottie options={defaultOptions}
+                isStopped={false}
+                isPaused={false}
+              />
             </Col>
-          </AboveFoldContent>
-        </Row>
+          </Row>
+        </AboveFoldContent>
         <Row >
           <Col md={6} xs={12}>
             <MissionLeftPanel>
