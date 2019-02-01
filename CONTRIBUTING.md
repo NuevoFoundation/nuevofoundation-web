@@ -7,7 +7,7 @@
 
 You can validate that node js is installed on your computer by running `node -v` if you get a version number you're all set. If it's an older version of node you should update it. 
 
-I'll assume you already have git installed on your machine. If not you can find an installation [here](https://git-scm.com/downloads).
+I'll assume you already have git installed on your machine. To verify you can run `git --version` in your command line. If not installed, you can find an installation [here](https://git-scm.com/downloads).
 
 ### Clone the Repo
 
