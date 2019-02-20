@@ -2,14 +2,21 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const DonateButtonWrapper = styled.button`
-  height: 48px;
-  width: 186px;
-  font-size: 28px;
+  height: 6rem;
+  width: 15rem;
+  font-size: 2.4rem;
   font-weight: bold;
-  font-family: 'Sergoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #D2D2D2;
+  font-family: 'Lato', sans-serif;
+  background-color: #79DB74;
+  border: 0 #79DB74 solid;
+  border-radius: .4rem;
   cursor: pointer;
   text-align: center;
+  color: black;
+
+  &:focus {
+    outline: 0;
+  }
 `
 export class DonateButton extends React.Component<any, any> {
   constructor(props: any) {
@@ -18,9 +25,18 @@ export class DonateButton extends React.Component<any, any> {
       text: ''
     }
   }
+
+  public changeDonateButtonColor(clickedButton:any) {
+    document.querySelectorAll("#donateButton").forEach(button=> {
+      (button as HTMLElement).style.backgroundColor="#79DB74"
+    })
+    
+    clickedButton.target.style.backgroundColor="#017501";
+  }
+
   public render(){
     return (
-      <DonateButtonWrapper>
+      <DonateButtonWrapper id="donateButton" onClick={this.changeDonateButtonColor}>
         {this.props.text}
       </DonateButtonWrapper>
     )
