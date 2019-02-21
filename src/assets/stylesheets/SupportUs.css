@@ -1,21 +1,23 @@
 .padding-left-48 {
-  padding-left: 4.8rem;
+  padding-left: 4.5rem;
 }
 
 .supportTitle {
   font-family: 'Lato', sans-serif;
-  font-size: 4.2rem;
+  font-size: 3.9rem;
   font-weight: bold;
-  padding-bottom: 3.4rem;
+  padding-bottom: 2rem;
   color: black;
 }
 
 .missionStatement {
   font-family: 'Lato', sans-serif;
   color: black;
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: normal;
   width: 80%;
-  padding-bottom: 7rem;
+  padding-bottom: 5rem;
+  line-height: 3.6rem;
+  word-spacing: .21rem;
 }
 

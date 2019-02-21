@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const DonateButtonWrapper = styled.button`
-  height: 6rem;
-  width: 15rem;
-  font-size: 2.4rem;
+  height: 5.9rem;
+  width: 13.8rem;
+  font-size: 2rem;
   font-weight: bold;
   font-family: 'Lato', sans-serif;
   background-color: #79DB74;
