@@ -11,7 +11,7 @@ display: flex;
 width: 30%;
 
 p {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: 'Lato', sans-serif;
     position: relative;
     top: -1.5rem;
@@ -22,8 +22,8 @@ p {
 const ArrowRightStyle = styled.div`
 width: 100%;
 height: 8rem;
-background-color: red;
-border-top: 4rem solid red;
+background-color: #26DE81;
+border-top: 4rem solid #26DE81;
 `
 
 const ArrowRightTip = styled.div`
@@ -32,18 +32,18 @@ border: 100px solid blue;
 border-style: solid;
 border-color: blue;
 border-width: 4rem 0 4rem 2rem;
-border-color: transparent transparent transparent red;
+border-color: transparent transparent transparent #26DE81;
 `
 
 const ArrowIndent = styled.div`
 width: 100%;
 height: 8rem;
-background-color: red;
+background-color: #26DE81;
 -webkit-transform: rotate(0deg) skew(0deg);
 transform: rotate(0deg) skew(0deg); 
 border-left: 2rem solid white; 
-border-bottom: 4rem solid red; 
-border-top: 4rem solid red;
+border-bottom: 4rem solid #26DE81; 
+border-top: 4rem solid #26DE81;
 `
 
 

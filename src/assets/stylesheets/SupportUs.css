@@ -21,3 +21,27 @@
   word-spacing: .21rem;
 }
 
+.donateSelectStatement {
+  font-size: 1.8rem;
+word-spacing: .05rem;
+}
+
+.amountInput {
+  margin-top: 3.2rem;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.amountDisplay {
+  font-size: 2.2rem;
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+

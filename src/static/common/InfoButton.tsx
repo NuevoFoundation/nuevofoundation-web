@@ -20,6 +20,7 @@ interface IInfoButtonProps {
     borderColor?: string;
     backgroundColor?: string;
     textColor?: string;
+    action?: any;
 }
 
 export class InfoButton extends React.Component<IInfoButtonProps, {}> {
@@ -29,7 +30,7 @@ export class InfoButton extends React.Component<IInfoButtonProps, {}> {
 
     public render() {
         return (
-            <InfoButtonWrapper style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor, border: `1px solid ${this.props.borderColor}` }}>
+            <InfoButtonWrapper onClick={this.props.action} style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor, border: `1px solid ${this.props.borderColor}` }}>
                 <ContentWrapper>{this.props.children}</ContentWrapper>
             </InfoButtonWrapper>
         )
