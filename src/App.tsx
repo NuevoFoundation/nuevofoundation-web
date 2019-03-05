@@ -3,10 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
 import { Post } from './components/blog/Post';
+import { Footer, Header } from './components/static/common'
+import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from './components/static/pages';
+import { Blog } from './components/static/pages';
 import { Const } from './Const';
-import { Footer, Header } from './static/common'
-import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from './static/pages';
-import { Blog } from './static/pages/Blog';
 
 
 const AppContainer = styled.div`

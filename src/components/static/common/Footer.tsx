@@ -2,7 +2,7 @@ import { faFacebookF, faInstagram, faLinkedin, faTwitter } from '@fortawesome/fr
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-import '../../assets/stylesheets/Footer.css';
+import '../../../assets/stylesheets/Footer.css';
 
 export class Footer extends React.Component {
     public render() {

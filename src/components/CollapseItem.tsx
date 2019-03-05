@@ -3,11 +3,13 @@ import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonCta } from '../static/common/ButtonCta';
+import { ButtonCta } from './static/common/ButtonCta';
 
 const Item = styled.div`
   color: #000000;
   font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  padding-left: 15px;
 `
 
 const Divider = styled.hr`
@@ -22,7 +24,9 @@ const TextContent = styled.div`
   padding-bottom:50px;
 `
 
-const SectionTitle = styled.h2`
+const SectionTitle = styled.div`
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
   padding-top:20px;
   padding-bottom:20px;
 `
@@ -36,6 +40,7 @@ interface ICollapseItemState {
 }
 
 interface ICollapseItemProps {
+    handleClick: (itemIndex: number) => void;
     title: string;
     content: string;
     open: boolean;
@@ -43,6 +48,7 @@ interface ICollapseItemProps {
     btnContent?: string;
     btnLink?: string;
     last: boolean;
+    itemIndex: number;
 }
 
 export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseItemState> {
@@ -55,8 +61,11 @@ export class CollapseItem extends React.Component<ICollapseItemProps, ICollapseI
 
     public render() {
         return (
-            <Item >
-                <SectionTitle>{this.props.title}</SectionTitle>
+            // tslint:disable-next-line:jsx-no-lambda
+            <Item onClick={() => this.props.handleClick(this.props.itemIndex)} >
+                <SectionTitle>
+                    {this.props.title}
+                </SectionTitle>
                 <Collapse in={this.props.open}>
                     <Row>
                         <Col xs={7}>
