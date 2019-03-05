@@ -45,3 +45,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+
+
+.cardelement {
+  border: 2px solid rgb(207, 207, 207);
+  padding: .5rem;
+  border-radius: .5rem;
+  width: 40%;
+}

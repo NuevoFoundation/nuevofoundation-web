@@ -1,5 +1,6 @@
+import Axios from 'axios';
 import * as React from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements'
+import { CardCVCElement ,CardExpiryElement, CardNumberElement ,injectStripe} from 'react-stripe-elements'
 import styled from 'styled-components';
 import robot from "../../assets/images/robot.svg";
 import '../../assets/stylesheets/SupportUs.css'
@@ -64,6 +65,10 @@ const InformationContentWrapper = styled.div`
 display: none;
 `
 
+const PaymentContentWrapper = styled.div`
+display: none;
+`
+
 const ButtonsInline = styled.div`
 display: flex;
 
@@ -83,6 +88,12 @@ class SupportUs extends React.Component<any> {
         page: 0
     }
 
+    public cancelOtherContent() {
+        this.setState({
+            page: 0
+        }, () => {this.changeSupportContent()})
+    }
+
     public nextSupportContent() {
         this.setState({
             page: this.state.page+1
@@ -93,13 +104,15 @@ class SupportUs extends React.Component<any> {
 
     public changeSupportContent() {
         // tslint:disable-next-line
-        console.log(this.state.page)
         switch(this.state.page) {
+            case 0:
+            this.changeInsideContent("first");
+            break;
             case 1: 
             this.changeInsideContent("second");
             break;
             case 2:
-            this.changeInsideContent("first");
+            this.changeInsideContent("third");
             break;
             default:
             alert(this.state.page)
@@ -122,22 +135,17 @@ class SupportUs extends React.Component<any> {
 
 
 
-
-
-
-
     public async submit(ev: any) {
         const {token} = await this.props.stripe.createToken({name: "Name"});
-        const response = await fetch("/charge", {
-          method: "POST",
-          headers: {"Content-Type": "text/plain"},
-          body: token.id
-        });
-      
-        if (response.ok) {
+        // tslint:disable-next-line
+        console.log(token)
+
+        Axios.post(`https://wt-f5be570962b89bfc801d26215a5caa31-0.sandbox.auth0-extend.com/stripe-payment/payment?amount=500&currency=USD&description=test`, {
+            stripeToken: token.id
+        }).then(res => {
             // tslint:disable-next-line
-            console.log("Purchase Complete!")
-        }
+            console.log(res)
+        })
       }
 
     public render() {
@@ -158,7 +166,7 @@ class SupportUs extends React.Component<any> {
 
                 <DonateContentWrapper>
                     <DonateContentFirstHalf>
-                        <SelectContentWrapper id="first" className="second">
+                        <SelectContentWrapper id="first" className="second third fourth">
                             <p className="donateSelectStatement">Select amount in USD that you would like to donate</p>
                             <DonateButton text="$20"/>
                             <DonateButton text="$50"/>
@@ -174,7 +182,7 @@ class SupportUs extends React.Component<any> {
                         </SelectContentWrapper>
     
 
-                        <InformationContentWrapper id="second" className="first">
+                        <InformationContentWrapper id="second" className="first third fourth">
                             <p className="donateSelectStatement">Please add your information in the following fields.</p>
 
                             <InputLabelWrapper className="amountInput">
@@ -198,12 +206,31 @@ class SupportUs extends React.Component<any> {
                             </InputLabelWrapper>
                         </InformationContentWrapper>
 
+                        {/* tslint:disable-next-line */}
+                        <PaymentContentWrapper onSubmit={this.submit.bind(this)} id="third" className="first second fourth">
+                            <InputLabelWrapper>
+                                <InputLabel>Credit Card Number *</InputLabel>
+                                <CardNumberElement className="cardelement"/>
+                            </InputLabelWrapper>
+                            <InputLabelWrapper>
+                                <InputLabel>Experation *</InputLabel>
+                                <CardExpiryElement className="cardelement"/>
+                            </InputLabelWrapper>
+                            <InputLabelWrapper>
+                                <InputLabel>Expiration *</InputLabel>
+                                <CardCVCElement className="cardelement"/>
+                            </InputLabelWrapper>
+                            <p className="amountDisplay">Total amount: {this.state.amount}</p>
+                            {/* tslint:disable-next-line */}
+                            <button onClick={this.submit.bind(this)} type="submit">Save</button>
+                        </PaymentContentWrapper>
+
                         <ButtonsInline>
                             {/* tslint:disable-next-line */}
                             <InfoButton action={this.nextSupportContent.bind(this)} textColor="black" backgroundColor="#26DE81" borderColor="#26DE81">Next</InfoButton>
-                            <InfoButton textColor="black" backgroundColor="white" borderColor="#FCC600">Cancel</InfoButton>
+                            {/* tslint:disable-next-line */}
+                            <InfoButton action={this.cancelOtherContent.bind(this)} textColor="black" backgroundColor="white" borderColor="#FCC600">Cancel</InfoButton>
                         </ButtonsInline>
-                        <CardElement/>
                     </DonateContentFirstHalf>
                     
                     <RobotImageWrapper>
