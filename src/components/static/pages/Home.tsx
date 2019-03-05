@@ -9,13 +9,14 @@ import backgroundImageWithNuvi from '../../../assets/images/2018_0814_Pattern_Ad
 import MissionImage3 from '../../../assets/images/3.png';
 
 import { Link } from 'react-router-dom';
-import RocketIcon from '../../../assets/icons/Icons_white-01.png'; 
+import RocketIcon from '../../../assets/icons/Icons_white-01.png';
 import PersonIcon from '../../../assets/icons/Icons_white-02.png';
 import HandIcon from '../../../assets/icons/Icons_white-06.png';
 import '../../../assets/stylesheets/Home.css';
 import { Const } from '../../../Const';
 import { CollapseItem } from '../../CollapseItem';
 import { ButtonCta } from '../common/ButtonCta';
+import { CircleIcon } from '../common/CircleIcon';
 import { InfoButton } from '../common/InfoButton';
 
 const AboveFoldContent = styled.div`
@@ -159,8 +160,7 @@ export class Home extends React.Component<{}, IHomeState> {
 
   public collapseItemTimer(itemtoOpen?: number) {
     let transitionTimeout = 5000;
-    if(itemtoOpen !== undefined) 
-    {
+    if (itemtoOpen !== undefined) {
       window.clearTimeout(this.timeoutHandle);
       transitionTimeout = 0;
     }
@@ -199,7 +199,7 @@ export class Home extends React.Component<{}, IHomeState> {
         <AboveFoldContent>
           <Row>
 
-            <Col xs={12} sm={12} md={6} lg={6}> 
+            <Col xs={12} sm={12} md={6} lg={6}>
               <Row>
                 <Col xs={11} xsOffset={1} >
                   <ContentWrapper>
@@ -227,24 +227,28 @@ export class Home extends React.Component<{}, IHomeState> {
           <Col md={6} xs={12}>
             <MissionLeftPanel>
               <Row>
-                <Col xsOffset={2}>
+                <Col xsOffset={1}>
                   <MissionLeftContent>
                     {this.collapseSections.map((item: any, index: number, array: any[]) => {
                       const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
                       return (
-                        <CollapseItem
-                          // tslint:disable-next-line:jsx-no-lambda
-                          handleClick={() => this.handleCollapseItemClick(index)}
-                          key={index}
-                          itemIndex={index}
-                          btn={item.btn}
-                          btnContent={item.btnContent}
-                          btnLink={item.link} open={item.open}
-                          title={item.title} content={item.content}
-                          last={last}
-                          iconFill={item.iconFill}
-                          iconImage={item.iconImage}
-                        />
+                        <Row key={index}>
+                          <Col xs={2} sm={1}>
+                            <CircleIcon fill={item.iconFill} iconImage={item.iconImage} />
+                          </Col>
+                          <Col xs={10} sm={11}>
+                            <CollapseItem
+                              // tslint:disable-next-line:jsx-no-lambda
+                              handleClick={() => this.handleCollapseItemClick(index)}
+                              itemIndex={index}
+                              btn={item.btn}
+                              btnContent={item.btnContent}
+                              btnLink={item.link} open={item.open}
+                              title={item.title} content={item.content}
+                              last={last}
+                            />
+                          </Col>
+                        </Row>
                       )
                     })}
                   </MissionLeftContent>
