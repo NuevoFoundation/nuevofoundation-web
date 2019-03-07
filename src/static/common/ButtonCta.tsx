@@ -6,7 +6,7 @@ const ButtonCtaWrapper = styled.div`
   height: 48px;
   font-family: 'Lato', sans-serif;
   font-weight: 900;
-  line-height: 1.31;
+  text-alig: center;
   background-color: #E6E6E6;
   color: #0F0F0F;
   cursor: pointer;

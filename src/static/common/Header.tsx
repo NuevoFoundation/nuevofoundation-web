@@ -30,6 +30,19 @@ const NavItem = styled.li`
   font-size:20px;
   padding-right: 50px;
   cursor: pointer;
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fcc600;
+    transition: width .3s;
+  }
+
+  &:hover::after {
+    width: 100%;
+    //transition: width .3s;
+  }
 `
 
 const SmallNavList = styled.ul`
