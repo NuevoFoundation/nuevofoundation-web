@@ -3,8 +3,8 @@ import * as React from 'react';
 import { CardCVCElement ,CardExpiryElement, CardNumberElement ,injectStripe} from 'react-stripe-elements'
 import styled from 'styled-components';
 import robot from "../../assets/images/robot.svg";
-import '../../assets/stylesheets/SupportUs.css'
 import * as ArrowNav from "../common/ArrowNav";
+import '../../../assets/stylesheets/SupportUs.css'
 import {DonateButton} from '../common/DonateButton'
 import {InfoButton} from '../common/InfoButton';
 

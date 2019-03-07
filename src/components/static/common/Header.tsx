@@ -4,9 +4,9 @@ import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import NuevoFoundationLogo from '../../assets/logos/Logo_long.svg';
-import NuevoLogo from '../../assets/logos/Logo_medium.svg';
-import { Const } from '../../Const';
+import NuevoFoundationLogo from '../../../assets/logos/Logo_long.svg';
+import NuevoLogo from '../../../assets/logos/Logo_medium.svg';
+import { Const } from '../../../Const';
 import { ButtonCta } from './ButtonCta';
 
 // TODO: replace this with flex later

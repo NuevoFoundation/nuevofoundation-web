@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import '../../assets/stylesheets/WhatWeDo.css';
+import '../../../assets/stylesheets/WhatWeDo.css';
 
 const contentHeight = 430;
 const WhatWeDoWrapper = styled.div`
