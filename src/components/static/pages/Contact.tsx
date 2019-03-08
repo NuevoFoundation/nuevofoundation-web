@@ -1,7 +1,8 @@
 import { send } from 'emailjs-com';
 import * as React from 'react';
-import { Col, ControlLabel, FormControl, FormGroup, Grid, Row } from 'react-bootstrap';
+import { Col, ControlLabel, FormControl, FormGroup, Grid, Image, Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import MissionImage1 from '../../../assets/images/1.png';
 
 const Title = styled.div`
   font-family: 'Lato', sans-serif;
@@ -106,7 +107,7 @@ export class Contact extends React.Component<{}, IContactState> {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={10} xsOffset={1} sm={5} smOffset={1}>
+                            <Col xs={12} xsOffset={1} sm={5} smOffset={1}>
                                 <form>
                                     <FormGroup
                                         controlId="formBasicText"
@@ -154,8 +155,8 @@ export class Contact extends React.Component<{}, IContactState> {
                                     </FormGroup>
                                 </form>
                             </Col>
-                            <Col xs={12} sm={5} smOffset={1}>
-                                <img src={''} />
+                            <Col xs={12} sm={4} xsOffset={1} smOffset={1}>
+                                <Image src={MissionImage1} style={{ width: '400px' }} />
                             </Col>
                         </Row>
                         <Row>
@@ -174,6 +175,6 @@ export class Contact extends React.Component<{}, IContactState> {
                     </Col>
                 </Row>
             </Grid>
-        )
+        ) 
     }
 }
