@@ -39,9 +39,12 @@ const NavItem = styled.li`
     transition: width .3s;
   }
 
+  &:hover {
+    color: #000000;
+  }
+
   &:hover::after {
     width: 100%;
-    //transition: width .3s;
   }
 `
 
