@@ -78,7 +78,7 @@ interface IHomeState {
 }
 
 export class Home extends React.Component<{}, IHomeState> {
-  public timeoutHandle: number;
+  public timeoutHandle?: number = undefined;
   public collapseSections: any[] = [
     {
       btn: false,
@@ -188,10 +188,10 @@ export class Home extends React.Component<{}, IHomeState> {
       autoplay: true,
       animationData: jsonAnimation,
       rendererSettings: {
-        preserveAspectRatio: true,
+        preserveAspectRatio: undefined,
         viewBoxOnly: true,
         viewBoxSize: "800 0 920 775",
-      }
+      },
     };
 
     return (
