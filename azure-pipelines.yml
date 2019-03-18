@@ -35,11 +35,11 @@ steps:
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
-  # condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'deploy' 
-  # condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
