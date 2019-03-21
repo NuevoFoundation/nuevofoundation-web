@@ -1,5 +1,6 @@
 {
   "name": "nuevofoundation-web",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,24 +23,26 @@
     "react-dom": "^16.5.2",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^2.1.8",
     "react-scripts-ts": "^4.0.8",
     "react-stripe-elements": "^2.0.3",
     "styled-components": "^3.4.9"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
+    "watch": "react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "build:staging": "env-cmd .env.staging npm run build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "test-ci": "CI=true react-scripts test"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.0",
-    "@types/node": "^10.10.1",
-    "@types/react": "^16.4.6",
-    "@types/react-dom": "^16.0.6",
-    "typescript": "^3.1.3"
+    "@types/jest": "^23.3.14",
+    "@types/node": "^10.14.1",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "typescript": "^3.3.3333"
   },
   "resolutions": {
     "@types/react": "*"
