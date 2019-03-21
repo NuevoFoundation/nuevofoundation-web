@@ -18,15 +18,21 @@ const DonateButtonWrapper = styled.button`
     outline: 0;
   }
 `
-export class DonateButton extends React.Component<any, any> {
-  constructor(props: any) {
+
+interface IDonateButtonProps {
+  action?: any,
+  text: string
+}
+
+export class DonateButton extends React.Component<IDonateButtonProps, any> {
+  constructor(props: IDonateButtonProps) {
     super(props);
     this.state = {
       text: ''
     }
   }
 
-  public changeDonateButtonColor(clickedButton:any) {
+  public changeDonateButtonColor(clickedButton?:any) {
     document.querySelectorAll("#donateButton").forEach(button=> {
       (button as HTMLElement).style.backgroundColor="#79DB74"
     })
@@ -36,7 +42,11 @@ export class DonateButton extends React.Component<any, any> {
 
   public render(){
     return (
-      <DonateButtonWrapper id="donateButton" onClick={this.changeDonateButtonColor}>
+      <DonateButtonWrapper  id="donateButton" onClick={(e: React.MouseEvent) => {
+        this.changeDonateButtonColor(e)
+        // tslint:disable-next-line
+        if(this.props.action) {this.props.action(e)}
+      }}>
         {this.props.text}
       </DonateButtonWrapper>
     )

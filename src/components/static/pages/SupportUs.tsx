@@ -2,9 +2,9 @@ import Axios from 'axios';
 import * as React from 'react';
 import { CardCVCElement ,CardExpiryElement, CardNumberElement ,injectStripe} from 'react-stripe-elements'
 import styled from 'styled-components';
-import robot from "../../assets/images/robot.svg";
-import * as ArrowNav from "../common/ArrowNav";
+import robot from "../../../assets/images/robot.svg";
 import '../../../assets/stylesheets/SupportUs.css'
+import * as ArrowNav from "../common/ArrowNav";
 import {DonateButton} from '../common/DonateButton'
 import {InfoButton} from '../common/InfoButton';
 
@@ -31,6 +31,22 @@ min-height: 82vh;
 margin-bottom:14rem;
 `
 
+const LoadingModal = styled.div`
+position: absolute;
+background-color: rgba(255, 255, 255, 0.74);
+width: 90%;
+min-height: 82vh;
+max-height: 100%;
+z-index: 3;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+left: 4.8rem;
+outline: 2rem solid rgba(255, 255, 255, 0.74);
+display: none;
+`
+
+
 const DonateContentWrapper = styled.div`
 display: flex;
 `
@@ -56,6 +72,10 @@ const InputLabel = styled.label`
 const TextInput = styled.input`
 width: 37%;
 height: 4rem;
+
+&::placeholder {
+    padding-left: 1rem;
+}
 `
 
 const SelectContentWrapper = styled.div`
@@ -67,6 +87,17 @@ display: none;
 
 const PaymentContentWrapper = styled.div`
 display: none;
+`
+
+const ThankYouWrapper = styled.div`
+display: none;
+width: 100%;
+`
+
+const ThankYouContent = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 `
 
 const ButtonsInline = styled.div`
@@ -82,10 +113,64 @@ const InputLabelWrapper = styled.div`
 display: flex
 flex-direction: column;
 `
-class SupportUs extends React.Component<any> {
-    public state = {
-        amount: "$150.00",
-        page: 0
+
+
+interface ISupportUsState {
+    amount: number,
+    page: number,
+    showing: boolean,
+    display: string,
+    fullName: string,
+    email: string,
+    phone: string,
+    gender: string,
+    yourInformation: string,
+    payment: string,
+    thankYou: string,
+}
+
+class SupportUs extends React.Component<any, ISupportUsState> {
+
+    constructor(props: {}) {
+        super(props)
+        this.state = {
+            amount: 0,
+            page: 0,
+            showing: false,
+            display: "none",
+            fullName: "",
+            email: "",
+            phone: "",
+            gender: "",
+            yourInformation: "",
+            payment: "",
+            thankYou: "",
+        }
+    }
+
+    public resetState() {
+        Array.from(document.getElementsByTagName('input')).forEach(element => {
+        element.value = ""
+        });
+
+        Array.from(document.getElementsByClassName("InputElement is-complete")).forEach(element => {
+            // tslint:disable-next-line
+        console.log(element)
+        })
+
+        this.setState({
+            amount: 0,
+            page: 0,
+            showing: false,
+            display: "none",
+            fullName: "",
+            email: "",
+            phone: "",
+            gender: "",
+            yourInformation: "",
+            payment: "",
+            thankYou: "",
+        })
     }
 
     public cancelOtherContent() {
@@ -110,9 +195,15 @@ class SupportUs extends React.Component<any> {
             break;
             case 1: 
             this.changeInsideContent("second");
+            this.setState({yourInformation: "#26DE81"})
             break;
             case 2:
             this.changeInsideContent("third");
+            this.setState({payment: "#26DE81"})
+            break;
+            case 3:
+            this.changeInsideContent("fourth");
+            this.setState({thankYou: "#26DE81"})
             break;
             default:
             alert(this.state.page)
@@ -133,20 +224,70 @@ class SupportUs extends React.Component<any> {
     }
 
 
-
-
     public async submit(ev: any) {
-        const {token} = await this.props.stripe.createToken({name: "Name"});
+        const {token} = await this.props.stripe.createToken({name: this.state.fullName});
         // tslint:disable-next-line
         console.log(token)
 
-        Axios.post(`https://wt-f5be570962b89bfc801d26215a5caa31-0.sandbox.auth0-extend.com/stripe-payment/payment?amount=500&currency=USD&description=test`, {
-            stripeToken: token.id
+        if(!token || this.state.amount < 1) {return};
+        this.handleModal();
+        Axios.post(`https://wt-f5be570962b89bfc801d26215a5caa31-0.sandbox.auth0-extend.com/stripe-payment/payment?amount=${Math.round(this.state.amount * 100)}&currency=USD&description=test`, {
+            stripeToken: token.id,
+            phoneNumber: this.state.phone || "",
+            email: this.state.email  || "",
+            gender: this.state.gender || ""
         }).then(res => {
             // tslint:disable-next-line
             console.log(res)
+            this.handleModal();
+            this.nextSupportContent();
         })
-      }
+    }
+
+
+    public async handleModal() {
+        // tslint:disable-next-line
+        console.log("we're here", this.state.showing)
+
+        this.setState(prevState => ({
+            showing: !prevState.showing
+        }), () => {
+        // tslint:disable-next-line
+        console.log(this.state.showing)
+        if(this.state.showing === true) {
+            this.setState({
+                display: "flex"
+            })
+        }
+
+        else {
+            this.setState({
+                display: "none"
+            })
+        }
+        })
+    }
+
+    public handlePaymentAmount(amountValue: number) {
+        this.setState({
+            amount: amountValue
+        })
+    }
+
+    public handleInputPaymentAmount(e: any) {
+        const inputValue = e.target.value
+        this.setState({
+            amount: inputValue
+        })
+    }
+
+    public handleInputChange(e: any) {
+        this.setState({
+            [e.currentTarget.name]: e.currentTarget.value
+        } as { [K in keyof ISupportUsState]: ISupportUsState[K] });
+        // tslint:disable-next-line
+        console.log(this.state.fullName)
+    }
 
     public render() {
         return (
@@ -157,28 +298,43 @@ class SupportUs extends React.Component<any> {
                     </div>
                 </SupportStatement>
                 <DonateWrapper id="donateWrapper">
+
+                <LoadingModal style={{display: this.state.display}}>
+                    <h3 style={{color: "#017094"}}>PROCESSING PAYMENT...</h3>
+
+                    <svg className="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle className="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"/>
+                    </svg>
+                </LoadingModal>
+
+
                 <DonateNav>
-                    <ArrowNav.ArrowRight id="1" text="Select Amount"/>
-                    <ArrowNav.ArrowIndentAndRight id="2" text="Your Information"/>
-                    <ArrowNav.ArrowIndentAndRight id="3" text="Payment"/>
-                    <ArrowNav.ArrowOnlyIndent id="4" text="Thank you!"/>
+                    <ArrowNav.ArrowRight id="1" text="Select Amount" color="#26DE81"/>
+                    <ArrowNav.ArrowIndentAndRight id="2" text="Your Information" color={this.state.yourInformation}/>
+                    <ArrowNav.ArrowIndentAndRight id="3" text="Payment" color={this.state.payment}/>
+                    <ArrowNav.ArrowOnlyIndent id="4" text="Thank you!" color={this.state.thankYou}/>
                 </DonateNav>
 
                 <DonateContentWrapper>
-                    <DonateContentFirstHalf>
+                    <DonateContentFirstHalf className="fourth">
                         <SelectContentWrapper id="first" className="second third fourth">
                             <p className="donateSelectStatement">Select amount in USD that you would like to donate</p>
-                            <DonateButton text="$20"/>
-                            <DonateButton text="$50"/>
-                            <DonateButton text="$100"/>
-                            <DonateButton text="$250"/>
+                            {/* tslint:disable-next-line */}
+                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(20)}}text="$20"/>
+                            {/* tslint:disable-next-line */}
+                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(50)}}text="$50"/>
+                            {/* tslint:disable-next-line */}
+                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(100)}}text="$100"/>
+                            {/* tslint:disable-next-line */}
+                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(250)}} text="$250"/>
 
                             <InputLabelWrapper className="amountInput">
                                 <InputLabel htmlFor="amount">Enter other amount</InputLabel>
-                                <TextInput type="number" min="1" id="amount" placeholder="$0.00"/>
+                                {/* tslint:disable-next-line */}
+                                <TextInput onChange={this.handleInputPaymentAmount.bind(this)} type="number" min="1" id="amount" placeholder="$0.00"/>
                             </InputLabelWrapper>
 
-                            <p className="amountDisplay">Total amount: {this.state.amount}</p>
+                            <p className="amountDisplay">Total amount: ${this.state.amount}</p>
                         </SelectContentWrapper>
     
 
@@ -187,22 +343,26 @@ class SupportUs extends React.Component<any> {
 
                             <InputLabelWrapper className="amountInput">
                                 <InputLabel htmlFor="name">Name *</InputLabel>
-                                <TextInput type="text" id="name" placeholder="First and last name"/>
+                                {/* tslint:disable-next-line */}
+                                <TextInput required={true} name="fullName" onChange={this.handleInputChange.bind(this)} type="text" id="name" placeholder="First and last name"/>
                             </InputLabelWrapper>
 
                             <InputLabelWrapper className="amountInput">
                                 <InputLabel htmlFor="email">Email *</InputLabel>
-                                <TextInput type="text" id="email" placeholder="you@email.com"/>
+                                {/* tslint:disable-next-line */}
+                                <TextInput required={true} name="email" onChange={this.handleInputChange.bind(this)} type="text" id="email" placeholder="you@email.com"/>
                             </InputLabelWrapper>
 
                             <InputLabelWrapper className="amountInput">
                                 <InputLabel htmlFor="phone">Phone Number</InputLabel>
-                                <TextInput type="text" id="phone" placeholder="(000) 000-000"/>
+                                {/* tslint:disable-next-line */}
+                                <TextInput required={true} name="phone" onChange={this.handleInputChange.bind(this)} type="text" id="phone" placeholder="(000) 000-000"/>
                             </InputLabelWrapper>
 
                             <InputLabelWrapper className="amountInput">
                                 <InputLabel htmlFor="gender">Choose</InputLabel>
-                                <TextInput type="text" id="gender" placeholder="Male"/>
+                                {/* tslint:disable-next-line */}
+                                <TextInput required={true} name="gender" onChange={this.handleInputChange.bind(this)} type="text" id="gender" placeholder="Male"/>
                             </InputLabelWrapper>
                         </InformationContentWrapper>
 
@@ -217,23 +377,34 @@ class SupportUs extends React.Component<any> {
                                 <CardExpiryElement className="cardelement"/>
                             </InputLabelWrapper>
                             <InputLabelWrapper>
-                                <InputLabel>Expiration *</InputLabel>
+                                <InputLabel>CVC / CVV  *</InputLabel>
                                 <CardCVCElement className="cardelement"/>
                             </InputLabelWrapper>
-                            <p className="amountDisplay">Total amount: {this.state.amount}</p>
+                            <p className="amountDisplay">Total amount: ${this.state.amount}</p>
                             {/* tslint:disable-next-line */}
                             <button onClick={this.submit.bind(this)} type="submit">Save</button>
                         </PaymentContentWrapper>
 
-                        <ButtonsInline>
+                        <ButtonsInline className="fourth">
                             {/* tslint:disable-next-line */}
                             <InfoButton action={this.nextSupportContent.bind(this)} textColor="black" backgroundColor="#26DE81" borderColor="#26DE81">Next</InfoButton>
                             {/* tslint:disable-next-line */}
-                            <InfoButton action={this.cancelOtherContent.bind(this)} textColor="black" backgroundColor="white" borderColor="#FCC600">Cancel</InfoButton>
+                            <InfoButton action={ () => {
+                                this.cancelOtherContent()
+                                this.resetState();
+                            }} textColor="black" backgroundColor="white" borderColor="#FCC600">Cancel</InfoButton>
                         </ButtonsInline>
                     </DonateContentFirstHalf>
+
+                    <ThankYouWrapper id="fourth" className="first second third">
+                            <ThankYouContent>
+                                <p>Thank you for your donation!</p>
+                                <p>You have donated to Nuevo Foundation ${this.state.amount}</p>
+                                <img style={{width: "20rem"}} src={robot}/>
+                            </ThankYouContent>
+                        </ThankYouWrapper>
                     
-                    <RobotImageWrapper>
+                    <RobotImageWrapper className="fourth">
                     <img src={robot}/>
                     </RobotImageWrapper>
                 </DonateContentWrapper>

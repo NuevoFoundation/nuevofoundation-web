@@ -4,11 +4,11 @@ import {Elements,StripeProvider} from 'react-stripe-elements'
 import styled from 'styled-components';
 import './App.css';
 import { Post } from './components/blog/Post';
-import { Footer, Header } from './components/static/common'
-import { AboutUs, Contact, Faq, Home, WhatWeDo } from './components/static/pages';
+import { Footer, Header } from './components/static/common';
 import { Blog } from './components/static/pages';
-import { Const } from './Const';
+import { AboutUs, Contact, Faq, Home, WhatWeDo } from './components/static/pages';
 import SupportUs from './components/static/pages/SupportUs';
+import { Const } from './Const';
 
 const AppContainer = styled.div`
 
