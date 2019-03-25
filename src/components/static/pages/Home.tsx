@@ -18,6 +18,7 @@ import { CollapseItem } from '../../CollapseItem';
 import { ButtonCta } from '../common/ButtonCta';
 import { CircleIcon } from '../common/CircleIcon';
 import { InfoButton } from '../common/InfoButton';
+import ReactGA from 'react-ga';
 
 const AboveFoldContent = styled.div`
   background-repeat: none;
@@ -113,14 +114,16 @@ export class Home extends React.Component<{}, IHomeState> {
     },
   ];
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      collapseSections: this.collapseSections,
-      currentImage: this.collapseSections[0].image,
-      collapseInterval: 5000
+    constructor(props: {}) {
+        super(props);
+        ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
+        ReactGA.pageview(Const.RootPage);
+        this.state = {
+            collapseSections: this.collapseSections,
+            currentImage: this.collapseSections[0].image,
+            collapseInterval: 5000
+        }
     }
-  }
 
   public componentDidMount() {
     this.collapseItemTimer();

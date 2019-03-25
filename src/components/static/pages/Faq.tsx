@@ -5,6 +5,8 @@ import '../../../assets/stylesheets/faq.css';
 import { Col, Grid, Row } from 'react-bootstrap';
 import '../common/DonateButton.tsx'
 import '../common/Header.tsx'
+import { Const } from '../../../Const';
+import ReactGA from 'react-ga';
 
 const FaqWrapper = styled.div`
   font-family: 'Lato', sans-serif;
@@ -15,6 +17,11 @@ const ContentWrapper = styled.div`
 `
 
 export class Faq extends React.Component {
+    constructor(props: {}) {
+        super(props);
+        ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
+        ReactGA.pageview(Const.FaqPage);
+    }
     public render() {
         return (
             <Grid fluid={true}>

@@ -2,6 +2,8 @@ import { send } from 'emailjs-com';
 import * as React from 'react';
 import { Col, ControlLabel, FormControl, FormGroup, Grid, Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import { Const } from '../../../Const';
+import ReactGA from 'react-ga';
 
 const Title = styled.div`
   font-family: 'Lato', sans-serif;
@@ -43,6 +45,8 @@ export class Contact extends React.Component<{}, IContactState> {
             name: '',
             subject: ''
         };
+        ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
+        ReactGA.pageview(Const.ContactPage);
     }
 
     public handleName = (e: any) => {
