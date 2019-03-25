@@ -42,7 +42,7 @@ const MainButtonWrapper = styled.div`
 `
 
 const DonateSection = styled.div`
-  background-color: #FBF500;
+  background-color: #fcc600;
   display: table;
   height: 396px;
   color: #000000;
@@ -198,87 +198,87 @@ export class Home extends React.Component<{}, IHomeState> {
     };
 
     return (
-      <Grid fluid={true}>
-        <AboveFoldContent>
-          <Row>
+        <Grid fluid={true}>
+            <AboveFoldContent>
+                <Row>
 
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <Row>
-                <Col xs={11} xsOffset={1} >
-                  <ContentWrapper>
-                    <div className="main-title">Inspire your students using coding<br />and their creativity</div>
-                  </ContentWrapper>
-                </Col>
-                <Col xs={1} xsOffset={1} >
-                  <MainButtonWrapper >
-                    <StyledLink to={Const.FaqPage} >
-                      <InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton>
-                    </StyledLink>
-                  </MainButtonWrapper>
-                </Col>
-              </Row>
-            </Col>
-            <Col xs={8} xsOffset={4} sm={8} smOffset={4} md={6} mdOffset={0} lg={6} >
-              <Lottie options={defaultOptions}
-                isStopped={false}
-                isPaused={false}
-              />
-            </Col>
-          </Row>
-        </AboveFoldContent>
-        <Row >
-          <Col md={6} xs={12}>
-            <MissionLeftPanel>
-              <Row>
-                <Col xsOffset={1}>
-                  <MissionLeftContent>
-                    {this.collapseSections.map((item: any, index: number, array: any[]) => {
-                      const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
-                      return (
-                        <Row key={index}>
-                          <Col xs={2} sm={1}>
-                            <CircleIcon fill={item.iconFill} iconImage={item.iconImage} />
-                          </Col>
-                          <Col xs={10} sm={11}>
-                            <CollapseItem
-                              // tslint:disable-next-line:jsx-no-lambda
-                              handleClick={() => this.handleCollapseItemClick(index)}
-                              itemIndex={index}
-                              btn={item.btn}
-                              btnContent={item.btnContent}
-                              btnLink={item.link} open={item.open}
-                              title={item.title} content={item.content}
-                              last={last}
-                            />
-                          </Col>
+                    <Col xs={12} sm={12} md={6} lg={6}>
+                        <Row>
+                            <Col xs={11} xsOffset={1} >
+                                <ContentWrapper>
+                                    <div className="main-title">Inspire your students using coding<br />and their creativity</div>
+                                </ContentWrapper>
+                            </Col>
+                            <Col xs={1} xsOffset={1} >
+                                <MainButtonWrapper >
+                                    <StyledLink to={Const.FaqPage} >
+                                        <InfoButton backgroundColor={'#FCC600'} textColor={'#000000'} borderColor={'#FCC600'}> LEARN MORE </InfoButton>
+                                    </StyledLink>
+                                </MainButtonWrapper>
+                            </Col>
                         </Row>
-                      )
-                    })}
-                  </MissionLeftContent>
-                </Col>
+                    </Col>
+                    <Col xs={8} xsOffset={4} sm={8} smOffset={4} md={6} mdOffset={0} lg={6} >
+                        <Lottie options={defaultOptions}
+                            isStopped={false}
+                            isPaused={false}
+                        />
+                    </Col>
+                </Row>
+            </AboveFoldContent>
+            <Row >
+                <Col md={6} xs={12}>
+                    <MissionLeftPanel>
+                        <Row>
+                            <Col xsOffset={1}>
+                                <MissionLeftContent>
+                                    {this.collapseSections.map((item: any, index: number, array: any[]) => {
+                                        const last: boolean = array.length - 1 === index; // used to avoid printing divider for last item
+                                        return (
+                                            <Row key={index}>
+                                                <Col xs={2} sm={1}>
+                                                    <CircleIcon fill={item.iconFill} iconImage={item.iconImage} />
+                                                </Col>
+                                                <Col xs={10} sm={11}>
+                                                    <CollapseItem
+                                                        // tslint:disable-next-line:jsx-no-lambda
+                                                        handleClick={() => this.handleCollapseItemClick(index)}
+                                                        itemIndex={index}
+                                                        btn={item.btn}
+                                                        btnContent={item.btnContent}
+                                                        btnLink={item.link} open={item.open}
+                                                        title={item.title} content={item.content}
+                                                        last={last}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                        )
+                                    })}
+                                </MissionLeftContent>
+                            </Col>
 
-              </Row>
-            </MissionLeftPanel>
-          </Col>
-          <Col md={6} xs={12} style={{ overflow: 'hidden' }}>
-            <Image src={this.state.currentImage} style={{ width: '100%' }} />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <DonateSection>
-              <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
-                <DonateText>Empowering students with knowledge is our goal!!</DonateText>
-                <DonateButtonWrapper>
-                  <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
-                    <ButtonCta text={'DONATE'} backgroundColor={'#FBF500'} textColor={'#000000'} border={'3px solid #000000'} />
-                  </a>
-                </DonateButtonWrapper>
-              </div>
-            </DonateSection>
-          </Col>
-        </Row>
-      </Grid>
+                        </Row>
+                    </MissionLeftPanel>
+                </Col>
+                <Col md={6} xs={12} style={{ overflow: 'hidden' }}>
+                    <Image src={this.state.currentImage} style={{ width: '100%' }} />
+                </Col>
+            </Row>
+            <Row>
+                <Col xs={12}>
+                    <DonateSection>
+                        <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                            <DonateText>Empowering students with knowledge is our goal!!</DonateText>
+                            <DonateButtonWrapper>
+                                <a href={Const.PayPalDonatePage} style={{ textDecoration: 'none' }}>
+                                    <ButtonCta text={'DONATE'} backgroundColor={'#fcc600'} textColor={'#000000'} border={'3px solid #000000'} />
+                                </a>
+                            </DonateButtonWrapper>
+                        </div>
+                    </DonateSection>
+                </Col>
+            </Row>
+        </Grid>
     )
   }
 }
