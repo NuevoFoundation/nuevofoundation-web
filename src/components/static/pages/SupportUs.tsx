@@ -78,6 +78,15 @@ height: 4rem;
 }
 `
 
+const SelectInput = styled.select`
+width: 37%;
+height: 4rem;
+
+&::placeholder {
+    padding-left: 1rem;
+}
+`
+
 const SelectContentWrapper = styled.div`
 `
 
@@ -98,6 +107,7 @@ const ThankYouContent = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+padding-top: 3rem;
 `
 
 const ButtonsInline = styled.div`
@@ -123,11 +133,19 @@ interface ISupportUsState {
     fullName: string,
     email: string,
     phone: string,
-    gender: string,
     yourInformation: string,
     payment: string,
     thankYou: string,
+    genderValue: string,
 }
+
+
+
+// This code has not been refactored, needs a lot of cleaning
+// Not mobile-friendly or responsive
+// Need to add production keys for stripe
+// Other than that, functionality is fine (:
+// Perhaps we should add a back button just in case users want to edit something
 
 class SupportUs extends React.Component<any, ISupportUsState> {
 
@@ -141,10 +159,10 @@ class SupportUs extends React.Component<any, ISupportUsState> {
             fullName: "",
             email: "",
             phone: "",
-            gender: "",
             yourInformation: "",
             payment: "",
             thankYou: "",
+            genderValue: "Gender"
         }
     }
 
@@ -152,11 +170,6 @@ class SupportUs extends React.Component<any, ISupportUsState> {
         Array.from(document.getElementsByTagName('input')).forEach(element => {
         element.value = ""
         });
-
-        Array.from(document.getElementsByClassName("InputElement is-complete")).forEach(element => {
-            // tslint:disable-next-line
-        console.log(element)
-        })
 
         this.setState({
             amount: 0,
@@ -166,7 +179,6 @@ class SupportUs extends React.Component<any, ISupportUsState> {
             fullName: "",
             email: "",
             phone: "",
-            gender: "",
             yourInformation: "",
             payment: "",
             thankYou: "",
@@ -226,8 +238,6 @@ class SupportUs extends React.Component<any, ISupportUsState> {
 
     public async submit(ev: any) {
         const {token} = await this.props.stripe.createToken({name: this.state.fullName});
-        // tslint:disable-next-line
-        console.log(token)
 
         if(!token || this.state.amount < 1) {return};
         this.handleModal();
@@ -235,10 +245,8 @@ class SupportUs extends React.Component<any, ISupportUsState> {
             stripeToken: token.id,
             phoneNumber: this.state.phone || "",
             email: this.state.email  || "",
-            gender: this.state.gender || ""
+            gender: this.state.genderValue
         }).then(res => {
-            // tslint:disable-next-line
-            console.log(res)
             this.handleModal();
             this.nextSupportContent();
         })
@@ -246,20 +254,14 @@ class SupportUs extends React.Component<any, ISupportUsState> {
 
 
     public async handleModal() {
-        // tslint:disable-next-line
-        console.log("we're here", this.state.showing)
-
         this.setState(prevState => ({
             showing: !prevState.showing
         }), () => {
-        // tslint:disable-next-line
-        console.log(this.state.showing)
         if(this.state.showing === true) {
             this.setState({
                 display: "flex"
             })
         }
-
         else {
             this.setState({
                 display: "none"
@@ -284,9 +286,10 @@ class SupportUs extends React.Component<any, ISupportUsState> {
     public handleInputChange(e: any) {
         this.setState({
             [e.currentTarget.name]: e.currentTarget.value
-        } as { [K in keyof ISupportUsState]: ISupportUsState[K] });
-        // tslint:disable-next-line
-        console.log(this.state.fullName)
+        } as { [K in keyof ISupportUsState]: ISupportUsState[K] }, () => {
+            // ts-lint:disable-next-line
+            console.log(this.state.genderValue)
+        });
     }
 
     public render() {
@@ -360,9 +363,18 @@ class SupportUs extends React.Component<any, ISupportUsState> {
                             </InputLabelWrapper>
 
                             <InputLabelWrapper className="amountInput">
-                                <InputLabel htmlFor="gender">Choose</InputLabel>
+                            <InputLabel htmlFor="gender">Choose</InputLabel>
+                            {/* tslint:disable-next-line */}
+                            <SelectInput name="genderValue" defaultValue={this.state.genderValue} onChange={this.handleInputChange.bind(this)} >
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Transgender">Transgender</option>
+                                <option value="Non-Binary">Non-Binary</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </SelectInput>
                                 {/* tslint:disable-next-line */}
-                                <TextInput required={true} name="gender" onChange={this.handleInputChange.bind(this)} type="text" id="gender" placeholder="Male"/>
+                                {/* <TextInput required={true} name="gender" onChange={this.handleInputChange.bind(this)} type="text" id="gender" placeholder="Male"/> */}
                             </InputLabelWrapper>
                         </InformationContentWrapper>
 
@@ -382,13 +394,17 @@ class SupportUs extends React.Component<any, ISupportUsState> {
                             </InputLabelWrapper>
                             <p className="amountDisplay">Total amount: ${this.state.amount}</p>
                             {/* tslint:disable-next-line */}
-                            <button onClick={this.submit.bind(this)} type="submit">Save</button>
+                            {/* <button onClick={this.submit.bind(this)} type="submit">Save</button> */}
                         </PaymentContentWrapper>
 
-                        <ButtonsInline className="fourth">
-                            {/* tslint:disable-next-line */}
-                            <InfoButton action={this.nextSupportContent.bind(this)} textColor="black" backgroundColor="#26DE81" borderColor="#26DE81">Next</InfoButton>
-                            {/* tslint:disable-next-line */}
+                        <ButtonsInline>
+                            {this.state.page === 2 ? (
+                                // tslint:disable-next-line
+                                <InfoButton action={this.submit.bind(this)} textColor="black" backgroundColor="#26DE81" borderColor="#26DE81">Next Pay</InfoButton>
+                            ) : (
+                                // tslint:disable-next-line
+                                <InfoButton action={this.nextSupportContent.bind(this)} textColor="black" backgroundColor="#26DE81" borderColor="#26DE81">Next</InfoButton>
+                            )}
                             <InfoButton action={ () => {
                                 this.cancelOtherContent()
                                 this.resetState();
@@ -398,8 +414,8 @@ class SupportUs extends React.Component<any, ISupportUsState> {
 
                     <ThankYouWrapper id="fourth" className="first second third">
                             <ThankYouContent>
-                                <p>Thank you for your donation!</p>
-                                <p>You have donated to Nuevo Foundation ${this.state.amount}</p>
+                                <p className="thankYouText">Thank you for your donation!</p>
+                                <p className="thankYouText">You have donated to Nuevo Foundation ${this.state.amount}</p>
                                 <img style={{width: "20rem"}} src={robot}/>
                             </ThankYouContent>
                         </ThankYouWrapper>

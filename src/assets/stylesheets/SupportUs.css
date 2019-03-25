@@ -54,9 +54,10 @@ input::-webkit-inner-spin-button {
   width: 40%;
 }
 
-
-
-
+.thankYouText {
+  font-size: 2.5rem;
+  margin-top: .5rem;
+}
 
 .spinner {
   -webkit-animation: rotator 1.4s linear infinite;
