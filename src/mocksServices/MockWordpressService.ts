@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getPost, getPosts } from "./responses";
 
 export class MockWordpressService {
