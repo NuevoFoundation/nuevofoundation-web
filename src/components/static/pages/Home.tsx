@@ -116,7 +116,6 @@ export class Home extends React.Component<{}, IHomeState> {
 
     constructor(props: {}) {
         super(props);
-        ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
         ReactGA.pageview(Const.RootPage);
         this.state = {
             collapseSections: this.collapseSections,

@@ -19,7 +19,6 @@ const ContentWrapper = styled.div`
 export class Faq extends React.Component {
     constructor(props: {}) {
         super(props);
-        ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
         ReactGA.pageview(Const.FaqPage);
     }
     public render() {

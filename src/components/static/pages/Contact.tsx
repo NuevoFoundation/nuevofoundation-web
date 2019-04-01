@@ -45,7 +45,6 @@ export class Contact extends React.Component<{}, IContactState> {
             name: '',
             subject: ''
         };
-        ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
         ReactGA.pageview(Const.ContactPage);
     }
 

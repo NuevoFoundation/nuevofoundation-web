@@ -7,6 +7,7 @@ import { Footer, Header } from './components/static/common'
 import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from './components/static/pages';
 import { Blog } from './components/static/pages';
 import { Const } from './Const';
+import ReactGA from 'react-ga';
 
 
 const AppContainer = styled.div`
@@ -14,6 +15,13 @@ const AppContainer = styled.div`
 `
 
 class App extends React.Component {
+    constructor(props: {}) {
+        super(props);
+        if (Const.GoogleAnalyticsTrackingId && Const.GoogleAnalyticsTrackingId.length > 0) {
+            ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
+        }
+    }
+
   public render() {
     return (
       <AppContainer >
