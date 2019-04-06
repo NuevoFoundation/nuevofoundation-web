@@ -72,13 +72,12 @@ const StyledLink = styled(Link)`
 `
 
 interface IHomeState {
-  collapseSections: any[]
-  currentImage: any,
-  collapseInterval: number
+  collapseSections: any[];
+  currentImage: any;
+  collapseInterval: number;
 }
 
 export class Home extends React.Component<{}, IHomeState> {
-  public timeoutHandle?: number = undefined;
   public collapseSections: any[] = [
     {
       btn: false,
@@ -122,64 +121,11 @@ export class Home extends React.Component<{}, IHomeState> {
     }
   }
 
-  public componentDidMount() {
-    this.collapseItemTimer();
-  }
-
-  public handleCollapseItemClick(itemIndex: number) {
-    this.collapseItemTimer(itemIndex);
-  }
-
-  public closeOpenedItem() {
-    let openItemIndex = 0;
-    this.collapseSections.forEach((item: any, index: number) => {
-      if (item.open) {
-        item.open = false;
-        openItemIndex = index;
-      }
+  public updateCollapseSections = (collapseSections: any[], openItemIndex: number) => {
+    this.setState({
+      collapseSections,
+      currentImage: collapseSections[openItemIndex].image
     })
-    return openItemIndex;
-  }
-
-  public openNextItem(index?: number) {
-    const openItemIndex = this.closeOpenedItem();
-    const nextItemIndex = index === undefined ? openItemIndex + 1 : index;
-    const lastItemIndex = this.collapseSections.length - 1;
-
-    if (nextItemIndex > lastItemIndex) {
-      const nextItem = this.collapseSections[0];
-      nextItem.open = true;
-    }
-    else {
-      const nextItem = this.collapseSections[nextItemIndex];
-      nextItem.open = true;
-    }
-
-    return this.collapseSections;
-  }
-
-  public collapseItemTimer(itemtoOpen?: number) {
-    let transitionTimeout = 5000;
-    if (itemtoOpen !== undefined) {
-      window.clearTimeout(this.timeoutHandle);
-      transitionTimeout = 0;
-    }
-
-    const sections = this.openNextItem(itemtoOpen);
-    // Find open section index to set current image
-    let openItemIndex = 0;
-    sections.forEach((item: any, index: number) => {
-      if (item.open) {
-        openItemIndex = index;
-      }
-    })
-
-    this.timeoutHandle = window.setTimeout(() => {
-      this.setState({
-        collapseSections: sections,
-        currentImage: sections[openItemIndex].image
-      }, this.collapseItemTimer);
-    }, transitionTimeout);
   }
 
   public render() {
@@ -239,7 +185,8 @@ export class Home extends React.Component<{}, IHomeState> {
                           <Col xs={10} sm={11}>
                             <CollapseItem
                               // tslint:disable-next-line:jsx-no-lambda
-                              handleClick={() => this.handleCollapseItemClick(index)}
+                              collapseSections={this.collapseSections}
+                              updateCollapseSections={this.updateCollapseSections}
                               itemIndex={index}
                               btn={item.btn}
                               btnContent={item.btnContent}
