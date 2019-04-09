@@ -35,11 +35,11 @@ const ButtonCtaWrapper = styled.div`
   padding-bottom: 40px;
 `;
 
-interface ICollapseItemState {
+interface CollapseItemState {
   checked: boolean;
 }
 
-interface ICollapseItemProps {
+interface CollapseItemProps {
   collapseSections: any[];
   updateCollapseSections: (
     collapseSections: any[],
@@ -50,18 +50,18 @@ interface ICollapseItemProps {
   open: boolean;
   btn?: boolean;
   btnContent?: string;
-  btnLink?: string;
+  btnLink: string;
   last: boolean;
   itemIndex: number;
 }
 
 export class CollapseItem extends React.Component<
-  ICollapseItemProps,
-  ICollapseItemState
+  CollapseItemProps,
+  CollapseItemState
 > {
   public timeoutHandle?: number;
 
-  constructor(props: ICollapseItemProps) {
+  public constructor(props: CollapseItemProps) {
     super(props);
     this.state = {
       checked: false
@@ -142,7 +142,7 @@ export class CollapseItem extends React.Component<
             <Col xs={4}>
               {this.props.btn && (
                 <Link
-                  to={this.props.btnLink!}
+                  to={this.props.btnLink}
                   style={{ textDecoration: "none" }}
                 >
                   <ButtonCtaWrapper>
