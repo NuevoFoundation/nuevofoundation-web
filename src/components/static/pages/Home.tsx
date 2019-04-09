@@ -175,8 +175,7 @@ export class Home extends React.Component<{}, IHomeState> {
                         textColor={"#000000"}
                         borderColor={"#FCC600"}
                       >
-                        {" "}
-                        LEARN MORE{" "}
+                        LEARN MORE
                       </InfoButton>
                     </StyledLink>
                   </MainButtonWrapper>
