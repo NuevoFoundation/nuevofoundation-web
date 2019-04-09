@@ -12,4 +12,5 @@ export class Const {
   public static PayPalDonatePage?: string = process.env.REACT_APP_PAYPAL_DONATE;
   public static WordpressEndpoint?: string =
   process.env.REACT_APP_WORDPRESS_ENDPOINT;
+  public static GoogleAnalyticsTrackingId?: string = process.env.REACT_APP_GA_ID;
 }

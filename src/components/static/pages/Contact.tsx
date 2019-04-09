@@ -9,6 +9,8 @@ import {
   Row
 } from "react-bootstrap";
 import styled from "styled-components";
+import { Const } from '../../../Const';
+import ReactGA from 'react-ga';
 
 const Title = styled.div`
   font-family: "Lato", sans-serif;
@@ -42,15 +44,16 @@ const btnStyle = {
 } as React.CSSProperties;
 
 export class Contact extends React.Component<{}, IContactState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      email: "",
-      message: "",
-      name: "",
-      subject: ""
-    };
-  }
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+            email: '',
+            message: '',
+            name: '',
+            subject: ''
+        };
+        ReactGA.pageview(Const.ContactPage);
+    }
 
   public handleName = (e: any) => {
     this.setState({ name: e.target.value });

@@ -18,6 +18,7 @@ import { CollapseItem } from "../../CollapseItem";
 import { ButtonCta } from "../common/ButtonCta";
 import { CircleIcon } from "../common/CircleIcon";
 import { InfoButton } from "../common/InfoButton";
+import ReactGA from "react-ga";
 
 const AboveFoldContent = styled.div`
   background-repeat: none;
@@ -41,7 +42,7 @@ const MainButtonWrapper = styled.div`
 `;
 
 const DonateSection = styled.div`
-  background-color: #fbf500;
+  background-color: #fcc600;
   display: table;
   height: 396px;
   color: #000000;
@@ -82,7 +83,6 @@ interface IHomeState {
 }
 
 export class Home extends React.Component<{}, IHomeState> {
-  public timeoutHandle?: number = undefined;
   public collapseSections: any[] = [
     {
       btn: false,
@@ -122,6 +122,7 @@ export class Home extends React.Component<{}, IHomeState> {
 
   constructor(props: {}) {
     super(props);
+    ReactGA.pageview(Const.RootPage);
     this.state = {
       collapseSections: this.collapseSections,
       currentImage: this.collapseSections[0].image,
@@ -129,67 +130,15 @@ export class Home extends React.Component<{}, IHomeState> {
     };
   }
 
-  public componentDidMount() {
-    this.collapseItemTimer();
-  }
-
-  public handleCollapseItemClick(itemIndex: number) {
-    this.collapseItemTimer(itemIndex);
-  }
-
-  public closeOpenedItem() {
-    let openItemIndex = 0;
-    this.collapseSections.forEach((item: any, index: number) => {
-      if (item.open) {
-        item.open = false;
-        openItemIndex = index;
-      }
+  public updateCollapseSections = (
+    collapseSections: any[],
+    openItemIndex: number
+  ) => {
+    this.setState({
+      collapseSections,
+      currentImage: collapseSections[openItemIndex].image
     });
-    return openItemIndex;
-  }
-
-  public openNextItem(index?: number) {
-    const openItemIndex = this.closeOpenedItem();
-    const nextItemIndex = index === undefined ? openItemIndex + 1 : index;
-    const lastItemIndex = this.collapseSections.length - 1;
-
-    if (nextItemIndex > lastItemIndex) {
-      const nextItem = this.collapseSections[0];
-      nextItem.open = true;
-    } else {
-      const nextItem = this.collapseSections[nextItemIndex];
-      nextItem.open = true;
-    }
-
-    return this.collapseSections;
-  }
-
-  public collapseItemTimer(itemtoOpen?: number) {
-    let transitionTimeout = 5000;
-    if (itemtoOpen !== undefined) {
-      window.clearTimeout(this.timeoutHandle);
-      transitionTimeout = 0;
-    }
-
-    const sections = this.openNextItem(itemtoOpen);
-    // Find open section index to set current image
-    let openItemIndex = 0;
-    sections.forEach((item: any, index: number) => {
-      if (item.open) {
-        openItemIndex = index;
-      }
-    });
-
-    this.timeoutHandle = window.setTimeout(() => {
-      this.setState(
-        {
-          collapseSections: sections,
-          currentImage: sections[openItemIndex].image
-        },
-        this.collapseItemTimer
-      );
-    }, transitionTimeout);
-  }
+  };
 
   public render() {
     const defaultOptions = {
@@ -271,8 +220,9 @@ export class Home extends React.Component<{}, IHomeState> {
                             <Col xs={10} sm={11}>
                               <CollapseItem
                                 // tslint:disable-next-line:jsx-no-lambda
-                                handleClick={() =>
-                                  this.handleCollapseItemClick(index)
+                                collapseSections={this.collapseSections}
+                                updateCollapseSections={
+                                  this.updateCollapseSections
                                 }
                                 itemIndex={index}
                                 btn={item.btn}
@@ -311,7 +261,7 @@ export class Home extends React.Component<{}, IHomeState> {
                   >
                     <ButtonCta
                       text={"DONATE"}
-                      backgroundColor={"#FBF500"}
+                      backgroundColor={"#fcc600"}
                       textColor={"#000000"}
                       border={"3px solid #000000"}
                     />

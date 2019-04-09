@@ -40,13 +40,17 @@ interface CollapseItemState {
 }
 
 interface CollapseItemProps {
-  handleClick: (itemIndex: number) => void;
+  collapseSections: any[];
+  updateCollapseSections: (
+    collapseSections: any[],
+    openItemIndex: number
+  ) => void;
   title: string;
   content: string;
   open: boolean;
   btn?: boolean;
   btnContent?: string;
-  btnLink: string;
+  btnLink?: string;
   last: boolean;
   itemIndex: number;
 }
@@ -55,17 +59,78 @@ export class CollapseItem extends React.Component<
   CollapseItemProps,
   CollapseItemState
 > {
-  public constructor(props: CollapseItemProps) {
+  public timeoutHandle?: number;
+
+  constructor(props: CollapseItemProps) {
     super(props);
     this.state = {
       checked: false
     };
   }
 
+  public componentDidMount() {
+    this.collapseItemTimer();
+  }
+
+  public handleCollapseItemClick(itemIndex: number) {
+    this.collapseItemTimer(itemIndex);
+  }
+
+  public closeOpenedItem() {
+    let openItemIndex = 0;
+    this.props.collapseSections.forEach((item: any, index: number) => {
+      if (item.open) {
+        item.open = false;
+        openItemIndex = index;
+      }
+    });
+    return openItemIndex;
+  }
+
+  public openNextItem(index?: number) {
+    const openItemIndex = this.closeOpenedItem();
+    const nextItemIndex = index === undefined ? openItemIndex + 1 : index;
+    const lastItemIndex = this.props.collapseSections.length - 1;
+
+    if (nextItemIndex > lastItemIndex) {
+      const nextItem = this.props.collapseSections[0];
+      nextItem.open = true;
+    } else {
+      const nextItem = this.props.collapseSections[nextItemIndex];
+      nextItem.open = true;
+    }
+
+    return this.props.collapseSections;
+  }
+
+  public collapseItemTimer(itemtoOpen?: number) {
+    let transitionTimeout = 5000;
+    if (itemtoOpen !== undefined) {
+      window.clearTimeout(this.timeoutHandle);
+      transitionTimeout = 0;
+    }
+
+    const sections = this.openNextItem(itemtoOpen);
+    // Find open section index to set current image
+    let openItemIndex = 0;
+    sections.forEach((item: any, index: number) => {
+      if (item.open) {
+        openItemIndex = index;
+      }
+    });
+
+    this.timeoutHandle = window.setTimeout(() => {
+      this.props.updateCollapseSections(
+        this.props.collapseSections,
+        openItemIndex
+      );
+    }, transitionTimeout);
+  }
+
   public render() {
     return (
       // tslint:disable-next-line:jsx-no-lambda
-      <Item onClick={() => this.props.handleClick(this.props.itemIndex)}>
+      <Item onClick={() => this.handleCollapseItemClick(this.props.itemIndex)}>
         <SectionTitle>{this.props.title}</SectionTitle>
         <Collapse in={this.props.open}>
           <Row>
@@ -77,7 +142,7 @@ export class CollapseItem extends React.Component<
             <Col xs={4}>
               {this.props.btn && (
                 <Link
-                  to={this.props.btnLink}
+                  to={this.props.btnLink!}
                   style={{ textDecoration: "none" }}
                 >
                   <ButtonCtaWrapper>
