@@ -8,7 +8,7 @@ export class Const {
   public static FaqPage: string = "/faq";
   public static ContactPage: string = "/contact";
 
-  public static SkypeInClassroomPage: string = "/"; // TODO: Update this link to Skype in Classroom
+  public static VirtualSessionPage: string = "/"; // TODO: Update this link to what we do page
   public static PayPalDonatePage?: string = process.env.REACT_APP_PAYPAL_DONATE;
   public static WordpressEndpoint?: string =
   process.env.REACT_APP_WORDPRESS_ENDPOINT;

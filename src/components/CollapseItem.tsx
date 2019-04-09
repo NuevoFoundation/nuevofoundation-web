@@ -50,7 +50,7 @@ interface CollapseItemProps {
   open: boolean;
   btn?: boolean;
   btnContent?: string;
-  btnLink?: string;
+  btnLink: string;
   last: boolean;
   itemIndex: number;
 }
@@ -61,7 +61,7 @@ export class CollapseItem extends React.Component<
 > {
   public timeoutHandle?: number;
 
-  constructor(props: CollapseItemProps) {
+  public constructor(props: CollapseItemProps) {
     super(props);
     this.state = {
       checked: false
@@ -142,7 +142,7 @@ export class CollapseItem extends React.Component<
             <Col xs={4}>
               {this.props.btn && (
                 <Link
-                  to={this.props.btnLink!}
+                  to={this.props.btnLink}
                   style={{ textDecoration: "none" }}
                 >
                   <ButtonCtaWrapper>
