@@ -17,12 +17,16 @@ const BlogPostItem = styled.div``;
 
 const BlogPostTitle = styled.h2`
   color: #262626;
+  font-family: "Lato", sans-serif;
+  font-size: 28px;
 `;
 
 const BlogPostContent = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   color: #262626;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
 `;
 const Divider = styled.hr`
   width: 40%;

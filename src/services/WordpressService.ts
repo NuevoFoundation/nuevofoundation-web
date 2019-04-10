@@ -12,7 +12,12 @@ export class WordpressService {
   }
 
   public getPublishedPosts(page: number): Promise<any> {
-    return HttpClient.get(`${Const.WordpressEndpoint}/posts?number=10&page=${page}&status=publish`, this.headers);
+    return HttpClient.get(
+      `${Const.WordpressEndpoint}/posts?number=${
+        Const.BlogPageSize
+      }&page=${page}&status=publish`,
+      this.headers
+    );
   }
 
   public getPost(id: string): Promise<any> {

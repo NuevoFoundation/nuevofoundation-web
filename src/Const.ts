@@ -13,4 +13,5 @@ export class Const {
   public static WordpressEndpoint?: string =
   process.env.REACT_APP_WORDPRESS_ENDPOINT;
   public static GoogleAnalyticsTrackingId?: string = process.env.REACT_APP_GA_ID;
+  public static BlogPageSize: number = 10;
 }
