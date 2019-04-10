@@ -57,7 +57,17 @@ export class Post extends React.Component<
     );
     this.setState({
       post: response
-    });
+    }, this.addResponsiveClass);
+  }
+
+  public addResponsiveClass() {
+    var blogPostDocument = document.getElementById("BlogPostDocument");
+    var images = blogPostDocument!.getElementsByTagName("img");
+
+    for (var i = 0; i < images.length; i++) {
+      images[i].className += " img-responsive";
+    }
+    return;
   }
 
   public render() {
@@ -66,7 +76,7 @@ export class Post extends React.Component<
       <Grid fluid={true}>
         <Row>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
-            <PostWrapper>
+            <PostWrapper id={"BlogPostDocument"}>
               <BlogPostItem>
                 <BlogPostTitle>{post.title}</BlogPostTitle>
                 <span>
