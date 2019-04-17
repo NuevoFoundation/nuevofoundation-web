@@ -5,7 +5,6 @@ import { Col, Grid, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
-import NuevoLogo from "../../../assets/logos/Logo_medium.svg";
 import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
 
@@ -197,7 +196,7 @@ export class Header extends React.Component<{}, IHeaderState> {
           <Col sm={12} xsHidden={true}>
             <HeaderWrapper>
               <StyledNavLink to={"/"}>
-                <NavLogo src={NuevoLogo} height={"75px"} />
+                <NavLogo src={NuevoFoundationLogo} height={"60px"} />
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
               <a
