@@ -21,6 +21,7 @@ const DonateButtonWrapper = styled.button`
 
 interface IDonateButtonProps {
   action?: any,
+  color?: string,
   text: string
 }
 
@@ -42,7 +43,7 @@ export class DonateButton extends React.Component<IDonateButtonProps, any> {
 
   public render(){
     return (
-      <DonateButtonWrapper  id="donateButton" onClick={(e: React.MouseEvent) => {
+      <DonateButtonWrapper style={{backgroundColor: this.props.color || "#d2d2d2" }}  id="donateButton" onClick={(e: React.MouseEvent) => {
         this.changeDonateButtonColor(e)
         // tslint:disable-next-line
         if(this.props.action) {this.props.action(e)}

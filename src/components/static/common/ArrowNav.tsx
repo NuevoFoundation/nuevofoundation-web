@@ -1,8 +1,6 @@
 import * as React from "react";
 import styled from 'styled-components';
 
-// CLEAN UP CODE ON 2/21/19
-
 // #26DE81
 // Grey #ededed
 
@@ -19,7 +17,25 @@ p {
     position: relative;
     top: -1.5rem;
     text-align: center;
+
+    @media(max-width: 1200px) {
+        font-size: 2.2rem;
+        top: -1.rem;
+        left: 1.3rem;
+    }
+
+    @media(max-width: 900px) {
+        font-size: 2rem;
+        left: 1rem;
+    }
 }
+
+@media(max-width: 900px) {
+    div {
+        height: 6rem;
+    }
+}
+
 `
 
 const ArrowRightStyle = styled.div`
@@ -33,12 +49,15 @@ outline-offset: -4px;
 `
 
 const ArrowRightTip = styled.div`
-height: 0;
 border-style: solid;
 border-width: 4rem 0 4rem 2rem;
 border-color: transparent transparent transparent ${props => props.color};
 position: relative;
 right: .1rem;
+}
+
+@media(max-width: 900px) {
+    border-width: 3rem 0 3rem 1rem;
 }
 `
 

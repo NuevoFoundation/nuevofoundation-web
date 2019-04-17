@@ -30,7 +30,8 @@ class App extends React.Component {
   public render() {
     return (
       <StripeProvider apiKey="pk_test_zDAe9ZWMMWJNCok4C4Kr66hK">
-        <AppContainer>
+      <Elements>
+      <AppContainer>
         <Header />
         <Switch>
           <Route exact={true} path={Const.RootPage} component={Home} />
@@ -49,6 +50,7 @@ class App extends React.Component {
         </Switch>
         <Footer />
       </AppContainer>
+      </Elements>
       </StripeProvider>
     );
   }

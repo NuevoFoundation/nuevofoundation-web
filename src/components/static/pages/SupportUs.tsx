@@ -29,6 +29,19 @@ width: 90%;
 margin-left: 4.8rem;
 min-height: 82vh;
 margin-bottom:14rem;
+
+@media(max-width: 1200px) {
+    width: 98%;
+    margin-left: 1rem;
+}
+
+@media(max-width: 900px) {
+    min-height: 90vh;
+    margin-left: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden
+}
 `
 
 const LoadingModal = styled.div`
@@ -65,6 +78,10 @@ width: 70%;
 #donateButton {
     margin-right: 2.3rem;
     margin-top: 1.4rem;
+
+    @media(max-width: 1200px) {
+        margin-right: 1.8rem;
+    }
 }
 `
 const InputLabel = styled.label`
@@ -75,6 +92,10 @@ height: 4rem;
 
 &::placeholder {
     padding-left: 1rem;
+}
+
+@media(max-width: 1200px) {
+    width: 50%;
 }
 `
 
@@ -323,13 +344,13 @@ class SupportUs extends React.Component<any, ISupportUsState> {
                         <SelectContentWrapper id="first" className="second third fourth">
                             <p className="donateSelectStatement">Select amount in USD that you would like to donate</p>
                             {/* tslint:disable-next-line */}
-                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(20)}}text="$20"/>
+                            <DonateButton color={"#79DB74"} action={(e: React.MouseEvent) => {this.handlePaymentAmount(20)}}text="$20"/>
                             {/* tslint:disable-next-line */}
-                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(50)}}text="$50"/>
+                            <DonateButton color={"#79DB74"} action={(e: React.MouseEvent) => {this.handlePaymentAmount(50)}}text="$50"/>
                             {/* tslint:disable-next-line */}
-                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(100)}}text="$100"/>
+                            <DonateButton color={"#79DB74"} action={(e: React.MouseEvent) => {this.handlePaymentAmount(100)}}text="$100"/>
                             {/* tslint:disable-next-line */}
-                            <DonateButton action={(e: React.MouseEvent) => {this.handlePaymentAmount(250)}} text="$250"/>
+                            <DonateButton color={"#79DB74"} action={(e: React.MouseEvent) => {this.handlePaymentAmount(250)}} text="$250"/>
 
                             <InputLabelWrapper className="amountInput">
                                 <InputLabel htmlFor="amount">Enter other amount</InputLabel>
