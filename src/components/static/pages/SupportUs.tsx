@@ -47,16 +47,21 @@ margin-bottom:14rem;
 const LoadingModal = styled.div`
 position: absolute;
 background-color: rgba(255, 255, 255, 0.74);
-width: 90%;
-min-height: 82vh;
-max-height: 100%;
+width: 100%;
+max-width: 100vw;
+overflow-x: hidden;
+min-height: 90vh;
 z-index: 3;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-left: 4.8rem;
 outline: 2rem solid rgba(255, 255, 255, 0.74);
 display: none;
+left: 0;
+
+@media (max-width: 400px) {
+    min-height: 120vh;
+}
 `
 
 
@@ -169,21 +174,20 @@ interface ISupportUsState {
 // Perhaps we should add a back button just in case users want to edit something
 
 class SupportUs extends React.Component<any, ISupportUsState> {
-
     constructor(props: {}) {
         super(props)
         this.state = {
             amount: 0,
             page: 0,
             showing: false,
-            display: "none",
+            display: "flex",
             fullName: "",
             email: "",
             phone: "",
             yourInformation: "",
             payment: "",
             thankYou: "",
-            genderValue: "Gender"
+            genderValue: "Gender",
         }
     }
 
@@ -203,13 +207,18 @@ class SupportUs extends React.Component<any, ISupportUsState> {
             yourInformation: "",
             payment: "",
             thankYou: "",
+            genderValue: "Gender",
         })
+
     }
 
     public cancelOtherContent() {
         this.setState({
             page: 0
-        }, () => {this.changeSupportContent()})
+        }, () => {
+            this.changeSupportContent();
+            DonateButton.prototype.ChangeAllDonateButtonColors()
+        })
     }
 
     public nextSupportContent() {
@@ -221,6 +230,7 @@ class SupportUs extends React.Component<any, ISupportUsState> {
     }
 
     public changeSupportContent() {
+        const greenNavBarColor = "#26DE81";
         // tslint:disable-next-line
         switch(this.state.page) {
             case 0:
@@ -228,15 +238,15 @@ class SupportUs extends React.Component<any, ISupportUsState> {
             break;
             case 1: 
             this.changeInsideContent("second");
-            this.setState({yourInformation: "#26DE81"})
+            this.setState({yourInformation: greenNavBarColor})
             break;
             case 2:
             this.changeInsideContent("third");
-            this.setState({payment: "#26DE81"})
+            this.setState({payment: greenNavBarColor})
             break;
             case 3:
             this.changeInsideContent("fourth");
-            this.setState({thankYou: "#26DE81"})
+            this.setState({thankYou: greenNavBarColor})
             break;
             default:
             alert(this.state.page)
@@ -308,8 +318,6 @@ class SupportUs extends React.Component<any, ISupportUsState> {
         this.setState({
             [e.currentTarget.name]: e.currentTarget.value
         } as { [K in keyof ISupportUsState]: ISupportUsState[K] }, () => {
-            // ts-lint:disable-next-line
-            console.log(this.state.genderValue)
         });
     }
 
@@ -394,8 +402,6 @@ class SupportUs extends React.Component<any, ISupportUsState> {
                                 <option value="Other">Other</option>
                                 <option value="Prefer not to say">Prefer not to say</option>
                             </SelectInput>
-                                {/* tslint:disable-next-line */}
-                                {/* <TextInput required={true} name="gender" onChange={this.handleInputChange.bind(this)} type="text" id="gender" placeholder="Male"/> */}
                             </InputLabelWrapper>
                         </InformationContentWrapper>
 

@@ -33,18 +33,22 @@ export class DonateButton extends React.Component<IDonateButtonProps, any> {
     };
   }
 
-  public changeDonateButtonColor(clickedButton?:any) {
+  public ChangeAllDonateButtonColors() {
     document.querySelectorAll("#donateButton").forEach(button=> {
       (button as HTMLElement).style.backgroundColor="#79DB74"
     })
-    
+    return;
+  }
+
+  public changeSingleDonateButtonColor(clickedButton?:any) {
+    this.ChangeAllDonateButtonColors()
     clickedButton.target.style.backgroundColor="#017501";
   }
 
   public render(){
     return (
       <DonateButtonWrapper style={{backgroundColor: this.props.color || "#d2d2d2" }}  id="donateButton" onClick={(e: React.MouseEvent) => {
-        this.changeDonateButtonColor(e)
+        this.changeSingleDonateButtonColor(e)
         // tslint:disable-next-line
         if(this.props.action) {this.props.action(e)}
       }}>
