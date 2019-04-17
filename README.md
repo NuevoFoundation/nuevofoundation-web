@@ -96,4 +96,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Contributing
 
-Please see our [Contributing Guide](.github/CONTRIBUTING.md)
+Please see our [Contributing Guide](/CONTRIBUTING.md)

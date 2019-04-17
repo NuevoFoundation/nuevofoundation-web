@@ -2,13 +2,28 @@ import { Const } from "../Const";
 import { HttpClient } from "./HttpClient";
 
 export class WordpressService {
-    private headers = {};
+  private headers = {};
 
-    public getPosts(): Promise<any> {
-        return HttpClient.get(Const.WordpressEndpoint + '/posts', this.headers);
-    }
+  public getPostsCount(): Promise<any> {
+    return HttpClient.get(
+      `${Const.WordpressEndpoint}/post-counts/post`,
+      this.headers
+    );
+  }
 
-    public getPost(id: string): Promise<any> {
-        return HttpClient.get(Const.WordpressEndpoint + `/posts/${id}`, this.headers);
-    }
+  public getPublishedPosts(page: number): Promise<any> {
+    return HttpClient.get(
+      `${Const.WordpressEndpoint}/posts?number=${
+        Const.BlogPageSize
+      }&page=${page}&status=publish`,
+      this.headers
+    );
+  }
+
+  public getPost(id: string): Promise<any> {
+    return HttpClient.get(
+      Const.WordpressEndpoint + `/posts/${id}`,
+      this.headers
+    );
+  }
 }

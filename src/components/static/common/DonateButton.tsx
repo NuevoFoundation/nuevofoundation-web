@@ -1,18 +1,18 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
 const DonateButtonWrapper = styled.button`
   height: 5.9rem;
   width: 13.8rem;
   font-size: 2rem;
   font-weight: bold;
-  font-family: 'Lato', sans-serif;
-  background-color: #79DB74;
   border: 0 #79DB74 solid;
   border-radius: .4rem;
+  color: black;
+  font-family: "Sergoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #d2d2d2;
   cursor: pointer;
   text-align: center;
-  color: black;
 
   &:focus {
     outline: 0;
@@ -28,8 +28,8 @@ export class DonateButton extends React.Component<IDonateButtonProps, any> {
   constructor(props: IDonateButtonProps) {
     super(props);
     this.state = {
-      text: ''
-    }
+      text: ""
+    };
   }
 
   public changeDonateButtonColor(clickedButton?:any) {
