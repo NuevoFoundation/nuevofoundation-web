@@ -64,10 +64,7 @@ const NavIcon = styled.span`
 
 const ButtonWrapper = styled.div`
   float: right;
-  margin-top: 10px;
-  margin-right: 40px;
-  width: 200px;
-  font-weight: bold;
+  padding: 10px 20px 0 0;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -97,12 +94,8 @@ interface IHeaderState {
 // TODO: Implement selected nav item styling
 export class Header extends React.Component<{}, IHeaderState> {
   public navItems: INavItem[] = [
-    /* {
-            dropdown: false,
-            link: 'what-we-do',
-            text: 'What we do',
-        },
-        {
+    /* 
+      {
             dropdown: true,
             link: 'about-us',
             text: 'About Us',
@@ -117,6 +110,11 @@ export class Header extends React.Component<{}, IHeaderState> {
             link: '/blog',
             text: 'Blog',
         },*/
+    {
+      dropdown: false,
+      link: 'what-we-do',
+      text: 'What we do',
+    },
     {
       dropdown: false,
       link: "/faq",
@@ -199,19 +197,15 @@ export class Header extends React.Component<{}, IHeaderState> {
                 <NavLogo src={NuevoFoundationLogo} height={"60px"} />
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
-              <a
-                href={Const.PayPalDonatePage}
-                style={{ textDecoration: "none" }}
-              >
-                <ButtonWrapper>
-                  <ButtonCta
-                    text={"DONATE"}
-                    backgroundColor={"#FFFFFF"}
-                    textColor={"#000000"}
-                    border={"4px solid #fcca13"}
-                  />
-                </ButtonWrapper>
-              </a>
+              <ButtonWrapper>
+                <ButtonCta
+                  text={"DONATE"}
+                  backgroundColor={"#FFFFFF"}
+                  textColor={"#000000"}
+                  border={"4px solid #fcca13"}
+                  linkTo={Const.PayPalDonatePage!}
+                />
+              </ButtonWrapper>
             </HeaderWrapper>
           </Col>
 

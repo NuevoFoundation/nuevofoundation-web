@@ -1,7 +1,6 @@
 import Collapse from "@material-ui/core/Collapse";
 import * as React from "react";
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ButtonCta } from "./static/common/ButtonCta";
 
@@ -141,19 +140,15 @@ export class CollapseItem extends React.Component<
           <Row>
             <Col xs={4}>
               {this.props.btn && (
-                <Link
-                  to={this.props.btnLink}
-                  style={{ textDecoration: "none" }}
-                >
-                  <ButtonCtaWrapper>
-                    <ButtonCta
-                      text={this.props.btnContent}
-                      backgroundColor={"#FFFFFF"}
-                      textColor={"#000000"}
-                      border={"4px solid #000000"}
-                    />
-                  </ButtonCtaWrapper>
-                </Link>
+                <ButtonCtaWrapper>
+                  <ButtonCta
+                    text={this.props.btnContent}
+                    backgroundColor={"#FFFFFF"}
+                    textColor={"#000000"}
+                    border={"4px solid #fcca13"}
+                    linkTo={this.props.btnLink}
+                  />
+                </ButtonCtaWrapper>
               )}
             </Col>
           </Row>

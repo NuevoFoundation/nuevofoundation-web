@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import styled from "styled-components";
 import "./App.css";
 import { Post } from "./components/blog/Post";
 import { Footer, Header } from "./components/static/common";
@@ -12,27 +11,27 @@ import {
   SupportUs,
   WhatWeDo
 } from "./components/static/pages";
+import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
 import { Const } from "./Const";
 import ReactGA from 'react-ga';
 
-const AppContainer = styled.div``;
-
 class App extends React.Component {
-    constructor(props: {}) {
-        super(props);
-        if (Const.GoogleAnalyticsTrackingId && Const.GoogleAnalyticsTrackingId.length > 0) {
-            ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
-        }
+  constructor(props: {}) {
+    super(props);
+    if (Const.GoogleAnalyticsTrackingId && Const.GoogleAnalyticsTrackingId.length > 0) {
+      ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
     }
+  }
 
   public render() {
     return (
-      <AppContainer>
+      <React.Fragment>
         <Header />
         <Switch>
           <Route exact={true} path={Const.RootPage} component={Home} />
           <Route exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />
+          <Route exact={true} path={Const.VirtualSessionPage} component={VirtualSessions} />
           <Route exact={true} path={Const.AboutUsPage} component={AboutUs} />
           <Route
             exact={true}
@@ -46,7 +45,7 @@ class App extends React.Component {
           {/* <Route component={NoMatch} /> */}
         </Switch>
         <Footer />
-      </AppContainer>
+      </React.Fragment>
     );
   }
 }
