@@ -1,58 +1,77 @@
 .main-title-faq {
-    font-family: 'Lato', sans-serif;
-    color: #505050;
-    font-size: 36px;
-    padding-top: 30px;
-    padding-bottom: 15px;
-    font-size: 42px;
-    line-height: 1.19;
-    text-align: left;
-    color: #505050;
-} 
+  font-family: "Lato", sans-serif;
+  color: #505050;
+  font-size: 36px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  font-size: 42px;
+  line-height: 1.19;
+  text-align: left;
+  color: #505050;
+}
 
 .title-description {
-    font-family: 'Lato', sans-serif;
-    font-size: 22px;
-    font-weight: normal;
-    padding-top: 15px;
-    padding-bottom: 50px;
+  font-family: "Lato", sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  padding-top: 15px;
+  padding-bottom: 50px;
 }
 
 .category {
-    font-family: 'Lato', sans-serif;
-    font-size: 30px;
-    font-weight:bold;
-    font-weight: normal;
-    display:inline-block;
-    padding-right: 20px;
+  font-family: "Lato", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  font-weight: normal;
+  display: inline-block;
+  padding-right: 20px;
 }
 
 .categoryNotClicked {
-    font-family: 'Lato', sans-serif;
-    font-size: 30px;
-    font-weight: normal;
-    display:inline-block;
-    padding-right: 20px;    
+  font-family: "Lato", sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  display: inline-block;
+  padding-right: 20px;
 }
 
 .question {
-    font-family: 'Lato', sans-serif;
-    font-weight: normal;
-    padding-bottom: 18px;
+  font-family: "Lato", sans-serif;
+  font-weight: normal;
+  padding-bottom: 18px;
 
-    font-size: 24px;
-    line-height: 1.21;
-    text-align: left;
-    color: #505050;
+  font-size: 3rem;
+  line-height: 1.21;
+  text-align: left;
+  color: #505050;
 }
 
 .questiontext {
-    font-family: 'Lato', sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-    padding-bottom: 40px;
-    font-size: 16px;
-    line-height: 1.19;
-    text-align: left;
-    color: #0f0f0f;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  padding-bottom: 40px;
+  font-size: 16px;
+  line-height: 1.19;
+  text-align: left;
+  color: #0f0f0f;
+  max-width: 590px;
+}
+
+.Nuvi {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3rem;
+}
+#Nuvi {
+  height: 350px;
+  width: 310px;
+}
+
+#intro {
+  margin-bottom: 10rem;
+}
+
+.final-question {
+  margin-bottom: 25rem;
 }
