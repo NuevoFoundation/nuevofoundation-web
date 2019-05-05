@@ -14,7 +14,7 @@ Nuevo Foundation UI
 <h3 align="center">Frontend for Nuevo Foundation website</h3>
 
 <p align="center">
-  <a href="https://travis-ci.org/projectunic0rn/mentorship-ui">
+  <a href="https://dev.azure.com/project-unicorn/nuevo/_build/latest?definitionId=3&branchName=master">
     <img src="https://dev.azure.com/project-unicorn/nuevo/_apis/build/status/NuevoFoundation.nuevofoundation-web?branchName=master" alt="Azure DevOps">
   </a>
 
