@@ -10,7 +10,8 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  buildConfiguration: '$(BuildConfig)'
+  stageBuildConfiguration: '$(StageBuildConfig)'
+  productionBuildConfiguration: '$(ProductionBuildConfig)'
 
 steps:
 - task: NodeTool@0
@@ -31,8 +32,8 @@ steps:
   displayName: 'npm run test-ci'
 
 - script: |
-    npm run "$(buildConfiguration)"
-  displayName: 'npm run optimized build'
+    npm run "$(stageBuildConfiguration)"
+  displayName: 'npm run optimized $(stageBuildConfiguration)'
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -45,5 +46,23 @@ steps:
   displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'deploy' 
+    artifactName: 'stage' 
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+
+- script: |
+    npm run "$(productionBuildConfiguration)"
+  displayName: 'npm run optimized $(productionBuildConfiguration)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    contents: '**/build/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'production' 
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
