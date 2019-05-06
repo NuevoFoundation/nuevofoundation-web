@@ -13,7 +13,8 @@ const FaqWrapper = styled.div`
   font-family: "Lato", sans-serif;
 `;
 
-const ContentWrapper = styled.div``;
+const ContentWrapper = styled.div`
+`;
 
 export class Faq extends React.Component {
   constructor(props: {}) {
@@ -32,7 +33,7 @@ export class Faq extends React.Component {
                 <div className="questiontext" id="intro">
                   Nuevo Foundation is a non-profit run by a group of passionate friends that want to help the world’s
                   disadvantaged societies and build solutions that would enable them to have future opportunities.
-                </div>
+                  </div>
               </ContentWrapper>
               <ContentWrapper>
                 <div className="question">What does Nuevo Foundation offer?</div>
