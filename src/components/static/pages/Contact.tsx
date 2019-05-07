@@ -164,7 +164,7 @@ export class Contact extends React.Component<{}, IContactState> {
                 </form>
               </Col>
               <Col xs={12} sm={5} smOffset={1}>
-                <img src={""} />
+                <img src={""} alt="blank"/>
               </Col>
             </Row>
             <Row>

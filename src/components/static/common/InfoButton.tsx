@@ -23,9 +23,6 @@ interface IInfoButtonProps {
 }
 
 export class InfoButton extends React.Component<IInfoButtonProps, {}> {
-  constructor(props: IInfoButtonProps) {
-    super(props);
-  }
 
   public render() {
     return (

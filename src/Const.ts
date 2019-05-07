@@ -7,8 +7,9 @@ export class Const {
   public static BlogPost: string = "/blog/post/:id";
   public static FaqPage: string = "/faq";
   public static ContactPage: string = "/contact";
+  public static SchoolWorkshopPage: string = "/workshops";
+  public static VirtualSessionPage: string = "/virtual-sessions"; // TODO: Update this link to what we do page
 
-  public static VirtualSessionPage: string = "/"; // TODO: Update this link to what we do page
   public static PayPalDonatePage?: string = process.env.REACT_APP_PAYPAL_DONATE;
   public static WordpressEndpoint?: string =
   process.env.REACT_APP_WORDPRESS_ENDPOINT;

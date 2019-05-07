@@ -3,10 +3,10 @@ import { Col, Grid, Image, Row } from "react-bootstrap";
 import Lottie from "react-lottie";
 import styled from "styled-components";
 import { jsonAnimation } from "../../../assets/animations/data";
-import MissionImage1 from "../../../assets/images/1.png";
-import MissionImage2 from "../../../assets/images/2.png";
+import MissionImage1 from "../../../assets/images/home/1.png";
+import MissionImage2 from "../../../assets/images/home/2.png";
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
-import MissionImage3 from "../../../assets/images/3.png";
+import MissionImage3 from "../../../assets/images/home/3.png";
 
 import { Link } from "react-router-dom";
 import RocketIcon from "../../../assets/icons/Icons_white-01.png";
@@ -42,7 +42,7 @@ const MainButtonWrapper = styled.div`
 `;
 
 const DonateSection = styled.div`
-  background-color: #fcc600;
+  background-color: #FCF113;
   display: table;
   height: 396px;
   color: #000000;
@@ -107,11 +107,11 @@ export class Home extends React.Component<{}, IHomeState> {
       iconImage: PersonIcon
     },
     {
-      btn: false,
+      btn: true,
       btnContent: "PARTICIPATE",
       content:
-        "We offer coding workshops locally and Skype in the Classroom sessions around the world. ",
-      link: Const.VirtualSessionPage,
+        "We offer coding workshops locally and virtual sessions around the world. ",
+      link: Const.WhatWeDoPage,
       open: false,
       title: "PARTICIPATE",
       image: MissionImage3,
@@ -254,17 +254,13 @@ export class Home extends React.Component<{}, IHomeState> {
                   Empowering students with knowledge is our goal!!
                 </DonateText>
                 <DonateButtonWrapper>
-                  <a
-                    href={Const.PayPalDonatePage}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <ButtonCta
-                      text={"DONATE"}
-                      backgroundColor={"#fcc600"}
-                      textColor={"#000000"}
-                      border={"3px solid #000000"}
-                    />
-                  </a>
+                  <ButtonCta
+                    text={"Donate"}
+                    backgroundColor={"#FCF113"}
+                    textColor={"#000000"}
+                    border={"3px solid #000000"}
+                    linkTo={Const.PayPalDonatePage!}
+                  />
                 </DonateButtonWrapper>
               </div>
             </DonateSection>

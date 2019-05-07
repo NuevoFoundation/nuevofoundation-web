@@ -22,6 +22,7 @@ export class Footer extends React.Component {
               <div className="social-images">
                 <a
                   target="_blank"
+                  rel="noopener noreferrer"
                   href="https://www.instagram.com/nuevofoundation"
                   className={"footer-pics"}
                 >
@@ -29,6 +30,7 @@ export class Footer extends React.Component {
                 </a>
                 <a
                   target="_blank"
+                  rel="noopener noreferrer"
                   href="https://twitter.com/nuevofoundation"
                   className={"footer-pics"}
                 >
@@ -37,6 +39,7 @@ export class Footer extends React.Component {
 
                 <a
                   target="_blank"
+                  rel="noopener noreferrer"
                   href="https://www.facebook.com/NuevoFoundation"
                   className={"footer-pics"}
                 >
@@ -44,6 +47,7 @@ export class Footer extends React.Component {
                 </a>
                 <a
                   target="_blank"
+                  rel="noopener noreferrer"
                   href="https://www.linkedin.com/company/nuevofoundation"
                   className={"footer-pics"}
                 >
