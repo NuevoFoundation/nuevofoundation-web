@@ -1,6 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
 import "../../../assets/stylesheets/AboutUs.css";
+import {
+    Col,
+    Grid,
+    Row
+} from "react-bootstrap";
 
 const contentHeight = 370;
 
@@ -40,78 +45,71 @@ const BoardWrapper = styled.div`
   height: 370px;
 `;
 
+class TeamMember {
+    name: string;
+    role: string;
+    quote: string;
+    bio: string;
+    img: string;
+
+    constructor(name: string, role: string, quote: string, bio: string, img: string) {
+        this.name = name;
+        this.role = role;
+        this.quote = quote;
+        this.bio = bio;
+        this.img = img;
+    }
+}
+
+
 export class AboutUs extends React.Component {
-  public render(): any {
-    return (
-      <AboutUsWrapper>
-        <QuoteWrapper>
-          <div className="quote-text">
-            "Games shouldn’t only be fun. They should teach or spark an interest
-            in other things." Hideo Kojima
-          </div>
-        </QuoteWrapper>
+    constructor(props: {}) {
+        super(props);
+    }
 
-        <VisionWrapper>
-          <div className="vision-title">Vision</div>
+    teamMemberList() {
+        var Team: TeamMember[] = [
+            {
+                name: "Breatris Mendez Gandica",
+                role: "I am the boss",
+                quote: "Soy la mas cool.",
+                bio: "Bea has been slaying since the beginning of time.",
+                img: "temp img"
+            },
+            {
+                name: "Mollee Jain",
+                role: "I rule",
+                quote: "Education is my jam",
+                bio: "Mollee is smarter than you, but she won't rub it in.",
+                img: "temp img"
+            }
+        ];
 
-          <div className="vision-left-text">
-            <strong>Identifying resource gaps</strong> among
-            <br />
-            underserved communities where
-            <br />
-            <strong>technology</strong> can have an impact.
-          </div>
+        var flag = true;
+        return Team.map(person => (
+       
+            <Row>
+                <Col xs={6} md={4} ><img src={person.img} alt="team member pic" /></Col>
+                <Col xs={12} md={8} >
+                    <h2>{person.name}</h2>
+                    <h3>{person.role}</h3>
+                    <p>{person.bio}</p>
+                </Col>
+            </Row>
+        ));
+    }
 
-          <div className="vision-right-text">
-            Nuevo Foundation is a non‐profit run by a group of passionate
-            friends that want to help the world’s disadvantaged societies and
-            build solutions that would enable them to have future opportunities.
-          </div>
-        </VisionWrapper>
-
-        <VisualWrapper>
-          <div className="visual-visual-element-left">Visual Element</div>
-
-          <div className="visual-right-text">
-            “It is an incredibly exciting time to be in tech but the
-            <br />
-            bar to enter these industries is disproportionately
-            <br />
-            higher for low-income and minority groups.”
-            <br />- By Someone
-          </div>
-        </VisualWrapper>
-
-        <MissionWrapper>
-          <div className="mission-visual-left">Picture or Video</div>
-
-          <div className="mission-title-right">Mission</div>
-
-          <div className="mission-text-right">
-            Identifying resource gaps among underserved communities where
-            technology can have an impact.
-          </div>
-        </MissionWrapper>
-
-        <MessageWrapper>
-          <div className="message-image">jaldj</div>
-          <div className="message-text">
-            We started this foundation as we all realize that there are gaps in
-            the technology industry. We want to encourage, teach, and help girls
-            in early ages to spark their interest in Science, Technology,
-            Engineering, and Math ﴾STEM﴿ by providing multiple curriculum where
-            they can learn the basics of coding regardless of resources.
-          </div>
-        </MessageWrapper>
-
-        <OurTeamWrapper>
-          <div className="our-team-title">Our Team</div>
-        </OurTeamWrapper>
-
-        <BoardWrapper>
-          <div className="board-team-title-one">Board Team Group Title</div>
-        </BoardWrapper>
-      </AboutUsWrapper>
-    );
-  }
+    public render(): any {
+        return (
+            <Grid>
+                <Row>
+                    <Col>
+                        <h1>About Us</h1>
+                    </Col>
+                </Row>
+                    
+                {this.teamMemberList()}
+            </Grid>
+        );
+    }
 }
