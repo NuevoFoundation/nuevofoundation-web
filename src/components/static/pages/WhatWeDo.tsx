@@ -128,7 +128,7 @@ const WhatWeDoDetailTitle = styled.div`
   color: #000000;
 `
 const StyledButton = styled.button`
-  background-color: #FCC600; /* Green */
+  background-color: #FCC600;
   border: none;
   border-radius: 4px;
   color: #000000;
@@ -229,13 +229,13 @@ export class WhatWeDo extends React.Component<{}, WhatWeDoState> {
         <WhatWeDoSection>
           <WhatWeDoTitle>What we do?</WhatWeDoTitle>
           <WhatWeDoItems>
-            <WhatWeDoItem onClick={() => this.toggleWhatWeDoDetails('workshops')}>
-              <img src={workshop5} alt="Nuevo Foundation Workshop" />
-              <WhatWeDoItemTitle>School<br />workshops</WhatWeDoItemTitle>
-            </WhatWeDoItem>
             <WhatWeDoItem onClick={() => this.toggleWhatWeDoDetails('virtualsessions')}>
               <img src={virtualSession5} alt="Nuevo Foundation Workshop" />
               <WhatWeDoItemTitle>Virtual<br />Sessions</WhatWeDoItemTitle>
+            </WhatWeDoItem>
+            <WhatWeDoItem onClick={() => this.toggleWhatWeDoDetails('workshops')}>
+              <img src={workshop5} alt="Nuevo Foundation Workshop" />
+              <WhatWeDoItemTitle>School<br />workshops</WhatWeDoItemTitle>
             </WhatWeDoItem>
           </WhatWeDoItems>
         </WhatWeDoSection>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 const ButtonCtaWrapper = styled.button`
   font-family: "Lato", sans-serif;
 
-  background-color: #FCC600; /* Green */
+  background-color: #FCC600;
   color: #000000;
   border-radius: 4px;
   padding: 11px 56px;
@@ -21,7 +21,7 @@ interface ButtonCtaProp {
   textColor?: string;
   border?: string;
   text?: string;
-  linkTo: string;
+  linkTo?: string;
 }
 
 export class ButtonCta extends React.Component<ButtonCtaProp, {}> {

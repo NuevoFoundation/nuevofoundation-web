@@ -1,14 +1,22 @@
-import { MockWordpressService } from "../mocksServices/MockWordpressService";
-import { WordpressService } from "./WordpressService";
+import {
+  MockWordpressService,
+  MockApiService,
+  MockAuthService
+} from "../mockServices";
+import { WordpressService, ApiService, AuthService } from "./";
 
 export class ServiceResolver {
-  private UseMock: boolean = false;
+  private UseMock: boolean = true;
 
   public WordpressService(): WordpressService | MockWordpressService {
-    if (this.UseMock) {
-      return new MockWordpressService();
-    } else {
-      return new WordpressService();
-    }
+    return this.UseMock ? new MockWordpressService() : new WordpressService();
+  }
+
+  public ApiService(): ApiService | MockApiService {
+    return this.UseMock ? new MockApiService() : new ApiService();
+  }
+
+  public AuthService(): AuthService | MockAuthService {
+    return this.UseMock ? new MockAuthService() : new AuthService();
   }
 }

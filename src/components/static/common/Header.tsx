@@ -5,8 +5,9 @@ import { Col, Grid, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
-import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
+import { AuthenticationModal } from "../../registration/AuthenticationModal";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -81,6 +82,11 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+
+const StyledSpan = styled.span`
+  cursor: pointer;
+`;
+
 interface INavItem {
   dropdown: boolean;
   text: string;
@@ -95,21 +101,21 @@ interface IHeaderState {
 export class Header extends React.Component<{}, IHeaderState> {
   public navItems: INavItem[] = [
     /* 
-      {
-            dropdown: true,
-            link: 'about-us',
-            text: 'About Us',
-        },
-        {
-            dropdown: false,
-            link: 'support-us',
-            text: 'Support Us',
-        },
-        {
-            dropdown: false,
-            link: '/blog',
-            text: 'Blog',
-        },
+    {
+      dropdown: true,
+      link: 'about-us',
+      text: 'About Us',
+    },
+    {
+      dropdown: false,
+      link: 'support-us',
+      text: 'Support Us',
+    },
+    {
+      dropdown: false,
+      link: '/blog',
+      text: 'Blog',
+    },
     {
       dropdown: false,
       link: 'what-we-do',
@@ -126,12 +132,10 @@ export class Header extends React.Component<{}, IHeaderState> {
       text: "Contact"
     }
   ];
-
   constructor(props: {}) {
     super(props);
-
     this.state = {
-      hamburgerMenuOpen: false
+      hamburgerMenuOpen: false,
     };
   }
 
@@ -146,7 +150,6 @@ export class Header extends React.Component<{}, IHeaderState> {
       return (
         <StyledNavLink key={index} to={navItem.link}>
           <NavItem>
-            {" "}
             {navItem.text}
             {navItem.dropdown && (
               <NavIcon>
@@ -172,7 +175,6 @@ export class Header extends React.Component<{}, IHeaderState> {
           >
             <StyledNavLink to={navItem.link}>
               <SmallNavItem>
-                {" "}
                 {navItem.text}
                 {navItem.dropdown && (
                   <NavIcon>
@@ -198,13 +200,21 @@ export class Header extends React.Component<{}, IHeaderState> {
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
               <ButtonWrapper>
-                <ButtonCta
-                  text={"DONATE"}
-                  backgroundColor={"#FFFFFF"}
-                  textColor={"#000000"}
-                  border={"4px solid #fcca13"}
-                  linkTo={Const.PayPalDonatePage!}
-                />
+                <AuthContext.Consumer>
+                  {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+                    memberAuthenticated ?
+                      <div>Welcome, {memberAuthenticatedName}! | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
+                      :
+                      <AuthenticationModal toggleAuthentication={toggleAuthentication}>
+                        <ButtonCta
+                          text={"REGISTER"}
+                          backgroundColor={"#FFFFFF"}
+                          textColor={"#000000"}
+                          border={"4px solid #fcca13"}
+                        />
+                      </AuthenticationModal>
+                  )}
+                </AuthContext.Consumer>
               </ButtonWrapper>
             </HeaderWrapper>
           </Col>
