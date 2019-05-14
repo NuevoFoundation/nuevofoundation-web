@@ -23,7 +23,8 @@
     "react-lottie": "^1.2.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.0.0",
-    "styled-components": "^3.4.9"
+    "styled-components": "^3.4.9",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "watch": "react-scripts start",
@@ -39,6 +40,7 @@
     "@types/node": "^10.14.1",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
+    "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "@typescript-eslint/parser": "^1.5.0",
     "eslint-config-prettier": "^4.1.0",

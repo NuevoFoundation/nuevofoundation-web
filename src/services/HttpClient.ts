@@ -21,4 +21,15 @@ export class HttpClient {
 
     return HttpClient.makeRequest(request);
   }
+
+  public static post(endpoint: string, body: any, headers = {}): Promise<any> {
+    const request = new Request(endpoint, {
+      body: JSON.stringify(body),
+      headers,
+      method: "POST",
+      mode: "cors"
+    });
+
+    return HttpClient.makeRequest(request);
+  }
 }

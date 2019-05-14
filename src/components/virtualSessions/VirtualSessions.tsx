@@ -3,6 +3,8 @@ import styled from "styled-components";
 import blockOne from "../../assets/images/virtualsessions/1.png";
 import blockTwo from "../../assets/images/virtualsessions/2.png";
 import blockThree from "../../assets/images/virtualsessions/3.png";
+import { IVirtualSession } from "../../models/VirtualSession";
+import { ServiceResolver } from "../../services/ServiceResolver";
 
 
 const VirtualSessionsWrapper = styled.div`
@@ -37,10 +39,56 @@ const SubmitButton = styled.button`
   display: inline-block;
   font-size: 14px;
   border: none;
+
+  :disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
 `;
 
+interface VirtualSessionsState {
+  timePreferenceOne?: string;
+  timePreferenceTwo?: string;
+  timePreferenceThree?: string;
+  submitDisabled?: boolean;
+}
+export class VirtualSessions extends React.Component<{}, VirtualSessionsState> {
+  public apiService = new ServiceResolver().ApiService();
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      timePreferenceOne: undefined,
+      timePreferenceTwo: undefined,
+      timePreferenceThree: undefined,
+      submitDisabled: true
+    }
+  }
 
-export class VirtualSessions extends React.Component {
+  handleDateTimePreferenceChange = (e: any) => {    
+    this.setState({
+      [e.target.name]: e.target.value
+    }, this.handleDisableChange)
+  }
+
+  handleDisableChange = () => {
+    const { timePreferenceOne, timePreferenceTwo, timePreferenceThree } = this.state;
+    const submitDisabled = timePreferenceOne === undefined || timePreferenceTwo === undefined || timePreferenceThree === undefined ? true : false;
+    this.setState({
+      submitDisabled
+    })
+  }
+
+  handleSubmit = async () => {
+    const { timePreferenceOne, timePreferenceTwo, timePreferenceThree } = this.state;
+    const virtualSession: IVirtualSession = {
+      TimePreferenceOne: timePreferenceOne,
+      TimePreferenceTwo: timePreferenceTwo,
+      TimePreferenceThree: timePreferenceThree,
+    }
+    await this.apiService.createVirtualSession(virtualSession);
+  }
+
   public render() {
     return (
       <VirtualSessionsWrapper>
@@ -72,13 +120,13 @@ export class VirtualSessions extends React.Component {
               <div className="col-md-4 col-12">
                 <ul className="list-unstyled">
                   <li >
-                    <img  src={blockOne} alt="Generic placeholder " />
+                    <img src={blockOne} alt="Generic placeholder " />
                     <div >
                       <PreferenceTitle >Primary Preference</PreferenceTitle>
                       Please use this option as your ideal date and time for the virtual session.
                       <br />
                       <br />
-                      <input type="datetime-local" id="meeting-time" name="datetime1" />
+                      <input type="datetime-local" id="meeting-time" name="timePreferenceOne" onChange={this.handleDateTimePreferenceChange} />
                     </div>
                   </li>
                 </ul>
@@ -86,13 +134,13 @@ export class VirtualSessions extends React.Component {
               <div className="col-md-4 col-12">
                 <ul className="list-unstyled">
                   <li >
-                    <img  src={blockTwo} alt="Generic placeholder " />
+                    <img src={blockTwo} alt="Generic placeholder " />
                     <div >
                       <PreferenceTitle >Secondary Preference</PreferenceTitle>
                       Please use this date as your second optional choice for a virtual session.
 				              <br />
                       <br />
-                      <input type="datetime-local" id="meeting-time" name="datetime2" />
+                      <input type="datetime-local" id="meeting-time" name="timePreferenceTwo" onChange={this.handleDateTimePreferenceChange} />
                     </div>
                   </li>
                 </ul>
@@ -100,13 +148,13 @@ export class VirtualSessions extends React.Component {
               <div className="col-md-4 col-12">
                 <ul className="list-unstyled">
                   <li >
-                    <img  src={blockThree} alt="Generic placeholder " />
+                    <img src={blockThree} alt="Generic placeholder " />
                     <div >
                       <PreferenceTitle >Third Preference</PreferenceTitle>
                       Please use this date as your third optional choice for a virtual session.
                       <br />
                       <br />
-                      <input type="datetime-local" id="meeting-time" name="datetime2" />
+                      <input type="datetime-local" id="meeting-time" name="timePreferenceThree" onChange={this.handleDateTimePreferenceChange} />
                     </div>
                   </li>
                 </ul>
@@ -121,7 +169,7 @@ export class VirtualSessions extends React.Component {
                 <p>To complete registration for a virtual session click the button below, we will reach out to our virtual session STEM field experts! You will hear from us soon!</p>
                 <input type="hidden" name="school-name" placeholder="Gray Middle School" />
                 <input type="hidden" name="school-email" placeholder="jeisaacs@microsoft.com" />
-                <SubmitButton type="submit" >Submit Virtual Session Request</SubmitButton>
+                <SubmitButton type="submit" disabled={this.state.submitDisabled} onClick={this.handleSubmit}>Submit Virtual Session Request</SubmitButton>
               </div>
             </div>
           </div>
