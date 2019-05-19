@@ -4,11 +4,11 @@ import { WordpressService, ApiService } from "./";
 export class ServiceResolver {
   private UseMock: boolean = true;
 
-  public WordpressService(): MockWordpressService | WordpressService {
+  public WordpressService(): WordpressService | MockWordpressService {
     return this.UseMock ? new MockWordpressService() : new WordpressService();
   }
 
-  public ApiService(): MockApiService | ApiService {
+  public ApiService(): ApiService| MockApiService {
     return this.UseMock ? new MockApiService() : new ApiService();
   }
 }

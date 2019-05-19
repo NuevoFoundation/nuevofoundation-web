@@ -31,7 +31,7 @@ class App extends React.Component {
         <Switch>
           <Route exact={true} path={Const.RootPage} component={Home} />
           <Route exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />
-          <Route exact={true} path={Const.VirtualSessionPage} component={VirtualSessions} />
+          <Route path={Const.VirtualSessionPage} component={VirtualSessions} />
           <Route exact={true} path={Const.AboutUsPage} component={AboutUs} />
           <Route
             exact={true}

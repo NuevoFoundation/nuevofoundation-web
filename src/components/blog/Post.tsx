@@ -3,7 +3,7 @@ import { Col, Grid, Row } from "react-bootstrap";
 import { RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import { ServiceResolver } from "../../services/ServiceResolver";
-import { DateTimeFormattingHelper } from "../helpers/DateTimeFormattingHelper";
+import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
 
 interface PostParams {
   id: string;
@@ -80,7 +80,7 @@ export class Post extends React.Component<
               <BlogPostItem>
                 <BlogPostTitle>{post.title}</BlogPostTitle>
                 <span>
-                  {DateTimeFormattingHelper.FormatToMonthDayYear(post.date)}
+                  {DateFormattingHelper.formatToMonthDayYear(post.date)}
                 </span>
                 <BlogPostContent
                   dangerouslySetInnerHTML={{ __html: post.content }}

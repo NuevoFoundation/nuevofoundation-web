@@ -5,6 +5,7 @@ export class VirtualSession {
   public TimePreferenceOne?: string;
   public TimePreferenceTwo?: string;
   public TimePreferenceThree?: string;
+  public TimePreferenceSelected?: string;
 
   constructor() {
     
@@ -12,10 +13,11 @@ export class VirtualSession {
 }
 
 export interface IVirtualSession {
-  Id?: string; 
-  EducatorId?: string;
-  VolunteerId?: string;
-  TimePreferenceOne?: string;
-  TimePreferenceTwo?: string;
-  TimePreferenceThree?: string;
+  id?: string; 
+  educatorId?: string;
+  volunteerId?: string;
+  timePreferenceOne?: string;
+  timePreferenceTwo?: string;
+  timePreferenceThree?: string;
+  timePreferenceSelected?: string;
 }

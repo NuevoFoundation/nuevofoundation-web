@@ -128,7 +128,7 @@ const WhatWeDoDetailTitle = styled.div`
   color: #000000;
 `
 const StyledButton = styled.button`
-  background-color: #FCC600; /* Green */
+  background-color: #FCC600;
   border: none;
   border-radius: 4px;
   color: #000000;
