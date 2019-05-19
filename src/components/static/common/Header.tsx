@@ -109,12 +109,12 @@ export class Header extends React.Component<{}, IHeaderState> {
             dropdown: false,
             link: '/blog',
             text: 'Blog',
-        },*/
+        },
     {
       dropdown: false,
       link: 'what-we-do',
       text: 'What we do',
-    },
+    },*/
     {
       dropdown: false,
       link: "/faq",
