@@ -1,24 +1,22 @@
+
+
 .quote-text{
-    font-style: Segoe UI;
     font-size: 36px;
     font-weight: normal;
 }
 
 .vision-title{
-    font-style: Segoe UI;
     font-size: 24px;
     font-weight: bold;
 }
 
 .vision-left-text{
-    font-style: Segoe UI;
     font-size: 36px;
     font-weight: normal;
     float: left;
 }
 
 .vision-right-text{
-    font-style: Segoe UI;
     font-size: 24px;
     font-weight: normal;
     float: right;
@@ -35,7 +33,6 @@
 }
 
 .visual-right-text{
-    font-style: Segoe UI;
     font-size: 30px;
     font-weight: normal;
     float: right;
@@ -51,21 +48,18 @@
 }
 
 .mission-title-right{
-    font-style: Segoe UI;
     font-size: 30px;
     font-weight: normal;
     float: right;
 }
 
 .mission-text-right{
-    font-style: Segoe UI;
     font-size: 30px;
     font-weight: normal;
     float: right;
 }
 
 .message-text{
-    font-style: Segoe UI;
     font-size: 28px;
     font-weight: normal;
     text-align: center;

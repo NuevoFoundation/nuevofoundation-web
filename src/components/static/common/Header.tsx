@@ -72,10 +72,7 @@ const StyledNavLink = styled(NavLink)`
   font-weight: bold;
   text-decoration: none;
 
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
+
   &:active {
     text-decoration: none;
   }
@@ -94,12 +91,13 @@ interface IHeaderState {
 // TODO: Implement selected nav item styling
 export class Header extends React.Component<{}, IHeaderState> {
   public navItems: INavItem[] = [
-    /* 
+    
       {
-            dropdown: true,
+            dropdown: false,
             link: 'about-us',
-            text: 'About Us',
-        },
+            text: 'Our team',
+      },
+  /*
         {
             dropdown: false,
             link: 'support-us',
