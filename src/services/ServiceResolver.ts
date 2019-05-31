@@ -8,7 +8,7 @@ export class ServiceResolver {
     return this.UseMock ? new MockWordpressService() : new WordpressService();
   }
 
-  public ApiService(): ApiService| MockApiService {
+  public ApiService(): ApiService | MockApiService {
     return this.UseMock ? new MockApiService() : new ApiService();
   }
 }

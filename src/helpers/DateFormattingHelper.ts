@@ -10,20 +10,25 @@ export class DateFormattingHelper {
   }
 
   public static formatToTimeDay(time?: string): string {
-    if(time === undefined){
-      return '';
+    if (time === undefined) {
+      return "";
     }
-    const options = { weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: true };
-    const date = new Date(time).toLocaleDateString('en-us', options);
+    const options = {
+      weekday: "short",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    };
+    const date = new Date(time).toLocaleDateString("en-us", options);
     return date;
   }
 
   public static formatToMonthDay(time?: string): string {
-    if(time === undefined){
-      return '';
+    if (time === undefined) {
+      return "";
     }
-    const options = { month: 'short', day: 'numeric'};
-    const date = new Date(time).toLocaleDateString('en-us', options);
+    const options = { month: "short", day: "numeric" };
+    const date = new Date(time).toLocaleDateString("en-us", options);
     return date;
   }
 }

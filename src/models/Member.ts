@@ -1,11 +1,9 @@
 export class Member {
-  public Id?: string; 
-  
-  constructor() {
-    
-  }
+  public Id?: string;
+
+  public constructor() {}
 }
 
-export interface IMember {
-  Id?: string; 
+export interface MemberInterface {
+  Id?: string;
 }

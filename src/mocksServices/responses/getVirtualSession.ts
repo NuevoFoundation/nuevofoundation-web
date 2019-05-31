@@ -1,6 +1,6 @@
-import { IVirtualSession } from "../../models/VirtualSession";
+import { VirtualSessionInterface } from "../../models/VirtualSession";
 
-export const getVirtualSession: IVirtualSession = {
+export const getVirtualSession: VirtualSessionInterface = {
   id: "93b2d860-df81-4688-aaa4-23b4e9da0f00",
   educatorId: "93b2d860-df81-4688-aaa4-23b4e9da0f01",
   volunteerId: "93b2d860-df81-4688-aaa4-23b4e9da0f02",

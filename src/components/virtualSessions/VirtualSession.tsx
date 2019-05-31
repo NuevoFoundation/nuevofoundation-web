@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { RouteComponentProps } from "react-router-dom";
-import { IVirtualSession } from "../../models/VirtualSession";
+import { VirtualSessionInterface } from "../../models/VirtualSession";
 import styled, { StyledFunction } from "styled-components";
 import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
 
@@ -95,7 +95,7 @@ interface IVirtualSessionProps extends RouteComponentProps<IVirtualSessionParams
 }
 
 interface IVirtualSessionState {
-  virtualSession?: IVirtualSession;
+  virtualSession?: VirtualSessionInterface;
   timePreferences?: string[];
   preferenceSelected: number;
   virtualSessionValid: boolean;

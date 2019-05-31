@@ -3,7 +3,7 @@ import styled from "styled-components";
 import blockOne from "../../assets/images/virtualsessions/1.png";
 import blockTwo from "../../assets/images/virtualsessions/2.png";
 import blockThree from "../../assets/images/virtualsessions/3.png";
-import { IVirtualSession } from "../../models/VirtualSession";
+import { VirtualSessionInterface } from "../../models/VirtualSession";
 import { ServiceResolver } from "../../services/ServiceResolver";
 
 
@@ -82,7 +82,7 @@ export class NewVirtualSession extends React.Component<{}, NewVirtualSessionStat
 
   handleSubmit = async () => {
     const { timePreferenceOne, timePreferenceTwo, timePreferenceThree } = this.state;
-    const virtualSession: IVirtualSession = {
+    const virtualSession: VirtualSessionInterface = {
       timePreferenceOne: timePreferenceOne,
       timePreferenceTwo: timePreferenceTwo,
       timePreferenceThree: timePreferenceThree,

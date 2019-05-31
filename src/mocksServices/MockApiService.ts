@@ -1,20 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IVirtualSession } from "../models/VirtualSession";
-import uuid  from 'uuid/v1';
+import { VirtualSessionInterface } from "../models/VirtualSession";
+import uuid from "uuid/v1";
 import { getVirtualSession } from "./responses/getVirtualSession";
 
 export class MockApiService {
-  public getVirtualSession(id: string): Promise<IVirtualSession> {
+  public getVirtualSession(id: string): Promise<VirtualSessionInterface> {
     getVirtualSession.id = id;
     return Promise.resolve(getVirtualSession);
   }
 
-  public createVirtualSession(virtualSession: IVirtualSession): Promise<IVirtualSession> {
+  public createVirtualSession(
+    virtualSession: VirtualSessionInterface
+  ): Promise<VirtualSessionInterface> {
     virtualSession.id = uuid();
     return Promise.resolve(virtualSession);
   }
 
-  public updateVirtualSession(id: string, virtualSession: IVirtualSession): Promise<IVirtualSession> {
+  public updateVirtualSession(
+    id: string,
+    virtualSession: VirtualSessionInterface
+  ): Promise<VirtualSessionInterface> {
     virtualSession.id = id;
     return Promise.resolve(virtualSession);
   }
