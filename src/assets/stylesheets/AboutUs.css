@@ -64,3 +64,38 @@
     font-weight: normal;
     text-align: center;
 }
+
+
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes revealLine {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes typeIt {
+    0% {
+        top: 0;
+        height: 2em;
+    }
+
+    100% {
+        top: -60em;
+        height: 82em;
+    }
+}

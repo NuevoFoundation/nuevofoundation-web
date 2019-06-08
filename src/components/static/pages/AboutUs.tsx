@@ -34,12 +34,18 @@ const Header = styled.div`
     background-position:center;
     background-size:cover;
     box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
-    
     padding: 300px;
+
+`;
+
+const HeaderText = styled.div`
+       
     text-align: center;
     color: white;
     font-size: 100px;
-`;
+    opacity: 0;
+    animation: fade-in-right ease 2s forwards;
+`
 
 const Background = styled.div`
   background-repeat: none;
@@ -204,7 +210,9 @@ export class AboutUs extends React.Component {
         return (
             
             <Background>
-                <Header><p>Our Team</p></Header>
+                <Header>
+                    <HeaderText>Our Team</HeaderText>
+                </Header>
                 <Grid>
 
                     {this.teamMemberList()}
