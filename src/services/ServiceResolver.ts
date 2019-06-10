@@ -1,5 +1,5 @@
-import { MockWordpressService, MockApiService } from "../mocksServices";
-import { WordpressService, ApiService } from "./";
+import { MockWordpressService, MockApiService, MockAuthService } from "../mockServices";
+import { WordpressService, ApiService, AuthService } from "./";
 
 export class ServiceResolver {
   private UseMock: boolean = true;
@@ -10,5 +10,9 @@ export class ServiceResolver {
 
   public ApiService(): ApiService | MockApiService {
     return this.UseMock ? new MockApiService() : new ApiService();
+  }
+
+  public AuthService(): AuthService | MockAuthService {
+    return this.UseMock ? new MockAuthService() : new AuthService();
   }
 }

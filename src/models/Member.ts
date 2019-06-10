@@ -1,9 +1,19 @@
-export class Member {
-  public Id?: string;
+import { ServiceResolver } from "../services/ServiceResolver";
 
-  public constructor() {}
+export class Member {
+  public apiService = new ServiceResolver().ApiService();
+  public Id?: string;
+  public FullName?: string;
+
+  public constructor(id: string) {
+    this.apiService.getMember(id).then(member => {
+      this.Id = member.id;
+      this.FullName = member.fullName;
+    });
+  }
 }
 
 export interface MemberInterface {
-  Id?: string;
+  id?: string;
+  fullName?: string;
 }

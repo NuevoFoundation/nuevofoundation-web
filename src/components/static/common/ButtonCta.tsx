@@ -21,7 +21,7 @@ interface ButtonCtaProp {
   textColor?: string;
   border?: string;
   text?: string;
-  linkTo: string;
+  linkTo?: string;
 }
 
 export class ButtonCta extends React.Component<ButtonCtaProp, {}> {

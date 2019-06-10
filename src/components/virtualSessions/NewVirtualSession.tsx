@@ -5,6 +5,9 @@ import blockTwo from "../../assets/images/virtualsessions/2.png";
 import blockThree from "../../assets/images/virtualsessions/3.png";
 import { VirtualSessionInterface } from "../../models/VirtualSession";
 import { ServiceResolver } from "../../services/ServiceResolver";
+import { SessionStorageHelper } from "../../helpers/SessionStorageHelper";
+import { JwtTokenHelper } from "../../helpers/JwtTokenHelper";
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 const VirtualSessionsWrapper = styled.div`
@@ -66,32 +69,46 @@ export class NewVirtualSession extends React.Component<{}, NewVirtualSessionStat
     }
   }
 
-  handleDateTimePreferenceChange = (e: any) => {    
+  handleDateTimePreferenceChange = (e: any) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: new Date(e.target.value).toISOString()
     }, this.handleDisableChange)
   }
 
   handleDisableChange = () => {
     const { timePreferenceOne, timePreferenceTwo, timePreferenceThree } = this.state;
-    const submitDisabled = timePreferenceOne === undefined || timePreferenceTwo === undefined || timePreferenceThree === undefined ? true : false;
+    const submitDisabled = timePreferenceOne === undefined || timePreferenceTwo === undefined || timePreferenceThree === undefined;
     this.setState({
       submitDisabled
     })
   }
 
   handleSubmit = async () => {
+    const educatorId = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
     const { timePreferenceOne, timePreferenceTwo, timePreferenceThree } = this.state;
     const virtualSession: VirtualSessionInterface = {
       timePreferenceOne: timePreferenceOne,
       timePreferenceTwo: timePreferenceTwo,
       timePreferenceThree: timePreferenceThree,
-      educatorId: "91969683-9613-4f7c-b72e-81cf401ef963" // TODO: replace with authenticated educator
+      educatorId: educatorId
     }
-    await this.apiService.createVirtualSession(virtualSession);
+    try {
+      await this.apiService.createVirtualSession(virtualSession);
+      this.setState({
+        timePreferenceOne: undefined,
+        timePreferenceTwo: undefined,
+        timePreferenceThree: undefined,
+        submitDisabled: true
+      })
+    }
+    catch {
+
+    }
   }
 
   public render() {
+    const { submitDisabled } = this.state;
+
     return (
       <VirtualSessionsWrapper>
         <section>
@@ -169,9 +186,18 @@ export class NewVirtualSession extends React.Component<{}, NewVirtualSessionStat
             <div className="row">
               <div className="col-12 text-center">
                 <p>To complete registration for a virtual session click the button below, we will reach out to our virtual session STEM field experts! You will hear from us soon!</p>
-                <input type="hidden" name="school-name" placeholder="Gray Middle School" />
-                <input type="hidden" name="school-email" placeholder="jeisaacs@microsoft.com" />
-                <SubmitButton type="submit" disabled={this.state.submitDisabled} onClick={this.handleSubmit}>Submit Virtual Session Request</SubmitButton>
+                <AuthContext.Consumer>
+                  {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+                    <React.Fragment>
+                      <SubmitButton type="submit" disabled={submitDisabled || !memberAuthenticated} onClick={this.handleSubmit}>Submit Virtual Session Request</SubmitButton>
+                      <br />
+                      <br />
+                      {!memberAuthenticated &&
+                        <div>Sign in to your Nuevo Foundation account before submitting a request for a virtual session.</div>
+                      }
+                    </React.Fragment>
+                  )}
+                </AuthContext.Consumer>
               </div>
             </div>
           </div>

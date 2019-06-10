@@ -4,6 +4,9 @@ import { RouteComponentProps } from "react-router-dom";
 import { VirtualSessionInterface } from "../../models/VirtualSession";
 import styled, { StyledFunction } from "styled-components";
 import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
+import { SessionStorageHelper } from "../../helpers/SessionStorageHelper";
+import { JwtTokenHelper } from "../../helpers/JwtTokenHelper";
+import { AuthContext } from '../../contexts/AuthContext';
 
 const PageWrapper = styled.div`
   font-family: "Lato", sans-serif;
@@ -99,6 +102,7 @@ interface IVirtualSessionState {
   timePreferences?: string[];
   preferenceSelected: number;
   virtualSessionValid: boolean;
+  actionButtonText: string;
 }
 
 export class VirtualSession extends React.Component<IVirtualSessionProps, IVirtualSessionState> {
@@ -109,7 +113,8 @@ export class VirtualSession extends React.Component<IVirtualSessionProps, IVirtu
       virtualSession: undefined,
       timePreferences: undefined,
       preferenceSelected: 0,
-      virtualSessionValid: true
+      virtualSessionValid: true,
+      actionButtonText: 'Confirm'
     }
   }
 
@@ -131,14 +136,32 @@ export class VirtualSession extends React.Component<IVirtualSessionProps, IVirtu
   }
 
   public handleConfirmClick = async () => {
+    const memberNotPresent = SessionStorageHelper.GetJwt()! === undefined;
+    if (memberNotPresent) {
+      return;
+    }
+
+    const volunteerId = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
+
     const { virtualSession, timePreferences, preferenceSelected } = this.state;
-    virtualSession!.volunteerId = "bd890412-f3a6-446f-853b-c3d75e20ebc4"; // TODO: Replace with authenticated user
+    virtualSession!.volunteerId = volunteerId;
     virtualSession!.timePreferenceSelected = timePreferences![preferenceSelected];
-    await this.apiService.updateVirtualSession(this.props.match.params.id, virtualSession!);
+
+    try {
+      await this.apiService.updateVirtualSession(this.props.match.params.id, virtualSession!);
+      this.setState({
+        virtualSessionValid: false,
+        actionButtonText: 'Confirmed'
+      })
+    }
+    catch {
+      // TODO: Catch and display validation error message
+    }
   }
 
+
   public render() {
-    const { virtualSession, virtualSessionValid } = this.state;
+    const { virtualSession, virtualSessionValid, actionButtonText } = this.state;
     const timePreferences = virtualSession === undefined ? undefined : [virtualSession.timePreferenceOne, virtualSession.timePreferenceTwo, virtualSession.timePreferenceThree]
     return (
       <React.Fragment>
@@ -158,16 +181,23 @@ export class VirtualSession extends React.Component<IVirtualSessionProps, IVirtu
                 </TimePreference>
               })}
             </TimePreferences>
-            <ConfirmSection>
-              <ConfirmButton disabled={!virtualSessionValid} onClick={this.handleConfirmClick}>Confirm</ConfirmButton>
-            </ConfirmSection>
-            {!virtualSessionValid ? 
-              <div>
-                This virtual session has already been confirmed by another volunteer.
-              </div>
-              :
-              <div>Only confirm if you are certain you can participate in the virtual session.</div>
-            }
+            <AuthContext.Consumer>
+              {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+                <React.Fragment>
+                  <ConfirmSection>
+                    <ConfirmButton disabled={!virtualSessionValid || !memberAuthenticated} onClick={this.handleConfirmClick}>{actionButtonText}</ConfirmButton>
+                  </ConfirmSection>
+                  {memberAuthenticated ?
+                    !virtualSessionValid ?
+                      <div>This virtual session has already been confirmed by another volunteer.</div>
+                      :
+                      <div>Only confirm if you are certain you can participate in the virtual session.</div>
+                    :
+                    <div>Sign into your Nuevo Foundation volunteer account before confirming this virtual session.</div>
+                  }
+                </React.Fragment>
+              )}
+            </AuthContext.Consumer>
           </PageWrapper >
         }
       </React.Fragment>

@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { VirtualSessionInterface } from "../models/VirtualSession";
 import uuid from "uuid/v1";
-import { getVirtualSession } from "./responses/getVirtualSession";
+import { getVirtualSession, getMember } from "./responses";
+import { MemberInterface } from "../models/Member";
 
 export class MockApiService {
+  public getMember(id: string): Promise<MemberInterface> {
+    getMember.id = id;
+    return Promise.resolve(getMember);
+  }
+
   public getVirtualSession(id: string): Promise<VirtualSessionInterface> {
     getVirtualSession.id = id;
     return Promise.resolve(getVirtualSession);

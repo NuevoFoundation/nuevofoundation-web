@@ -1,12 +1,23 @@
 import { Const } from "../Const";
 import { HttpClient } from "./HttpClient";
 import { VirtualSessionInterface } from "../models/VirtualSession";
+import { SessionStorageHelper } from "../helpers/SessionStorageHelper";
+import { MemberInterface } from "../models/Member";
+import { memberAuthenticated } from "../contexts/AuthContext";
 
 export class ApiService {
   private headers = {
     Accept: "application/json",
-    "Content-Type": "application/json; charset=utf-8"
+    "Content-Type": "application/json; charset=utf-8",
+    Authorization: `Bearer ${this.getJwtToken()}`
   };
+
+  public getMember(memberId: string): Promise<MemberInterface> {
+    return HttpClient.get(
+      `${Const.ApiEndpoint}/members/${memberId}`,
+      this.headers
+    );
+  }
 
   public getVirtualSession(
     virtualSessionId: string
@@ -36,5 +47,13 @@ export class ApiService {
       virtualSession,
       this.headers
     );
+  }
+
+  private getJwtToken(): string {
+    let token = "";
+    if (memberAuthenticated) {
+      token = SessionStorageHelper.GetJwt()!.token;
+    }
+    return token;
   }
 }

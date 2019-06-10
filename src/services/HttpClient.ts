@@ -1,9 +1,14 @@
+import { AuthHeaderHelper } from "../helpers/AuthHeaderHelper";
+
 export class HttpClient {
   public static async makeRequest(request: Request): Promise<any> {
+    await AuthHeaderHelper.validateAuthorizationHeader(request);
     const response = await fetch(request);
 
     if (!response.ok && response.type) {
-      throw new Error(response.statusText);
+      let text = await response.text();
+      text = text ? JSON.parse(text) : {};
+      return Promise.reject(text);
     }
 
     const text = await response.text();

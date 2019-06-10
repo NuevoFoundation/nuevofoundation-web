@@ -10,6 +10,7 @@ export class Const {
   public static SchoolWorkshopPage: string = "/workshops";
   public static VirtualSessionPage: string = "/virtual-sessions"; 
   public static VirtualSession: string = "/virtual-sessions/:id";
+  public static MembersAccount: string = "/members/:id";
 
   public static PayPalDonatePage?: string = process.env.REACT_APP_PAYPAL_DONATE;
   public static WordpressEndpoint?: string =
