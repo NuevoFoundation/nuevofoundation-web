@@ -7,6 +7,7 @@ import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
+import { render } from "react-dom";
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -94,36 +95,30 @@ interface IHeaderState {
 // TODO: Implement selected nav item styling
 export class Header extends React.Component<{}, IHeaderState> {
   public navItems: INavItem[] = [
-    /* 
-      {
-            dropdown: true,
-            link: 'about-us',
-            text: 'About Us',
-        },
-        {
-            dropdown: false,
-            link: 'support-us',
-            text: 'Support Us',
-        },
-        {
-            dropdown: false,
-            link: '/blog',
-            text: 'Blog',
-        },
     {
       dropdown: false,
-      link: 'what-we-do',
-      text: 'What we do',
-    },*/
+      link: "what-we-do",
+      text: "What We Do"
+    },
     {
-      dropdown: false,
-      link: "/faq",
-      text: "FAQ"
+      dropdown: true,
+      link: "about-us",
+      text: "About Us"
     },
     {
       dropdown: false,
-      link: "/contact",
-      text: "Contact"
+      link: "support-us",
+      text: "Support Us"
+    },
+    {
+      dropdown: false,
+      link: "connect",
+      text: "Connect"
+    },
+    {
+      dropdown: false,
+      link: "/blog",
+      text: "Blog"
     }
   ];
 
@@ -163,13 +158,7 @@ export class Header extends React.Component<{}, IHeaderState> {
     return this.navItems.map((navItem: INavItem, index: number) => {
       return (
         <Row key={index}>
-          <Col
-            xs={4}
-            xsOffset={4}
-            smHidden={true}
-            mdHidden={true}
-            lgHidden={true}
-          >
+          <Col xs={4} xsOffset={4} smHidden={true} mdHidden={true} lgHidden={true}>
             <StyledNavLink to={navItem.link}>
               <SmallNavItem>
                 {" "}
@@ -230,9 +219,7 @@ export class Header extends React.Component<{}, IHeaderState> {
             </Row>
           </Col>
         </Row>
-        {this.state.hamburgerMenuOpen && (
-          <SmallNavList> {this.renderSmallNavItems()} </SmallNavList>
-        )}
+        {this.state.hamburgerMenuOpen && <SmallNavList> {this.renderSmallNavItems()} </SmallNavList>}
       </Grid>
     );
   }

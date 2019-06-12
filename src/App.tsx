@@ -3,18 +3,12 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Post } from "./components/blog/Post";
 import { Footer, Header } from "./components/static/common";
-import {
-  AboutUs,
-  Contact,
-  Faq,
-  Home,
-  SupportUs,
-  WhatWeDo
-} from "./components/static/pages";
+import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from "./components/static/pages";
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
 import { Const } from "./Const";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
+import MobileNav from "./components/static/common/MobileNav";
 
 class App extends React.Component {
   constructor(props: {}) {
@@ -28,16 +22,13 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
+        <MobileNav />
         <Switch>
           <Route exact={true} path={Const.RootPage} component={Home} />
           <Route exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />
           <Route exact={true} path={Const.VirtualSessionPage} component={VirtualSessions} />
           <Route exact={true} path={Const.AboutUsPage} component={AboutUs} />
-          <Route
-            exact={true}
-            path={Const.SupportUsPage}
-            component={SupportUs}
-          />
+          <Route exact={true} path={Const.SupportUsPage} component={SupportUs} />
           <Route exact={true} path={Const.BlogPage} component={Blog} />
           <Route exact={true} path={Const.BlogPost} component={Post} />
           <Route exact={true} path={Const.FaqPage} component={Faq} />
