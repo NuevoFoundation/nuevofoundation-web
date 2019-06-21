@@ -28,9 +28,7 @@ export class AuthService {
     );
   }
 
-  public async refreshSession(
-    jwtAuthToken: JwtAuthToken
-  ): Promise<any> {
+  public async refreshSession(jwtAuthToken: JwtAuthToken): Promise<any> {
     return HttpClient.post(
       `${Const.ApiEndpoint}/auth/refresh`,
       jwtAuthToken,

@@ -7,15 +7,11 @@ export class MockAuthService {
     "Content-Type": "application/json; charset=utf-8"
   };
 
-  public login(
-    loginForm: LoginFormInterface
-  ): Promise<any> {
+  public login(loginForm: LoginFormInterface): Promise<any> {
     return Promise.resolve();
   }
 
-  public register(
-    registration: RegistrationFormInterface
-  ): Promise<any> {
+  public register(registration: RegistrationFormInterface): Promise<any> {
     return Promise.resolve();
   }
 }

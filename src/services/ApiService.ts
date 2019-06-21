@@ -52,6 +52,7 @@ export class ApiService {
   private getJwtToken(): string {
     let token = "";
     if (memberAuthenticated) {
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
       token = SessionStorageHelper.GetJwt()!.token;
     }
     return token;

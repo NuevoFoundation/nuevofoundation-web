@@ -13,9 +13,12 @@ export class AuthHeaderHelper {
   }
 
   public static async refreshAuthToken(request: Request): Promise<any> {
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const jwtAuthToken: JwtAuthToken = SessionStorageHelper.GetJwt()!;
     const authService = new AuthService();
-    const newJwtAuthToken: JwtAuthToken = await authService.refreshSession(jwtAuthToken);
+    const newJwtAuthToken: JwtAuthToken = await authService.refreshSession(
+      jwtAuthToken
+    );
     SessionStorageHelper.StoreJwt(newJwtAuthToken);
     request.headers.set(`Authorization`, `Bearer ${newJwtAuthToken.token}`);
     return Promise.resolve();
@@ -33,7 +36,6 @@ export class AuthHeaderHelper {
 
     const [type, token] = authorization.split(" ");
 
-    
     if (type === "Bearer" && token !== undefined) {
       if (!AuthHeaderHelper.validAuthToken(token)) {
         return await AuthHeaderHelper.refreshAuthToken(request);
