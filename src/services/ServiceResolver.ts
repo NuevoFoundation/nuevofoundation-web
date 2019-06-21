@@ -1,4 +1,8 @@
-import { MockWordpressService, MockApiService, MockAuthService } from "../mockServices";
+import {
+  MockWordpressService,
+  MockApiService,
+  MockAuthService
+} from "../mockServices";
 import { WordpressService, ApiService, AuthService } from "./";
 
 export class ServiceResolver {
