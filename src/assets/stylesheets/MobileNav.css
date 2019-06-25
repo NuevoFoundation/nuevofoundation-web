@@ -1,3 +1,18 @@
-.mobile-nav-modal {
-  width: 400px;
+#mobile-nav-menu {  
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffffff;
+  color: #707070;
+  width: 66%;
+  transition: transform 200ms ease-in;
+  z-index: 999;
+}
+
+.transition-in {
+  transform: translateX(0px);
+}
+
+.transition-out {
+  transform: translateX(100%);
 }
