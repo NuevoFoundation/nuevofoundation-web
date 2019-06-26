@@ -9,9 +9,11 @@ import MolleeReal from "../../../assets/images/profile/mollee-profile-irl.png";
 import Jeremiah from "../../../assets/images/profile/jeremiah-thumbnail.png";
 import JeremiahReal from "../../../assets/images/profile/jeremiah-profile-irl.png";
 import Oliver from "../../../assets/images/profile/oliver-thumbnail.png";
+import OliverReal from "../../../assets/images/profile/oliver-irl.png";
 import Roy from "../../../assets/images/profile/roy-thumbnail.png";
 import RoyReal from "../../../assets/images/profile/roy-profile-irl.png";
 import Savoy from "../../../assets/images/profile/savoy-thumbnail.png";
+import SavoyReal from "../../../assets/images/profile/savoy-irl.png";
 import Izzy from "../../../assets/images/profile/izzy-thumbnail.png";
 import IzzyReal from "../../../assets/images/profile/izzy-irl.png";
 
@@ -35,6 +37,9 @@ const Header = styled.div`
     background-size:cover;
     box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
     padding: 300px;
+    font-size: 100px;
+    text-align: center;
+    color: white;
 
 `;
 
@@ -130,10 +135,10 @@ export class AboutUs extends React.Component {
             },
             {
                 name: "Oliver Zhang",
-                role: "VP Education",
-                quote: "-Education is my jam.",
-                bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-                img: BeaReal,
+                role: "Curriculum Guru",
+                quote: "-Coding made easy.",
+                bio: "Oliver is a software engineer at Microsoft. He has been teaching Mathematics, Science, and Computer Science to his peers and other students for 10 years. He is passionate about finding the best way to take difficult concepts and breaking them down into easy-to-understand points. Oliver not only knows many programming languages (such as Java, Python and C#), but also speaks many human languages. English, French, and Mandarin is not enough apparently, so he is learning Japanese and Spanish on the side.",
+                img: OliverReal,
                 cartoon: Oliver
             },
             {
@@ -146,18 +151,18 @@ export class AboutUs extends React.Component {
             },
             {
                 name: "Izzy Beltran",
-                role: "VP Education",
-                quote: "-Education is my jam.",
+                role: "Creative Director and Master of Fun",
+                quote: "-It's not about where you came from, it's about where you are going",
                 bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
                 img: IzzyReal,
                 cartoon: Izzy
             }, 
             {
                 name: "Savoy Schuler",
-                role: "VP Education",
-                quote: "-Education is my jam.",
-                bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-                img: MolleeReal,
+                role: "Manager of Communication/Branding/Media",
+                quote: "-When human beings are exposed to opportunities to create and innovate curiosity compels them to do so.",
+                bio: "Savoy is passionate about creating these opportunities for tomorrows youth and -in particular- those least likely to be otherwise exposed to science and technology. An entrepreneur, engineer, public speaker, and humanitarian, Savoy can be found anywhere from developing Windows UI, to kindling the fire of a new foundation or business, to managing Nuevo Foundation's communication, branding, and media or coaching a debate team. He plays Quidditch on Wednesdays (Beaters are best) and spends his evenings trying to teach a made-up sign language to his deaf cat.",
+                img: SavoyReal,
                 cartoon: Savoy
             }
         ];
@@ -211,7 +216,17 @@ export class AboutUs extends React.Component {
             
             <Background>
                 <Header>
-                    <HeaderText>Our Team</HeaderText>
+                    <div className="logo">
+                        <span>O</span>
+                        <span>u</span>
+                        <span>r</span>
+                        <span>_</span>
+                        <span>T</span>
+                        <span>e</span>
+                        <span>a</span>
+                        <span>m</span>
+                        <span className="blink">|</span>
+                    </div>
                 </Header>
                 <Grid>
 
