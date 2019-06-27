@@ -107,7 +107,7 @@ export class Home extends React.Component<{}, IHomeState> {
       iconImage: PersonIcon
     },
     {
-      btn: true,
+      btn: false,
       btnContent: "PARTICIPATE",
       content:
         "We offer coding workshops locally and virtual sessions around the world. ",
