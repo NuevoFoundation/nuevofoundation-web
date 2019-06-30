@@ -93,10 +93,6 @@ interface IVirtualSessionParams {
   id: string;
 }
 
-interface IVirtualSessionProps extends RouteComponentProps<IVirtualSessionParams> {
-
-}
-
 interface IVirtualSessionState {
   virtualSession?: VirtualSessionInterface;
   timePreferences?: string[];
@@ -105,9 +101,9 @@ interface IVirtualSessionState {
   actionButtonText: string;
 }
 
-export class VirtualSession extends React.Component<IVirtualSessionProps, IVirtualSessionState> {
+export class VirtualSession extends React.Component<RouteComponentProps<IVirtualSessionParams>, IVirtualSessionState> {
   public apiService = new ServiceResolver().ApiService();
-  constructor(props: IVirtualSessionProps) {
+  constructor(props: RouteComponentProps<IVirtualSessionParams>) {
     super(props);
     this.state = {
       virtualSession: undefined,

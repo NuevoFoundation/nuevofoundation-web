@@ -14,8 +14,12 @@ import {
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
 import { Const } from "./Const";
-import ReactGA from 'react-ga';
-import { AuthContext, memberAuthenticated as memberAuthenticatedContext, memberAuthenticatedName as memberAuthenticatedNameContext } from "./contexts/AuthContext";
+import ReactGA from "react-ga";
+import {
+  AuthContext,
+  memberAuthenticated as memberAuthenticatedContext,
+  memberAuthenticatedName as memberAuthenticatedNameContext
+} from "./contexts/AuthContext";
 import { ServiceResolver } from "./services/ServiceResolver";
 import { JwtTokenHelper } from "./helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "./helpers/SessionStorageHelper";
@@ -28,9 +32,12 @@ interface AppState {
 }
 class App extends React.Component<{}, AppState> {
   public apiService = new ServiceResolver().ApiService();
-  constructor(props: {}) {
+  public constructor(props: {}) {
     super(props);
-    if (Const.GoogleAnalyticsTrackingId && Const.GoogleAnalyticsTrackingId.length > 0) {
+    if (
+      Const.GoogleAnalyticsTrackingId &&
+      Const.GoogleAnalyticsTrackingId.length > 0
+    ) {
       ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
     }
 
@@ -38,37 +45,44 @@ class App extends React.Component<{}, AppState> {
       memberAuthenticated: memberAuthenticatedContext,
       toggleAuthentication: this.toggleAuthentication,
       memberAuthenticatedName: memberAuthenticatedNameContext
-    }
+    };
   }
 
-  async componentDidMount() {
+  public async componentDidMount() {
     const { memberAuthenticated } = this.state;
     if (!memberAuthenticated) {
       return;
     }
-    const memberId = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
+    const memberId = JwtTokenHelper.decodeMemberId(
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      SessionStorageHelper.GetJwt()!.token
+    );
     const member = await this.apiService.getMember(memberId);
 
     this.setState({
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
       memberAuthenticatedName: member.fullName!
-    })
+    });
   }
 
-  toggleAuthentication = async () => {
+  public toggleAuthentication = async () => {
     let member;
     const memberAuthenticated = this.state.memberAuthenticated;
     if (memberAuthenticated) {
       SessionStorageHelper.DeleteJwt();
-    }
-    else {
-      const memberId = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
+    } else {
+      const memberId = JwtTokenHelper.decodeMemberId(
+        /* eslint-disable @typescript-eslint/no-non-null-assertion */
+        SessionStorageHelper.GetJwt()!.token
+      );
       member = await this.apiService.getMember(memberId);
     }
 
     this.setState({
       memberAuthenticated: !memberAuthenticated,
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
       memberAuthenticatedName: member === undefined ? "" : member.fullName!
-    })
+    });
   };
 
   public render() {
@@ -78,8 +92,15 @@ class App extends React.Component<{}, AppState> {
           <Header />
           <Switch>
             <Route exact={true} path={Const.RootPage} component={Home} />
-            <Route exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />
-            <Route path={Const.VirtualSessionPage} component={VirtualSessions} />
+            <Route
+              exact={true}
+              path={Const.WhatWeDoPage}
+              component={WhatWeDo}
+            />
+            <Route
+              path={Const.VirtualSessionPage}
+              component={VirtualSessions}
+            />
             <Route path={Const.MembersAccount} component={MemberAccount} />
             <Route exact={true} path={Const.AboutUsPage} component={AboutUs} />
             <Route

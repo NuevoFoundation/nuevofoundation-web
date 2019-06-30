@@ -4,6 +4,7 @@ export class Member {
   public apiService = new ServiceResolver().ApiService();
   public Id?: string;
   public FullName?: string;
+  public MemberType?: string;
 
   public constructor(id: string) {
     this.apiService.getMember(id).then(member => {
@@ -16,4 +17,5 @@ export class Member {
 export interface MemberInterface {
   id?: string;
   fullName?: string;
+  memberType?: string;
 }

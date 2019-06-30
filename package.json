@@ -35,6 +35,8 @@
     "test-ci": "CI=true react-scripts test"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.9.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^23.3.14",
     "@types/node": "^10.14.1",
     "@types/react": "^16.8.8",
@@ -42,6 +44,8 @@
     "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "@typescript-eslint/parser": "^1.5.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "1.16.4",
