@@ -7,8 +7,44 @@ import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
+import {
+  faFacebookF,
+  faInstagram,
+  faLinkedin,
+  faTwitter
+} from "@fortawesome/free-brands-svg-icons";
 
-// TODO: replace this with flex later
+
+const AboveHeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 32px;
+  padding-right: 20px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  background-color: #D2D2D2;
+  font-size: 16px;
+  color: #000000;
+`;
+
+const AboveHeaderItem = styled.div`
+  padding-left: 25px;
+`;
+
+const AboveHeaderLink = styled.a`
+  color: #000000;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: #000000;
+  }
+`;
+
 const HeaderWrapper = styled.div`
   height: 72px;
   font-family: "Lato", sans-serif;
@@ -146,7 +182,6 @@ export class Header extends React.Component<{}, IHeaderState> {
       return (
         <StyledNavLink key={index} to={navItem.link}>
           <NavItem>
-            {" "}
             {navItem.text}
             {navItem.dropdown && (
               <NavIcon>
@@ -172,7 +207,6 @@ export class Header extends React.Component<{}, IHeaderState> {
           >
             <StyledNavLink to={navItem.link}>
               <SmallNavItem>
-                {" "}
                 {navItem.text}
                 {navItem.dropdown && (
                   <NavIcon>
@@ -190,6 +224,57 @@ export class Header extends React.Component<{}, IHeaderState> {
   public render() {
     return (
       <Grid fluid={true}>
+        <Row>
+          <Col xs={12}>
+            <AboveHeaderContainer>
+              <AboveHeaderItem>
+                <AboveHeaderLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.instagram.com/nuevofoundation"
+                >
+                  <FontAwesomeIcon icon={faInstagram} className={"fa-1x"} />
+                </AboveHeaderLink>
+              </AboveHeaderItem>
+              <AboveHeaderItem>
+                <AboveHeaderLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://twitter.com/nuevofoundation"
+                >
+                  <FontAwesomeIcon icon={faTwitter} className={"fa-1x"} />
+                </AboveHeaderLink>
+              </AboveHeaderItem>
+              <AboveHeaderItem>
+                <AboveHeaderLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.facebook.com/NuevoFoundation"
+                >
+                  <FontAwesomeIcon icon={faFacebookF} className={"fa-1x"} />
+                </AboveHeaderLink>
+              </AboveHeaderItem>
+              <AboveHeaderItem>
+                <AboveHeaderLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/company/nuevofoundation"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} className={"fa-1x"} />
+                </AboveHeaderLink>
+              </AboveHeaderItem>
+              <AboveHeaderItem>
+                <AboveHeaderLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={Const.PayPalDonatePage}
+                >
+                  Donate
+              </AboveHeaderLink>
+              </AboveHeaderItem>
+            </AboveHeaderContainer>
+          </Col>
+        </Row>
         <Row>
           <Col sm={12} xsHidden={true}>
             <HeaderWrapper>
