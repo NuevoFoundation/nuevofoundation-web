@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import styled, { StyledFunction } from "styled-components";
+import styled from "styled-components";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { Const } from "../../Const";
 
@@ -15,11 +15,7 @@ interface BlogPostsState {
   lastPage: number;
 }
 
-const div: StyledFunction<
-  ActionButtonProps & React.HTMLProps<HTMLInputElement>
-> = styled.div;
-
-const ActionButton = div`
+const ActionButton = styled.div`
   font-family: 'Lato', sans-serif;
   border: none;
   padding: 15px 32px;
