@@ -47,15 +47,6 @@ const Header = styled.div`
 
 `;
 
-const HeaderText = styled.div`
-       
-    text-align: center;
-    color: white;
-    font-size: 100px;
-    opacity: 0;
-    animation: fade-in-right ease 2s forwards;
-`
-
 const Background = styled.div`
   background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
@@ -81,7 +72,6 @@ const BioPic = styled.div`
     position: relative;
     display: inline-block;
     margin:100px;
-    float: center;
 `;
 
 class TeamMember {
@@ -187,14 +177,14 @@ export class AboutUs extends React.Component {
             }
         ];
 
-        return Team.map(person => {
+        return Team.map((person, index) => {
             this.flag = !this.flag;
             if (this.flag) {
                 return <Row>
                     <Col xs={6} md={4}>
-                        <BioPic>
-                            <img src={person.cartoon} alt="team member pic" onMouseOver={e => (e.currentTarget.src =
-                                person.img)} onMouseOut={e => (e.currentTarget.src = person.cartoon)}/>
+                        <BioPic key={index}>
+                            <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
+                                person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)}/>
                         </BioPic>
                     </Col>
                     <Col xs={12} md={8}>
@@ -221,8 +211,8 @@ export class AboutUs extends React.Component {
                 </Col>
                <Col xs={6} md={4}>
                    <BioPic>
-                       <img src={person.cartoon} alt="team member pic" onMouseOver={e => (e.currentTarget.src =
-                            person.img)} onMouseOut={e => (e.currentTarget.src = person.cartoon)} />
+                       <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
+                            person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)} />
                    </BioPic>
                </Col>
             </Row>;
