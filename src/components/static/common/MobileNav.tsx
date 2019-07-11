@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 interface IMobileMenuProps {
   visible: boolean;
+  handleMenuClose: () => void;
 }
 
 interface INavItem {
@@ -27,11 +28,11 @@ const StyledNavLink = styled(NavLink)`
   font-weight: bold;
   text-decoration: none;
 
-  &: focus,
-  &: hover,
-  &: visited,
-  &: link,
-  &: active {
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
     text-decoration: none;
   }
 `;
@@ -80,8 +81,11 @@ export class MobileNav extends React.Component<IMobileMenuProps> {
       <div
         id="mobile-nav-menu"
         className={visible ? "transition-in" : "transition-out"}
+        // without this styling, the mobile nav menu interferes 
+        // with the page layout when it is not visible
+        style={visible ? {} : { display: 'none' }}
       >
-        <div onClick={() => !visible} className={"close-btn"}>
+        <div onClick={this.props.handleMenuClose} className={"close-btn"}>
           <FontAwesomeIcon icon={faTimes} className={"fa-sm"} />
         </div>
 

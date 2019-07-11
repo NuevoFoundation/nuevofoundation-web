@@ -37,17 +37,11 @@ class App extends React.Component<{}, IAppState> {
     });
   };
 
-  public handleBackgroundClick = () => {
-    this.setState({
-      mobileNavVisible: false
-    });
-  };
-
   public render() {
     const { mobileNavVisible } = this.state;
     return (
       <React.Fragment>
-        <MobileNav visible={mobileNavVisible} />
+        <MobileNav visible={mobileNavVisible} handleMenuClose={this.handleHamburgerIconClick} />
         <div className={mobileNavVisible ? 'app-brightness' : ''}>
           <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
             <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />

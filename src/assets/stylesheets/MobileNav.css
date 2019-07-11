@@ -5,9 +5,11 @@
   background: #ffffff;
   color: #707070;
   width: 66%;
-  height: 100vh;
+  height: 80vh;
   transition: transform 200ms ease-in;
   z-index: 999;
+  overflow-x: hidden; 
+  overflow-y: auto;
 }
 
 .transition-in {

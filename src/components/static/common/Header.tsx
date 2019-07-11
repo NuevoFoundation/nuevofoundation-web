@@ -7,7 +7,6 @@ import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
-import MobileNav from "./MobileNav";
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -159,8 +158,6 @@ export class Header extends React.Component<IHeaderProps> {
   }
 
   public render() {
-    const { hamburgerMenuOpen } = this.props;
-
     return (
       <Grid fluid={true}>
         <Row>
@@ -203,7 +200,6 @@ export class Header extends React.Component<IHeaderProps> {
             </Row>
           </Col>
         </Row>
-        <MobileNav visible={hamburgerMenuOpen} />
       </Grid>
     );
   }
