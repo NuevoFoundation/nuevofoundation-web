@@ -2,18 +2,18 @@ import { faBars, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { Col, Grid, Row } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
-import { ButtonCta } from "./ButtonCta";
+import { withRouter } from 'react-router-dom';
+
 import {
   faFacebookF,
   faInstagram,
   faLinkedin,
   faTwitter
 } from "@fortawesome/free-brands-svg-icons";
-
 
 const AboveHeaderContainer = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const AboveHeaderLink = styled.a`
 
 const HeaderWrapper = styled.div`
   height: 72px;
-  font-family: "Lato", sans-serif;
+  font-family: "lato-semibold", sans-serif;
   font-size: 16px;
 `;
 
@@ -56,10 +56,11 @@ const NavLogo = styled.img`
 `;
 
 const NavList = styled.ul`
-  float: left;
+  float: right;
   text-align: center;
   padding-top: 20px;
 `;
+
 const NavItem = styled.li`
   display: inline-block;
   font-size: 20px;
@@ -69,7 +70,7 @@ const NavItem = styled.li`
     content: "";
     display: block;
     width: 0;
-    height: 2px;
+    height: 4px;
     background: #fcc600;
     transition: width 0.3s;
   }
@@ -80,6 +81,19 @@ const NavItem = styled.li`
 
   &:hover::after {
     width: 100%;
+  }
+`;
+
+const ActiveNavItem = styled.li`
+  display: inline-block;
+  font-size: 20px;
+  padding-right: 50px;
+  cursor: pointer;
+  color: #000000;
+
+  span {
+    display: block;
+    border-top: 4px solid #fcc600;
   }
 `;
 
@@ -98,14 +112,8 @@ const NavIcon = styled.span`
   padding-left: 10px;
 `;
 
-const ButtonWrapper = styled.div`
-  float: right;
-  padding: 10px 20px 0 0;
-`;
-
 const StyledNavLink = styled(NavLink)`
   color: #535353;
-  font-weight: bold;
   text-decoration: none;
 
   &:focus,
@@ -127,8 +135,7 @@ interface IHeaderState {
   hamburgerMenuOpen: boolean;
 }
 
-// TODO: Implement selected nav item styling
-export class Header extends React.Component<{}, IHeaderState> {
+class Header extends React.Component<RouteComponentProps, IHeaderState> {
   public navItems: INavItem[] = [
     /* 
       {
@@ -163,7 +170,7 @@ export class Header extends React.Component<{}, IHeaderState> {
     }
   ];
 
-  constructor(props: {}) {
+  constructor(props: RouteComponentProps) {
     super(props);
 
     this.state = {
@@ -179,16 +186,29 @@ export class Header extends React.Component<{}, IHeaderState> {
 
   public renderNavItems(): JSX.Element[] {
     return this.navItems.map((navItem: INavItem, index: number) => {
+      const currentPage = this.props.location.pathname;
       return (
         <StyledNavLink key={index} to={navItem.link}>
-          <NavItem>
-            {navItem.text}
-            {navItem.dropdown && (
-              <NavIcon>
-                <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-              </NavIcon>
-            )}
-          </NavItem>
+          {navItem.link === currentPage ?
+            <ActiveNavItem>
+              {navItem.text}
+              {navItem.dropdown && (
+                <NavIcon>
+                  <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+                </NavIcon>
+              )}
+              <span />
+            </ActiveNavItem>
+            :
+            <NavItem>
+              {navItem.text}
+              {navItem.dropdown && (
+                <NavIcon>
+                  <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+                </NavIcon>
+              )}
+            </NavItem>
+          }
         </StyledNavLink>
       );
     });
@@ -223,6 +243,7 @@ export class Header extends React.Component<{}, IHeaderState> {
 
   public render() {
     return (
+
       <Grid fluid={true}>
         <Row>
           <Col xs={12}>
@@ -282,15 +303,6 @@ export class Header extends React.Component<{}, IHeaderState> {
                 <NavLogo src={NuevoFoundationLogo} height={"60px"} />
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
-              <ButtonWrapper>
-                <ButtonCta
-                  text={"DONATE"}
-                  backgroundColor={"#FFFFFF"}
-                  textColor={"#000000"}
-                  border={"4px solid #fcca13"}
-                  linkTo={Const.PayPalDonatePage!}
-                />
-              </ButtonWrapper>
             </HeaderWrapper>
           </Col>
 
@@ -322,3 +334,5 @@ export class Header extends React.Component<{}, IHeaderState> {
     );
   }
 }
+
+export default withRouter(Header)

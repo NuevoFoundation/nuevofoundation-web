@@ -2,7 +2,8 @@ import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Post } from "./components/blog/Post";
-import { Footer, Header } from "./components/static/common";
+import { Footer } from "./components/static/common";
+import Header  from "./components/static/common/Header";
 import {
   AboutUs,
   Contact,
