@@ -68,10 +68,7 @@ const StyledNavLink = styled(NavLink)`
   font-weight: bold;
   text-decoration: none;
 
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
+
   &:active {
     text-decoration: none;
   }
