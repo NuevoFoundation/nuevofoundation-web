@@ -7,6 +7,7 @@ import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
+import { NavItems } from "./NavItems";
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -89,38 +90,8 @@ interface IHeaderProps {
 
 // TODO: Implement selected nav item styling
 export class Header extends React.Component<IHeaderProps> {
-  public navItems: INavItem[] = [
-    /*
-    {
-      dropdown: false,
-      link: "what-we-do",
-      text: "What We Do"
-    },
-    {
-      dropdown: true,
-      link: "about-us",
-      text: "About Us"
-    },
-    {
-      dropdown: false,
-      link: "support-us",
-      text: "Support Us"
-    },
-    */
-    {
-      dropdown: false,
-      link: "/contact",
-      text: "Contact"
-    },
-    {
-      dropdown: false,
-      link: "/blog",
-      text: "Blog"
-    }
-  ];
-
   public renderNavItems(): JSX.Element[] {
-    return this.navItems.map((navItem: INavItem, index: number) => {
+    return NavItems.map((navItem: INavItem, index: number) => {
       return (
         <StyledNavLink key={index} to={navItem.link}>
           <NavItem>
@@ -137,7 +108,7 @@ export class Header extends React.Component<IHeaderProps> {
   }
 
   public renderSmallNavItems(): JSX.Element[] {
-    return this.navItems.map((navItem: INavItem, index: number) => {
+    return NavItems.map((navItem: INavItem, index: number) => {
       return (
         <Row key={index}>
           <Col xs={4} xsOffset={4} smHidden={true} mdHidden={true} lgHidden={true}>

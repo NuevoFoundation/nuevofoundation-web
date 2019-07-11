@@ -6,16 +6,11 @@ import { faTimes, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../assets/stylesheets/MobileNav.css";
 import styled from "styled-components";
+import { NavItems } from "./NavItems";
 
 interface IMobileMenuProps {
   visible: boolean;
   handleMenuClose: () => void;
-}
-
-interface INavItem {
-  dropdown: boolean;
-  text: string;
-  link: string;
 }
 
 const ButtonWrapper = styled.div`
@@ -46,34 +41,6 @@ const NavIcon = styled.span`
 `;
 
 export class MobileNav extends React.Component<IMobileMenuProps> {
-  public navItems: INavItem[] = [
-    {
-      dropdown: false,
-      link: "what-we-do",
-      text: "What We Do"
-    },
-    {
-      dropdown: true,
-      link: "about-us",
-      text: "About Us"
-    },
-    {
-      dropdown: false,
-      link: "support-us",
-      text: "Support Us"
-    },
-
-    {
-      dropdown: false,
-      link: "/contact",
-      text: "Contact"
-    },
-    {
-      dropdown: false,
-      link: "/blog",
-      text: "Blog"
-    }
-  ];
   public render() {
     const { visible } = this.props;
 
@@ -103,7 +70,7 @@ export class MobileNav extends React.Component<IMobileMenuProps> {
 
         <hr />
         <div>
-          {this.navItems.map(NavItem => {
+          {NavItems.map(NavItem => {
             return (
               <StyledNavLink key={NavItem.link} to={NavItem.link}>
                 <MobileNavList>
