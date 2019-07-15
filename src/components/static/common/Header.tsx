@@ -116,10 +116,7 @@ const StyledNavLink = styled(NavLink)`
   color: #535353;
   text-decoration: none;
 
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
+
   &:active {
     text-decoration: none;
   }
@@ -137,12 +134,13 @@ interface IHeaderState {
 
 class Header extends React.Component<RouteComponentProps, IHeaderState> {
   public navItems: INavItem[] = [
-    /* 
+    
       {
-            dropdown: true,
+            dropdown: false,
             link: 'about-us',
-            text: 'About Us',
-        },
+            text: 'Our team',
+      },
+  /*
         {
             dropdown: false,
             link: 'support-us',
@@ -157,7 +155,8 @@ class Header extends React.Component<RouteComponentProps, IHeaderState> {
       dropdown: false,
       link: 'what-we-do',
       text: 'What we do',
-    },*/
+    },
+    */
     {
       dropdown: false,
       link: "/faq",
