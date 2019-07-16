@@ -7,6 +7,7 @@ import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
 import { ButtonCta } from "./ButtonCta";
+import { NavItems } from "./NavItems";
 
 // TODO: replace this with flex later
 const HeaderWrapper = styled.div`
@@ -47,11 +48,6 @@ const NavItem = styled.li`
   }
 `;
 
-const SmallNavList = styled.ul`
-  text-align: center;
-  list-style: none;
-`;
-
 const SmallNavItem = styled.li`
   font-size: 18px;
   padding-bottom: 15px;
@@ -84,68 +80,18 @@ interface INavItem {
   link: string;
 }
 
-interface IHeaderState {
+interface IHeaderProps {
   hamburgerMenuOpen: boolean;
+  handleHamburgerIconClick: () => void;
 }
 
 // TODO: Implement selected nav item styling
-export class Header extends React.Component<{}, IHeaderState> {
-  public navItems: INavItem[] = [
-    
-      {
-            dropdown: false,
-            link: 'about-us',
-            text: 'Our team',
-      },
-  /*
-        {
-            dropdown: false,
-            link: 'support-us',
-            text: 'Support Us',
-        },
-        {
-            dropdown: false,
-            link: '/blog',
-            text: 'Blog',
-        },
-    {
-      dropdown: false,
-      link: 'what-we-do',
-      text: 'What we do',
-    },
-    */
-    {
-      dropdown: false,
-      link: "/faq",
-      text: "FAQ"
-    },
-    {
-      dropdown: false,
-      link: "/contact",
-      text: "Contact"
-    }
-  ];
-
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      hamburgerMenuOpen: false
-    };
-  }
-
-  public handleHamburgerIconClick = () => {
-    this.setState({
-      hamburgerMenuOpen: !this.state.hamburgerMenuOpen
-    });
-  };
-
+export class Header extends React.Component<IHeaderProps> {
   public renderNavItems(): JSX.Element[] {
-    return this.navItems.map((navItem: INavItem, index: number) => {
+    return NavItems.map((navItem: INavItem, index: number) => {
       return (
         <StyledNavLink key={index} to={navItem.link}>
           <NavItem>
-            {" "}
             {navItem.text}
             {navItem.dropdown && (
               <NavIcon>
@@ -159,19 +105,12 @@ export class Header extends React.Component<{}, IHeaderState> {
   }
 
   public renderSmallNavItems(): JSX.Element[] {
-    return this.navItems.map((navItem: INavItem, index: number) => {
+    return NavItems.map((navItem: INavItem, index: number) => {
       return (
         <Row key={index}>
-          <Col
-            xs={4}
-            xsOffset={4}
-            smHidden={true}
-            mdHidden={true}
-            lgHidden={true}
-          >
+          <Col xs={4} xsOffset={4} smHidden={true} mdHidden={true} lgHidden={true}>
             <StyledNavLink to={navItem.link}>
               <SmallNavItem>
-                {" "}
                 {navItem.text}
                 {navItem.dropdown && (
                   <NavIcon>
@@ -216,7 +155,7 @@ export class Header extends React.Component<{}, IHeaderState> {
                 </StyledNavLink>
               </Col>
               <Col
-                onClick={this.handleHamburgerIconClick}
+                onClick={this.props.handleHamburgerIconClick}
                 xs={2}
                 style={{
                   paddingTop: "4%",
@@ -229,9 +168,6 @@ export class Header extends React.Component<{}, IHeaderState> {
             </Row>
           </Col>
         </Row>
-        {this.state.hamburgerMenuOpen && (
-          <SmallNavList> {this.renderSmallNavItems()} </SmallNavList>
-        )}
       </Grid>
     );
   }
