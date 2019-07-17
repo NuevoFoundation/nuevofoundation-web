@@ -6,6 +6,7 @@ import { NavLink, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
+import { NavItems } from "./NavItems";
 import { withRouter } from 'react-router-dom';
 
 import {
@@ -23,7 +24,7 @@ const AboveHeaderContainer = styled.div`
   padding-right: 20px;
   font-family: "Lato", sans-serif;
   font-weight: bold;
-  background-color: #D2D2D2;
+  background-color: #ECECEC;
   font-size: 16px;
   color: #000000;
 `;
@@ -48,6 +49,7 @@ const AboveHeaderLink = styled.a`
 const HeaderWrapper = styled.div`
   height: 72px;
   font-family: "lato-semibold", sans-serif;
+  color: #707070;
   font-size: 16px;
 `;
 
@@ -63,7 +65,6 @@ const NavList = styled.ul`
 
 const NavItem = styled.li`
   display: inline-block;
-  font-size: 20px;
   padding-right: 50px;
   cursor: pointer;
   &::after {
@@ -86,7 +87,6 @@ const NavItem = styled.li`
 
 const ActiveNavItem = styled.li`
   display: inline-block;
-  font-size: 20px;
   padding-right: 50px;
   cursor: pointer;
   color: #000000;
@@ -95,11 +95,6 @@ const ActiveNavItem = styled.li`
     display: block;
     border-top: 4px solid #fcc600;
   }
-`;
-
-const SmallNavList = styled.ul`
-  text-align: center;
-  list-style: none;
 `;
 
 const SmallNavItem = styled.li`
@@ -128,63 +123,15 @@ interface INavItem {
   link: string;
 }
 
-interface IHeaderState {
+interface IHeaderProps extends RouteComponentProps {
   hamburgerMenuOpen: boolean;
+  handleHamburgerIconClick: () => void;
 }
 
-class Header extends React.Component<RouteComponentProps, IHeaderState> {
-  public navItems: INavItem[] = [
-    
-      {
-            dropdown: false,
-            link: 'about-us',
-            text: 'Our team',
-      },
-  /*
-        {
-            dropdown: false,
-            link: 'support-us',
-            text: 'Support Us',
-        },
-        {
-            dropdown: false,
-            link: '/blog',
-            text: 'Blog',
-        },
-    {
-      dropdown: false,
-      link: 'what-we-do',
-      text: 'What we do',
-    },
-    */
-    {
-      dropdown: false,
-      link: "/faq",
-      text: "FAQ"
-    },
-    {
-      dropdown: false,
-      link: "/contact",
-      text: "Contact"
-    }
-  ];
-
-  constructor(props: RouteComponentProps) {
-    super(props);
-
-    this.state = {
-      hamburgerMenuOpen: false
-    };
-  }
-
-  public handleHamburgerIconClick = () => {
-    this.setState({
-      hamburgerMenuOpen: !this.state.hamburgerMenuOpen
-    });
-  };
-
+// TODO: Implement selected nav item styling
+export class Header extends React.Component<IHeaderProps> {
   public renderNavItems(): JSX.Element[] {
-    return this.navItems.map((navItem: INavItem, index: number) => {
+    return NavItems.map((navItem: INavItem, index: number) => {
       const currentPage = this.props.location.pathname;
       return (
         <StyledNavLink key={index} to={navItem.link}>
@@ -214,16 +161,10 @@ class Header extends React.Component<RouteComponentProps, IHeaderState> {
   }
 
   public renderSmallNavItems(): JSX.Element[] {
-    return this.navItems.map((navItem: INavItem, index: number) => {
+    return NavItems.map((navItem: INavItem, index: number) => {
       return (
         <Row key={index}>
-          <Col
-            xs={4}
-            xsOffset={4}
-            smHidden={true}
-            mdHidden={true}
-            lgHidden={true}
-          >
+          <Col xs={4} xsOffset={4} smHidden={true} mdHidden={true} lgHidden={true}>
             <StyledNavLink to={navItem.link}>
               <SmallNavItem>
                 {navItem.text}
@@ -313,7 +254,7 @@ class Header extends React.Component<RouteComponentProps, IHeaderState> {
                 </StyledNavLink>
               </Col>
               <Col
-                onClick={this.handleHamburgerIconClick}
+                onClick={this.props.handleHamburgerIconClick}
                 xs={2}
                 style={{
                   paddingTop: "4%",
@@ -326,9 +267,6 @@ class Header extends React.Component<RouteComponentProps, IHeaderState> {
             </Row>
           </Col>
         </Row>
-        {this.state.hamburgerMenuOpen && (
-          <SmallNavList> {this.renderSmallNavItems()} </SmallNavList>
-        )}
       </Grid>
     );
   }
