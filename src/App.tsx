@@ -2,8 +2,16 @@ import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Post } from "./components/blog/Post";
-import { Footer, Header } from "./components/static/common";
-import { AboutUs, Contact, Faq, Home, SupportUs, WhatWeDo } from "./components/static/pages";
+import { Footer } from "./components/static/common";
+import Header  from "./components/static/common/Header";
+import {
+  AboutUs,
+  Contact,
+  Faq,
+  Home,
+  SupportUs,
+  WhatWeDo
+} from "./components/static/pages";
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
 import { Const } from "./Const";
@@ -23,7 +31,10 @@ const AppContainer = styled.div`
 class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
-    if (Const.GoogleAnalyticsTrackingId && Const.GoogleAnalyticsTrackingId.length > 0) {
+    if (
+      Const.GoogleAnalyticsTrackingId &&
+      Const.GoogleAnalyticsTrackingId.length > 0
+    ) {
       ReactGA.initialize(Const.GoogleAnalyticsTrackingId);
     }
     this.state = {

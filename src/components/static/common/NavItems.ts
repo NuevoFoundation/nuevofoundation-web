@@ -6,17 +6,12 @@ export interface INavItem {
 }
 
 export const NavItems: INavItem[] = [
-  /*
   {
     dropdown: false,
-    link: "what-we-do",
+    link: "/what-we-do",
     text: "What We Do"
   },
-  {
-    dropdown: true,
-    link: "about-us",
-    text: "About Us"
-  },
+  /*
   {
     dropdown: false,
     link: "support-us",
@@ -25,12 +20,17 @@ export const NavItems: INavItem[] = [
   */
   {
     dropdown: false,
-    link: "/contact",
-    text: "Contact"
+    link: "/blog",
+    text: "Event blog"
   },
   {
     dropdown: false,
-    link: "/blog",
-    text: "Blog"
-  }
+    link: "/about-us",
+    text: "Our team"
+  },
+  {
+    dropdown: false,
+    link: "/contact",
+    text: "Contact us"
+  },
 ];
