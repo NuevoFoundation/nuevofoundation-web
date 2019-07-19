@@ -1,0 +1,33 @@
+#mobile-nav-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffffff;
+  color: #707070;
+  width: 66%;
+  height: 80vh;
+  transition: transform 200ms ease-in;
+  z-index: 999;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+.transition-in {
+  transform: translateX(0px);
+}
+
+.transition-out {
+  transform: translateX(100%);
+}
+
+.fa-times {
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.close-btn {
+  margin-bottom: 4em;
+}
