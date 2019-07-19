@@ -1,83 +1,72 @@
-.logo > * {
-    margin-left: -2px;
-    font-weight: 700;
-    display: inline-block;
-    animation-name: appear;
-    animation-duration: .01s;
-    animation-fill-mode: both;
+.quote-text{
+    font-style: Segoe UI;
+    font-size: 36px;
+    font-weight: normal;
 }
 
-    .logo > *:nth-of-type(1) {
-        animation-delay: 1s
-    }
-
-    .logo > *:nth-of-type(2) {
-        animation-delay: 1.2s
-    }
-
-    .logo > *:nth-of-type(3) {
-        animation-delay: 1.5s
-    }
-
-    .logo > *:nth-of-type(4) {
-        animation-delay: 1.7s
-    }
-
-    .logo > *:nth-of-type(5) {
-        animation-delay: 1.9s
-    }
-
-
-    .logo > *:nth-of-type(6) {
-        animation-delay: 2.1s
-    }
-
-
-    .logo > *:nth-of-type(7) {
-        animation-delay: 2.3s
-    }
-
-    .logo > *:nth-of-type(8) {
-        animation-delay: 2.5s
-    }
-
-@keyframes appear {
-    from {
-        font-size: 0em;
-    }
-
-    to {
-        font-size: 1em;
-    }
+.vision-title{
+    font-style: Segoe UI;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.blink {
-    font-size: 1.5em;
-    font-weight: 400;
-    display: inline-block;
-    visibility: visible;
-    width: auto;
-    animation-name: flash;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-iteration-count: 5;
+.vision-left-text{
+    font-style: Segoe UI;
+    font-size: 36px;
+    font-weight: normal;
+    float: left;
 }
 
-@keyframes flash {
-    0% {
-        opacity: 0;
-    }
+.vision-right-text{
+    font-style: Segoe UI;
+    font-size: 24px;
+    font-weight: normal;
+    float: right;
+}
 
-    25% {
-        opacity: 1;
-    }
+.visual-visual-element-left{
+    height: 300px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 50px;
+    text-align: center;
+    float: left;
+}
 
-    75% {
-        opacity: 1;
-    }
+.visual-right-text{
+    font-style: Segoe UI;
+    font-size: 30px;
+    font-weight: normal;
+    float: right;
+}
 
-    100% {
-        opacity: 0;
-    }
+.mission-visual-left{
+    height: 370px;
+    width: 370px;
+    background-color: #010101;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+.mission-title-right{
+    font-style: Segoe UI;
+    font-size: 30px;
+    font-weight: normal;
+    float: right;
+}
+
+.mission-text-right{
+    font-style: Segoe UI;
+    font-size: 30px;
+    font-weight: normal;
+    float: right;
+}
+
+.message-text{
+    font-style: Segoe UI;
+    font-size: 28px;
+    font-weight: normal;
+    text-align: center;
 }
