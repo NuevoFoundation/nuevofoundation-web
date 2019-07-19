@@ -2,8 +2,8 @@
     background-color: #fcc600;
     color: black;
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 1.875em;
+    padding-bottom: 1.875em;
 }
 
 .services > img {
@@ -15,8 +15,8 @@
 
 
 .serviceDescription {
-    padding: 40px;
-    font-size: 20px;
+    padding: 2.5em;
+    font-size: 1.25em;
 }
 
 .serviceDescription > h1 {
@@ -26,11 +26,11 @@
 .requestButton {
     background-color: #FCC600;
     color: #000000;
-    border: #FCC600 1px solid;
-    padding: 10px;
-    border-radius: 5px;
+    border: #FCC600 .125em solid;
+    padding: .625em;
+    border-radius: .313em;
     font-weight: bold;
-    font-size: 12px;
+    font-size: .75em;
 }
 
 .logo > * {

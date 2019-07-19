@@ -35,10 +35,33 @@ const Header = styled.div`
     background-size:cover;
     box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
     padding: 300px;
-    font-size: 100px;
+    font-size: 6.250em;
     text-align: center;
     color: white;
     margin-bottom: 1px;
+`;
+
+const MobileHeader = styled.div`
+    background-image: url(${headerimg});
+    width: 100%;
+    height: 30em;
+    background-repeat: no-repeat;
+    padding-top: 10em;
+    text-align: center;
+    color: white;
+`;
+
+const DescriptionSection = styled.div`
+    padding: 1.25em;
+`;
+
+const WorskshopAlignment = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em;
 `;
 
 class Service {
@@ -61,10 +84,27 @@ class Service {
     }
 }
 
-export class WhatWeDo extends React.Component {
-  constructor(props: {}) {
-      super(props);
-  }
+export class WhatWeDo extends React.Component<{}, { width: number }>  {
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+          width: window.innerWidth,
+        };
+      }
+      
+      componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+      }
+      
+      // make sure to remove the listener
+      // when the component is not mounted anymore
+      componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+      }
+      
+      handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth });
+      };
 
    static readonly Services: Service[] = [
       {
@@ -96,39 +136,84 @@ export class WhatWeDo extends React.Component {
       },
   ];
 
-    serviceList() {
-
+    serviceList(isMobile: boolean) {
         return WhatWeDo.Services.map(service => {
             return (<Col xs={3} xsOffset={1} md={3} mdOffset={1} className="services">
                 <Image src={service.icon} circle responsive />
-                <h2>{service.title}</h2>
+                {
+                    isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
+                }
             </Col>);
 
         });
     }
 
-    serviceDescription() {
+    serviceDescription(isMobile: boolean) {
         return WhatWeDo.Services.map(service => {
             return (
                 <Row className="serviceDescription" style={{
                     backgroundColor: service.color,
-                    color: service.textColor
-                }}>
-                    <Col xs={3} xsOffset={1} md={3} mdOffset={1}>
-                        <h1>{service.title}</h1>
-                        <p>{service.description}</p>
-                        <Button className="requestButton" href={service.buttonLink}>REQUEST {service.title.toUpperCase()}</Button>
-                    </Col>
-                    <Col xs={5} xsOffset={1} md={5} mdOffset={1}>
-                        <Image src={service.img} responsive/>
+                    color: service.textColor}}>
+
+                    <Col>
+                        <Row >
+                            <Col md={6} xs={12}>
+                                <WorskshopAlignment>
+                                    <h1>{service.title}</h1>
+                                </WorskshopAlignment>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={6} xs={12}>
+                                <WorskshopAlignment>
+                                    <Row>
+                                        <Col>
+                                        {
+                                            isMobile ? <p>{service.description}</p> : <div style={{maxWidth:'20em'}}><p>{service.description}</p></div>
+                                        }
+                                        </Col>
+                                    </Row>
+                                </WorskshopAlignment>
+                                <WorskshopAlignment>
+                                    <Row>
+                                        <Col>
+                                            <Button className="requestButton" href={service.buttonLink}>REQUEST {service.title.toUpperCase()}</Button>
+                                        </Col>
+                                    </Row>
+                                </WorskshopAlignment>
+                            </Col>
+                            <Col md={6} xs={12} style={{ overflow: "hidden" }}>
+                                <Image src={service.img} responsive />
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>);
         });
     }
 
     render(): any {
-      return (
+        const { width } = this.state;
+        const isMobile = width <= 500;
+        if (isMobile)
+        {
+            return (
 
+                <Background>
+                    <MobileHeader>
+                        <h1>What we do</h1>
+                    </MobileHeader>
+                    <Grid fluid={true}>
+                        <Row className="services">
+                            {this.serviceList(isMobile)}
+                        </Row>
+
+                        {this.serviceDescription(isMobile)}
+                    </Grid>
+                </Background>
+            );
+        }
+
+      return (
           <Background>
               <Header>
                   <div className="logo">
@@ -145,10 +230,10 @@ export class WhatWeDo extends React.Component {
               </Header>
               <Grid fluid={true}>
                   <Row className="services">
-                      {this.serviceList()}
+                      {this.serviceList(isMobile)}
                   </Row>
 
-                  {this.serviceDescription()}
+                  {this.serviceDescription(isMobile)}
               </Grid>
           </Background>
       );
