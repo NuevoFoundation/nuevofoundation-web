@@ -62,9 +62,6 @@ class Service {
 }
 
 export class WhatWeDo extends React.Component {
-  constructor(props: {}) {
-      super(props);
-  }
 
    static readonly Services: Service[] = [
       {

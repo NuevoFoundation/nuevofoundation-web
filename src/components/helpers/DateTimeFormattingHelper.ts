@@ -8,4 +8,9 @@ export class DateTimeFormattingHelper {
     });
     return monthDayYear;
   }
+
+  public static FormatToMMDDYYYY(dateTime: string) {
+    const d = new Date(dateTime);
+    return `${d.getMonth() + 1}/${d.getDay()}/${d.getFullYear()}`;
+  }
 }
