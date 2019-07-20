@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { Const } from "../../Const";
+import { DateTimeFormattingHelper } from "../helpers/DateTimeFormattingHelper";
 
 interface ActionButtonProps {
   active: boolean;
@@ -39,6 +40,13 @@ const PageIndicator = styled.div`
   color: #666666;
 `;
 
+const PagingContainer = styled.div`
+  display: flex;
+  display: row nowrap;
+  justify-content: space-around;
+  padding: 20px 0 30px 0;
+`
+
 const StyledLink = styled(Link)`
   text-decoration: none;
 
@@ -48,32 +56,59 @@ const StyledLink = styled(Link)`
   &:link,
   &:active {
     text-decoration: none;
+    color: #000000;
   }
 `;
 
 const BlogPostsWrapper = styled.div`
-  min-height: 500px;
-  padding-bottom: 100px;
+
 `;
 
-const BlogPostItem = styled.div``;
-
-const BlogPostTitle = styled.h1`
-  color: #262626;
-  padding-bottom: 10px;
+const BlogPostItem = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 50px 0 50px;
   font-family: "Lato", sans-serif;
+  color: #000000;
+  font-size: 16px;
+
+  img {
+    height: 180px;
+    width: 272px;
+    object-fit: cover;
+  }
+`;
+
+const BlogPostImage = styled.img`
+  padding: 0 30px 0 0;
+  flex-basis: auto;
+`;
+
+const BlogPostDetails = styled.div`
+  flex-basis: 70%;
+
+`
+
+const BlogPostDate = styled.div`
+  padding-bottom: 10px;  
+`
+
+const BlogPostTitle = styled.div`
+  font-family: 'Space Mono', monospace;
   font-size: 28px;
+  padding-bottom: 10px;  
 `;
 
 const BlogPostContent = styled.div`
-  color: #262626;
-  font-family: "Lato", sans-serif;
+
 `;
 
 const Divider = styled.hr`
   height: 0;
   border: 0;
-  border-top: 1px solid #c1c1c1;
+  width: 100%;
+  margin: 50px 0 50px 0;
+  border-top: 1px solid #707070;
 `;
 
 export class BlogPosts extends React.Component<{}, BlogPostsState> {
@@ -127,32 +162,40 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
           return (
             <React.Fragment key={post.ID}>
               <BlogPostItem>
-                <StyledLink to={`/blog/post/${post.ID}`}>
-                  <BlogPostTitle>{post.title}</BlogPostTitle>
-                </StyledLink>
-                <BlogPostContent
-                  dangerouslySetInnerHTML={{ __html: post.excerpt }}
-                />
+                {post.attachment_count > 0 &&
+                  <BlogPostImage src={post.attachments[Object.keys(post.attachments)[0]].thumbnails["medium"]} />
+                }
+                <BlogPostDetails>
+                  <StyledLink to={`/blog/post/${post.ID}`}>
+                    <BlogPostTitle dangerouslySetInnerHTML={{ __html: post.title}} />
+                  </StyledLink>
+                  <BlogPostDate>{DateTimeFormattingHelper.FormatToMMDDYYYY(post.date)}</BlogPostDate>
+                  <BlogPostContent
+                    dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                  />
+                </BlogPostDetails>
+                <div className="flex-break" />
+                <Divider />
               </BlogPostItem>
-              <Divider />
             </React.Fragment>
           );
         })}
-        <ActionButton
-          onClick={this.getPreviousPage}
-          style={{ float: "left" }}
-          active={currentPage !== 1}
-        >
-          Back
-        </ActionButton>
-        <ActionButton
-          onClick={this.getNextPage}
-          style={{ float: "right" }}
-          active={currentPage !== lastPage}
-        >
-          Next
-        </ActionButton>
-        <PageIndicator>{`page ${currentPage} of ${lastPage}`}</PageIndicator>
+        <PagingContainer>
+          <ActionButton
+            onClick={this.getPreviousPage}
+            active={currentPage !== 1}
+          >
+            Back
+          </ActionButton>
+          <PageIndicator>{`${currentPage} of ${lastPage}`}</PageIndicator>
+
+          <ActionButton
+            onClick={this.getNextPage}
+            active={currentPage !== lastPage}
+          >
+            Next
+          </ActionButton>
+        </PagingContainer>
       </BlogPostsWrapper>
     );
   }
