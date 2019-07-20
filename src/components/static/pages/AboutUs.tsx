@@ -34,38 +34,61 @@ import {
 const Header = styled.div`
     background-image: url(${headerimg});
     width: 100%;
-    height: 100%;
+    height: auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position:center;
     background-size:cover;
     box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
     padding: 300px;
-    font-size: 100px;
+    font-size: 6.250em;
     text-align: center;
     color: white;
+    margin-bottom: 1px;
+`;
 
+const MobileHeader = styled.div`
+    background: url(${headerimg}) no-repeat center center fixed;
+    width: 100vw;
+    height: 30em;
+    padding-top: 12em;
+    text-align: center;
+    color: white;
+   -o-background-size: cover;
+    background-size: cover;
 `;
 
 const Background = styled.div`
   background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
   font-family: "Lato", sans-serif;
-  
 `;
 
 const Bio = styled.div`
     font-family: "Lato", sans-serif;
-    width: 700px;
-    margin: 100px;
-    padding: 50px;
+    width: 43.750em;
+    margin: 6.250em;
+    padding: 3.125em;
     background: #d0e6e8;
-    font-size: 18px;
+    font-size: 1.125em;
 `;
 
 const Bio1 = styled(Bio)`
-    background: #fce68f
+    background: #fce68f;
+`;
 
+const MobileBio = styled.div`
+    font-family: "Lato", sans-serif;
+    width: 80vw;
+    margin: auto;
+    margin-bottom: 2em;
+    padding: 1.25em;
+    background: #d0e6e8;
+    font-size: 1.125em;
+`;
+
+const MobileBio1 = styled(MobileBio)`
+    background: #fce68f;
 `;
 
 const BioPic = styled.div`
@@ -93,15 +116,34 @@ class TeamMember {
 }
 
 
-export class AboutUs extends React.Component {
+export class AboutUs extends React.Component<{}, { width: number }> {
     flag: boolean;
 
     constructor(props: {}) {
         super(props);
         this.flag = true;
+        this.state = {
+            width: window.innerWidth,
+        };
     }
 
-    teamMemberList() {
+    componentDidMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+      }
+      
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+    
+    handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth });
+    };
+
+    teamMemberList(isMobile: boolean) {
         var Team: TeamMember[] = [
             {
                 name: "Breatris Mendez Gandica",
@@ -164,12 +206,12 @@ export class AboutUs extends React.Component {
                 role: "VP Web Development, Curriculum Designer, and Content Creator",
                 quote: "-Everyone has the potential for greatness, they just need the right tools to unlock that potential.",
                 bio: "Dee started volunteering with Nuevo Foundation soon after moving to the Pacific Northwest in 2018. Her passion for education and technology lead her to contribute in many areas. She created the Web Basics Curriculum and the cartoons you see on this page. She is helping with the website redesign and implementation as part of her larger goal to spread the Nuevo Foundation mission and values as far as possible.",
-                img: DeeReal,
+                img: DeeReal, 
                 cartoon: Dee
             },
             {
                 name: "Aaron Malveaux",
-                role: "Manager of Communication/Branding/Media",
+                role: "Manager of Communication Branding and Media",
                 quote: "-\"Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.\" - Albert Einstein",
                 bio: "Aaron is the most charismatic team member with broad experience in data privacy. He always ensures that every student is having a great time while learning new computer science concepts. Aaron works on reaching out to potential partners at schools and other nonprofit organizations",
                 img: AaronReal,
@@ -178,6 +220,40 @@ export class AboutUs extends React.Component {
         ];
 
         return Team.map((person, index) => {
+            if (isMobile)
+            {
+                this.flag = !this.flag;
+                return (
+                    <Row>
+                        <Col xs={6} md={4}>
+                            <BioPic key={index} style={{margin:'3em', maxWidth:'70vw'}}>
+                                <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
+                                    person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)}/>
+                            </BioPic>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            {
+                                this.flag ?
+                                <MobileBio1> 
+                                    <h2>{person.name}</h2>
+                                    <h3>{person.role}</h3>
+                                    <i><h5>{person.quote}</h5></i>
+                                    <br/>
+                                    <p>{person.bio}</p>
+                                </MobileBio1> :
+                                <MobileBio> 
+                                    <h2>{person.name}</h2>
+                                    <h3>{person.role}</h3>
+                                    <i><h5>{person.quote}</h5></i>
+                                    <br/>
+                                    <p>{person.bio}</p>
+                                </MobileBio>
+                            }
+                        </Col>
+                    </Row>
+                );
+            };
+
             this.flag = !this.flag;
             if (this.flag) {
                 return <Row>
@@ -194,14 +270,14 @@ export class AboutUs extends React.Component {
                             <i><h5>{person.quote}</h5></i>
                             <br/>
                             <p>{person.bio}</p>
-                        </Bio1>
+                        </Bio1>  
                     </Col>
                 </Row>;
             }
 
             return <Row>
                 <Col xs={12} md={8}>
-                    <Bio>
+                    <Bio> 
                         <h2>{person.name}</h2>
                         <h3>{person.role}</h3>
                         <i><h5>{person.quote}</h5></i>
@@ -222,8 +298,24 @@ export class AboutUs extends React.Component {
 
 
     public render(): any {
-        return (
-            
+        const { width } = this.state;
+        const isMobile = width <= 600;
+        if (isMobile)
+        {
+            return (
+
+                <Background>
+                    <MobileHeader>
+                        <h1>Our Team</h1>
+                    </MobileHeader>
+                    <Grid fluid={true}>
+                        {this.teamMemberList(isMobile)}
+                    </Grid>
+                </Background>
+            );
+        }
+
+        return (      
             <Background>
                 <Header>
                     <div className="logo">
@@ -238,9 +330,8 @@ export class AboutUs extends React.Component {
                         <span className="blink">|</span>
                     </div>
                 </Header>
-                <Grid>
-
-                    {this.teamMemberList()}
+                <Grid fluid={true}>
+                    {this.teamMemberList(isMobile)}
                 </Grid>
             </Background>
         );

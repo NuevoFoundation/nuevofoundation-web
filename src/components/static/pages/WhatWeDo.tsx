@@ -28,7 +28,7 @@ const Background = styled.div`
 const Header = styled.div`
     background-image: url(${headerimg});
     width: 100%;
-    height: 100%;
+    height: auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position:center;
@@ -43,16 +43,12 @@ const Header = styled.div`
 
 const MobileHeader = styled.div`
     background-image: url(${headerimg});
-    width: 100%;
+    width: 100vw;
     height: 30em;
     background-repeat: no-repeat;
     padding-top: 10em;
     text-align: center;
     color: white;
-`;
-
-const DescriptionSection = styled.div`
-    padding: 1.25em;
 `;
 
 const WorskshopAlignment = styled.div`
@@ -90,21 +86,23 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
         this.state = {
           width: window.innerWidth,
         };
-      }
-      
-      componentWillMount() {
+    }
+
+    componentDidMount() {
         window.addEventListener('resize', this.handleWindowSizeChange);
-      }
+    }
       
-      // make sure to remove the listener
-      // when the component is not mounted anymore
-      componentWillUnmount() {
-        window.removeEventListener('resize', this.handleWindowSizeChange);
-      }
-      
-      handleWindowSizeChange = () => {
-        this.setState({ width: window.innerWidth });
-      };
+    componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+    
+    componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+    
+    handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+    };
 
    static readonly Services: Service[] = [
       {
@@ -193,7 +191,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
 
     render(): any {
         const { width } = this.state;
-        const isMobile = width <= 500;
+        const isMobile = width <= 600;
         if (isMobile)
         {
             return (
