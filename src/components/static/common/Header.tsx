@@ -74,6 +74,7 @@ const NavItem = styled.li`
     height: 4px;
     background: #fcc600;
     transition: width 0.3s;
+    margin-top: 5px;
   }
 
   &:hover {
@@ -94,6 +95,7 @@ const ActiveNavItem = styled.li`
   span {
     display: block;
     border-top: 4px solid #fcc600;
+    margin-top: 5px;
   }
 `;
 
