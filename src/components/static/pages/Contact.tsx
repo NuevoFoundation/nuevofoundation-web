@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import styled from "styled-components";
 import { Const } from '../../../Const';
-import dummy from "../../../assets/images/home/1.png";
 import ReactGA from 'react-ga';
 import "../../../assets/stylesheets/Contact.css";
 
@@ -41,22 +40,6 @@ const HeroContent = styled.div`
   height: 207px;
   max-width: 513px;
 `
-
-const Header = styled.div`
-    background-image: url(${dummy});
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position:center;
-    background-size:cover;
-    box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
-    padding: 300px;
-    font-size: 100px;
-    text-align: center;
-    color: white;
-
-`;
 
 const Background = styled.div`
   background-repeat: none;
