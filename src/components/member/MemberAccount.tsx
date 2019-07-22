@@ -1,10 +1,19 @@
 import * as React from "react";
 import styled from "styled-components";
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
 
 const PageWrapper = styled.div`
   font-family: "Lato", sans-serif;
-  height: 500px;
   padding: 40px;
+`;
+
+const SessionsWrappper = styled.div`
+  font-family: "Lato", sans-serif;
+`;
+
+const PastSessionsWrapper = styled.div`
+  font-family: "Lato", sans-serif;
 `;
 
 const Select = styled.select`
@@ -29,6 +38,25 @@ export class MemberAccount extends React.Component {
 
 
   public render() {
+    const data = [{
+      name: 'Adriana',
+      id: 123,
+      session: 'yesterday'
+    },{
+      name: 'Carla',
+      id: 456,
+      session: 'this morning'
+    }];
+    const columns = [{
+      Header: 'Name',
+      accessor: 'name' // String-based value accessors!
+    }, {
+      Header: 'Id',
+      accessor: 'id',
+    }, {
+      Header: 'Session',
+      accessor: 'session',
+    }]
     return (
       <PageWrapper>
         <h2>Account Settings</h2>
@@ -41,7 +69,16 @@ export class MemberAccount extends React.Component {
           <option>Select your school</option>
           <option>Gray Middle School</option>
         </Select>
+        <SessionsWrappper>
+          <h3>Past Sessions</h3>
+          <PastSessionsWrapper>
+            <ReactTable
+            data={data}
+            columns={columns}/>
+          </PastSessionsWrapper>
+        </SessionsWrappper>
       </PageWrapper>
+
     )
   }
 }

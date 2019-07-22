@@ -262,7 +262,7 @@ export class Header extends React.Component<IHeaderProps> {
                 <AuthContext.Consumer>
                   {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
                     memberAuthenticated ?
-                      <div>Welcome, {memberAuthenticatedName}! | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
+                      <div><StyledNavLink  to={`/members/${1}`}>Welcome, {memberAuthenticatedName}!</StyledNavLink> | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
                       :
                       <AuthenticationModal toggleAuthentication={toggleAuthentication}>
                         <ButtonCta
