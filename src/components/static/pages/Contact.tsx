@@ -12,14 +12,7 @@ import styled from "styled-components";
 import { Const } from '../../../Const';
 import dummy from "../../../assets/images/home/1.png";
 import ReactGA from 'react-ga';
-
-const Title = styled.div`
-  font-family: "Lato", sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  padding-top: 40px;
-  padding-bottom: 30px;
-`;
+import "../../../assets/stylesheets/Contact.css";
 
 const Space = styled.div`
   padding-bottom: 10px;
@@ -28,6 +21,25 @@ const Space = styled.div`
 const ContactInfo = styled.div`
   font-size: 18px;
 `;
+
+const ContactHero = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25px;
+  height: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+`
+const HeroContent = styled.div`
+  border: 1px #707070 solid;
+  color: #000000;
+  font-size: 28px;
+  padding: 32px 0 0 25px;
+
+  font-family: 'Space Mono', monospace;
+  height: 207px;
+  max-width: 513px;
+`
 
 const Header = styled.div`
     background-image: url(${dummy});
@@ -132,21 +144,11 @@ export class Contact extends React.Component<{}, IContactState> {
         <Grid fluid={true}>
           <Row>
             <Col>
-              <Header>
-                <div className="logo">
-                    <span>C</span>
-                    <span>o</span>
-                    <span>n</span>
-                    <span>t</span>
-                    <span>a</span>
-                    <span>c</span>
-                    <span>t</span>
-                    <span>_</span>
-                    <span>U</span>
-                    <span>s</span>
-                    <span className="blink">|</span>
-                </div>
-              </Header>
+              <ContactHero>
+                <HeroContent>
+                  Contact Us
+                </HeroContent>
+              </ContactHero>
             </Col>
           </Row>
           <Row>
