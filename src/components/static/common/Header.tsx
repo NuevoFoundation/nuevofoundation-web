@@ -100,7 +100,7 @@ interface IHeaderState {
 // TODO: Implement selected nav item styling
 export class Header extends React.Component<{}, IHeaderState> {
   public navItems: INavItem[] = [
-    /* 
+    /*
     {
       dropdown: true,
       link: 'about-us',
@@ -203,7 +203,7 @@ export class Header extends React.Component<{}, IHeaderState> {
                 <AuthContext.Consumer>
                   {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
                     memberAuthenticated ?
-                      <div>Welcome, {memberAuthenticatedName}! | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
+                      <div><StyledNavLink  to={`/members/${1}`}>Welcome, {memberAuthenticatedName}!</StyledNavLink> | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
                       :
                       <AuthenticationModal toggleAuthentication={toggleAuthentication}>
                         <ButtonCta

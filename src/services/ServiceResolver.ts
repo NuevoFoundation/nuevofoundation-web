@@ -6,7 +6,7 @@ import {
 import { WordpressService, ApiService, AuthService } from "./";
 
 export class ServiceResolver {
-  private UseMock: boolean = true;
+  private UseMock: boolean = false;
 
   public WordpressService(): WordpressService | MockWordpressService {
     return this.UseMock ? new MockWordpressService() : new WordpressService();
