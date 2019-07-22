@@ -27,6 +27,7 @@ const ContactHero = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-left: 25px;
+  padding-right: 25px;
   height: 320px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `
