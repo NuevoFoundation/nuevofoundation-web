@@ -34,24 +34,34 @@ import {
 const Header = styled.div`
     background-image: url(${headerimg});
     width: 100%;
-    height: 100%;
+    height: auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position:center;
     background-size:cover;
     box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
     padding: 300px;
-    font-size: 100px;
+    font-size: 6.250em;
     text-align: center;
     color: white;
+    margin-bottom: 1px;
+`;
 
+const MobileHeader = styled.div`
+    background: url(${headerimg}) no-repeat center center fixed;
+    width: 100vw;
+    height: 30em;
+    padding-top: 12em;
+    text-align: center;
+    color: white;
+   -o-background-size: cover;
+    background-size: cover;
 `;
 
 const Background = styled.div`
   background-repeat: none;
   background-image: url(${backgroundImageWithNuvi});
   font-family: "Lato", sans-serif;
-  
 `;
 
 class TeamMember {
@@ -73,15 +83,34 @@ class TeamMember {
 }
 
 
-export class AboutUs extends React.Component {
+export class AboutUs extends React.Component<{}, { width: number }> {
     flag: boolean;
 
     constructor(props: {}) {
         super(props);
         this.flag = true;
+        this.state = {
+            width: window.innerWidth,
+        };
     }
 
-    teamMemberList() {
+    componentDidMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    handleWindowSizeChange = () => {
+        this.setState({ width: window.innerWidth });
+    };
+
+    teamMemberList(isMobile: boolean) {
         var Team: TeamMember[] = [
             {
                 name: "Breatris Mendez Gandica",
@@ -98,7 +127,7 @@ export class AboutUs extends React.Component {
                 bio: "Mollee had always been curious about STEM because she wanted to understand the way humans worked. When she accidentally stumbled into a bioinformatics internship, she found out just how much computer science applied to her dreams and interests, and discovered a passion for promoting equal access STEM education along the way. In Mollee's work with Nuevo Foundation, her main focuses are to oversee the operations of the foundation and establish ways to make the foundation's vision a reality.",
                 img: MolleeReal,
                 cartoon: Mollee
-            }, 
+            },
             {
                 name: "Jeremiah Isaacson",
                 role: "CIO",
@@ -130,7 +159,7 @@ export class AboutUs extends React.Component {
                 bio: "I'm a Chicano Visual UX designer from Santa Ana, CA. I'm passionate about design and the impact that it has on the world and to communities on a granular level. I have many hobbies that keep me occupied on my free time that range from cooking, painting, playing music, and shooting monsters online on my Xbox. I have recently started reading and did not realize how enjoyable it is, it also helps me stay relevant and knowledgeable in my career.",
                 img: IzzyReal,
                 cartoon: Izzy
-            }, 
+            },
             {
                 name: "Savoy Schuler",
                 role: "Manager of Communication/Branding/Media",
@@ -149,7 +178,7 @@ export class AboutUs extends React.Component {
             },
             {
                 name: "Aaron Malveaux",
-                role: "Manager of Communication/Branding/Media",
+                role: "Manager of Communication Branding and Media",
                 quote: "-\"Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.\" - Albert Einstein",
                 bio: "Aaron is the most charismatic team member with broad experience in data privacy. He always ensures that every student is having a great time while learning new computer science concepts. Aaron works on reaching out to potential partners at schools and other nonprofit organizations",
                 img: AaronReal,
@@ -161,17 +190,17 @@ export class AboutUs extends React.Component {
             <div className="bioWrapper">
                 {Team.map((person, index) => {
                     return <div className="bio">
-                                <img className="bioPic" src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
-                                    person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)} />
-                                <div className="bioTextWrapper">
-                                    <div className="bioName">{person.name}</div>
-                                    <div className="bioRole">{person.role}</div>
-                                    <i><div className="bioQuote">{person.quote}</div></i>
-                                    <br/>
-                                    <p className="bioText">{person.bio}</p>
-                                </div>
-                            </div>
-                    })  
+                        <img className="bioPic" src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
+                            person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)} />
+                        <div className="bioTextWrapper">
+                            <div className="bioName">{person.name}</div>
+                            <div className="bioRole">{person.role}</div>
+                            <i><div className="bioQuote">{person.quote}</div></i>
+                            <br />
+                            <p className="bioText">{person.bio}</p>
+                        </div>
+                    </div>
+                })
                 }
             </div>
         );
@@ -179,8 +208,23 @@ export class AboutUs extends React.Component {
 
 
     public render(): any {
+        const { width } = this.state;
+        const isMobile = width <= 600;
+        if (isMobile) {
+            return (
+
+                <Background>
+                    <MobileHeader>
+                        <h1>Our Team</h1>
+                    </MobileHeader>
+                    <Grid fluid={true}>
+                        {this.teamMemberList(isMobile)}
+                    </Grid>
+                </Background>
+            );
+        }
+
         return (
-            
             <Background>
                 <Header>
                     <div className="logo">
@@ -195,9 +239,8 @@ export class AboutUs extends React.Component {
                         <span className="blink">|</span>
                     </div>
                 </Header>
-                <Grid>
-
-                    {this.teamMemberList()}
+                <Grid fluid={true}>
+                    {this.teamMemberList(isMobile)}
                 </Grid>
             </Background>
         );
