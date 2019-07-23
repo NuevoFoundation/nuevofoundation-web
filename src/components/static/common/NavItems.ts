@@ -11,12 +11,11 @@ export const NavItems: INavItem[] = [
     link: "/what-we-do",
     text: "What We Do"
   },
-  // TODO: Uncommnet once SupportUs page is completed
-  // {
-  //   dropdown: false,
-  //   link: "support-us",
-  //   text: "Support Us"
-  // },
+  {
+    dropdown: false,
+    link: "support-us",
+    text: "Support Us"
+  },
   {
     dropdown: false,
     link: "/blog",
