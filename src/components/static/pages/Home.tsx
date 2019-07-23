@@ -102,17 +102,6 @@ const StatsSectionStatsInfo = styled.div`
   }
 `
 
-const SolutionSectionContent = styled.div`
-  display: flex;
-  font-family: 'Space Mono', monospace;
-  color: #000000;
-  img { 
-    width: 441px;
-    height: 270px;
-    object-fit: cover;
-  }
-`
-
 const ImpactSectionStats = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -245,7 +234,7 @@ export class Home extends React.Component {
               />
             </Col>
           </Row>
-          <img src={ArrowCircle} />
+          <img src={ArrowCircle} alt="arrow indicator" />
         </AboveFoldContent>
         <ContentSection backgroundColor={"#FFBB00"}>
           <StatsSectionInfo>
@@ -262,7 +251,7 @@ export class Home extends React.Component {
 
             <StatsSectionStatsInfo>
               <StatsSectionStatsTitle>
-                <img src={Percent76} />
+                <img src={Percent76} alt="percent" />
                 <div>74%</div>
               </StatsSectionStatsTitle>
               <span>74% of middle school girls</span> express an interest in engineering, science, and math. But only 0.3% choose computer science as a major when they get to college
@@ -271,7 +260,7 @@ export class Home extends React.Component {
 
             <StatsSectionStatsInfo>
               <StatsSectionStatsTitle>
-                <img src={Percent36} />
+                <img src={Percent36} alt="percent" />
                 <div>36%</div>
               </StatsSectionStatsTitle>
               <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
@@ -280,7 +269,7 @@ export class Home extends React.Component {
 
             <StatsSectionStatsInfo>
               <StatsSectionStatsTitle>
-                <img src={Percent13} />
+                <img src={Percent13} alt="percent" />
                 <div>13%</div>
               </StatsSectionStatsTitle>
               <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
@@ -316,7 +305,7 @@ export class Home extends React.Component {
           </StatsSectionInfo>
           <ImpactSectionStats>
 
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,084 <span><span>Diverse</span>students across​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
+            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,114 <span><span>Diverse</span>students across​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 
             <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#00BED5"}>86% <span><span>More Interested</span>in STEM​​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 
