@@ -94,7 +94,7 @@ export class GetInvolved extends React.Component {
       optionTwo: "Virtual Sessions",
       optionThree: "Speaker series",
       buttonText: "Download program",
-      buttonLink: "./"
+      buttonLink: "./coming-soon"
     },
     {
       role: "Student",
@@ -103,7 +103,7 @@ export class GetInvolved extends React.Component {
       optionTwo: "Events and scholarships",
       optionThree: "Resources",
       buttonText: "Get an overview",
-      buttonLink: "./"
+      buttonLink: "./coming-soon"
     },
     {
       role: "Volunteer",
@@ -112,7 +112,7 @@ export class GetInvolved extends React.Component {
       optionTwo: "Adipiscing elit, sed do eiusmod tempor ",
       optionThree: "Incididunt ut labore et dolore magna aliqua",
       buttonText: "Sign up now",
-      buttonLink: "./"
+      buttonLink: "https://aka.ms/nfsignup"
     }
   ]; // end of Role
 
