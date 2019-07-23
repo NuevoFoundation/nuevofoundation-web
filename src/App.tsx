@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Post } from "./components/blog/Post";
 import { Footer } from "./components/static/common";
-import Header  from "./components/static/common/Header";
+import Header from "./components/static/common/Header";
 import {
   AboutUs,
   Contact,
@@ -11,7 +11,8 @@ import {
   Home,
   SupportUs,
   WhatWeDo,
-  GetInvolved
+  GetInvolved,
+  ComingSoon
 } from "./components/static/pages";
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
@@ -68,6 +69,7 @@ class App extends React.Component<{}, IAppState> {
               <Route exact={true} path={Const.FaqPage} component={Faq} />
               <Route exact={true} path={Const.ContactPage} component={Contact} />
               <Route exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />
+              <Route exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
               {/* <Route component={NoMatch} /> */}
             </Switch>
             <Footer />
