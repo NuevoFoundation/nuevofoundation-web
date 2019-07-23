@@ -11,14 +11,7 @@ import {
 import styled from "styled-components";
 import { Const } from '../../../Const';
 import ReactGA from 'react-ga';
-
-const Title = styled.div`
-  font-family: "Lato", sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  padding-top: 40px;
-  padding-bottom: 30px;
-`;
+import "../../../assets/stylesheets/Contact.css";
 
 const Space = styled.div`
   padding-bottom: 10px;
@@ -26,6 +19,32 @@ const Space = styled.div`
 
 const ContactInfo = styled.div`
   font-size: 18px;
+`;
+
+const ContactHero = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+`
+const HeroContent = styled.div`
+  border: 1px #707070 solid;
+  color: #000000;
+  font-size: 28px;
+  padding: 32px 0 0 25px;
+
+  font-family: 'Space Mono', monospace;
+  height: 207px;
+  max-width: 513px;
+`
+
+const Background = styled.div`
+  background-repeat: none;
+  font-family: "Lato", sans-serif;
+  
 `;
 
 interface IContactState {
@@ -105,97 +124,100 @@ export class Contact extends React.Component<{}, IContactState> {
 
   public render() {
     return (
-      <Grid fluid={true}>
-        <Row>
-          <Col xs={12}>
-            <Row>
-              <Col xs={12} xsOffset={1}>
-                <Title> Say Hello! </Title>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={10} xsOffset={1} sm={5} smOffset={1}>
-                <form>
-                  <FormGroup controlId="formBasicText">
-                    <ControlLabel>Name</ControlLabel>
-                    <FormControl
-                      type="text"
-                      name="name"
-                      placeholder="Enter name"
-                      onChange={this.handleName}
-                      value={this.state.name}
-                    />
-                    <Space />
-                    <ControlLabel>Email</ControlLabel>
-                    <FormControl
-                      type="email"
-                      name="email"
-                      placeholder="Enter valid email"
-                      onChange={this.handleEmail}
-                      value={this.state.email}
-                    />
-                    <Space />
-                    <ControlLabel>Subject</ControlLabel>
-                    <FormControl
-                      type="text"
-                      placeholder="What are you interested in?"
-                      onChange={this.handleSubject}
-                      value={this.state.subject}
-                    />
-                    <Space />
-                    <FormControl
-                      type="textarea"
-                      style={{ height: "150px" }}
-                      placeholder="Enter message"
-                      onChange={this.handleMessage}
-                      value={this.state.message}
-                    />
-                    <Space />
-                    <Space />
-                    <button
-                      style={btnStyle}
-                      className="btn-submit"
-                      type="submit"
-                      onClick={this.handleSubmit}
-                    >
-                      SEND
-                    </button>
-                  </FormGroup>
-                </form>
-              </Col>
-              <Col xs={12} sm={5} smOffset={1}>
-                <img src={""} alt="blank"/>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={10} xsOffset={1}>
-                <hr
-                  style={{ height: "10px", borderTop: "2px solid #5D5D5D" }}
-                />
-              </Col>
-              <Col xs={11} xsOffset={1}>
-                <ContactInfo>
-                  The Nuevo Foundation is based in Seattle, Washington.
-                  <br />
-                  <br />
-                  To reach out with any other questions please contact:
-                  <br />
-                  <br />
-                  Nuevo Foundation
-                  <br />
-                  <a href="mailto:contact@nuevofoundation.org" target="_top">
-                    contact@nuevofoundation.org
-                  </a>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                </ContactInfo>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Grid>
+      <Background>
+        <Grid fluid={true}>
+          <Row>
+            <Col>
+              <ContactHero>
+                <HeroContent>
+                  Contact Us
+                </HeroContent>
+              </ContactHero>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <Row>
+                <Col xs={10} xsOffset={1} sm={5} smOffset={1}>
+                  <form>
+                    <FormGroup controlId="formBasicText">
+                      <ControlLabel>Name</ControlLabel>
+                      <FormControl
+                        type="text"
+                        name="name"
+                        placeholder="Enter name"
+                        onChange={this.handleName}
+                        value={this.state.name}
+                      />
+                      <Space />
+                      <ControlLabel>Email</ControlLabel>
+                      <FormControl
+                        type="email"
+                        name="email"
+                        placeholder="Enter valid email"
+                        onChange={this.handleEmail}
+                        value={this.state.email}
+                      />
+                      <Space />
+                      <ControlLabel>Subject</ControlLabel>
+                      <FormControl
+                        type="text"
+                        placeholder="What are you interested in?"
+                        onChange={this.handleSubject}
+                        value={this.state.subject}
+                      />
+                      <Space />
+                      <FormControl
+                        type="textarea"
+                        style={{ height: "150px" }}
+                        placeholder="Enter message"
+                        onChange={this.handleMessage}
+                        value={this.state.message}
+                      />
+                      <Space />
+                      <Space />
+                      <button
+                        style={btnStyle}
+                        className="btn-submit"
+                        type="submit"
+                        onClick={this.handleSubmit}
+                      >
+                        SEND
+                      </button>
+                    </FormGroup>
+                  </form>
+                </Col> 
+              </Row>
+              <Row>
+                <Col xs={10} xsOffset={1}>
+                  <hr
+                    style={{ height: "10px", borderTop: "2px solid #5D5D5D" }}
+                  />
+                </Col>
+                <Col xs={11} xsOffset={1}>
+                  <ContactInfo>
+                    The Nuevo Foundation is based in Seattle, Washington.
+                    <br />
+                    <br />
+                    To reach out with any other questions please contact:
+                    <br />
+                    <br />
+                    Nuevo Foundation
+                    <br />
+                    <a href="mailto:contact@nuevofoundation.org" target="_top">
+                      contact@nuevofoundation.org
+                    </a>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                  </ContactInfo>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
+      </Background>
     );
   }
 }

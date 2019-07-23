@@ -1,4 +1,3 @@
-/* eslint-disable  @typescript-eslint/indent */
 export class Const {
   public static RootPage: string = "/";
   public static WhatWeDoPage: string = "/what-we-do";
@@ -12,6 +11,7 @@ export class Const {
   public static VirtualSessionPage: string = "/virtual-sessions";
   public static VirtualSession: string = "/virtual-sessions/:id";
   public static MembersAccount: string = "/members/:id";
+  public static GetInvolvedPage: string = "/get-involved";
 
   public static PayPalDonatePage?: string = process.env.REACT_APP_PAYPAL_DONATE;
   public static WordpressEndpoint?: string =

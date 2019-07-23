@@ -69,11 +69,7 @@ interface ActionButtonProps {
   active: boolean;
 }
 
-const div: StyledFunction<
-  ActionButtonProps & React.HTMLProps<HTMLInputElement>
-> = styled.div;
-
-const ActionButton = div`
+const ActionButton = styled.div`
   font-family: 'Lato', sans-serif;
   border: none;
   border-radius: 4px;
