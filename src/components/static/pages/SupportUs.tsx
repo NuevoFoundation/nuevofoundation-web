@@ -1,27 +1,45 @@
 import * as React from "react";
 import styled from "styled-components";
 import "../../../assets/stylesheets/SupportUs.css";
-import { DonateButton } from "../common/DonateButton";
-import { Paper, Box, Typography } from '@material-ui/core'
 
-const SupportUsPageWrapper = styled.div``;
+const SupportUsPageBar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25px;
+  height: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+`
+const Placeholder = styled.div`
+  border: 1px #707070 solid;
+  color: #000000;
+  font-size: 28px;
+  padding: 32px 0 0 25px;
+
+  font-family: 'Space Mono', monospace;
+  height: 207px;
+  max-width: 513px;
+`
 
 export const SupportUs: React.FC = (): JSX.Element => {
 
   return (
-    <SupportUsPageWrapper>
-      <Paper style={{borderRadius: '0px', marginBottom: '16px', height: '320px'}}> {/* TODO: Remove hardcoded dimensions when content is added */}
-        <Box style={{height: '100%', width: '25%'}}> {/* TODO: Remove hardcoded dimensions when content is added */}
-          <Typography variant="h2" gutterBottom>
-            Support Us
-          </Typography>
-        </Box>
-      </Paper>
-      <div style={{height: `${window.innerHeight-320}px`}}> {/* TODO: Remove hardcoded dimensions when content is added */}
-        <Typography variant="h2">
-            [TBD]
-        </Typography>
+    <React.Fragment>
+      <SupportUsPageBar>
+        <Placeholder>
+          Support us
+        </Placeholder>
+      </SupportUsPageBar>
+      <div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
       </div>
-    </SupportUsPageWrapper>
+    </React.Fragment>
   )
 }
