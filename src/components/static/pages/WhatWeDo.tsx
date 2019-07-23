@@ -7,9 +7,6 @@ import speakerNuvi from "../../../assets/logos/nuvi/speaker_nuvi.png";
 import workshopNuvi from "../../../assets/logos/nuvi/virtual_session_nuvi.png";
 import virtualNuvi from "../../../assets/logos/nuvi/workshop_nuvi.png";
 import "../../../assets/stylesheets/WhatWeDo.css";
-
-import headerimg from "../../../assets/images/whatwedo/whatwedoheader.png";
-
 import {
     Col,
     Grid,
@@ -17,38 +14,13 @@ import {
     Image,
     Button
 } from "react-bootstrap";
+import { PageTitle } from "../common/PageTitle";
 
 
 const Background = styled.div`
   background-repeat: none;
   font-family: "Lato", sans-serif;
   
-`;
-
-const Header = styled.div`
-    background-image: url(${headerimg});
-    width: 100%;
-    height: auto;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position:center;
-    background-size:cover;
-    box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
-    padding: 300px;
-    font-size: 6.250em;
-    text-align: center;
-    color: white;
-    margin-bottom: 1px;
-`;
-
-const MobileHeader = styled.div`
-    background-image: url(${headerimg});
-    width: 100vw;
-    height: 30em;
-    background-repeat: no-repeat;
-    padding-top: 10em;
-    text-align: center;
-    color: white;
 `;
 
 const WorskshopAlignment = styled.div`
@@ -197,9 +169,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
             return (
 
                 <Background>
-                    <MobileHeader>
-                        <h1>What we do</h1>
-                    </MobileHeader>
+                     <PageTitle title={"What we do"} />
                     <Grid fluid={true}>
                         <Row className="services">
                             {this.serviceList(isMobile)}
@@ -213,19 +183,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
 
       return (
           <Background>
-              <Header>
-                  <div className="logo">
-                      <span>W</span>
-                      <span>h</span>
-                      <span>a</span>
-                      <span>t_</span>
-                      <span>w</span>
-                      <span>e_</span>
-                      <span>d</span>
-                      <span>o</span>
-                      <span className="blink">|</span>
-                  </div>
-              </Header>
+              <PageTitle title={"What we do"} />
               <Grid fluid={true}>
                   <Row className="services">
                       {this.serviceList(isMobile)}
