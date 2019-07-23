@@ -6,8 +6,9 @@ const BlogHero = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 25px;
+  padding: 0 25px 0 25px;
   height: 320px;
+  width: 100%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `
 const HereImage = styled.div`
