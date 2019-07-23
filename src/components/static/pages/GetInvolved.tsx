@@ -1,9 +1,13 @@
 import * as React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
+import teacher from "../../../assets/images/getinvolved/teacher.png";
+import student from "../../../assets/images/getinvolved/student.png";
+import volunteer from "../../../assets/images/getinvolved/volunteer.png";
 import {
     Col,
     Grid,
-    Row
+    Row,
+    Image
 } from "react-bootstrap";
 
 const HereImage = styled.div`
@@ -34,15 +38,16 @@ const RolePic = styled.div`
 const RoleContainer = styled.div`
     font-family: "Lato", sans-serif;
     color: black;
-    width: 300px;
-    font-size: 16px;
+    font-size: 1.15em;
+    width: 100%;
+    height: 100%;
 `;
 const RoleHeader = styled.div`
     font-family: "Lato", sans-serif;
     text-align: center;
     color: black;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 1.75em;
 `;
 
 const RoleButton = styled.button`
@@ -50,12 +55,13 @@ const RoleButton = styled.button`
     color: black;
     background-color: #FCC600;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1em;
     border: 2px solid black;
     text-align: center;
-    height: 50px;
-    width: 185px;
+    height: 3.125em;
+    width: 11.55em;
     padding: 10px;
+    margin-top: 6.25em;
 `;
 
 class Role {
@@ -84,7 +90,7 @@ export class GetInvolved extends React.Component {
   static readonly Role: Role[] = [
       {
         role: "Teacher",
-        img: "https://pbs.twimg.com/profile_images/1027011228529393664/tJv9fKUD.jpg",
+        img: teacher,
         optionOne: "Coding workshops",
         optionTwo: "Virtual Sessions",
         optionThree: "Speaker series",
@@ -93,7 +99,7 @@ export class GetInvolved extends React.Component {
       },
       {
         role: "Student",
-        img: "https://pbs.twimg.com/profile_images/1027011228529393664/tJv9fKUD.jpg",
+        img: student,
         optionOne: "Curriculums on Github",
         optionTwo: "Events and scholarships",
         optionThree: "Resources",
@@ -102,10 +108,10 @@ export class GetInvolved extends React.Component {
       },
       {
         role: "Volunteer",
-        img: "https://pbs.twimg.com/profile_images/1027011228529393664/tJv9fKUD.jpg", 
+        img: volunteer, 
         optionOne: "Lorem ipsum dolor sit amet, consectetur",
-        optionTwo: "adipiscing elit, sed do eiusmod tempor ",
-        optionThree: "incididunt ut labore et dolore magna aliqua",
+        optionTwo: "Adipiscing elit, sed do eiusmod tempor ",
+        optionThree: "Incididunt ut labore et dolore magna aliqua",
         buttonText: "Sign up now",
         buttonLink: "./"
       }
@@ -113,9 +119,9 @@ export class GetInvolved extends React.Component {
 
   roleList() {
     return GetInvolved.Role.map((role, index) => {
-      return (<Col xsOffset={1} xs={3} >
+      return (<Col xs={0} xsOffset={1} md={3} mdOffset={1}>
            <RolePic>
-               <img src={role.img} alt="role pic" style={{borderRadius:"50%", height:"200px", width:"200px"}}/>
+               <Image src={role.img} alt="role pic" circle responsive/>
            </RolePic>
             <RoleContainer>
                 <RoleHeader>{role.role}</RoleHeader>
@@ -123,7 +129,6 @@ export class GetInvolved extends React.Component {
                 <p>{role.optionOne}
                 <br/>{role.optionTwo}
                 <br/>{role.optionThree}</p>
-                <br/><br/><br/><br/><br/><br/><br/>
                 <form action={role.buttonLink} style={{textAlign:"center"}}>
                   <RoleButton>{role.buttonText}</RoleButton>
                 </form>
