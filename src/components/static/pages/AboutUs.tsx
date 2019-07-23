@@ -64,39 +64,6 @@ const Background = styled.div`
   font-family: "Lato", sans-serif;
 `;
 
-const Bio = styled.div`
-    font-family: "Lato", sans-serif;
-    width: 43.750em;
-    margin: 6.250em;
-    padding: 3.125em;
-    background: #d0e6e8;
-    font-size: 1.125em;
-`;
-
-const Bio1 = styled(Bio)`
-    background: #fce68f;
-`;
-
-const MobileBio = styled.div`
-    font-family: "Lato", sans-serif;
-    width: 80vw;
-    margin: auto;
-    margin-bottom: 2em;
-    padding: 1.25em;
-    background: #d0e6e8;
-    font-size: 1.125em;
-`;
-
-const MobileBio1 = styled(MobileBio)`
-    background: #fce68f;
-`;
-
-const BioPic = styled.div`
-    position: relative;
-    display: inline-block;
-    margin:100px;
-`;
-
 class TeamMember {
     name: string;
     role: string;
@@ -133,12 +100,12 @@ export class AboutUs extends React.Component<{}, { width: number }> {
 
     componentWillMount() {
         window.addEventListener('resize', this.handleWindowSizeChange);
-      }
-      
+    }
+
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleWindowSizeChange);
     }
-    
+
     handleWindowSizeChange = () => {
         this.setState({ width: window.innerWidth });
     };
@@ -160,7 +127,7 @@ export class AboutUs extends React.Component<{}, { width: number }> {
                 bio: "Mollee had always been curious about STEM because she wanted to understand the way humans worked. When she accidentally stumbled into a bioinformatics internship, she found out just how much computer science applied to her dreams and interests, and discovered a passion for promoting equal access STEM education along the way. In Mollee's work with Nuevo Foundation, her main focuses are to oversee the operations of the foundation and establish ways to make the foundation's vision a reality.",
                 img: MolleeReal,
                 cartoon: Mollee
-            }, 
+            },
             {
                 name: "Jeremiah Isaacson",
                 role: "CIO",
@@ -192,7 +159,7 @@ export class AboutUs extends React.Component<{}, { width: number }> {
                 bio: "I'm a Chicano Visual UX designer from Santa Ana, CA. I'm passionate about design and the impact that it has on the world and to communities on a granular level. I have many hobbies that keep me occupied on my free time that range from cooking, painting, playing music, and shooting monsters online on my Xbox. I have recently started reading and did not realize how enjoyable it is, it also helps me stay relevant and knowledgeable in my career.",
                 img: IzzyReal,
                 cartoon: Izzy
-            }, 
+            },
             {
                 name: "Savoy Schuler",
                 role: "Manager of Communication/Branding/Media",
@@ -206,7 +173,7 @@ export class AboutUs extends React.Component<{}, { width: number }> {
                 role: "VP Web Development, Curriculum Designer, and Content Creator",
                 quote: "-Everyone has the potential for greatness, they just need the right tools to unlock that potential.",
                 bio: "Dee started volunteering with Nuevo Foundation soon after moving to the Pacific Northwest in 2018. Her passion for education and technology lead her to contribute in many areas. She created the Web Basics Curriculum and the cartoons you see on this page. She is helping with the website redesign and implementation as part of her larger goal to spread the Nuevo Foundation mission and values as far as possible.",
-                img: DeeReal, 
+                img: DeeReal,
                 cartoon: Dee
             },
             {
@@ -219,80 +186,23 @@ export class AboutUs extends React.Component<{}, { width: number }> {
             }
         ];
 
-        return Team.map((person, index) => {
-            if (isMobile)
-            {
-                this.flag = !this.flag;
-                return (
-                    <Row>
-                        <Col xs={6} md={4}>
-                            <BioPic key={index} style={{margin:'3em', maxWidth:'70vw'}}>
-                                <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
-                                    person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)}/>
-                            </BioPic>
-                        </Col>
-                        <Col xs={12} md={8}>
-                            {
-                                this.flag ?
-                                <MobileBio1> 
-                                    <h2>{person.name}</h2>
-                                    <h3>{person.role}</h3>
-                                    <i><h5>{person.quote}</h5></i>
-                                    <br/>
-                                    <p>{person.bio}</p>
-                                </MobileBio1> :
-                                <MobileBio> 
-                                    <h2>{person.name}</h2>
-                                    <h3>{person.role}</h3>
-                                    <i><h5>{person.quote}</h5></i>
-                                    <br/>
-                                    <p>{person.bio}</p>
-                                </MobileBio>
-                            }
-                        </Col>
-                    </Row>
-                );
-            };
-
-            this.flag = !this.flag;
-            if (this.flag) {
-                return <Row>
-                    <Col xs={6} md={4}>
-                        <BioPic key={index}>
-                            <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
-                                person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)}/>
-                        </BioPic>
-                    </Col>
-                    <Col xs={12} md={8}>
-                        <Bio1> 
-                            <h2>{person.name}</h2>
-                            <h3>{person.role}</h3>
-                            <i><h5>{person.quote}</h5></i>
-                            <br/>
-                            <p>{person.bio}</p>
-                        </Bio1>  
-                    </Col>
-                </Row>;
-            }
-
-            return <Row>
-                <Col xs={12} md={8}>
-                    <Bio> 
-                        <h2>{person.name}</h2>
-                        <h3>{person.role}</h3>
-                        <i><h5>{person.quote}</h5></i>
-                        <br/>
-                        <p>{person.bio}</p>
-                    </Bio>
-                </Col>
-               <Col xs={6} md={4}>
-                   <BioPic>
-                       <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
+        return (
+            <div className="bioWrapper">
+                {Team.map((person, index) => {
+                    return <div className="bio">
+                        <img className="bioPic" src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
                             person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)} />
-                   </BioPic>
-               </Col>
-            </Row>;
-        }
+                        <div className="bioTextWrapper">
+                            <div className="bioName">{person.name}</div>
+                            <div className="bioRole">{person.role}</div>
+                            <i><div className="bioQuote">{person.quote}</div></i>
+                            <br />
+                            <p className="bioText">{person.bio}</p>
+                        </div>
+                    </div>
+                })
+                }
+            </div>
         );
     }
 
@@ -300,8 +210,7 @@ export class AboutUs extends React.Component<{}, { width: number }> {
     public render(): any {
         const { width } = this.state;
         const isMobile = width <= 600;
-        if (isMobile)
-        {
+        if (isMobile) {
             return (
 
                 <Background>
@@ -315,7 +224,7 @@ export class AboutUs extends React.Component<{}, { width: number }> {
             );
         }
 
-        return (      
+        return (
             <Background>
                 <Header>
                     <div className="logo">
