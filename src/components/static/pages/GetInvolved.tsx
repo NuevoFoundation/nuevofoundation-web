@@ -4,10 +4,10 @@ import teacher from "../../../assets/images/getinvolved/teacher.png";
 import student from "../../../assets/images/getinvolved/student.png";
 import volunteer from "../../../assets/images/getinvolved/volunteer.png";
 import {
-    Col,
-    Grid,
-    Row,
-    Image
+  Col,
+  Grid,
+  Row,
+  Image
 } from "react-bootstrap";
 
 const HereImage = styled.div`
@@ -15,7 +15,7 @@ const HereImage = styled.div`
   color: #000000;
   font-size: 28px;
   padding: 32px 0 0 25px;
-  margin-left: 20px;
+  margin: 0 20px 0 20px;
   margin-bottom: 30px;
 
   font-family: 'Space Mono', monospace;
@@ -65,74 +65,73 @@ const RoleButton = styled.button`
 `;
 
 class Role {
-    role: string;
-    img: string;
-    optionOne: string;
-    optionTwo: string;
-    optionThree: string;
-    buttonText: string;
-    buttonLink: string;
+  role: string;
+  img: string;
+  optionOne: string;
+  optionTwo: string;
+  optionThree: string;
+  buttonText: string;
+  buttonLink: string;
 
-    constructor(role: string, img: string, optionOne: string, optionTwo: string, optionThree: string, 
-      buttonText: string, buttonLink: string) 
-    {
-        this.role = role;
-        this.img = img;
-        this.optionOne = optionOne;
-        this.optionTwo = optionTwo;
-        this.optionThree = optionThree;
-        this.buttonText = buttonText;
-        this.buttonLink = buttonLink;
-    }
+  constructor(role: string, img: string, optionOne: string, optionTwo: string, optionThree: string,
+    buttonText: string, buttonLink: string) {
+    this.role = role;
+    this.img = img;
+    this.optionOne = optionOne;
+    this.optionTwo = optionTwo;
+    this.optionThree = optionThree;
+    this.buttonText = buttonText;
+    this.buttonLink = buttonLink;
+  }
 }
 
 export class GetInvolved extends React.Component {
   static readonly Role: Role[] = [
-      {
-        role: "Teacher",
-        img: teacher,
-        optionOne: "Coding workshops",
-        optionTwo: "Virtual Sessions",
-        optionThree: "Speaker series",
-        buttonText: "Download program",
-        buttonLink: "./"
-      },
-      {
-        role: "Student",
-        img: student,
-        optionOne: "Curriculums on Github",
-        optionTwo: "Events and scholarships",
-        optionThree: "Resources",
-        buttonText: "Get an overview",
-        buttonLink: "./"
-      },
-      {
-        role: "Volunteer",
-        img: volunteer, 
-        optionOne: "Lorem ipsum dolor sit amet, consectetur",
-        optionTwo: "Adipiscing elit, sed do eiusmod tempor ",
-        optionThree: "Incididunt ut labore et dolore magna aliqua",
-        buttonText: "Sign up now",
-        buttonLink: "./"
-      }
-    ]; // end of Role
+    {
+      role: "Teacher",
+      img: teacher,
+      optionOne: "Coding workshops",
+      optionTwo: "Virtual Sessions",
+      optionThree: "Speaker series",
+      buttonText: "Download program",
+      buttonLink: "./"
+    },
+    {
+      role: "Student",
+      img: student,
+      optionOne: "Curriculums on Github",
+      optionTwo: "Events and scholarships",
+      optionThree: "Resources",
+      buttonText: "Get an overview",
+      buttonLink: "./"
+    },
+    {
+      role: "Volunteer",
+      img: volunteer,
+      optionOne: "Lorem ipsum dolor sit amet, consectetur",
+      optionTwo: "Adipiscing elit, sed do eiusmod tempor ",
+      optionThree: "Incididunt ut labore et dolore magna aliqua",
+      buttonText: "Sign up now",
+      buttonLink: "./"
+    }
+  ]; // end of Role
 
   roleList() {
     return GetInvolved.Role.map((role, index) => {
-      return (<Col xs={0} xsOffset={1} md={3} mdOffset={1}>
-           <RolePic>
-               <Image src={role.img} alt="role pic" circle responsive/>
-           </RolePic>
-            <RoleContainer>
-                <RoleHeader>{role.role}</RoleHeader>
-                <br/>
-                <p>{role.optionOne}
-                <br/>{role.optionTwo}
-                <br/>{role.optionThree}</p>
-                <form action={role.buttonLink} style={{textAlign:"center"}}>
-                  <RoleButton>{role.buttonText}</RoleButton>
-                </form>
-            </RoleContainer> 
+      return (<Col xs={0} xsOffset={1} md={3} mdOffset={1} key={index}>
+        <RolePic>
+          <Image src={role.img} alt="role pic" circle responsive />
+        </RolePic>
+        <RoleContainer>
+          <RoleHeader>{role.role}</RoleHeader>
+          <br />
+          <p>{role.optionOne}
+            <br />{role.optionTwo}
+            <br />{role.optionThree}</p>
+          <form action={role.buttonLink} style={{ textAlign: "center" }}>
+            <RoleButton>{role.buttonText}</RoleButton>
+          </form>
+        </RoleContainer>
       </Col>);
     }
     ); // end of return
