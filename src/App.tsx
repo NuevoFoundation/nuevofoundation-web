@@ -10,7 +10,8 @@ import {
   Faq,
   Home,
   SupportUs,
-  WhatWeDo
+  WhatWeDo,
+  GetInvolved
 } from "./components/static/pages";
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
@@ -66,6 +67,7 @@ class App extends React.Component<{}, IAppState> {
               <Route exact={true} path={Const.BlogPost} component={Post} />
               <Route exact={true} path={Const.FaqPage} component={Faq} />
               <Route exact={true} path={Const.ContactPage} component={Contact} />
+              <Route exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />
               {/* <Route component={NoMatch} /> */}
             </Switch>
             <Footer />

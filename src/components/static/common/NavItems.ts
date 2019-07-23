@@ -11,6 +11,12 @@ export const NavItems: INavItem[] = [
     link: "/what-we-do",
     text: "What We Do"
   },
+
+  {
+    dropdown: false,
+    link: "/get-involved",
+    text: "Get Involved"
+  },
   {
     dropdown: false,
     link: "support-us",
@@ -31,4 +37,5 @@ export const NavItems: INavItem[] = [
     link: "/contact",
     text: "Contact us"
   },
+
 ];
