@@ -54,26 +54,6 @@ const Background = styled.div`
   
 `;
 
-const Bio = styled.div`
-    font-family: "Lato", sans-serif;
-    width: 700px;
-    margin: 100px;
-    padding: 50px;
-    background: #d0e6e8;
-    font-size: 18px;
-`;
-
-const Bio1 = styled(Bio)`
-    background: #fce68f
-
-`;
-
-const BioPic = styled.div`
-    position: relative;
-    display: inline-block;
-    margin:100px;
-`;
-
 class TeamMember {
     name: string;
     role: string;
@@ -177,46 +157,23 @@ export class AboutUs extends React.Component {
             }
         ];
 
-        return Team.map((person, index) => {
-            this.flag = !this.flag;
-            if (this.flag) {
-                return <Row>
-                    <Col xs={6} md={4}>
-                        <BioPic key={index}>
-                            <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
-                                person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)}/>
-                        </BioPic>
-                    </Col>
-                    <Col xs={12} md={8}>
-                        <Bio1> 
-                            <h2>{person.name}</h2>
-                            <h3>{person.role}</h3>
-                            <i><h5>{person.quote}</h5></i>
-                            <br/>
-                            <p>{person.bio}</p>
-                        </Bio1>
-                    </Col>
-                </Row>;
-            }
-
-            return <Row>
-                <Col xs={12} md={8}>
-                    <Bio>
-                        <h2>{person.name}</h2>
-                        <h3>{person.role}</h3>
-                        <i><h5>{person.quote}</h5></i>
-                        <br/>
-                        <p>{person.bio}</p>
-                    </Bio>
-                </Col>
-               <Col xs={6} md={4}>
-                   <BioPic>
-                       <img src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
-                            person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)} />
-                   </BioPic>
-               </Col>
-            </Row>;
-        }
+        return (
+            <div className="bioWrapper">
+                {Team.map((person, index) => {
+                    return <div className="bio">
+                                <img className="bioPic" src={person.cartoon} alt="team member pic" onMouseOver={(e: any) => (e.currentTarget.src =
+                                    person.img)} onMouseOut={(e: any) => (e.currentTarget.src = person.cartoon)} />
+                                <div className="bioTextWrapper">
+                                    <div className="bioName">{person.name}</div>
+                                    <div className="bioRole">{person.role}</div>
+                                    <i><div className="bioQuote">{person.quote}</div></i>
+                                    <br/>
+                                    <p className="bioText">{person.bio}</p>
+                                </div>
+                            </div>
+                    })  
+                }
+            </div>
         );
     }
 
