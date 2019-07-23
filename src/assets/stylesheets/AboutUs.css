@@ -70,3 +70,48 @@
     font-weight: normal;
     text-align: center;
 }
+
+.bio {
+    flex: 1 0 45%;
+    margin: 25px;
+    font-family: "Lato", sans-serif;
+    width: 700px;
+    padding: 40px 25px;
+    background: #d0e6e8;
+    font-size: 18px;
+}
+
+.bioPic {
+    margin: auto;
+    display: block;
+    height: 180px;
+    width: 180px;
+}
+
+.bioWrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bioTextWrapper {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.bioName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.bioRole {
+    font-size: 16px;
+}
+
+.bioQuote {
+    font-size: 24px;
+    margin-top: 24px;
+}
+
+.bioText {
+    font-size: 16px;
+}
