@@ -108,7 +108,7 @@ export class GetInvolved extends React.Component {
     return GetInvolved.Role.map((role, index) => {
       return (<Col xs={0} xsOffset={1} md={3} mdOffset={1} key={index}>
         <RolePic>
-          <Image src={role.img} alt="role pic" circle responsive />
+          <Image src={role.img} alt={role.role} circle responsive />
         </RolePic>
         <RoleContainer>
           <RoleHeader>{role.role}</RoleHeader>

@@ -110,12 +110,15 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
 
   serviceList(isMobile: boolean) {
     return WhatWeDo.Services.map((service, index) => {
-      return (<Col xs={3} xsOffset={1} md={3} mdOffset={1} key={index} className="services">
-        <Image src={service.icon} circle responsive />
-        {
-          isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
-        }
-      </Col>);
+      return (
+        <Col key={index} className="services">
+          <div>
+            <Image src={service.icon} circle responsive height={"200px"} width={"200px"} alt={service.title} />
+            {
+              isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
+            }
+          </div>
+        </Col>);
 
     });
   }
