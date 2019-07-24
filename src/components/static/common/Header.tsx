@@ -228,9 +228,8 @@ export class Header extends React.Component<IHeaderProps> {
               </AboveHeaderItem>
               <AboveHeaderItem>
                 <AboveHeaderLink
-                  target="_blank"
                   rel="noopener noreferrer"
-                  href={Const.PayPalDonatePage}
+                  href={Const.SupportUsPage}
                 >
                   Donate
               </AboveHeaderLink>
