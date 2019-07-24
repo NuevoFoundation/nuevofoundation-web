@@ -69,6 +69,7 @@ const divStyle = {
   border: "2px solid #707070",
   borderRadius: "5px",
   padding: "15px",
+  minWidth: "350px",
 } as React.CSSProperties;
 
 const btnStyle = {
@@ -219,7 +220,11 @@ export class Contact extends React.Component<{}, IContactState> {
                       onClick={this.handleToggle}
                     >
                       <FormTitle>Your message has been sent!</FormTitle>
-                      <Image src={nuviMail}/>
+                      <Row>
+                        <Col xs={6} sm={6}>
+                          <Image src={nuviMail}/>
+                        </Col>
+                      </Row>
                     </div>
                     }
                   </div>
