@@ -3,25 +3,13 @@ import styled from "styled-components";
 import teacher from "../../../assets/images/getinvolved/teacher.png";
 import student from "../../../assets/images/getinvolved/student.png";
 import volunteer from "../../../assets/images/getinvolved/volunteer.png";
+import { PageTitle } from "../common/PageTitle";
 import {
   Col,
   Grid,
   Row,
   Image
 } from "react-bootstrap";
-
-const HereImage = styled.div`
-  border: 1px #707070 solid;
-  color: #000000;
-  font-size: 28px;
-  padding: 32px 0 0 25px;
-  margin: 0 20px 0 20px;
-  margin-bottom: 30px;
-
-  font-family: 'Space Mono', monospace;
-  height: 207px;
-  max-width: 513px;
-`
 
 const GetInvolvedContainer = styled.div`
   padding-top: 50px;
@@ -140,9 +128,7 @@ export class GetInvolved extends React.Component {
   public render() {
     return (
       <React.Fragment>
-        <HereImage>
-          Get Involved
-        </HereImage>
+        <PageTitle title={"Get involved"} />
         <GetInvolvedContainer>
           <Grid fluid={true}>
             <Row>
