@@ -76,7 +76,7 @@ const StatsSectionDescription = styled.div`
 const StatsSectionStats = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   font-family: 'Space Mono', monospace;
   padding-bottom: 60px;
