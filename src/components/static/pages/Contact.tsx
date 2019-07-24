@@ -6,10 +6,12 @@ import {
   FormControl,
   FormGroup,
   Grid,
+  Image,
   Row
 } from "react-bootstrap";
 import styled from "styled-components";
 import { Const } from '../../../Const';
+import nuviMail from "../../../assets/images/nuvimail.png"
 import ReactGA from 'react-ga';
 import "../../../assets/stylesheets/Contact.css";
 import { PageTitle } from "../common/PageTitle";
@@ -28,32 +30,59 @@ const Background = styled.div`
   
 `;
 
+const FormTitle = styled.div`
+  color: #000000;
+  font-size: 28px;
+  padding: 0 0 15px 0;
+  font-family: 'Space Mono', monospace;
+`
+
+const ConfirmationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  margin: 10px;
+  border: 2px solid #707070;
+  border-radius: 5px;
+  padding: 15px;
+  min-width: 350px;
+
+  img {
+    align-self: center;
+  }
+`
+
 interface IContactState {
   email: string;
   message: string;
   name: string;
   subject: string;
+  submitted: boolean;
 }
+
 const btnStyle = {
-  backgroundColor: "#ABABAB",
-  color: "#FFFFFF",
+  backgroundColor: "#FFFFFF",
+  color: "#000000",
   fontSize: "15px",
   fontWeight: "bold",
   height: "40px",
-  width: "160px"
+  width: "160px",
+  border: "4px solid #FBC500",
+  borderRadius: "5px",
 } as React.CSSProperties;
 
 export class Contact extends React.Component<{}, IContactState> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            email: '',
-            message: '',
-            name: '',
-            subject: ''
-        };
-        ReactGA.pageview(Const.ContactPage);
-    }
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      email: '',
+      message: '',
+      name: '',
+      subject: '',
+      submitted: false
+    };
+    ReactGA.pageview(Const.ContactPage);
+  }
 
   public handleName = (e: any) => {
     this.setState({ name: e.target.value });
@@ -69,6 +98,9 @@ export class Contact extends React.Component<{}, IContactState> {
   public handleMessage = (e: any) => {
     this.setState({ message: e.target.value });
   };
+  public handleToggle = (e: any) => {
+    this.setState({ submitted: false });
+  }
 
   public handleSubmit = (e: any) => {
     e.preventDefault();
@@ -98,7 +130,8 @@ export class Contact extends React.Component<{}, IContactState> {
         email: "",
         message: "",
         name: "",
-        subject: ""
+        subject: "",
+        submitted: true
       });
     });
   }
@@ -112,8 +145,11 @@ export class Contact extends React.Component<{}, IContactState> {
             <Row>
               <Col xs={12}>
                 <Row>
-                  <Col xs={10} xsOffset={1} sm={5} smOffset={1}>
-                    <form>
+                  <Col xs={12} sm={5} smOffset={6}>
+                    {!this.state.submitted ? <form>
+
+
+                      <FormTitle>Say hello!</FormTitle>
                       <FormGroup controlId="formBasicText">
                         <ControlLabel>Name</ControlLabel>
                         <FormControl
@@ -157,10 +193,18 @@ export class Contact extends React.Component<{}, IContactState> {
                           onClick={this.handleSubmit}
                         >
                           SEND
-                        </button>
+                      </button>
                       </FormGroup>
                     </form>
-                  </Col> 
+                      :
+                      <ConfirmationContainer
+                        onClick={this.handleToggle}
+                      >
+                        <FormTitle>Your message has been sent!</FormTitle>
+                        <Image src={nuviMail} />
+                      </ConfirmationContainer>
+                    }
+                  </Col>
                 </Row>
                 <Row>
                   <Col xs={10} xsOffset={1}>
@@ -171,16 +215,16 @@ export class Contact extends React.Component<{}, IContactState> {
                   <Col xs={11} xsOffset={1}>
                     <ContactInfo>
                       The Nuevo Foundation is based in Seattle, Washington.
-                      <br />
+                    <br />
                       <br />
                       To reach out with any other questions please contact:
-                      <br />
+                    <br />
                       <br />
                       Nuevo Foundation
-                      <br />
+                    <br />
                       <a href="mailto:contact@nuevofoundation.org" target="_top">
                         contact@nuevofoundation.org
-                      </a>
+                    </a>
                       <br />
                       <br />
                       <br />

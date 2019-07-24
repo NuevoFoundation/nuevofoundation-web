@@ -99,7 +99,7 @@ const StatsSectionStatsInfo = styled.div`
   font-family: 'Lato', sans-serif;  
   font-size: 16px;
   padding: 15px;
-  max-width: 248px;
+  flex-basis: 248px;
 
   span { 
     font-weight: 700;
@@ -134,6 +134,7 @@ const ImpactSectionStatsTitleInfo = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   max-width: 334px;
+  padding-bottom: 20px;
 `
 const ClosingSectionBackground = styled.div`
   background-image: url(${Earth});
