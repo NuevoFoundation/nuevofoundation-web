@@ -96,9 +96,9 @@ export class GetInvolved extends React.Component {
     {
       role: "Volunteer",
       img: volunteer,
-      optionOne: "Lorem ipsum dolor sit amet, consectetur",
-      optionTwo: "Adipiscing elit, sed do eiusmod tempor ",
-      optionThree: "Incididunt ut labore et dolore magna aliqua",
+      optionOne: "Create curriculums",
+      optionTwo: "Help with a workshop",
+      optionThree: "Host a virtual session",
       buttonText: "Sign up now",
       buttonLink: "https://aka.ms/nfsignup"
     }

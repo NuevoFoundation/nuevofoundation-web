@@ -132,7 +132,6 @@ const ImpactSectionStatsTitle = styled.div`
 
 const ImpactSectionStatsTitleInfo = styled.div`
   font-family: 'Lato', sans-serif;
-  padding:  15px;
   font-size: 16px;
   max-width: 334px;
 `
