@@ -38,16 +38,17 @@ const StatsSectionInfo = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  padding: 70px 0 100px 32px;
+  padding: 30px 0 100px 32px;
 `
 
 const StatsSectionTitle = styled.div`
   font-family: 'Space Mono', monospace;
   font-size: 28px;
   padding-right: 100px;
+  flex-basis: 33%;
 
   hr { 
-    width: 10%;
+    width: 64px;
     border-top: 8px solid #000000;
     float: left;
 
@@ -57,14 +58,16 @@ const StatsSectionTitle = styled.div`
 const StatsSectionDescription = styled.div`
   font-family: "lato-semibold", sans-serif;
   font-size: 24px;
-  flex-basis: 60%;
+  flex-basis: 66%;
   padding-top: 15px;
 
   div:nth-child(1) {
+    width: 80%;
     padding-bottom: 20px;
   }
 
   div:nth-child(2) {
+    width: 80%;
     font-family: "lato-semibold", sans-serif;
     font-size: 16px;
   }
@@ -74,7 +77,9 @@ const StatsSectionStats = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+  align-items: center;
   font-family: 'Space Mono', monospace;
+  padding-bottom: 60px;
 `
 
 const StatsSectionStatsTitle = styled.div`
@@ -95,7 +100,6 @@ const StatsSectionStatsInfo = styled.div`
   font-size: 16px;
   padding: 15px;
   max-width: 248px;
-  color: "#000000";
 
   span { 
     font-weight: 700;
@@ -106,6 +110,7 @@ const ImpactSectionStats = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  padding-bottom: 60px;
 `
 
 const ImpactSectionStatsTitle = styled.div`
@@ -127,7 +132,6 @@ const ImpactSectionStatsTitle = styled.div`
 
 const ImpactSectionStatsTitleInfo = styled.div`
   font-family: 'Lato', sans-serif;
-  padding:  15px;
   font-size: 16px;
   max-width: 334px;
 `
@@ -305,7 +309,7 @@ export class Home extends React.Component {
           </StatsSectionInfo>
           <ImpactSectionStats>
 
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,114 <span><span>Diverse</span>students across​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
+            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,114 <span><span>Diverse</span>students</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 
             <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#00BED5"}>86% <span><span>More Interested</span>in STEM​​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 

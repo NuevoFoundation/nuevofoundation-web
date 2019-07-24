@@ -21,42 +21,12 @@ import AaronReal from "../../../assets/images/profile/aaron-profile-irl.png";
 import Dee from "../../../assets/images/profile/dee-thumbnail.png";
 import DeeReal from "../../../assets/images/profile/dee-profile-irl.png";
 
-import headerimg from "../../../assets/images/our-team/team.png";
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
 import {
-    Col,
     Grid,
-    Row
 } from "react-bootstrap";
-
-
-const Header = styled.div`
-    background-image: url(${headerimg});
-    width: 100%;
-    height: auto;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position:center;
-    background-size:cover;
-    box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
-    padding: 300px;
-    font-size: 6.250em;
-    text-align: center;
-    color: white;
-    margin-bottom: 1px;
-`;
-
-const MobileHeader = styled.div`
-    background: url(${headerimg}) no-repeat center center fixed;
-    width: 100vw;
-    height: 30em;
-    padding-top: 12em;
-    text-align: center;
-    color: white;
-   -o-background-size: cover;
-    background-size: cover;
-`;
+import { PageTitle } from "../common/PageTitle";
 
 const Background = styled.div`
   background-repeat: none;
@@ -212,37 +182,27 @@ export class AboutUs extends React.Component<{}, { width: number }> {
         const isMobile = width <= 600;
         if (isMobile) {
             return (
+                <React.Fragment>
+                    <PageTitle title={"Our team"} />
+                    <Background>
+                        <Grid fluid={true}>
+                            {this.teamMemberList(isMobile)}
+                        </Grid>
+                    </Background>
+                </React.Fragment>
 
-                <Background>
-                    <MobileHeader>
-                        <h1>Our Team</h1>
-                    </MobileHeader>
-                    <Grid fluid={true}>
-                        {this.teamMemberList(isMobile)}
-                    </Grid>
-                </Background>
             );
         }
 
         return (
-            <Background>
-                <Header>
-                    <div className="logo">
-                        <span>O</span>
-                        <span>u</span>
-                        <span>r</span>
-                        <span>_</span>
-                        <span>T</span>
-                        <span>e</span>
-                        <span>a</span>
-                        <span>m</span>
-                        <span className="blink">|</span>
-                    </div>
-                </Header>
-                <Grid fluid={true}>
-                    {this.teamMemberList(isMobile)}
-                </Grid>
-            </Background>
+            <React.Fragment>
+                <PageTitle title={"Our team"} />
+                <Background>
+                    <Grid fluid={true}>
+                        {this.teamMemberList(isMobile)}
+                    </Grid>
+                </Background>
+            </React.Fragment>
         );
     }
 }
