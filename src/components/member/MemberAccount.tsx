@@ -2,6 +2,13 @@ import * as React from "react";
 import styled from "styled-components";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import { ServiceResolver } from "../../services/ServiceResolver";
+import { JwtTokenHelper } from "../../helpers/JwtTokenHelper";
+import { SessionStorageHelper } from "../../helpers/SessionStorageHelper";
+import { VirtualSession } from "../virtualSessions";
+import { VirtualSessionInterface } from "../../models/VirtualSession";
+import { MemberInterface } from "../../models/Member";
+
 
 const PageWrapper = styled.div`
   font-family: "Lato", sans-serif;
@@ -34,46 +41,44 @@ const Select = styled.select`
   border-radius: 3px;
 `;
 
-export class MemberAccount extends React.Component {
+interface MemberAccountState {
+  virtualSessions: VirtualSessionInterface[];
+  MemberId: MemberInterface;
+}
 
+export class MemberAccount extends React.Component<{}, MemberAccountState> {
+  public apiService = new ServiceResolver().ApiService();
 
+  public async componentWillMount() {
+    const id = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
+    const virtualSessions = await this.apiService.getAllVirtualSessions(id);
+    this.apiService.getMember(id).then(member => {
+      this.MemberId = member.id;
+      this.FullName = member.fullName;
+    });
+    this.setState({
+      virtualSessions
+      MemberAccount
+    })
+  }
   public render() {
-    const data = [{
-      name: 'Adriana',
-      id: 123,
-      session: 'yesterday'
-    },{
-      name: 'Carla',
-      id: 456,
-      session: 'this morning'
-    }];
     const columns = [{
       Header: 'Name',
-      accessor: 'name' // String-based value accessors!
-    }, {
-      Header: 'Id',
-      accessor: 'id',
-    }, {
-      Header: 'Session',
-      accessor: 'session',
-    }]
+      accessor: 'd'
+    },
+    {
+      Header: ''
+    },
+    {
+
+    }];
     return (
       <PageWrapper>
-        <h2>Account Settings</h2>
-        <Select>
-          <option>Select your timezone</option>
-          <option>America/New_York</option>
-        </Select>
-
-        <Select>
-          <option>Select your school</option>
-          <option>Gray Middle School</option>
-        </Select>
         <SessionsWrappper>
           <h3>Past Sessions</h3>
           <PastSessionsWrapper>
             <ReactTable
-            data={data}
+            data={virtualSessions}
             columns={columns}/>
           </PastSessionsWrapper>
         </SessionsWrappper>

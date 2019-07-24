@@ -3,6 +3,7 @@ import { VirtualSessionInterface } from "../models/VirtualSession";
 import uuid from "uuid/v1";
 import { getVirtualSession, getMember } from "./responses";
 import { MemberInterface } from "../models/Member";
+import { getAllVirtualSessions } from "./responses/getAllVirtualSessions";
 
 export class MockApiService {
   public getMember(id: string): Promise<MemberInterface> {
@@ -13,6 +14,12 @@ export class MockApiService {
   public getVirtualSession(id: string): Promise<VirtualSessionInterface> {
     getVirtualSession.id = id;
     return Promise.resolve(getVirtualSession);
+  }
+
+  // TODO: fix these erors
+  public getAllVirtualSessions(memberId: string): Promise<getAllVirtualSessions[]>{
+    getAllVirtualSessions.educatorId= educatorId;
+    return Promise.resolve(getAllVirtualSessions);
   }
 
   public createVirtualSession(

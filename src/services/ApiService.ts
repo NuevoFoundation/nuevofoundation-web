@@ -28,6 +28,13 @@ export class ApiService {
     );
   }
 
+  public getAllVirtualSessions(memberId: string): Promise<VirtualSessionInterface[]>{
+    return HttpClient.get(
+      `${Const.ApiEndpoint}/virtualsessions/${memberId}`,
+      this.headers
+    );
+  }
+
   public createVirtualSession(
     virtualSession: VirtualSessionInterface
   ): Promise<VirtualSessionInterface> {
