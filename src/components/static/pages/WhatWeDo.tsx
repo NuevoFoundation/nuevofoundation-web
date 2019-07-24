@@ -182,16 +182,18 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
         }
 
       return (
-          <Background>
+          <React.Fragment>
               <PageTitle title={"What we do"} />
-              <Grid fluid={true}>
-                  <Row className="services">
-                      {this.serviceList(isMobile)}
-                  </Row>
+              <Background>
+                <Grid fluid={true}>
+                    <Row className="services">
+                        {this.serviceList(isMobile)}
+                    </Row>
 
-                  {this.serviceDescription(isMobile)}
-              </Grid>
-          </Background>
+                    {this.serviceDescription(isMobile)}
+                </Grid>
+            </Background>
+          </React.Fragment>
       );
   }
 }

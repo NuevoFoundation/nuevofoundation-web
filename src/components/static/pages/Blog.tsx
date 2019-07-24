@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BlogPosts } from "../../../components/blog/BlogPosts";
 import styled from 'styled-components';
+import { PageTitle } from "../common/PageTitle";
 
 const BlogHero = styled.div`
   display: flex;
@@ -30,11 +31,7 @@ export class Blog extends React.Component {
   public render() {
     return (
       <React.Fragment>
-        <BlogHero>
-          <HereImage>
-            Event blog
-          </HereImage>
-        </BlogHero>
+        <PageTitle title={"Event blog"} />
         <BlogPostsContainer>
           <BlogPosts />
         </BlogPostsContainer>
