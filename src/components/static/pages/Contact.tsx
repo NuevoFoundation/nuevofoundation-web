@@ -30,22 +30,35 @@ const Background = styled.div`
   
 `;
 
+const FormTitle = styled.div`
+  color: #000000;
+  font-size: 28px;
+  padding: 0 0 15px 0;
+  font-family: 'Space Mono', monospace;
+`
+
+const ConfirmationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  margin: 10px;
+  border: 2px solid #707070;
+  border-radius: 5px;
+  padding: 15px;
+  min-width: 350px;
+
+  img {
+    align-self: center;
+  }
+`
+
 interface IContactState {
   email: string;
   message: string;
   name: string;
   subject: string;
-  submitting: boolean;
+  submitted: boolean;
 }
-
-const divStyle = {
-  backgroundColor: "#FFFFFF",
-  margin: "10px",
-  border: "2px solid #707070",
-  borderRadius: "5px",
-  padding: "15px",
-  minWidth: "350px",
-} as React.CSSProperties;
 
 const btnStyle = {
   backgroundColor: "#FFFFFF",
@@ -66,7 +79,7 @@ export class Contact extends React.Component<{}, IContactState> {
       message: '',
       name: '',
       subject: '',
-      submitting: false
+      submitted: false
     };
     ReactGA.pageview(Const.ContactPage);
   }
@@ -86,7 +99,7 @@ export class Contact extends React.Component<{}, IContactState> {
     this.setState({ message: e.target.value });
   };
   public handleToggle = (e: any) => {
-    this.setState({ submitting: false });
+    this.setState({ submitted: false });
   }
 
   public handleSubmit = (e: any) => {
@@ -118,7 +131,7 @@ export class Contact extends React.Component<{}, IContactState> {
         message: "",
         name: "",
         subject: "",
-        submitting: true
+        submitted: true
       });
     });
   }
@@ -133,69 +146,64 @@ export class Contact extends React.Component<{}, IContactState> {
               <Col xs={12}>
                 <Row>
                   <Col xs={12} sm={5} smOffset={6}>
-                    <div>
-                      {!this.state.submitting ? <form>
-                        <FormTitle>Say hello!</FormTitle>
-                        <FormGroup controlId="formBasicText">
-                          <ControlLabel>Name</ControlLabel>
-                          <FormControl
-                            type="text"
-                            name="name"
-                            placeholder="Enter name"
-                            onChange={this.handleName}
-                            value={this.state.name}
-                          />
-                          <Space />
-                          <ControlLabel>Email</ControlLabel>
-                          <FormControl
-                            type="email"
-                            name="email"
-                            placeholder="Enter valid email"
-                            onChange={this.handleEmail}
-                            value={this.state.email}
-                          />
-                          <Space />
-                          <ControlLabel>Subject</ControlLabel>
-                          <FormControl
-                            type="text"
-                            placeholder="What are you interested in?"
-                            onChange={this.handleSubject}
-                            value={this.state.subject}
-                          />
-                          <Space />
-                          <FormControl
-                            type="textarea"
-                            style={{ height: "150px" }}
-                            placeholder="Enter message"
-                            onChange={this.handleMessage}
-                            value={this.state.message}
-                          />
-                          <Space />
-                          <Space />
-                          <button
-                            style={btnStyle}
-                            className="btn-submit"
-                            type="submit"
-                            onClick={this.handleSubmit}
-                          >
-                            SEND
-                      </button>
-                        </FormGroup>
-                      </form>
-                        :
-                        <div
-                          style={divStyle}
-                          onClick={this.handleToggle}
+                    {!this.state.submitted ? <form>
+
+
+                      <FormTitle>Say hello!</FormTitle>
+                      <FormGroup controlId="formBasicText">
+                        <ControlLabel>Name</ControlLabel>
+                        <FormControl
+                          type="text"
+                          name="name"
+                          placeholder="Enter name"
+                          onChange={this.handleName}
+                          value={this.state.name}
+                        />
+                        <Space />
+                        <ControlLabel>Email</ControlLabel>
+                        <FormControl
+                          type="email"
+                          name="email"
+                          placeholder="Enter valid email"
+                          onChange={this.handleEmail}
+                          value={this.state.email}
+                        />
+                        <Space />
+                        <ControlLabel>Subject</ControlLabel>
+                        <FormControl
+                          type="text"
+                          placeholder="What are you interested in?"
+                          onChange={this.handleSubject}
+                          value={this.state.subject}
+                        />
+                        <Space />
+                        <FormControl
+                          type="textarea"
+                          style={{ height: "150px" }}
+                          placeholder="Enter message"
+                          onChange={this.handleMessage}
+                          value={this.state.message}
+                        />
+                        <Space />
+                        <Space />
+                        <button
+                          style={btnStyle}
+                          className="btn-submit"
+                          type="submit"
+                          onClick={this.handleSubmit}
                         >
-                          <FormTitle>Your message has been sent!</FormTitle>
-                          <Row>
-                            <Col xs={6} sm={6}>
-                              <Image src={nuviMail} />
-                            </Col>
-                          </Row>
-                        </div>
-                      }
-                    </div>
+                          SEND
+                      </button>
+                      </FormGroup>
+                    </form>
+                      :
+                      <ConfirmationContainer
+                        onClick={this.handleToggle}
+                      >
+                        <FormTitle>Your message has been sent!</FormTitle>
+                        <Image src={nuviMail} />
+                      </ConfirmationContainer>
+                    }
                   </Col>
                 </Row>
                 <Row>
