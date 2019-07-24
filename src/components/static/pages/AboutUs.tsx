@@ -21,13 +21,10 @@ import AaronReal from "../../../assets/images/profile/aaron-profile-irl.png";
 import Dee from "../../../assets/images/profile/dee-thumbnail.png";
 import DeeReal from "../../../assets/images/profile/dee-profile-irl.png";
 
-import headerimg from "../../../assets/images/our-team/team.png";
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
 import {
-    Col,
     Grid,
-    Row
 } from "react-bootstrap";
 import { PageTitle } from "../common/PageTitle";
 
