@@ -16,9 +16,9 @@ export class MockApiService {
     return Promise.resolve(getVirtualSession);
   }
 
-  // TODO: fix these erors
-  public getAllVirtualSessions(memberId: string): Promise<getAllVirtualSessions[]>{
-    getAllVirtualSessions.educatorId= educatorId;
+  // TODO: fix these erors - promise should be getAllVirtualSessions[]?? Is this correct?
+  public getAllVirtualSessions(memberId: string): Promise<VirtualSessionInterface[]>{
+    getAllVirtualSessions[0].educatorId = memberId;
     return Promise.resolve(getAllVirtualSessions);
   }
 

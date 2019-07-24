@@ -43,42 +43,41 @@ const Select = styled.select`
 
 interface MemberAccountState {
   virtualSessions: VirtualSessionInterface[];
-  MemberId: MemberInterface;
+  //MemberId: MemberInterface;
 }
 
 export class MemberAccount extends React.Component<{}, MemberAccountState> {
   public apiService = new ServiceResolver().ApiService();
+  virtualSessions: {}[] | undefined;
 
   public async componentWillMount() {
     const id = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
-    const virtualSessions = await this.apiService.getAllVirtualSessions(id);
-    this.apiService.getMember(id).then(member => {
-      this.MemberId = member.id;
-      this.FullName = member.fullName;
-    });
+    const allVirtualSessions = await this.apiService.getAllVirtualSessions(id);
+    //const memberId = this.apiService.getMember(id);
     this.setState({
-      virtualSessions
-      MemberAccount
+      virtualSessions: allVirtualSessions
     })
-  }
+  };
   public render() {
     const columns = [{
-      Header: 'Name',
-      accessor: 'd'
+      Header: 'Volunteer',
+      accessor: 'volunteerId'
     },
     {
-      Header: ''
-    },
-    {
-
+      Header: 'Time Scheduled',
+      accessor: 'timePreferenceSelected'
     }];
     return (
       <PageWrapper>
+        <div>{ this.virtualSessions }</div>
         <SessionsWrappper>
           <h3>Past Sessions</h3>
           <PastSessionsWrapper>
             <ReactTable
-            data={virtualSessions}
+            // TODO: change the way the data is represented in order for correct format of data var for table?
+            // virtual sessions don't appear
+            // format example: https://www.npmjs.com/package/react-table#example
+            data={this.virtualSessions}
             columns={columns}/>
           </PastSessionsWrapper>
         </SessionsWrappper>
