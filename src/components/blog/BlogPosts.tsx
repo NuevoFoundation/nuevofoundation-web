@@ -187,7 +187,7 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
           >
             Back
           </ActionButton>
-          <PageIndicator>{`${currentPage} of ${lastPage}`}</PageIndicator>
+          <PageIndicator>{`${currentPage} of ${isNaN(lastPage) ? " ∞" : lastPage}`}</PageIndicator>
 
           <ActionButton
             onClick={this.getNextPage}

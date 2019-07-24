@@ -72,13 +72,13 @@
 }
 
 .bio {
-    flex: 1 0 45%;
     margin: 25px;
     font-family: "Lato", sans-serif;
     width: 700px;
     padding: 40px 25px;
     background: #d0e6e8;
     font-size: 18px;
+    width: 550px;
 }
 
 .bioPic {
@@ -91,6 +91,7 @@
 .bioWrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .bioTextWrapper {

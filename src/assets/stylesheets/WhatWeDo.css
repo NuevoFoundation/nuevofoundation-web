@@ -1,118 +1,111 @@
 .services {
-    background-color: #fcc600;
-    color: black;
-    text-align: center;
-    padding-top: 1.875em;
-    padding-bottom: 1.875em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  background-color: #fcc600;
+  color: black;
+  text-align: center;
+  padding-top: 1.875em;
+  padding-bottom: 1.875em;
 }
-
-.services > img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 15.625em;
-}
-
 
 .serviceDescription {
-    padding: 2.5em;
-    font-size: 1.25em;
+  padding: 2.5em;
+  font-size: 1.25em;
 }
 
 .serviceDescription > h1 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .requestButton {
-    background-color: #FCC600;
-    color: #000000;
-    border: #FCC600 .125em solid;
-    padding: .625em;
-    border-radius: .313em;
-    font-weight: bold;
-    font-size: .75em;
+  background-color: #fcc600;
+  color: #000000;
+  border: #fcc600 0.125em solid;
+  padding: 0.625em;
+  border-radius: 0.313em;
+  font-weight: bold;
+  font-size: 0.75em;
 }
 
 .logo > * {
-    margin-left: -2px;
-    font-weight: 700;
-    display: inline-block;
-    animation-name: appear;
-    animation-duration: .01s;
-    animation-fill-mode: both;
+  margin-left: -2px;
+  font-weight: 700;
+  display: inline-block;
+  animation-name: appear;
+  animation-duration: 0.01s;
+  animation-fill-mode: both;
 }
 
-    .logo > *:nth-of-type(1) {
-        animation-delay: 1s
-    }
+.logo > *:nth-of-type(1) {
+  animation-delay: 1s;
+}
 
-    .logo > *:nth-of-type(2) {
-        animation-delay: 1.2s
-    }
+.logo > *:nth-of-type(2) {
+  animation-delay: 1.2s;
+}
 
-    .logo > *:nth-of-type(3) {
-        animation-delay: 1.5s
-    }
+.logo > *:nth-of-type(3) {
+  animation-delay: 1.5s;
+}
 
-    .logo > *:nth-of-type(4) {
-        animation-delay: 1.7s
-    }
+.logo > *:nth-of-type(4) {
+  animation-delay: 1.7s;
+}
 
-    .logo > *:nth-of-type(5) {
-        animation-delay: 1.9s
-    }
+.logo > *:nth-of-type(5) {
+  animation-delay: 1.9s;
+}
 
+.logo > *:nth-of-type(6) {
+  animation-delay: 2.1s;
+}
 
-    .logo > *:nth-of-type(6) {
-        animation-delay: 2.1s
-    }
+.logo > *:nth-of-type(7) {
+  animation-delay: 2.3s;
+}
 
-
-    .logo > *:nth-of-type(7) {
-        animation-delay: 2.3s
-    }
-
-    .logo > *:nth-of-type(8) {
-        animation-delay: 2.5s
-    }
+.logo > *:nth-of-type(8) {
+  animation-delay: 2.5s;
+}
 
 @keyframes appear {
-    from {
-        font-size: 0em;
-    }
+  from {
+    font-size: 0em;
+  }
 
-    to {
-        font-size: 1em;
-    }
+  to {
+    font-size: 1em;
+  }
 }
 
 .blink {
-    font-size: 1.5em;
-    font-weight: 400;
-    display: inline-block;
-    visibility: visible;
-    width: auto;
-    animation-name: flash;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-iteration-count: 5;
+  font-size: 1.5em;
+  font-weight: 400;
+  display: inline-block;
+  visibility: visible;
+  width: auto;
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-iteration-count: 5;
 }
 
 @keyframes flash {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    25% {
-        opacity: 1;
-    }
+  25% {
+    opacity: 1;
+  }
 
-    75% {
-        opacity: 1;
-    }
+  75% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }

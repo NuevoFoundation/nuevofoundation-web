@@ -27,7 +27,15 @@ const ContactInfo = styled.div`
 const Background = styled.div`
   background-repeat: none;
   font-family: "Lato", sans-serif;
-  
+
+  form {
+    border-radius: 5px;
+    margin: 10px;
+    margin-top: 25px;
+    padding: 15px;
+    border: 2px #707070 solid;
+    float: center;
+  }
 `;
 
 const FormTitle = styled.div`
