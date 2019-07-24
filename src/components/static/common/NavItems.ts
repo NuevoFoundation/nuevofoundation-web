@@ -19,8 +19,8 @@ export const NavItems: INavItem[] = [
   },
   {
     dropdown: false,
-    link: "support-us",
-    text: "Support Us"
+    link: "/support-us",
+    text: "Support us"
   },
   {
     dropdown: false,
