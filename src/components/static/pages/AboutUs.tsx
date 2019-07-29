@@ -129,7 +129,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Aaron Malveaux",
-        role: "Manager of Communication Branding and Media",
+        role: "Community Lead",
         quote: "-\"Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.\" - Albert Einstein",
         bio: "Aaron is the most charismatic team member with broad experience in data privacy. He always ensures that every student is having a great time while learning new computer science concepts. Aaron works on reaching out to potential partners at schools and other nonprofit organizations",
         img: AaronReal,
