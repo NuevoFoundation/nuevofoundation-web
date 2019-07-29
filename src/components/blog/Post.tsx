@@ -4,6 +4,8 @@ import { RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { DateTimeFormattingHelper } from "../helpers/DateTimeFormattingHelper";
+import { Const } from "../../Const";
+import ReactGA from "react-ga";
 
 interface PostParams {
   id: string;
@@ -45,7 +47,7 @@ export class Post extends React.Component<
   public wordpressService = new ServiceResolver().WordpressService();
   constructor(props: RouteComponentProps<PostParams>) {
     super(props);
-
+    ReactGA.pageview(`${Const.BlogPost}-${this.props.match.params.id}`);
     this.state = {
       post: []
     };

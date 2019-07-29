@@ -27,6 +27,8 @@ import {
   Grid,
 } from "react-bootstrap";
 import { PageTitle } from "../common/PageTitle";
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
 
 const Background = styled.div`
   background-repeat: none;
@@ -59,6 +61,7 @@ export class AboutUs extends React.Component {
   constructor(props: {}) {
     super(props);
     this.flag = true;
+    ReactGA.pageview(Const.AboutUsPage);
   }
 
   teamMemberList() {

@@ -10,6 +10,8 @@ import {
   Row,
   Image
 } from "react-bootstrap";
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
 
 const GetInvolvedContainer = styled.div`
   padding-top: 50px;
@@ -74,6 +76,11 @@ class Role {
 }
 
 export class GetInvolved extends React.Component {
+  constructor(props: {}) {
+    super(props);
+    ReactGA.pageview(Const.GetInvolvedPage);
+  }
+  
   static readonly Role: Role[] = [
     {
       role: "Teacher",

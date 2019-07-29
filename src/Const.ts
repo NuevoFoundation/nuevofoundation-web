@@ -6,7 +6,6 @@ export class Const {
   public static SupportUsPage: string = "/support-us";
   public static BlogPage: string = "/blog";
   public static BlogPost: string = "/blog/post/:id";
-  public static FaqPage: string = "/faq";
   public static ContactPage: string = "/contact";
   public static SchoolWorkshopPage: string = "/workshops";
   public static VirtualSessionPage: string = "/virtual-sessions"; // TODO: Update this link to what we do page
