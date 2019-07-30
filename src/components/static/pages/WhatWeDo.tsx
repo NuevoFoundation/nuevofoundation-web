@@ -17,7 +17,8 @@ import {
   Button
 } from "react-bootstrap";
 import { PageTitle } from "../common/PageTitle";
-
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
 
 const Background = styled.div`
   background-repeat: none;
@@ -57,6 +58,7 @@ class Service {
 export class WhatWeDo extends React.Component<{}, { width: number }>  {
   constructor(props: {}) {
     super(props);
+    ReactGA.pageview(Const.WhatWeDoPage);
     this.state = {
       width: window.innerWidth,
     };

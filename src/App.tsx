@@ -7,7 +7,6 @@ import Header from "./components/static/common/Header";
 import {
   AboutUs,
   Contact,
-  Faq,
   Home,
   SupportUs,
   WhatWeDo,
@@ -66,7 +65,6 @@ class App extends React.Component<{}, IAppState> {
               <Route exact={true} path={Const.SupportUsPage} component={SupportUs} />
               <Route exact={true} path={Const.BlogPage} component={Blog} />
               <Route exact={true} path={Const.BlogPost} component={Post} />
-              <Route exact={true} path={Const.FaqPage} component={Faq} />
               <Route exact={true} path={Const.ContactPage} component={Contact} />
               <Route exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />
               <Route exact={true} path={Const.ComingSoonPage} component={ComingSoon} />

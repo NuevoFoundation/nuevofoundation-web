@@ -1,5 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
+import { PageTitle } from "../common/PageTitle";
 
 const SupportUsPageBar = styled.div`
   display: flex;
@@ -27,25 +30,25 @@ const PageContent = styled.div`
 
 `
 
-export const ComingSoon: React.FC = (): JSX.Element => {
-
-  return (
-    <React.Fragment>
-      <SupportUsPageBar>
-        <Placeholder>
-          Coming soon
-        </Placeholder>
-      </SupportUsPageBar>
-      <PageContent>
-        This content will be coming soon!
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-      </PageContent>
-    </React.Fragment>
-  )
+export class ComingSoon extends React.Component {
+  constructor(props: {}) {
+    super(props);
+    ReactGA.pageview(Const.ComingSoonPage);
+  }
+  public render() {
+    return (
+      <React.Fragment>
+        <PageTitle title={"Coming soon"} />
+        <PageContent>
+          This content will be coming soon!
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </PageContent>
+      </React.Fragment>
+    )
+  }
 }
