@@ -1,45 +1,35 @@
 import * as React from "react";
 import styled from "styled-components";
 import "../../../assets/stylesheets/SupportUs.css";
+import { PageTitle } from "../common/PageTitle";
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
 
-const SupportUsPageBar = styled.div`
+const SupportUsContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-left: 25px;
-  height: 320px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-`
-const Placeholder = styled.div`
-  border: 1px #707070 solid;
-  color: #000000;
+  align-items: center;
+  padding: 75px;
+  flex-basis: 100%;
+
+  font-family: "Lato", sans-serif;
   font-size: 28px;
-  padding: 32px 0 0 25px;
-
-  font-family: 'Space Mono', monospace;
-  height: 207px;
-  max-width: 513px;
 `
 
-export const SupportUs: React.FC = (): JSX.Element => {
-
-  return (
-    <React.Fragment>
-      <SupportUsPageBar>
-        <Placeholder>
-          Support us
-        </Placeholder>
-      </SupportUsPageBar>
-      <div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-      </div>
-    </React.Fragment>
-  )
+export class SupportUs extends React.Component {
+  constructor(props: {}) {
+    super(props);
+    ReactGA.pageview(Const.SupportUsPage);
+  }
+  
+  public render() {
+    return (
+      <React.Fragment>
+        <PageTitle title={"Support us"} />
+        <SupportUsContent>
+          <iframe src="https://donorbox.org/embed/nuevo-foundation-fundraising" height="685px" width="100%" style={{ maxWidth: "500px", minWidth: "310px", maxHeight: "none !important" }} seamless={true} name="donorbox" frameBorder="0" scrolling="no" title={"donorbox-iframe"}></iframe>
+        </SupportUsContent>
+      </React.Fragment>
+    )
+  }
 }

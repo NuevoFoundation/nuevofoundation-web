@@ -12,6 +12,7 @@ import ArrowCircle from "../../../assets/icons/Group211.png";
 import "../../../assets/stylesheets/Home.css";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
+import { HashLink as Link } from 'react-router-hash-link';
 
 const AboveFoldContent = styled.div`
   background-repeat: none;
@@ -24,8 +25,13 @@ const AboveFoldContent = styled.div`
   img {
     position: absolute;
     bottom: 0;
-    right: 50%;
-    padding:15px;
+    right: calc(50% - 15px);
+    padding-bottom: 15px;
+  }
+
+  /* override bootstrap cursor pointer on nuvi animation */
+  [role="button"] {
+    cursor: auto;
   }
 `;
 
@@ -76,7 +82,7 @@ const StatsSectionDescription = styled.div`
 const StatsSectionStats = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   font-family: 'Space Mono', monospace;
   padding-bottom: 60px;
@@ -99,7 +105,7 @@ const StatsSectionStatsInfo = styled.div`
   font-family: 'Lato', sans-serif;  
   font-size: 16px;
   padding: 15px;
-  max-width: 248px;
+  flex-basis: 248px;
 
   span { 
     font-weight: 700;
@@ -132,9 +138,9 @@ const ImpactSectionStatsTitle = styled.div`
 
 const ImpactSectionStatsTitleInfo = styled.div`
   font-family: 'Lato', sans-serif;
-  padding:  15px;
   font-size: 16px;
   max-width: 334px;
+  padding-bottom: 20px;
 `
 const ClosingSectionBackground = styled.div`
   background-image: url(${Earth});
@@ -214,11 +220,11 @@ export class Home extends React.Component {
           <Row>
             <Col xs={12} sm={12} md={6} lg={6}>
               <Row>
-                <Col xs={11} style={{ padding: "50px 0 0 50px" }}>
+                <Col xs={11} style={{ padding: "25px 0 0 25px" }}>
                   <ContentWrapper>
                     <div className="main-title">
                       Inspiring kids to be curious, confident, and courageous by discovering the world of STEM
-                    </div>
+                    </div> 
                   </ContentWrapper>
                 </Col>
               </Row>
@@ -239,48 +245,50 @@ export class Home extends React.Component {
               />
             </Col>
           </Row>
-          <img src={ArrowCircle} alt="arrow indicator" />
+          <Link to="/#challenge" smooth >
+            <img src={ArrowCircle} alt="arrow indicator" />
+          </Link>
         </AboveFoldContent>
-        <ContentSection backgroundColor={"#FFBB00"}>
-          <StatsSectionInfo>
-            <StatsSectionTitle>
-              <div>The challenge kids face</div>
-              <hr />
-            </StatsSectionTitle>
-            <StatsSectionDescription>
-              <div>Is that they don’t have enough exposure to people in STEM fields that look like them.</div>
-              <div>This could potentially be a deterrent for students to pursue a career in these fields.  As statistics show, a lot of students lose interest after middle school.  This could be due to exposure, a lack of opportunities, or, simply, they don’t have someone in their community that can answer their questions about STEM fields.</div>
-            </StatsSectionDescription>
-          </StatsSectionInfo>
-          <StatsSectionStats>
+          <ContentSection backgroundColor={"#FFBB00"} id="challenge" >
+            <StatsSectionInfo>
+              <StatsSectionTitle>
+                <div>The challenge kids face</div>
+                <hr />
+              </StatsSectionTitle>
+              <StatsSectionDescription>
+                <div>Is that they don’t have enough exposure to people in STEM fields that look like them.</div>
+                <div>This could potentially be a deterrent for students to pursue a career in these fields.  As statistics show, a lot of students lose interest after middle school.  This could be due to exposure, a lack of opportunities, or, simply, they don’t have someone in their community that can answer their questions about STEM fields.</div>
+              </StatsSectionDescription>
+            </StatsSectionInfo>
+            <StatsSectionStats>
 
-            <StatsSectionStatsInfo>
-              <StatsSectionStatsTitle>
-                <img src={Percent76} alt="percent" />
-                <div>74%</div>
-              </StatsSectionStatsTitle>
-              <span>74% of middle school girls</span> express an interest in engineering, science, and math. But only 0.3% choose computer science as a major when they get to college
+              <StatsSectionStatsInfo>
+                <StatsSectionStatsTitle>
+                  <img src={Percent76} alt="percent" />
+                  <div>74%</div>
+                </StatsSectionStatsTitle>
+                <span>74% of middle school girls</span> express an interest in engineering, science, and math. But only 0.3% choose computer science as a major when they get to college
             </StatsSectionStatsInfo>
 
 
-            <StatsSectionStatsInfo>
-              <StatsSectionStatsTitle>
-                <img src={Percent36} alt="percent" />
-                <div>36%</div>
-              </StatsSectionStatsTitle>
-              <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
+              <StatsSectionStatsInfo>
+                <StatsSectionStatsTitle>
+                  <img src={Percent36} alt="percent" />
+                  <div>36%</div>
+                </StatsSectionStatsTitle>
+                <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
           </StatsSectionStatsInfo>
 
 
-            <StatsSectionStatsInfo>
-              <StatsSectionStatsTitle>
-                <img src={Percent13} alt="percent" />
-                <div>13%</div>
-              </StatsSectionStatsTitle>
-              <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
+              <StatsSectionStatsInfo>
+                <StatsSectionStatsTitle>
+                  <img src={Percent13} alt="percent" />
+                  <div>13%</div>
+                </StatsSectionStatsTitle>
+                <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
           </StatsSectionStatsInfo>
-          </StatsSectionStats>
-        </ContentSection>
+            </StatsSectionStats>
+          </ContentSection>
         <ContentSection backgroundColor={"#D2D2D2"}>
           <StatsSectionInfo>
             <StatsSectionTitle>

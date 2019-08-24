@@ -2,7 +2,7 @@ import * as React from "react";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { RouteComponentProps } from "react-router-dom";
 import { VirtualSessionInterface } from "../../models/VirtualSession";
-import styled, { StyledFunction } from "styled-components";
+import styled from "styled-components";
 import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
 import { SessionStorageHelper } from "../../helpers/SessionStorageHelper";
 import { JwtTokenHelper } from "../../helpers/JwtTokenHelper";

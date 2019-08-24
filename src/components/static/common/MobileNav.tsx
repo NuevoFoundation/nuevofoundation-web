@@ -63,7 +63,7 @@ export class MobileNav extends React.Component<IMobileMenuProps> {
               backgroundColor={"#FFFFFF"}
               textColor={"#000000"}
               border={"4px solid #000000"}
-              linkTo={Const.PayPalDonatePage!}
+              linkTo={Const.SupportUsPage!}
             />
           </ButtonWrapper>
         </div>
@@ -72,7 +72,7 @@ export class MobileNav extends React.Component<IMobileMenuProps> {
         <div>
           {NavItems.map(NavItem => {
             return (
-              <StyledNavLink key={NavItem.link} to={NavItem.link}>
+              <StyledNavLink key={NavItem.link} to={NavItem.link} onClick={this.props.handleMenuClose}>
                 <MobileNavList>
                   <li>
                     {NavItem.text}

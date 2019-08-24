@@ -7,11 +7,11 @@ import Header from "./components/static/common/Header";
 import {
   AboutUs,
   Contact,
-  Faq,
   Home,
   SupportUs,
   WhatWeDo,
-  GetInvolved
+  GetInvolved,
+  ComingSoon
 } from "./components/static/pages";
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
 import { Blog } from "./components/static/pages";
@@ -121,9 +121,9 @@ class App extends React.Component<{}, AppState> {
                 <Route exact={true} path={Const.SupportUsPage} component={SupportUs} />
                 <Route exact={true} path={Const.BlogPage} component={Blog} />
                 <Route exact={true} path={Const.BlogPost} component={Post} />
-                <Route exact={true} path={Const.FaqPage} component={Faq} />
                 <Route exact={true} path={Const.ContactPage} component={Contact} />
                 <Route exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />
+                <Route exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
                 {/* <Route component={NoMatch} /> */}
               </Switch>
               <Footer />

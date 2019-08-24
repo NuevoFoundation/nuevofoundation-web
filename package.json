@@ -13,6 +13,7 @@
     "@types/react-bootstrap": "^0.32.14",
     "@types/react-lottie": "^1.2.0",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-hash-link": "^1.2.1",
     "@types/react-table": "^6.8.5",
     "emailjs-com": "^2.2.4",
     "env-cmd": "^8.0.2",
@@ -23,6 +24,7 @@
     "react-ga": "^2.5.7",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^4.3.1",
+    "react-router-hash-link": "^1.2.2",
     "react-scripts": "^3.0.0",
     "react-table": "^6.10.0",
     "styled-components": "^3.4.9"

@@ -5,15 +5,14 @@ export class Const {
   public static SupportUsPage: string = "/support-us";
   public static BlogPage: string = "/blog";
   public static BlogPost: string = "/blog/post/:id";
-  public static FaqPage: string = "/faq";
   public static ContactPage: string = "/contact";
   public static SchoolWorkshopPage: string = "/workshops";
   public static VirtualSessionPage: string = "/virtual-sessions";
   public static VirtualSession: string = "/virtual-sessions/:id";
   public static MembersAccount: string = "/members/:id";
   public static GetInvolvedPage: string = "/get-involved";
+  public static ComingSoonPage: string = "/coming-soon";
 
-  public static PayPalDonatePage?: string = process.env.REACT_APP_PAYPAL_DONATE;
   public static WordpressEndpoint?: string =
     process.env.REACT_APP_WORDPRESS_ENDPOINT;
   public static ApiEndpoint?: string = process.env.REACT_APP_API_URL;

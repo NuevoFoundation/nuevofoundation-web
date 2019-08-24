@@ -3,25 +3,15 @@ import styled from "styled-components";
 import teacher from "../../../assets/images/getinvolved/teacher.png";
 import student from "../../../assets/images/getinvolved/student.png";
 import volunteer from "../../../assets/images/getinvolved/volunteer.png";
+import { PageTitle } from "../common/PageTitle";
 import {
   Col,
   Grid,
   Row,
   Image
 } from "react-bootstrap";
-
-const HereImage = styled.div`
-  border: 1px #707070 solid;
-  color: #000000;
-  font-size: 28px;
-  padding: 32px 0 0 25px;
-  margin: 0 20px 0 20px;
-  margin-bottom: 30px;
-
-  font-family: 'Space Mono', monospace;
-  height: 207px;
-  max-width: 513px;
-`
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
 
 const GetInvolvedContainer = styled.div`
   padding-top: 50px;
@@ -86,6 +76,11 @@ class Role {
 }
 
 export class GetInvolved extends React.Component {
+  constructor(props: {}) {
+    super(props);
+    ReactGA.pageview(Const.GetInvolvedPage);
+  }
+  
   static readonly Role: Role[] = [
     {
       role: "Teacher",
@@ -94,7 +89,7 @@ export class GetInvolved extends React.Component {
       optionTwo: "Virtual Sessions",
       optionThree: "Speaker series",
       buttonText: "Download program",
-      buttonLink: "./"
+      buttonLink: "./coming-soon"
     },
     {
       role: "Student",
@@ -103,16 +98,16 @@ export class GetInvolved extends React.Component {
       optionTwo: "Events and scholarships",
       optionThree: "Resources",
       buttonText: "Get an overview",
-      buttonLink: "./"
+      buttonLink: "./coming-soon"
     },
     {
       role: "Volunteer",
       img: volunteer,
-      optionOne: "Lorem ipsum dolor sit amet, consectetur",
-      optionTwo: "Adipiscing elit, sed do eiusmod tempor ",
-      optionThree: "Incididunt ut labore et dolore magna aliqua",
+      optionOne: "Create curriculums",
+      optionTwo: "Help with a workshop",
+      optionThree: "Host a virtual session",
       buttonText: "Sign up now",
-      buttonLink: "./"
+      buttonLink: "https://aka.ms/nfsignup"
     }
   ]; // end of Role
 
@@ -120,7 +115,7 @@ export class GetInvolved extends React.Component {
     return GetInvolved.Role.map((role, index) => {
       return (<Col xs={0} xsOffset={1} md={3} mdOffset={1} key={index}>
         <RolePic>
-          <Image src={role.img} alt="role pic" circle responsive />
+          <Image src={role.img} alt={role.role} circle responsive />
         </RolePic>
         <RoleContainer>
           <RoleHeader>{role.role}</RoleHeader>
@@ -140,9 +135,7 @@ export class GetInvolved extends React.Component {
   public render() {
     return (
       <React.Fragment>
-        <HereImage>
-          Get Involved
-        </HereImage>
+        <PageTitle title={"Get involved"} />
         <GetInvolvedContainer>
           <Grid fluid={true}>
             <Row>

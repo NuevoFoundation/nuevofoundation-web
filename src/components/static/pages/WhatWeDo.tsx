@@ -1,15 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
-import virtualSession3 from "../../../assets/images/virtualsessions/virtualsession3.jpg";
-import workshop3 from "../../../assets/images/workshops/workshop3.jpg";
-import workshop5 from "../../../assets/images/workshops/workshop5.jpg";
 import speakerNuvi from "../../../assets/logos/nuvi/speaker_nuvi.png";
 import workshopNuvi from "../../../assets/logos/nuvi/virtual_session_nuvi.png";
 import virtualNuvi from "../../../assets/logos/nuvi/workshop_nuvi.png";
+
+import getInvolvedCodingWorkshop from "../../../assets/images/getinvolved/CodingWorkshop.jpg";
+import getInvolvedSpeakingSeries from "../../../assets/images/getinvolved/SpeakerSeries.jpg";
+import getInvolvedVirtualSession from "../../../assets/images/getinvolved/VirtualSession.jpg";
+
 import "../../../assets/stylesheets/WhatWeDo.css";
-
-import headerimg from "../../../assets/images/whatwedo/whatwedoheader.png";
-
 import {
   Col,
   Grid,
@@ -17,38 +16,14 @@ import {
   Image,
   Button
 } from "react-bootstrap";
-
+import { PageTitle } from "../common/PageTitle";
+import { Const } from "../../../Const";
+import ReactGA from "react-ga";
 
 const Background = styled.div`
   background-repeat: none;
   font-family: "Lato", sans-serif;
   
-`;
-
-const Header = styled.div`
-    background-image: url(${headerimg});
-    width: 100%;
-    height: auto;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position:center;
-    background-size:cover;
-    box-shadow:0 1px 0 black,0 2px 0 rgba(255,255,255,0.15);
-    padding: 300px;
-    font-size: 6.250em;
-    text-align: center;
-    color: white;
-    margin-bottom: 1px;
-`;
-
-const MobileHeader = styled.div`
-    background-image: url(${headerimg});
-    width: 100vw;
-    height: 30em;
-    background-repeat: no-repeat;
-    padding-top: 10em;
-    text-align: center;
-    color: white;
 `;
 
 const WorskshopAlignment = styled.div`
@@ -83,6 +58,7 @@ class Service {
 export class WhatWeDo extends React.Component<{}, { width: number }>  {
   constructor(props: {}) {
     super(props);
+    ReactGA.pageview(Const.WhatWeDoPage);
     this.state = {
       width: window.innerWidth,
     };
@@ -108,7 +84,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     {
       title: "Coding Workshops",
       icon: workshopNuvi,
-      img: workshop5,
+      img: getInvolvedCodingWorkshop,
       color: "#FFFFFF",
       textColor: "#000000",
       buttonLink: "https://aka.ms/nfsignup",
@@ -117,7 +93,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     {
       title: "Virtual Sessions",
       icon: virtualNuvi,
-      img: virtualSession3,
+      img: getInvolvedVirtualSession,
       color: "#d2d2d2",
       textColor: "#000000",
       buttonLink: "https://aka.ms/nfsignup",
@@ -126,7 +102,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     {
       title: "Speaker Series",
       icon: speakerNuvi,
-      img: workshop3,
+      img: getInvolvedSpeakingSeries,
       color: "#000000",
       textColor: "#FFFFFF",
       buttonLink: "https://aka.ms/nfsignup",
@@ -135,21 +111,24 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
   ];
 
   serviceList(isMobile: boolean) {
-    return WhatWeDo.Services.map(service => {
-      return (<Col xs={3} xsOffset={1} md={3} mdOffset={1} className="services">
-        <Image src={service.icon} circle responsive />
-        {
-          isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
-        }
-      </Col>);
+    return WhatWeDo.Services.map((service, index) => {
+      return (
+        <Col key={index} className="services">
+          <div>
+            <Image src={service.icon} circle responsive height={"200px"} width={"200px"} alt={service.title} />
+            {
+              isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
+            }
+          </div>
+        </Col>);
 
     });
   }
 
   serviceDescription(isMobile: boolean) {
-    return WhatWeDo.Services.map(service => {
+    return WhatWeDo.Services.map((service, index) => {
       return (
-        <Row className="serviceDescription" style={{
+        <Row className="serviceDescription" key={index} style={{
           backgroundColor: service.color,
           color: service.textColor
         }}>
@@ -197,9 +176,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       return (
 
         <Background>
-          <MobileHeader>
-            <h1>What we do</h1>
-          </MobileHeader>
+          <PageTitle title={"What we do"} />
           <Grid fluid={true}>
             <Row className="services">
               {this.serviceList(isMobile)}
@@ -212,28 +189,18 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     }
 
     return (
-      <Background>
-        <Header>
-          <div className="logo">
-            <span>W</span>
-            <span>h</span>
-            <span>a</span>
-            <span>t_</span>
-            <span>w</span>
-            <span>e_</span>
-            <span>d</span>
-            <span>o</span>
-            <span className="blink">|</span>
-          </div>
-        </Header>
-        <Grid fluid={true}>
-          <Row className="services">
-            {this.serviceList(isMobile)}
-          </Row>
+      <React.Fragment>
+        <PageTitle title={"What we do"} />
+        <Background>
+          <Grid fluid={true}>
+            <Row className="services">
+              {this.serviceList(isMobile)}
+            </Row>
 
-          {this.serviceDescription(isMobile)}
-        </Grid>
-      </Background>
+            {this.serviceDescription(isMobile)}
+          </Grid>
+        </Background>
+      </React.Fragment>
     );
   }
 }
