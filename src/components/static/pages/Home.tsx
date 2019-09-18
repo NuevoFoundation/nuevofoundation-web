@@ -318,7 +318,7 @@ export class Home extends React.Component {
           </StatsSectionInfo>
           <ImpactSectionStats>
 
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,114 <span><span>Diverse</span>students</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
+            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,230 <span><span>Diverse</span>students</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 
             <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#00BED5"}>86% <span><span>More Interested</span>in STEM​​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 
