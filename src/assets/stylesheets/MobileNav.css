@@ -29,4 +29,5 @@
 
 .close-btn {
   margin-bottom: 4em;
+  cursor: pointer;
 }

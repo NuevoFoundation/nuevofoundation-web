@@ -3,6 +3,7 @@ export interface INavItem {
   dropdown: boolean;
   text: string;
   link: string;
+  external?: boolean;
 }
 
 export const NavItems: INavItem[] = [
@@ -11,7 +12,12 @@ export const NavItems: INavItem[] = [
     link: "/what-we-do",
     text: "What We Do"
   },
-
+  {
+    dropdown: false,
+    link: "https://workshops.nuevofoundation.org",
+    text: "Workshops",
+    external: true
+  },
   {
     dropdown: false,
     link: "/get-involved",
