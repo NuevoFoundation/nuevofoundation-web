@@ -320,9 +320,9 @@ export class Home extends React.Component {
 
             <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,230 <span><span>Diverse</span>students</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
 
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#00BED5"}>86% <span><span>More Interested</span>in STEM​​</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
+            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#00BED5"}>86% <span><span>More Interested</span>in STEM</span></ImpactSectionStatsTitle>Our students leave our events feeling like they have better understanding of the STEM opportunities available to them.</ImpactSectionStatsTitleInfo>
 
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#E13126"}>91% <span><span>Believed</span>they learned to code</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
+            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#E13126"}>91% <span><span>Believed</span>they learned to code</span></ImpactSectionStatsTitle>Students feel that they are able to learn completely new computer science concepts in our 2 hour coding workshops.</ImpactSectionStatsTitleInfo>
 
           </ImpactSectionStats>
         </ContentSection>
