@@ -13,6 +13,8 @@ import "../../../assets/stylesheets/Home.css";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
 import { HashLink as Link } from 'react-router-hash-link';
+import { ServiceResolver } from "../../../services/ServiceResolver";
+import { MetaDataInterface, ImpactStatInterface } from "../../../models/MetaData";
 
 const AboveFoldContent = styled.div`
   background-repeat: none;
@@ -37,7 +39,6 @@ const AboveFoldContent = styled.div`
 
 const ContentSection = styled.div`
   color: ${(props: StatProps) => props.color ? props.color : "#000000"};
-  background-color: ${(props: ContentSectionProps) => props.backgroundColor};
 `
 
 const StatsSectionInfo = styled.div`
@@ -193,13 +194,24 @@ interface ContentSectionProps {
 
 interface StatProps {
   color?: string;
+  metaData?: MetaDataInterface
 }
 
-export class Home extends React.Component {
-
+export class Home extends React.Component<{}, StatProps> {
+  public apiService = new ServiceResolver().ApiService();
   constructor(props: {}) {
     super(props);
     ReactGA.pageview(Const.RootPage);
+    this.state = {
+      metaData: undefined
+    }
+  }
+
+  async componentDidMount() {
+    const metaData = await this.apiService.getMetaData();
+    this.setState({
+      metaData
+    })
   }
 
   public render() {
@@ -214,6 +226,9 @@ export class Home extends React.Component {
       }
     };
 
+    const { metaData } = this.state;
+    const impactColors: string[] = ["#EBA300", "#00BED5", "#E13126"];
+
     return (
       <Grid fluid={true}>
         <AboveFoldContent>
@@ -224,7 +239,7 @@ export class Home extends React.Component {
                   <ContentWrapper>
                     <div className="main-title">
                       Inspiring kids to be curious, confident, and courageous by discovering the world of STEM
-                    </div> 
+                    </div>
                   </ContentWrapper>
                 </Col>
               </Row>
@@ -249,47 +264,47 @@ export class Home extends React.Component {
             <img src={ArrowCircle} alt="arrow indicator" />
           </Link>
         </AboveFoldContent>
-          <ContentSection backgroundColor={"#FFBB00"} id="challenge" >
-            <StatsSectionInfo>
-              <StatsSectionTitle>
-                <div>The challenge kids face</div>
-                <hr />
-              </StatsSectionTitle>
-              <StatsSectionDescription>
-                <div>Is that they don’t have enough exposure to people in STEM fields that look like them.</div>
-                <div>This could potentially be a deterrent for students to pursue a career in these fields.  As statistics show, a lot of students lose interest after middle school.  This could be due to exposure, a lack of opportunities, or, simply, they don’t have someone in their community that can answer their questions about STEM fields.</div>
-              </StatsSectionDescription>
-            </StatsSectionInfo>
-            <StatsSectionStats>
+        <ContentSection style={{backgroundColor: "#FFBB00"}} id="challenge" >
+          <StatsSectionInfo>
+            <StatsSectionTitle>
+              <div>The challenge kids face</div>
+              <hr />
+            </StatsSectionTitle>
+            <StatsSectionDescription>
+              <div>Is that they don’t have enough exposure to people in STEM fields that look like them.</div>
+              <div>This could potentially be a deterrent for students to pursue a career in these fields.  As statistics show, a lot of students lose interest after middle school.  This could be due to exposure, a lack of opportunities, or, simply, they don’t have someone in their community that can answer their questions about STEM fields.</div>
+            </StatsSectionDescription>
+          </StatsSectionInfo>
+          <StatsSectionStats>
 
-              <StatsSectionStatsInfo>
-                <StatsSectionStatsTitle>
-                  <img src={Percent76} alt="percent" />
-                  <div>74%</div>
-                </StatsSectionStatsTitle>
-                <span>74% of middle school girls</span> express an interest in engineering, science, and math. But only 0.3% choose computer science as a major when they get to college
+            <StatsSectionStatsInfo>
+              <StatsSectionStatsTitle>
+                <img src={Percent76} alt="percent" />
+                <div>74%</div>
+              </StatsSectionStatsTitle>
+              <span>74% of middle school girls</span> express an interest in engineering, science, and math. But only 0.3% choose computer science as a major when they get to college
             </StatsSectionStatsInfo>
 
 
-              <StatsSectionStatsInfo>
-                <StatsSectionStatsTitle>
-                  <img src={Percent36} alt="percent" />
-                  <div>36%</div>
-                </StatsSectionStatsTitle>
-                <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
+            <StatsSectionStatsInfo>
+              <StatsSectionStatsTitle>
+                <img src={Percent36} alt="percent" />
+                <div>36%</div>
+              </StatsSectionStatsTitle>
+              <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
           </StatsSectionStatsInfo>
 
 
-              <StatsSectionStatsInfo>
-                <StatsSectionStatsTitle>
-                  <img src={Percent13} alt="percent" />
-                  <div>13%</div>
-                </StatsSectionStatsTitle>
-                <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
+            <StatsSectionStatsInfo>
+              <StatsSectionStatsTitle>
+                <img src={Percent13} alt="percent" />
+                <div>13%</div>
+              </StatsSectionStatsTitle>
+              <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
           </StatsSectionStatsInfo>
-            </StatsSectionStats>
-          </ContentSection>
-        <ContentSection backgroundColor={"#D2D2D2"}>
+          </StatsSectionStats>
+        </ContentSection>
+        <ContentSection  style={{backgroundColor: "#D2D2D2"}}>
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The solution we found</div>
@@ -305,7 +320,7 @@ export class Home extends React.Component {
           </StatsSectionInfo>
         </ContentSection>
 
-        <ContentSection backgroundColor={"#FFFFFF"}>
+        <ContentSection  style={{backgroundColor: "#FFFFFF"}}>
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The impact we had:</div>
@@ -317,16 +332,14 @@ export class Home extends React.Component {
             </StatsSectionDescription>
           </StatsSectionInfo>
           <ImpactSectionStats>
-
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#EBA300"}>2,230 <span><span>Diverse</span>students</span></ImpactSectionStatsTitle>This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders.</ImpactSectionStatsTitleInfo>
-
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#00BED5"}>86% <span><span>More Interested</span>in STEM</span></ImpactSectionStatsTitle>Our students leave our events feeling like they have better understanding of the STEM opportunities available to them.</ImpactSectionStatsTitleInfo>
-
-            <ImpactSectionStatsTitleInfo><ImpactSectionStatsTitle color={"#E13126"}>91% <span><span>Believed</span>they learned to code</span></ImpactSectionStatsTitle>Students feel that they are able to learn completely new computer science concepts in our 2 hour coding workshops.</ImpactSectionStatsTitleInfo>
-
+            {metaData && metaData.impactStats && metaData.impactStats.map((stat: ImpactStatInterface, index: number) => {
+              return (
+                <ImpactSectionStatsTitleInfo key={index}><ImpactSectionStatsTitle color={impactColors[index]}>{stat.stat}<span><span>{stat.titleBoldened}</span>{stat.title}</span></ImpactSectionStatsTitle>{stat.description}</ImpactSectionStatsTitleInfo>
+              )
+            })}
           </ImpactSectionStats>
         </ContentSection>
-        <ContentSection backgroundColor={"#070706"} color={"#FFFFFF"}>
+        <ContentSection style={{backgroundColor: "#070706"}} color={"#FFFFFF"}>
           <ClosingSectionBackground >
             <ClosingSectionInfo>
               <div>

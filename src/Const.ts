@@ -17,4 +17,5 @@ export class Const {
   public static GoogleAnalyticsTrackingId?: string =
     process.env.REACT_APP_GA_ID;
   public static BlogPageSize: number = 10;
+  public static ApiEndpoint?: string = process.env.REACT_APP_API_URL;
 }
