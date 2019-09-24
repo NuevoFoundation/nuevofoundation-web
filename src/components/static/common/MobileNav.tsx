@@ -18,6 +18,20 @@ const ButtonWrapper = styled.div`
   padding: 10px 20px 0 0;
 `;
 
+const StyledExternalLink = styled.a`
+  color: #535353;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+
+`
 const StyledNavLink = styled(NavLink)`
   color: #535353;
   font-weight: bold;
@@ -70,23 +84,40 @@ export class MobileNav extends React.Component<IMobileMenuProps> {
 
         <hr />
         <div>
-          {NavItems.map(NavItem => {
+          {NavItems.map(navItem => {
             return (
-              <StyledNavLink key={NavItem.link} to={NavItem.link} onClick={this.props.handleMenuClose}>
-                <MobileNavList>
-                  <li>
-                    {NavItem.text}
-                    {NavItem.dropdown && (
-                      <NavIcon>
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          className={"fa-sm"}
-                        />
-                      </NavIcon>
-                    )}
-                  </li>
-                </MobileNavList>
-              </StyledNavLink>
+              navItem.external ?
+                <StyledExternalLink href={navItem.link} key={navItem.link} onClick={this.props.handleMenuClose}>
+                  <MobileNavList>
+                    <li>
+                      {navItem.text}
+                      {navItem.dropdown && (
+                        <NavIcon>
+                          <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className={"fa-sm"}
+                          />
+                        </NavIcon>
+                      )}
+                    </li>
+                  </MobileNavList>
+                </StyledExternalLink>
+                :
+                <StyledNavLink key={navItem.link} to={navItem.link} onClick={this.props.handleMenuClose}>
+                  <MobileNavList>
+                    <li>
+                      {navItem.text}
+                      {navItem.dropdown && (
+                        <NavIcon>
+                          <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className={"fa-sm"}
+                          />
+                        </NavIcon>
+                      )}
+                    </li>
+                  </MobileNavList>
+                </StyledNavLink>
             );
           })}
         </div>

@@ -6,7 +6,7 @@ import { NavLink, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { Const } from "../../../Const";
-import { NavItems } from "./NavItems";
+import { NavItems, INavItem } from "./NavItems";
 import { withRouter } from 'react-router-dom';
 
 import {
@@ -109,6 +109,16 @@ const NavIcon = styled.span`
   padding-left: 10px;
 `;
 
+const StyledExternalLink = styled.a`
+color: #535353;
+  text-decoration: none;
+
+
+  &:active {
+    text-decoration: none;
+  }
+`
+
 const StyledNavLink = styled(NavLink)`
   color: #535353;
   text-decoration: none;
@@ -119,68 +129,48 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-interface INavItem {
-  dropdown: boolean;
-  text: string;
-  link: string;
-}
-
 interface IHeaderProps extends RouteComponentProps {
   hamburgerMenuOpen: boolean;
   handleHamburgerIconClick: () => void;
 }
 
-// TODO: Implement selected nav item styling
 export class Header extends React.Component<IHeaderProps> {
   public renderNavItems(): JSX.Element[] {
     return NavItems.map((navItem: INavItem, index: number) => {
-      const currentPage = this.props.location.pathname;
       return (
-        <StyledNavLink key={index} to={navItem.link}>
-          {navItem.link === currentPage ?
-            <ActiveNavItem>
-              {navItem.text}
-              {navItem.dropdown && (
-                <NavIcon>
-                  <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-                </NavIcon>
-              )}
-              <span />
-            </ActiveNavItem>
-            :
-            <NavItem>
-              {navItem.text}
-              {navItem.dropdown && (
-                <NavIcon>
-                  <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-                </NavIcon>
-              )}
-            </NavItem>
-          }
-        </StyledNavLink>
+        navItem.external ?
+          <StyledExternalLink key={index} href={navItem.link}>{this.renderNavItem(navItem)}</StyledExternalLink>
+          :
+          <StyledNavLink key={index} to={navItem.link}>
+            {this.renderNavItem(navItem)}
+          </StyledNavLink>
       );
     });
   }
 
-  public renderSmallNavItems(): JSX.Element[] {
-    return NavItems.map((navItem: INavItem, index: number) => {
-      return (
-        <Row key={index}>
-          <Col xs={4} xsOffset={4} smHidden={true} mdHidden={true} lgHidden={true}>
-            <StyledNavLink to={navItem.link}>
-              <SmallNavItem>
-                {navItem.text}
-                {navItem.dropdown && (
-                  <NavIcon>
-                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-                  </NavIcon>
-                )}
-              </SmallNavItem>
-            </StyledNavLink>
-          </Col>
-        </Row>
-      );
-    });
+  public renderNavItem(navItem: INavItem): JSX.Element {
+    const currentPage = this.props.location.pathname;
+    return (
+      navItem.link === currentPage ?
+        <ActiveNavItem>
+          {navItem.text}
+          {navItem.dropdown && (
+            <NavIcon>
+              <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+            </NavIcon>
+          )}
+          <span />
+        </ActiveNavItem>
+        :
+        <NavItem>
+          {navItem.text}
+          {navItem.dropdown && (
+            <NavIcon>
+              <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+            </NavIcon>
+          )}
+        </NavItem>
+    );
   }
 
   public render() {
