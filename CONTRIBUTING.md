@@ -26,3 +26,5 @@ Now start the application with npm start. Once started the application should au
 ```
 $ npm start
 ```
+
+### Pull requests
