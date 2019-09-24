@@ -40,6 +40,8 @@ steps:
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
+    cleanTargetFolder: true 
+    overWrite: true 
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
 - task: PublishBuildArtifacts@1
@@ -58,6 +60,8 @@ steps:
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
+    cleanTargetFolder: true 
+    overWrite: true
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
 - task: PublishBuildArtifacts@1
