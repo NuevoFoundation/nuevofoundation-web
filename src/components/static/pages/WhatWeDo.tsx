@@ -115,7 +115,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       return (
         <Col key={index} className="services">
           <div>
-            <Image src={service.icon} circle responsive height={"200px"} width={"200px"} alt={service.title} />
+            <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo" />
             {
               isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
             }

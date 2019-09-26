@@ -9,6 +9,12 @@
   padding-bottom: 1.875em;
 }
 
+.servicesLogo {
+  vertical-align: middle;
+  display:inline-block;
+  height: 200px;
+  width: 200px;
+}
 .serviceDescription {
   padding: 2.5em;
   font-size: 1.25em;
