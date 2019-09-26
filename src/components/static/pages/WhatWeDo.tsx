@@ -114,12 +114,13 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     return WhatWeDo.Services.map((service, index) => {
       return (
         <Col key={index} className="services">
+          <a href={`#${service.title}`}>
           <div>
-            <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo" />
+            <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo"/>
             {
               isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
             }
-          </div>
+          </div></a>
         </Col>);
 
     });
@@ -128,7 +129,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
   serviceDescription(isMobile: boolean) {
     return WhatWeDo.Services.map((service, index) => {
       return (
-        <Row className="serviceDescription" key={index} style={{
+        <Row className="serviceDescription" key={index} id={service.title} style={{
           backgroundColor: service.color,
           color: service.textColor
         }}>

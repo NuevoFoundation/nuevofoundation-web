@@ -9,6 +9,15 @@
   padding-bottom: 1.875em;
 }
 
+.services a{
+  color: black;
+}
+
+.services a:hover {
+  color: white;
+  text-decoration: none;
+} 
+
 .servicesLogo {
   vertical-align: middle;
   display:inline-block;
