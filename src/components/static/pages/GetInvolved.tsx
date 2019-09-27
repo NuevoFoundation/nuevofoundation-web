@@ -8,7 +8,10 @@ import {
   Col,
   Grid,
   Row,
-  Image
+  Image, 
+  Button,
+  ListGroup,
+  ListGroupItem
 } from "react-bootstrap";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
@@ -22,15 +25,21 @@ const GetInvolvedContainer = styled.div`
 const RolePic = styled.div`
     position: relative;
     display: inline-block;
-    margin: 50px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 10px;
 `;
 
 const RoleContainer = styled.div`
     font-family: "Lato", sans-serif;
     color: black;
+    text-align: center;
     font-size: 1.15em;
     width: 100%;
     height: 100%;
+    object-fit: contain; 
 `;
 const RoleHeader = styled.div`
     font-family: "Lato", sans-serif;
@@ -40,18 +49,21 @@ const RoleHeader = styled.div`
     font-size: 1.75em;
 `;
 
-const RoleButton = styled.button`
+const RoleButton = styled(Button)`
     font-family: "Lato", sans-serif;
     color: black;
     background-color: #FCC600;
     border-radius: 4px;
-    font-size: 1em;
     border: 2px solid black;
-    text-align: center;
-    height: 3.125em;
-    width: 11.55em;
-    padding: 10px;
-    margin-top: 6.25em;
+    padding: .5em;
+    margin: 1em;
+`;
+
+const RoleItems = styled(ListGroup)`
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 `;
 
 class Role {
@@ -113,21 +125,26 @@ export class GetInvolved extends React.Component {
 
   roleList() {
     return GetInvolved.Role.map((role, index) => {
-      return (<Col xs={0} xsOffset={1} md={3} mdOffset={1} key={index}>
-        <RolePic>
-          <Image src={role.img} alt={role.role} circle responsive />
-        </RolePic>
-        <RoleContainer>
-          <RoleHeader>{role.role}</RoleHeader>
-          <br />
-          <p>{role.optionOne}
-            <br />{role.optionTwo}
-            <br />{role.optionThree}</p>
-          <form action={role.buttonLink} style={{ textAlign: "center" }}>
-            <RoleButton>{role.buttonText}</RoleButton>
-          </form>
-        </RoleContainer>
-      </Col>);
+      return (
+        <Col xs={0} md={4} key={index}>
+          <RolePic>
+            <Image src={role.img} alt={role.role} circle responsive />
+          </RolePic>
+          <RoleContainer>
+            <RoleHeader>{role.role}</RoleHeader>
+            <RoleItems>
+              <ListGroupItem href="#">{role.optionOne}</ListGroupItem>
+              <ListGroupItem href="#">{role.optionTwo}</ListGroupItem>
+              <ListGroupItem href="#">{role.optionThree}</ListGroupItem>
+              <ListGroupItem href="#">
+                <form action={role.buttonLink} style={{ textAlign: "center" }}>
+                  <RoleButton>{role.buttonText}</RoleButton>
+                </form>
+              </ListGroupItem>
+            </RoleItems>
+          </RoleContainer>
+        </Col>
+      );
     }
     ); // end of return
   } // end of RoleList
