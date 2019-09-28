@@ -19,6 +19,7 @@ import {
 import { PageTitle } from "../common/PageTitle";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Background = styled.div`
   background-repeat: none;
@@ -119,13 +120,13 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     return WhatWeDo.Services.map((service, index) => {
       return (
         <Col key={index} className="services">
-          <a href={`#${service.title}`}>
+          <Link to={`#${service.title}`} smooth>
           <div>
             <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo"/>
             {
               isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
             }
-          </div></a>
+          </div></Link>
         </Col>);
 
     });
