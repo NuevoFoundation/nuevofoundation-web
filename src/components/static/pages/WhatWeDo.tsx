@@ -19,6 +19,7 @@ import {
 import { PageTitle } from "../common/PageTitle";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Background = styled.div`
   background-repeat: none;
@@ -39,15 +40,17 @@ class Service {
   title: string;
   icon: string;
   img: string;
+  imgAltText: string;
   color: string;
   textColor: string;
   buttonLink: string;
   description: string;
 
-  constructor(title: string, icon: string, img: string, color: string, buttonLink: string, description: string) {
+  constructor(title: string, icon: string, img: string, imgAltText: string, color: string, buttonLink: string, description: string) {
     this.title = title;
     this.icon = icon;
     this.img = img;
+    this.imgAltText = imgAltText;
     this.color = color;
     this.textColor = "#000000";
     this.buttonLink = buttonLink;
@@ -85,6 +88,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       title: "Coding Workshops",
       icon: workshopNuvi,
       img: getInvolvedCodingWorkshop,
+      imgAltText: "Students learning at Nuevo's python workshop.",
       color: "#FFFFFF",
       textColor: "#000000",
       buttonLink: "https://aka.ms/nfsignup",
@@ -94,6 +98,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       title: "Virtual Sessions",
       icon: virtualNuvi,
       img: getInvolvedVirtualSession,
+      imgAltText: "Students at a virtual session with an engineer.",
       color: "#d2d2d2",
       textColor: "#000000",
       buttonLink: "https://aka.ms/nfsignup",
@@ -103,6 +108,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       title: "Speaker Series",
       icon: speakerNuvi,
       img: getInvolvedSpeakingSeries,
+      imgAltText: "Speaker presenting to students.",
       color: "#000000",
       textColor: "#FFFFFF",
       buttonLink: "https://aka.ms/nfsignup",
@@ -114,12 +120,13 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
     return WhatWeDo.Services.map((service, index) => {
       return (
         <Col key={index} className="services">
+          <Link to={`#${service.title}`} smooth>
           <div>
-            <Image src={service.icon} circle responsive height={"200px"} width={"200px"} alt={service.title} />
+            <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo"/>
             {
               isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
             }
-          </div>
+          </div></Link>
         </Col>);
 
     });
@@ -128,7 +135,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
   serviceDescription(isMobile: boolean) {
     return WhatWeDo.Services.map((service, index) => {
       return (
-        <Row className="serviceDescription" key={index} style={{
+        <Row className="serviceDescription" key={index} id={service.title} style={{
           backgroundColor: service.color,
           color: service.textColor
         }}>
@@ -161,7 +168,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
                 </WorskshopAlignment>
               </Col>
               <Col md={6} xs={12} style={{ overflow: "hidden" }}>
-                <Image src={service.img} responsive />
+                <Image src={service.img} responsive alt={service.imgAltText}/>
               </Col>
             </Row>
           </Col>
