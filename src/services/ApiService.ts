@@ -4,6 +4,7 @@ import { VirtualSessionInterface } from "../models/VirtualSession";
 import { SessionStorageHelper } from "../helpers/SessionStorageHelper";
 import { MemberInterface } from "../models/Member";
 import { memberAuthenticated } from "../contexts/AuthContext";
+import { MetaDataInterface } from "../models/MetaData";
 
 export class ApiService {
   private headers = {
@@ -11,6 +12,10 @@ export class ApiService {
     "Content-Type": "application/json; charset=utf-8",
     Authorization: `Bearer ${this.getJwtToken()}`
   };
+
+  public getMetaData(): Promise<MetaDataInterface> {
+    return HttpClient.get(`${Const.ApiEndpoint}/metadata`, this.headers);
+  }
 
   public getMember(memberId: string): Promise<MemberInterface> {
     return HttpClient.get(
@@ -28,7 +33,9 @@ export class ApiService {
     );
   }
 
-  public getAllVirtualSessions(memberId: string): Promise<VirtualSessionInterface[]>{
+  public getAllVirtualSessions(
+    memberId: string
+  ): Promise<VirtualSessionInterface[]> {
     return HttpClient.get(
       `${Const.ApiEndpoint}/virtualsessions/${memberId}`,
       this.headers
