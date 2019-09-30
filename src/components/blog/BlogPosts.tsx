@@ -162,8 +162,8 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
           return (
             <React.Fragment key={post.ID}>
               <BlogPostItem>
-                {post.attachment_count > 0 &&
-                  <BlogPostImage src={post.attachments[Object.keys(post.attachments)[0]].thumbnails["medium"]} />
+                {post.post_thumbnail &&
+                  <BlogPostImage src={post.post_thumbnail.URL} />
                 }
                 <BlogPostDetails>
                   <StyledLink to={`/blog/post/${post.ID}`}>

@@ -10,8 +10,6 @@ import Jeremiah from "../../../assets/images/profile/jeremiah-thumbnail.png";
 import JeremiahReal from "../../../assets/images/profile/jeremiah-profile-irl.png";
 import Oliver from "../../../assets/images/profile/oliver-thumbnail.png";
 import OliverReal from "../../../assets/images/profile/oliver-irl.png";
-import Roy from "../../../assets/images/profile/roy-thumbnail.png";
-import RoyReal from "../../../assets/images/profile/roy-profile-irl.png";
 import Savoy from "../../../assets/images/profile/savoy-thumbnail.png";
 import SavoyReal from "../../../assets/images/profile/savoy-irl.png";
 import Izzy from "../../../assets/images/profile/izzy-thumbnail.png";
@@ -97,14 +95,6 @@ export class AboutUs extends React.Component {
         bio: "Oliver is a software engineer at Microsoft. He has been teaching Mathematics, Science, and Computer Science to his peers and other students for 10 years. He is passionate about finding the best way to take difficult concepts and breaking them down into easy-to-understand points. Oliver not only knows many programming languages (such as Java, Python and C#), but also speaks many human languages. English, French, and Mandarin is not enough apparently, so he is learning Japanese and Spanish on the side.",
         img: OliverReal,
         cartoon: Oliver
-      },
-      {
-        name: "Roy Moran",
-        role: "Head of Technology",
-        quote: "-Do something small but useful now.",
-        bio: "I'm a software developer who grew up in Bridgeport, a south side neighborhood of Chicago. I like to build and ship software that I find meaningful and work on ideas that I care about. One of them being equal access to STEM education across underserved communities. Having had the opportunity to work at Microsoft writing software, I enjoy taking what I've learned and sharing that experience with students that may not otherwise see the possibilities of a STEM education. Working with Nuevo Foundation, I'm excited to build technology that helps support its mission and helps us continue to scale our reach to more students in these communities.",
-        img: RoyReal,
-        cartoon: Roy
       },
       {
         name: "Izzy Beltran",
