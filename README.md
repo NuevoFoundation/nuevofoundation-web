@@ -25,6 +25,32 @@ Nuevo Foundation UI
 
 <hr />
 
+## Code Layout
+    .
+    ├── src     
+    │   ├── assets               # fonts, icons, logos, images, stylesheets used in app
+    │   ├── components          
+    │   |   ├── blog             # Components related to the blog page functionality
+    │   |   ├── member           # Components related to member dashboard
+    │   |   ├── registration     # UI elements related to authentication functionality
+    │   |   ├── static
+    |   │   |   ├── common       # Common contains shared UI elements like buttons, header, footer, and nav items.
+    |   │   |   ├── pages        # Pages directory conatins each page displayed on site
+    │   |   ├── virtualSessions  # UI elements related to virtual sessions functionality
+    │   ├── helpers              # utility methods like validating authentication, date time formatting, json web token decoding, etc.
+    │   ├── models               # objects used accross app, typically used as types for persistence to Nuevo API
+    │   ├── services             # classes to make networks requests to Nuevo API like creating virtual session or pull blogs from wordpress
+    ├── .env.development         # Environment variables used during development
+    ├── .env.straging            # Environment variables used for staging
+    ├── .env.production          # Environment variables used for production
+    ├── Const.ts                 # Constants used accross app like API url or Google Analytics Tracking id
+    ├── .eslintrc.json           # eslint configuration file
+    ├── jest.config.json         # Jest testing framework configuration file
+    ├── tsconfig.json            # TypeScript configuration file
+    ├── azure-pipelines.yml      # Build definiton file used by Azure DevOps
+    └── README.md
+
+## React Docs
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
