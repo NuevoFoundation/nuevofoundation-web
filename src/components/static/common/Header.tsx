@@ -18,6 +18,8 @@ import {
   faLinkedin,
   faTwitter
 } from "@fortawesome/free-brands-svg-icons";
+import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
+import { SessionStorageHelper } from "../../../helpers/SessionStorageHelper";
 
 const AboveHeaderContainer = styled.div`
   display: flex;
@@ -102,19 +104,13 @@ const ActiveNavItem = styled.li`
   }
 `;
 
-const SmallNavItem = styled.li`
-  font-size: 18px;
-  padding-bottom: 15px;
-  cursor: pointer;
-`;
-
 const NavIcon = styled.span`
   padding-left: 10px;
 `;
 
 const ButtonWrapper = styled.div`
   float: right;
-  padding: 10px 20px 0 0;
+  padding: 0 20px 10px 0;
 `;
 
 const StyledExternalLink = styled.a`
@@ -246,24 +242,27 @@ export class Header extends React.Component<IHeaderProps> {
                 <NavLogo src={NuevoFoundationLogo} height={"60px"} />
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
-              <ButtonWrapper>
-                <AuthContext.Consumer>
-                  {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
-                    memberAuthenticated ?
-                      <div><StyledNavLink  to={`/members/${1}`}>Welcome, {memberAuthenticatedName}!</StyledNavLink> | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
-                      :
-                      <AuthenticationModal toggleAuthentication={toggleAuthentication}>
-                        <ButtonCta
-                          text={"REGISTER"}
-                          backgroundColor={"#FFFFFF"}
-                          textColor={"#000000"}
-                          border={"4px solid #fcca13"}
-                        />
-                      </AuthenticationModal>
-                  )}
-                </AuthContext.Consumer>
-              </ButtonWrapper>
             </HeaderWrapper>
+
+          </Col>
+          <Col sm={12} xsHidden={true}>
+            <ButtonWrapper>
+              <AuthContext.Consumer>
+                {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+                  memberAuthenticated ?
+                    <div><StyledNavLink to={`/members/${JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token)}`}>Welcome, {memberAuthenticatedName}!</StyledNavLink> | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
+                    :
+                    <AuthenticationModal toggleAuthentication={toggleAuthentication}>
+                      <ButtonCta
+                        text={"REGISTER"}
+                        backgroundColor={"#FFFFFF"}
+                        textColor={"#000000"}
+                        border={"4px solid #fcca13"}
+                      />
+                    </AuthenticationModal>
+                )}
+              </AuthContext.Consumer>
+            </ButtonWrapper>
           </Col>
 
           <Col xs={12} smHidden={true} mdHidden={true} lgHidden={true}>
