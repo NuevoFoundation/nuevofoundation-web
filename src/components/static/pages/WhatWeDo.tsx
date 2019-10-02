@@ -126,7 +126,8 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
             {
               isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
             }
-          </div></Link>
+          </div>
+          </Link>
         </Col>);
 
     });

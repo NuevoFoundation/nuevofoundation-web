@@ -1,0 +1,6 @@
+import { JwtAuthToken } from "../../components/registration/AuthenticationModal";
+
+export const authenticationResponse: JwtAuthToken = {
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoie1wiaWRcIjpcIjYwZmM3YTA0LWMzMjktNDJlNy1hMzFiLTcwZWE0OWZkOGY5NVwifSIsImV4cCI6MTU2MTY2OTA2MSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJ9.qLynBw2udlMgReNgWR7NAxtW1peM4Q5obNHntCBfWoc",
+  refreshToken: "yOJLsZEjkuc1BX0TJhncd1Sj32o2l0LceVrdIwwmneM="
+};

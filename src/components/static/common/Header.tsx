@@ -5,6 +5,9 @@ import { Col, Grid, Row } from "react-bootstrap";
 import { NavLink, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
+import { ButtonCta } from "./ButtonCta";
+import { AuthenticationModal } from "../../registration/AuthenticationModal";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { Const } from "../../../Const";
 import { NavItems, INavItem } from "./NavItems";
 import { withRouter } from 'react-router-dom';
@@ -109,6 +112,11 @@ const NavIcon = styled.span`
   padding-left: 10px;
 `;
 
+const ButtonWrapper = styled.div`
+  float: right;
+  padding: 10px 20px 0 0;
+`;
+
 const StyledExternalLink = styled.a`
 color: #535353;
   text-decoration: none;
@@ -127,6 +135,10 @@ const StyledNavLink = styled(NavLink)`
   &:active {
     text-decoration: none;
   }
+`;
+
+const StyledSpan = styled.span`
+  cursor: pointer;
 `;
 
 interface IHeaderProps extends RouteComponentProps {
@@ -234,6 +246,23 @@ export class Header extends React.Component<IHeaderProps> {
                 <NavLogo src={NuevoFoundationLogo} height={"60px"} />
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
+              <ButtonWrapper>
+                <AuthContext.Consumer>
+                  {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+                    memberAuthenticated ?
+                      <div><StyledNavLink  to={`/members/${1}`}>Welcome, {memberAuthenticatedName}!</StyledNavLink> | <StyledSpan onClick={toggleAuthentication}>Logout</StyledSpan></div>
+                      :
+                      <AuthenticationModal toggleAuthentication={toggleAuthentication}>
+                        <ButtonCta
+                          text={"REGISTER"}
+                          backgroundColor={"#FFFFFF"}
+                          textColor={"#000000"}
+                          border={"4px solid #fcca13"}
+                        />
+                      </AuthenticationModal>
+                  )}
+                </AuthContext.Consumer>
+              </ButtonWrapper>
             </HeaderWrapper>
           </Col>
 

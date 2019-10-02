@@ -239,7 +239,7 @@ export class Home extends React.Component<{}, StatProps> {
                   <ContentWrapper>
                     <div className="main-title">
                       Inspiring kids to be curious, confident, and courageous by discovering the world of STEM
-                    </div>
+                    </div> 
                   </ContentWrapper>
                 </Col>
               </Row>
@@ -286,21 +286,21 @@ export class Home extends React.Component<{}, StatProps> {
             </StatsSectionStatsInfo>
 
 
-            <StatsSectionStatsInfo>
-              <StatsSectionStatsTitle>
-                <img src={Percent36} alt="percent" />
-                <div>36%</div>
-              </StatsSectionStatsTitle>
-              <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
+              <StatsSectionStatsInfo>
+                <StatsSectionStatsTitle>
+                  <img src={Percent36} alt="percent" />
+                  <div>36%</div>
+                </StatsSectionStatsTitle>
+                <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
           </StatsSectionStatsInfo>
 
 
-            <StatsSectionStatsInfo>
-              <StatsSectionStatsTitle>
-                <img src={Percent13} alt="percent" />
-                <div>13%</div>
-              </StatsSectionStatsTitle>
-              <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
+              <StatsSectionStatsInfo>
+                <StatsSectionStatsTitle>
+                  <img src={Percent13} alt="percent" />
+                  <div>13%</div>
+                </StatsSectionStatsTitle>
+                <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
           </StatsSectionStatsInfo>
           </StatsSectionStats>
         </ContentSection>

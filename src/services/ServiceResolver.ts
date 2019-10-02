@@ -1,24 +1,25 @@
-import { MockWordpressService } from "../mocksServices/MockWordpressService";
-import { WordpressService } from "./WordpressService";
-import { ApiService } from "./ApiServices";
-import { MockApiService } from "../mocksServices/MockApiService";
+import {
+  MockWordpressService,
+  MockApiService,
+  MockAuthService
+} from "../mockServices";
+import { WordpressService, ApiService, AuthService } from "./";
 
 export class ServiceResolver {
-  private UseMock: boolean = false;
+  private UseMock: boolean =
+    !process.env.NODE_ENV ||
+    process.env.NODE_ENV === "development" ||
+    process.env.NODE_ENV === "test";
 
   public WordpressService(): WordpressService | MockWordpressService {
-    if (this.UseMock) {
-      return new MockWordpressService();
-    } else {
-      return new WordpressService();
-    }
+    return this.UseMock ? new MockWordpressService() : new WordpressService();
   }
 
   public ApiService(): ApiService | MockApiService {
-    if (this.UseMock) {
-      return new MockApiService();
-    } else {
-      return new ApiService();
-    }
+    return this.UseMock ? new MockApiService() : new ApiService();
+  }
+
+  public AuthService(): AuthService | MockAuthService {
+    return this.UseMock ? new MockAuthService() : new AuthService();
   }
 }
