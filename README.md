@@ -35,11 +35,11 @@ Nuevo Foundation UI
     │   |   ├── registration     # UI elements related to authentication functionality
     │   |   ├── static
     |   │   |   ├── common       # Common contains shared UI elements like buttons, header, footer, and nav items.
-    |   │   |   ├── pages        # Pages directory conatins each page displayed on site
+    |   │   |   ├── pages        # Pages directory contains components for each page displayed on site
     │   |   ├── virtualSessions  # UI elements related to virtual sessions functionality
     │   ├── helpers              # utility methods like validating authentication, date time formatting, json web token decoding, etc.
     │   ├── models               # objects used accross app, typically used as types for persistence to Nuevo API
-    │   ├── services             # classes to make networks requests to Nuevo API like creating virtual session or pull blogs from wordpress
+    │   ├── services             # classes to make networks requests to Nuevo API like creating virtual session or fetch blogs from wordpress
     ├── .env.development         # Environment variables used during development
     ├── .env.straging            # Environment variables used for staging
     ├── .env.production          # Environment variables used for production
@@ -47,7 +47,7 @@ Nuevo Foundation UI
     ├── .eslintrc.json           # eslint configuration file
     ├── jest.config.json         # Jest testing framework configuration file
     ├── tsconfig.json            # TypeScript configuration file
-    ├── azure-pipelines.yml      # Build definiton file used by Azure DevOps
+    ├── azure-pipelines.yml      # Build definition file used by Azure DevOps
     └── README.md
 
 ## React Docs
