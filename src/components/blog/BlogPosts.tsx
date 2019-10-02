@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { Const } from "../../Const";
-import { DateTimeFormattingHelper } from "../helpers/DateTimeFormattingHelper";
+import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
 
 interface ActionButtonProps {
   active: boolean;
@@ -169,7 +169,7 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
                   <StyledLink to={`/blog/post/${post.ID}`}>
                     <BlogPostTitle dangerouslySetInnerHTML={{ __html: post.title}} />
                   </StyledLink>
-                  <BlogPostDate>{DateTimeFormattingHelper.FormatToMMDDYYYY(post.date)}</BlogPostDate>
+                  <BlogPostDate>{DateFormattingHelper.formatToMMDDYYYY(post.date)}</BlogPostDate>
                   <BlogPostContent
                     dangerouslySetInnerHTML={{ __html: post.excerpt }}
                   />

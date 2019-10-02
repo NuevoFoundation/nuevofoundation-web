@@ -31,4 +31,9 @@ export class DateFormattingHelper {
     const date = new Date(time).toLocaleDateString("en-us", options);
     return date;
   }
+
+  public static formatToMMDDYYYY(dateTime: string) {
+    const d = new Date(dateTime);
+    return `${d.getMonth() + 1}/${d.getDay()}/${d.getFullYear()}`;
+  }
 }

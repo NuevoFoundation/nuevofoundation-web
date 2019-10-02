@@ -121,12 +121,12 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       return (
         <Col key={index} className="services">
           <Link to={`#${service.title}`} smooth>
-          <div>
-            <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo"/>
-            {
-              isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
-            }
-          </div>
+            <div>
+              <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo" />
+              {
+                isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
+              }
+            </div>
           </Link>
         </Col>);
 
@@ -163,13 +163,15 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
                 <WorskshopAlignment>
                   <Row>
                     <Col>
-                      <Button className="requestButton" href={service.buttonLink}>REQUEST {service.title.toUpperCase()}</Button>
+                      <Link to="/virtual-sessions">
+                        <Button className="requestButton" href={service.buttonLink}>REQUEST {service.title.toUpperCase()}</Button>
+                      </Link>
                     </Col>
                   </Row>
                 </WorskshopAlignment>
               </Col>
               <Col md={6} xs={12} style={{ overflow: "hidden" }}>
-                <Image src={service.img} responsive alt={service.imgAltText}/>
+                <Image src={service.img} responsive alt={service.imgAltText} />
               </Col>
             </Row>
           </Col>
