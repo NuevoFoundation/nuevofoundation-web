@@ -243,9 +243,8 @@ export class Header extends React.Component<IHeaderProps> {
               </StyledNavLink>
               <NavList> {this.renderNavItems()} </NavList>
             </HeaderWrapper>
-
           </Col>
-          <Col sm={12} xsHidden={true}>
+          {/* <Col sm={12} xsHidden={true}>
             <ButtonWrapper>
               <AuthContext.Consumer>
                 {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
@@ -263,8 +262,7 @@ export class Header extends React.Component<IHeaderProps> {
                 )}
               </AuthContext.Consumer>
             </ButtonWrapper>
-          </Col>
-
+                </Col> */}
           <Col xs={12} smHidden={true} mdHidden={true} lgHidden={true}>
             <Row>
               <Col xs={10}>
