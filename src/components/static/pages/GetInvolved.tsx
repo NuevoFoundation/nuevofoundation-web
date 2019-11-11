@@ -101,7 +101,7 @@ export class GetInvolved extends React.Component {
       optionTwo: "Virtual Sessions",
       optionThree: "Speaker series",
       buttonText: "Download program",
-      buttonLink: "./coming-soon"
+      buttonLink: "handouts/NFTeacherHandout.pdf"
     },
     {
       role: "Student",
@@ -109,8 +109,8 @@ export class GetInvolved extends React.Component {
       optionOne: "Curriculums on Github",
       optionTwo: "Events and scholarships",
       optionThree: "Resources",
-      buttonText: "Get an overview",
-      buttonLink: "./coming-soon"
+      buttonText: "Download program",
+      buttonLink: "handouts/NFStudentHandout.pdf"
     },
     {
       role: "Volunteer",
@@ -137,9 +137,7 @@ export class GetInvolved extends React.Component {
               <ListGroupItem href="#">{role.optionTwo}</ListGroupItem>
               <ListGroupItem href="#">{role.optionThree}</ListGroupItem>
               <ListGroupItem href="#">
-                <form action={role.buttonLink} style={{ textAlign: "center" }}>
-                  <RoleButton>{role.buttonText}</RoleButton>
-                </form>
+              <RoleButton href={role.buttonLink} target="_blank">{role.buttonText}</RoleButton>
               </ListGroupItem>
             </RoleItems>
           </RoleContainer>
