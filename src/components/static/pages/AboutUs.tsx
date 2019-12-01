@@ -65,7 +65,7 @@ export class AboutUs extends React.Component {
   teamMemberList() {
     var Team: TeamMember[] = [
       {
-        name: "Breatris Mendez Gandica",
+        name: "Beatris Mendez Gandica",
         role: "CEO/Founder",
         quote: "-Technology lets you rewrite the rules of the world.",
         bio: "Bea founded Nuevo Foundation on the premise that big decisions are best made when you have all the facts. Every student that attends one of our workshops is well equipped with information and shared experiences from industry experts to determine if a career in STEM is right for them. Bea works closely with the Nuevo team to ensure that we continue improving our programs, onboarding new team members, and providing growth opportunities for the team. Bea continues to exemplify our mission to inspire students to be curious, confident, and courageous by discovering the world of STEM. Lastly, if you come to one of our events, please say 'Hi!' Bea would love to meet you and learn your story. ",
@@ -100,7 +100,7 @@ export class AboutUs extends React.Component {
         name: "Izzy Beltran",
         role: "Creative Director and Master of Fun",
         quote: "-It's not about where you came from, it's about where you are going",
-        bio: "I'm a Chicano Visual UX designer from Santa Ana, CA. I'm passionate about design and the impact that it has on the world and to communities on a granular level. I have many hobbies that keep me occupied on my free time that range from cooking, painting, playing music, and shooting monsters online on my Xbox. I have recently started reading and did not realize how enjoyable it is, it also helps me stay relevant and knowledgeable in my career.",
+        bio: "Izzy is a Chicano Visual UX designer from Santa Ana, CA. He is passionate about design and the impact that it has on the world and to communities on a granular level. Izzy has many hobbies that keep him occupied on his free time that range from cooking, painting, playing music, and shooting monsters online on his Xbox. He has recently started reading and did not realize how enjoyable it is. It helps him stay relevant and knowledgeable in his career.",
         img: IzzyReal,
         cartoon: Izzy
       },
