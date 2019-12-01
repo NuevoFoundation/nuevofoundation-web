@@ -65,7 +65,7 @@ export class AboutUs extends React.Component {
   teamMemberList() {
     var Team: TeamMember[] = [
       {
-        name: "Breatris Mendez Gandica",
+        name: "Beatris Mendez Gandica",
         role: "CEO/Founder",
         quote: "-Technology lets you rewrite the rules of the world.",
         bio: "Bea founded Nuevo Foundation on the premise that big decisions are best made when you have all the facts. Every student that attends one of our workshops is well equipped with information and shared experiences from industry experts to determine if a career in STEM is right for them. Bea works closely with the Nuevo team to ensure that we continue improving our programs, onboarding new team members, and providing growth opportunities for the team. Bea continues to exemplify our mission to inspire students to be curious, confident, and courageous by discovering the world of STEM. Lastly, if you come to one of our events, please say 'Hi!' Bea would love to meet you and learn your story. ",
