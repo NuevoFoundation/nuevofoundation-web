@@ -100,7 +100,7 @@ export class AboutUs extends React.Component {
         name: "Izzy Beltran",
         role: "Creative Director and Master of Fun",
         quote: "-It's not about where you came from, it's about where you are going",
-        bio: "I'm a Chicano Visual UX designer from Santa Ana, CA. I'm passionate about design and the impact that it has on the world and to communities on a granular level. I have many hobbies that keep me occupied on my free time that range from cooking, painting, playing music, and shooting monsters online on my Xbox. I have recently started reading and did not realize how enjoyable it is, it also helps me stay relevant and knowledgeable in my career.",
+        bio: "Izzy is a Chicano Visual UX designer from Santa Ana, CA. He is passionate about design and the impact that it has on the world and to communities on a granular level. Izzy has many hobbies that keep him occupied on his free time that range from cooking, painting, playing music, and shooting monsters online on his Xbox. He has recently started reading and did not realize how enjoyable it is. It helps him stay relevant and knowledgeable in his career.",
         img: IzzyReal,
         cartoon: Izzy
       },
