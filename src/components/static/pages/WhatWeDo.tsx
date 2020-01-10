@@ -163,9 +163,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
                 <WorskshopAlignment>
                   <Row>
                     <Col>
-                      <Link to="/virtual-sessions">
-                        <Button className="requestButton" href={service.buttonLink}>REQUEST {service.title.toUpperCase()}</Button>
-                      </Link>
+                      <Button className="requestButton" href={service.buttonLink}>REQUEST {service.title.toUpperCase()}</Button>
                     </Col>
                   </Row>
                 </WorskshopAlignment>
