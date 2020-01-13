@@ -207,12 +207,26 @@ export class Home extends React.Component<{}, StatProps> {
     }
   }
 
-  async componentDidMount() {
-    const metaData = await this.apiService.getMetaData();
-    this.setState({
-      metaData
-    })
-  }
+  static readonly ImpactStats: ImpactStatInterface[] = [
+    {
+        title: "students",
+        titleBoldened: "Diverse",
+        stat: "2,917",
+        description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
+    },
+    {
+        title: "in STEM",
+        titleBoldened: "More interested",
+        stat: "80%",
+        description: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
+    },
+    {
+        title: "learned to code",
+        titleBoldened: "Believed they",
+        stat: "91%",
+        description: "Students feel that they are able to learn completely new computer science concepts in our 2 hour coding workshops."
+    }
+  ]
 
   public render() {
     const defaultOptions = {
@@ -226,7 +240,6 @@ export class Home extends React.Component<{}, StatProps> {
       }
     };
 
-    const { metaData } = this.state;
     const impactColors: string[] = ["#EBA300", "#00BED5", "#E13126"];
 
     return (
@@ -332,7 +345,7 @@ export class Home extends React.Component<{}, StatProps> {
             </StatsSectionDescription>
           </StatsSectionInfo>
           <ImpactSectionStats>
-            {metaData && metaData.impactStats && metaData.impactStats.map((stat: ImpactStatInterface, index: number) => {
+            {Home.ImpactStats.map((stat: ImpactStatInterface, index: number) => {
               return (
                 <ImpactSectionStatsTitleInfo key={index}><ImpactSectionStatsTitle color={impactColors[index]}>{stat.stat}<span><span>{stat.titleBoldened}</span>{stat.title}</span></ImpactSectionStatsTitle>{stat.description}</ImpactSectionStatsTitleInfo>
               )
@@ -343,7 +356,7 @@ export class Home extends React.Component<{}, StatProps> {
           <ClosingSectionBackground >
             <ClosingSectionInfo>
               <div>
-                <span>6 Countries</span>
+                <span>7 Countries</span>
                 <span>2 Languages</span>
               </div>
               <div>
