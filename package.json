@@ -16,6 +16,7 @@
     "@types/react-table": "^6.8.5",
     "emailjs-com": "^2.2.4",
     "env-cmd": "^8.0.2",
+    "eslint": "^6.8.0",
     "handlebars": "^4.5.3",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
@@ -26,11 +27,10 @@
     "react-pdf": "^4.1.0",
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.2",
-    "react-scripts": "^3.0.0",
+    "react-scripts": "^3.3.0",
     "react-table": "^6.10.0",
     "serialize-javascript": "^2.1.2",
-    "styled-components": "^3.4.9",
-    "update": "^0.7.4"
+    "styled-components": "^3.4.9"
   },
   "scripts": {
     "watch": "react-scripts start",
@@ -49,8 +49,8 @@
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@types/uuid": "^3.4.4",
-    "@typescript-eslint/eslint-plugin": "^1.5.0",
-    "@typescript-eslint/parser": "^1.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-prettier": "^4.1.0",
