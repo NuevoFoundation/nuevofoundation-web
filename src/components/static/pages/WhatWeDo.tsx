@@ -92,7 +92,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       color: "#FFFFFF",
       textColor: "#000000",
       buttonLink: "https://aka.ms/nfsignup",
-      description: "Nuevo Coding Workshops are offered for students of a variety of ages and backgrounds. We have created custom curricula in many languages including Scratch, Python, JavaScript, HTML/CSS, and C# to engage both the analytical and creative sides of a student. Within our curricula we also include a hands-on activity to show different aspects of STEM. Out goal is to make coding fun, engaging, and accessible - and show that anyone can code!"
+      description: "Nuevo Coding Workshops are offered for students of a variety of ages and backgrounds. We have created custom curricula in many languages including Scratch, Python, JavaScript, HTML/CSS, and C# to engage both the analytical and creative sides of a student. Within our curricula we also include a hands-on activity to show different aspects of STEM. Our goal is to make coding fun, engaging, and accessible - and show that anyone can code!"
     },
     {
       title: "Virtual Sessions",
