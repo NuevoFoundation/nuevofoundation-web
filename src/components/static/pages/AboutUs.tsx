@@ -106,7 +106,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Savoy Schuler",
-        role: "Manager of Communication/Branding/Media",
+        role: "Manager of Communication",
         quote: "-When human beings are exposed to opportunities to create and innovate curiosity compels them to do so.",
         bio: "Savoy is passionate about creating these opportunities for tomorrows youth and -in particular- those least likely to be otherwise exposed to science and technology. An entrepreneur, engineer, public speaker, and humanitarian, Savoy can be found anywhere from developing Windows UI, to kindling the fire of a new foundation or business, to managing Nuevo Foundation's communication, branding, and media or coaching a debate team. He plays Quidditch on Wednesdays (Beaters are best) and spends his evenings trying to teach a made-up sign language to his deaf cat.",
         img: SavoyReal,
