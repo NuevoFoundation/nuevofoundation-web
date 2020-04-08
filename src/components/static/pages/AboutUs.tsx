@@ -76,7 +76,7 @@ export class AboutUs extends React.Component {
         name: "Mollee Jain",
         role: "COO",
         quote: "-\"Success isn't about how much money you make. It's about the difference you make in people's lives.\" - Michelle Obama",
-        bio: "Mollee had always been curious about STEM because she wanted to understand the way humans worked. When she accidentally stumbled into a bioinformatics internship, she found out just how much computer science applied to her dreams and interests, and discovered a passion for promoting equal access STEM education along the way. In Mollee's work with Nuevo Foundation, her main focuses are to oversee the operations of the foundation and establish ways to make the foundation's vision a reality.",
+        bio: "Mollee is a software engineer who is passionate about equal access to education. Having taught beginner programming concepts to students as a teaching assistant at Wellesley College and a lead instructor for Girls Who Code, Mollee understands the importance of sparking inspiration and curiosity within students to encourage their pursuit of a STEM career. In Mollee's work with Nuevo Foundation, her main focuses are to oversee the operations of the foundation and establish ways to make the foundation's vision a reality.",
         img: MolleeReal,
         cartoon: Mollee
       },
