@@ -20,6 +20,8 @@ import Dee from "../../../assets/images/profile/dee-thumbnail.png";
 import DeeReal from "../../../assets/images/profile/dee-profile-irl.png";
 import Anvesha from "../../../assets/images/profile/anvesha-thumbnail.png";
 import AnveshaReal from "../../../assets/images/profile/anvesha-profile-irl.png";
+import Ximena from "../../../assets/images/profile/ximena-thumbnail.png";
+import XimenaReal from "../../../assets/images/profile/ximena-profile-irl.png";
 
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
@@ -137,6 +139,14 @@ export class AboutUs extends React.Component {
         bio: "Aaron is the most charismatic team member with broad experience in data privacy. He always ensures that every student is having a great time while learning new computer science concepts. Aaron works on reaching out to potential partners at schools and other nonprofit organizations",
         img: AaronReal,
         cartoon: Aaron
+      },
+      {
+        name: "Ximena Cortez",
+        role: "Web Developer and Bug Interceptor",
+        quote: "-\"Learning is a treasure that will follow its owner everywhere\" - Chinese Proverb",
+        bio: "When Ximena was in high school, one of her teachers introduced her to a coding game that made coding fun. She continued to play that game through senior year and then decided to study Computer Science during college. She joined Nuevo Foundation because she knows the importance of introducing students to STEM fields. She currently works as a Software Test Engineer in Chicago and helps with the development of the Nuevo Foundation website. Ximena enjoys finding and fixing bugs and teaching others about cybersecurity.",
+        img: XimenaReal,
+        cartoon: Ximena
       }
     ];
 
