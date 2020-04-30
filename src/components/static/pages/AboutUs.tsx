@@ -18,6 +18,8 @@ import Aaron from "../../../assets/images/profile/aaron-thumbnail.png";
 import AaronReal from "../../../assets/images/profile/aaron-profile-irl.png";
 import Dee from "../../../assets/images/profile/dee-thumbnail.png";
 import DeeReal from "../../../assets/images/profile/dee-profile-irl.png";
+import Anvesha from "../../../assets/images/profile/anvesha-thumbnail.png";
+import AnveshaReal from "../../../assets/images/profile/anvesha-profile-irl.png";
 
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
@@ -95,6 +97,14 @@ export class AboutUs extends React.Component {
         bio: "Oliver is a software engineer at Microsoft. He has been teaching Mathematics, Science, and Computer Science to his peers and other students for 10 years. He is passionate about finding the best way to take difficult concepts and breaking them down into easy-to-understand points. Oliver not only knows many programming languages (such as Java, Python and C#), but also speaks many human languages. English, French, and Mandarin is not enough apparently, so he is learning Japanese and Spanish on the side.",
         img: OliverReal,
         cartoon: Oliver
+      },
+      {
+        name: "Anvesha Sinha",
+        role: "Curriculum Ninja",
+        quote: "-\"Be the change that you wish to see in the world\" -Mahatma Gandhi",
+        bio: "Anvesha joined Nuevo Foundation with the intention of inspiring and coaching students to pursue a career in STEM. She helps out with Nuevo's workshops experience, focusing mainly on coding. A proud holder of master's in computer science (CS), she tries to make complex concepts fun and interesting for beginners. She is passionate about educating kids around the globe about careers in computer science and giving them a fair chance in choosing the best career path. In her free time, she like going on hikes, reading & solving puzzles.",
+        img: AnveshaReal,
+        cartoon: Anvesha
       },
       {
         name: "Izzy Beltran",
