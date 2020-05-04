@@ -18,6 +18,12 @@ import Aaron from "../../../assets/images/profile/aaron-thumbnail.png";
 import AaronReal from "../../../assets/images/profile/aaron-profile-irl.png";
 import Dee from "../../../assets/images/profile/dee-thumbnail.png";
 import DeeReal from "../../../assets/images/profile/dee-profile-irl.png";
+import Anvesha from "../../../assets/images/profile/anvesha-thumbnail.png";
+import AnveshaReal from "../../../assets/images/profile/anvesha-profile-irl.png";
+import Ximena from "../../../assets/images/profile/ximena-thumbnail.png";
+import XimenaReal from "../../../assets/images/profile/ximena-profile-irl.png";
+import Amira from "../../../assets/images/profile/amira-thumbnail.png";
+import AmiraReal from "../../../assets/images/profile/amira-irl.png";
 
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
@@ -97,6 +103,14 @@ export class AboutUs extends React.Component {
         cartoon: Oliver
       },
       {
+        name: "Anvesha Sinha",
+        role: "Curriculum Ninja",
+        quote: "-\"Be the change that you wish to see in the world\" -Mahatma Gandhi",
+        bio: "Anvesha joined Nuevo Foundation with the intention of inspiring and coaching students to pursue a career in STEM. She helps out with Nuevo's workshops experience, focusing mainly on coding. A proud holder of master's in computer science (CS), she tries to make complex concepts fun and interesting for beginners. She is passionate about educating kids around the globe about careers in computer science and giving them a fair chance in choosing the best career path. In her free time, she like going on hikes, reading & solving puzzles.",
+        img: AnveshaReal,
+        cartoon: Anvesha
+      },
+      {
         name: "Izzy Beltran",
         role: "Creative Director and Master of Fun",
         quote: "-It's not about where you came from, it's about where you are going",
@@ -127,6 +141,22 @@ export class AboutUs extends React.Component {
         bio: "Aaron is the most charismatic team member with broad experience in data privacy. He always ensures that every student is having a great time while learning new computer science concepts. Aaron works on reaching out to potential partners at schools and other nonprofit organizations",
         img: AaronReal,
         cartoon: Aaron
+      },
+      {
+        name: "Ximena Cortez",
+        role: "Web Developer and Bug Interceptor",
+        quote: "-\"Learning is a treasure that will follow its owner everywhere\" - Chinese Proverb",
+        bio: "When Ximena was in high school, one of her teachers introduced her to a coding game that made coding fun. She continued to play that game through senior year and then decided to study Computer Science during college. She joined Nuevo Foundation because she knows the importance of introducing students to STEM fields. She currently works as a Software Test Engineer in Chicago and helps with the development of the Nuevo Foundation website. Ximena enjoys finding and fixing bugs and teaching others about cybersecurity.",
+        img: XimenaReal,
+        cartoon: Ximena
+      },
+      {
+        name: "Amira Najar",
+        role: "Volunteer",
+        quote: "-\"I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel\" -Maya Angelou",
+        bio: "Amira is a recent college grad and has been with Nuevo Foundation since December 2019. She is very passionate about giving back to her community and the power education has. She believes everyone deserves an equal opportunity in life, and hopes through her marketing efforts with NF, she is enabling the younger generations to believe in themselves and strive for their aspirations. Outside of being a product marketing manager, Amira enjoys working out, traveling all over the world and learning about better ways to self-improve.",
+        img: AmiraReal,
+        cartoon: Amira
       }
     ];
 
