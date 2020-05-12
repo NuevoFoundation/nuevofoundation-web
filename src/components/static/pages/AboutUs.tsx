@@ -24,6 +24,10 @@ import Ximena from "../../../assets/images/profile/ximena-thumbnail.png";
 import XimenaReal from "../../../assets/images/profile/ximena-profile-irl.png";
 import Amira from "../../../assets/images/profile/amira-thumbnail.png";
 import AmiraReal from "../../../assets/images/profile/amira-irl.png";
+import Kathryn from "../../../assets/images/profile/kathryn-thumbnail.png";
+import KathrynReal from "../../../assets/images/profile/kathryn-irl.png";
+import Madeleyne from "../../../assets/images/profile/madeleyne-thumbnail.png";
+import MadeleyneReal from "../../../assets/images/profile/madeleyne-irl.png";
 
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
@@ -157,6 +161,22 @@ export class AboutUs extends React.Component {
         bio: "Amira is a recent college grad and has been with Nuevo Foundation since December 2019. She is very passionate about giving back to her community and the power education has. She believes everyone deserves an equal opportunity in life, and hopes through her marketing efforts with NF, she is enabling the younger generations to believe in themselves and strive for their aspirations. Outside of being a product marketing manager, Amira enjoys working out, traveling all over the world and learning about better ways to self-improve.",
         img: AmiraReal,
         cartoon: Amira
+      },
+      {
+        name: "Kathryn Baldauf",
+        role: "Volunteer",
+        quote: "-\"Let us remember: One book, one pen, one child, and one teacher can change the world.\" -Malala Yousafzai",
+        bio: "Kathryn started at Microsoft as a new graduate in the summer of 2019. She works on Microsoft's open source Container Platform team as a software engineer. She's passionate about spreading education and positive change in the world. In her free time she enjoys hydroponic gardening, drinking tea, reading about a variety of topics, listening to music, and spending time with her friends",
+        img: KathrynReal,
+        cartoon: Kathryn
+      },
+      {
+        name: "Madeleyne Vaca",
+        role: "Volunteer",
+        quote: "-\"Strive for significance, not success\" -Miller Templeton",
+        bio: "Madeleyne got her engineering interest from her parents. Throughout grade school and college, she built robots and machines that fly, swim, drive, detect air quality, interpret sign language, and even survive in space. This was in large part due to the investment that the Georgia Tech College of Computing made in her early on in high school through their outreach programs. Recognizing this, Madeleyne began working for them, first as a high school assistant, eventually making her way up to leading her own workshops. Researching new topics to teach led her to the (day) job that she loves! Now, Nuevo Foundation gives her the opportunity to keep introducing kids to the wonderful world of hardware in hopes their lives can be changed for the better too.",
+        img: MadeleyneReal,
+        cartoon: Madeleyne
       }
     ];
 
