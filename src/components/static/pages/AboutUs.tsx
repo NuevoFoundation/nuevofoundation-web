@@ -133,7 +133,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Amira Najar",
-        role: "Volunteer",
+        role: "Social Media Co-chair",
         quote: "-\"I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel\" -Maya Angelou",
         bio: "Amira is a recent college grad and has been with Nuevo Foundation since December 2019. She is very passionate about giving back to her community and the power education has. She believes everyone deserves an equal opportunity in life, and hopes through her marketing efforts with NF, she is enabling the younger generations to believe in themselves and strive for their aspirations. Outside of being a product marketing manager, Amira enjoys working out, traveling all over the world and learning about better ways to self-improve.",
         img: "amira",
@@ -141,7 +141,7 @@ export class AboutUs extends React.Component {
       },
       {	
         name: "Kathryn Baldauf",	
-        role: "Volunteer",	
+        role: "Curriculum Genius",	
         quote: "-\"Let us remember: One book, one pen, one child, and one teacher can change the world.\" -Malala Yousafzai",	
         bio: "Kathryn started at Microsoft as a new graduate in the summer of 2019. She works on Microsoft's open source Container Platform team as a software engineer. She's passionate about spreading education and positive change in the world. In her free time she enjoys hydroponic gardening, drinking tea, reading about a variety of topics, listening to music, and spending time with her friends",	
         img: "kathryn",	
@@ -149,7 +149,7 @@ export class AboutUs extends React.Component {
       },	
       {	
         name: "Madeleyne Vaca",	
-        role: "Volunteer",	
+        role: "Hardware Lead",	
         quote: "-\"Strive for significance, not success\" -Miller Templeton",	
         bio: "Madeleyne got her engineering interest from her parents. Throughout grade school and college, she built robots and machines that fly, swim, drive, detect air quality, interpret sign language, and even survive in space. This was in large part due to the investment that the Georgia Tech College of Computing made in her early on in high school through their outreach programs. Recognizing this, Madeleyne began working for them, first as a high school assistant, eventually making her way up to leading her own workshops. Researching new topics to teach led her to the (day) job that she loves! Now, Nuevo Foundation gives her the opportunity to keep introducing kids to the wonderful world of hardware in hopes their lives can be changed for the better too.",	
         img: "madeleyne",	
