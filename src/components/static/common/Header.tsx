@@ -16,7 +16,8 @@ import {
   faFacebookF,
   faInstagram,
   faLinkedin,
-  faTwitter
+  faTwitter,
+  faYoutube
 } from "@fortawesome/free-brands-svg-icons";
 import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "../../../helpers/SessionStorageHelper";
@@ -146,12 +147,12 @@ export class Header extends React.Component<IHeaderProps> {
   public renderNavItems(): JSX.Element[] {
     return NavItems.map((navItem: INavItem, index: number) => {
       return (
-        navItem.external ?
-          <StyledExternalLink key={index} href={navItem.link}>{this.renderNavItem(navItem)}</StyledExternalLink>
-          :
-          <StyledNavLink key={index} to={navItem.link}>
-            {this.renderNavItem(navItem)}
-          </StyledNavLink>
+          navItem.external ?
+              <StyledExternalLink key={index} href={navItem.link}>{this.renderNavItem(navItem)}</StyledExternalLink>
+              :
+              <StyledNavLink key={index} to={navItem.link}>
+                {this.renderNavItem(navItem)}
+              </StyledNavLink>
       );
     });
   }
@@ -159,92 +160,101 @@ export class Header extends React.Component<IHeaderProps> {
   public renderNavItem(navItem: INavItem): JSX.Element {
     const currentPage = this.props.location.pathname;
     return (
-      navItem.link === currentPage ?
-        <ActiveNavItem>
-          {navItem.text}
-          {navItem.dropdown && (
-            <NavIcon>
-              <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-            </NavIcon>
-          )}
-          <span />
-        </ActiveNavItem>
-        :
-        <NavItem>
-          {navItem.text}
-          {navItem.dropdown && (
-            <NavIcon>
-              <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-            </NavIcon>
-          )}
-        </NavItem>
+        navItem.link === currentPage ?
+            <ActiveNavItem>
+              {navItem.text}
+              {navItem.dropdown && (
+                  <NavIcon>
+                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+                  </NavIcon>
+              )}
+              <span />
+            </ActiveNavItem>
+            :
+            <NavItem>
+              {navItem.text}
+              {navItem.dropdown && (
+                  <NavIcon>
+                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+                  </NavIcon>
+              )}
+            </NavItem>
     );
   }
 
   public render() {
     return (
 
-      <Grid fluid={true}>
-        <Row>
-          <Col xs={12}>
-            <AboveHeaderContainer>
-              <AboveHeaderItem>
-                <AboveHeaderLink
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.instagram.com/nuevofoundation"
-                >
-                  <FontAwesomeIcon icon={faInstagram} className={"fa-1x"} />
-                </AboveHeaderLink>
-              </AboveHeaderItem>
-              <AboveHeaderItem>
-                <AboveHeaderLink
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://twitter.com/nuevofoundation"
-                >
-                  <FontAwesomeIcon icon={faTwitter} className={"fa-1x"} />
-                </AboveHeaderLink>
-              </AboveHeaderItem>
-              <AboveHeaderItem>
-                <AboveHeaderLink
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.facebook.com/NuevoFoundation"
-                >
-                  <FontAwesomeIcon icon={faFacebookF} className={"fa-1x"} />
-                </AboveHeaderLink>
-              </AboveHeaderItem>
-              <AboveHeaderItem>
-                <AboveHeaderLink
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.linkedin.com/company/nuevofoundation"
-                >
-                  <FontAwesomeIcon icon={faLinkedin} className={"fa-1x"} />
-                </AboveHeaderLink>
-              </AboveHeaderItem>
-              <AboveHeaderItem>
-                <AboveHeaderLink
-                  rel="noopener noreferrer"
-                  href={Const.SupportUsPage}
-                >
-                  Donate
-              </AboveHeaderLink>
-              </AboveHeaderItem>
-            </AboveHeaderContainer>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={12} xsHidden={true}>
-            <HeaderWrapper>
-              <StyledNavLink to={"/"}>
-                <NavLogo src={NuevoFoundationLogo} height={"60px"} />
-              </StyledNavLink>
-              <NavList> {this.renderNavItems()} </NavList>
-            </HeaderWrapper>
-          </Col>
-          {/* <Col sm={12} xsHidden={true}>
+        <Grid fluid={true}>
+          <Row>
+            <Col xs={12}>
+              <AboveHeaderContainer>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.instagram.com/nuevofoundation"
+                  >
+                    <FontAwesomeIcon icon={faInstagram} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://twitter.com/nuevofoundation"
+                  >
+                    <FontAwesomeIcon icon={faTwitter} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.facebook.com/NuevoFoundation"
+                  >
+                    <FontAwesomeIcon icon={faFacebookF} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.linkedin.com/company/nuevofoundation"
+                  >
+                    <FontAwesomeIcon icon={faLinkedin} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.youtube.com/channel/UCsVAtli7SAqVGZFR5w-whBw"
+                  >
+                    <FontAwesomeIcon icon={faYoutube} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      rel="noopener noreferrer"
+                      href={Const.SupportUsPage}
+                  >
+                    Donate
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+              </AboveHeaderContainer>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={12} xsHidden={true}>
+              <HeaderWrapper>
+                <StyledNavLink to={"/"}>
+                  <NavLogo src={NuevoFoundationLogo} height={"60px"} />
+                </StyledNavLink>
+                <NavList> {this.renderNavItems()} </NavList>
+              </HeaderWrapper>
+            </Col>
+            {/* <Col sm={12} xsHidden={true}>
             <ButtonWrapper>
               <AuthContext.Consumer>
                 {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
@@ -263,28 +273,28 @@ export class Header extends React.Component<IHeaderProps> {
               </AuthContext.Consumer>
             </ButtonWrapper>
                 </Col> */}
-          <Col xs={12} smHidden={true} mdHidden={true} lgHidden={true}>
-            <Row>
-              <Col xs={10}>
-                <StyledNavLink to={"/"}>
-                  <NavLogo src={NuevoFoundationLogo} height={"60%"} />
-                </StyledNavLink>
-              </Col>
-              <Col
-                onClick={this.props.handleHamburgerIconClick}
-                xs={2}
-                style={{
-                  paddingTop: "4%",
-                  paddingLeft: "4%",
-                  cursor: "pointer"
-                }}
-              >
-                <FontAwesomeIcon icon={faBars} className={"fa-lg"} />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Grid>
+            <Col xs={12} smHidden={true} mdHidden={true} lgHidden={true}>
+              <Row>
+                <Col xs={10}>
+                  <StyledNavLink to={"/"}>
+                    <NavLogo src={NuevoFoundationLogo} height={"60%"} />
+                  </StyledNavLink>
+                </Col>
+                <Col
+                    onClick={this.props.handleHamburgerIconClick}
+                    xs={2}
+                    style={{
+                      paddingTop: "4%",
+                      paddingLeft: "4%",
+                      cursor: "pointer"
+                    }}
+                >
+                  <FontAwesomeIcon icon={faBars} className={"fa-lg"} />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
     );
   }
 }
