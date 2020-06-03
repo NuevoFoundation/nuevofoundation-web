@@ -140,6 +140,14 @@ export class AboutUs extends React.Component {
         cartoon: "amira-cartoon"
       },
       {	
+        name: "Isabel Laurent",	
+        role: "Social Media Co-chair",	
+        quote: "She believed she could so she did",	
+        bio: "Isabel joined Nuevo Foundation to help students discover new strengths and passions. By helping students develop their creativity, curiosity and confidence, Isabel believes they can unlock their full potential and erase any self-doubt. While focusing on mentorship, Isabel strives to guide students to accomplish their career aspirations and biggest dreams.",	
+        img: "isabel",	
+        cartoon: "isabel-cartoon"	
+      },
+      {	
         name: "Kathryn Baldauf",	
         role: "Curriculum Genius",	
         quote: "-\"Let us remember: One book, one pen, one child, and one teacher can change the world.\" -Malala Yousafzai",	
