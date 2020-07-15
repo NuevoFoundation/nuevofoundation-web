@@ -58,7 +58,7 @@ export class Footer extends React.Component {
                   <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://www.youtube.com/channel/UCsVAtli7SAqVGZFR5w-whBw?sub_confirmation=1"
+                      href="https://www.youtube.com/nuevofoundation?sub_confirmation=1"
                       className={"footer-pics"}
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-2x"} />
