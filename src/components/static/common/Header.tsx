@@ -229,7 +229,7 @@ export class Header extends React.Component<IHeaderProps> {
                   <AboveHeaderLink
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://www.youtube.com/channel/UCsVAtli7SAqVGZFR5w-whBw?sub_confirmation=1"
+                      href="https://www.youtube.com/nuevofoundation?sub_confirmation=1"
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-1x"} />
                   </AboveHeaderLink>
