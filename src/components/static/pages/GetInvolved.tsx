@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import teacher from "../../../assets/images/getinvolved/teacher.png";
-import student from "../../../assets/images/getinvolved/student.png";
+import teacher from "../../../assets/images/getinvolved/teachers.png";
+import student from "../../../assets/images/getinvolved/students.png";
 import volunteer from "../../../assets/images/getinvolved/volunteers.png";
 import { PageTitle } from "../common/PageTitle";
 import {
