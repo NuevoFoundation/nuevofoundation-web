@@ -211,7 +211,7 @@ export class Home extends React.Component<{}, StatProps> {
     {
         title: "students",
         titleBoldened: "Diverse",
-        stat: "5,443",
+        stat: "5,712",
         description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
     },
     {
@@ -248,10 +248,10 @@ export class Home extends React.Component<{}, StatProps> {
           <Row>
             <Col xs={12} sm={12} md={6} lg={6}>
               <Row>
-                <Col xs={11} style={{ padding: "25px 0 0 25px" }}>
+                <Col xs={11} style={{ padding: "60px 60px 60px 60px" }}>
                   <ContentWrapper>
                     <div className="main-title">
-                      Inspiring kids to be curious, confident, and courageous by discovering the world of STEM
+                      Inspiring kids to be curious, confident, and courageous by discovering the world of STEM.
                     </div> 
                   </ContentWrapper>
                 </Col>
