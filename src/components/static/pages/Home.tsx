@@ -15,6 +15,8 @@ import ReactGA from "react-ga";
 import { HashLink as Link } from 'react-router-hash-link';
 import { ServiceResolver } from "../../../services/ServiceResolver";
 import { MetaDataInterface, ImpactStatInterface } from "../../../models/MetaData";
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 const AboveFoldContent = styled.div`
   background-repeat: none;
@@ -36,6 +38,42 @@ const AboveFoldContent = styled.div`
     cursor: auto;
   }
 `;
+
+const CountUpComponentToSeventyFour = () => (
+  <>
+    <CountUp start={10} end={74} redraw={true}>
+        {({ countUpRef, start }) => (
+            <VisibilitySensor onChange={start} delayedCall>
+                <span ref={countUpRef} />
+            </VisibilitySensor>
+        )}
+    </CountUp>
+  </>
+);
+
+const CountUpComponentToThirtySix = () => (
+  <>
+    <CountUp start={10} end={36} redraw={true}>
+        {({ countUpRef, start }) => (
+            <VisibilitySensor onChange={start} delayedCall>
+                <span ref={countUpRef} />
+            </VisibilitySensor>
+        )}
+    </CountUp>
+  </>
+);
+
+const CountUpComponentToThirteen = () => (
+  <>
+    <CountUp start={10} end={13} redraw={true}>
+        {({ countUpRef, start }) => (
+            <VisibilitySensor onChange={start} delayedCall>
+                <span ref={countUpRef} />
+            </VisibilitySensor>
+        )}
+    </CountUp>
+  </>
+);
 
 const ContentSection = styled.div`
   color: ${(props: StatProps) => props.color ? props.color : "#000000"};
@@ -290,20 +328,22 @@ export class Home extends React.Component<{}, StatProps> {
           </StatsSectionInfo>
           <StatsSectionStats>
 
-            <StatsSectionStatsInfo>
-              <StatsSectionStatsTitle>
-                <img src={Percent76} alt="percent" />
-                <div>74%</div>
-              </StatsSectionStatsTitle>
-              <span>74% of middle school girls</span> express an interest in engineering, science, and math. But only 0.3% choose computer science as a major when they get to college
-            </StatsSectionStatsInfo>
+          <StatsSectionStatsInfo>
+            <StatsSectionStatsTitle>
+              <img src={Percent76} alt="percent" />
+              <div><CountUpComponentToSeventyFour></CountUpComponentToSeventyFour>%</div>
+            </StatsSectionStatsTitle>
+               <span>74% of middle school girls</span> express an interest in engineering,
+                science, and math. But only 0.3% choose computer science as a major when they
+                get to college
+          </StatsSectionStatsInfo>
 
 
               <StatsSectionStatsInfo>
                 <StatsSectionStatsTitle>
                   <img src={Percent36} alt="percent" />
-                  <div>36%</div>
-                </StatsSectionStatsTitle>
+                  <div><CountUpComponentToThirtySix></CountUpComponentToThirtySix>%</div>
+                  </StatsSectionStatsTitle>
                 <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
           </StatsSectionStatsInfo>
 
@@ -311,7 +351,7 @@ export class Home extends React.Component<{}, StatProps> {
               <StatsSectionStatsInfo>
                 <StatsSectionStatsTitle>
                   <img src={Percent13} alt="percent" />
-                  <div>13%</div>
+                  <div><CountUpComponentToThirteen></CountUpComponentToThirteen>%</div>
                 </StatsSectionStatsTitle>
                 <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
           </StatsSectionStatsInfo>
@@ -356,7 +396,7 @@ export class Home extends React.Component<{}, StatProps> {
           <ClosingSectionBackground >
             <ClosingSectionInfo>
               <div>
-                <span>15+ Countries</span>
+                <span>30+ Countries</span>
                 <span>3 Chapters</span>
                 <span>3 Languages</span>
               </div>
