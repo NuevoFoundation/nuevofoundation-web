@@ -162,6 +162,14 @@ export class AboutUs extends React.Component {
         bio: "Madeleyne got her engineering interest from her parents. Throughout grade school and college, she built robots and machines that fly, swim, drive, detect air quality, interpret sign language, and even survive in space. This was in large part due to the investment that the Georgia Tech College of Computing made in her early on in high school through their outreach programs. Recognizing this, Madeleyne began working for them, first as a high school assistant, eventually making her way up to leading her own workshops. Researching new topics to teach led her to the (day) job that she loves! Now, Nuevo Foundation gives her the opportunity to keep introducing kids to the wonderful world of hardware in hopes their lives can be changed for the better too.",	
         img: "madeleyne",	
         cartoon: "madeleyne-cartoon"	
+      },
+      {
+        name: "Damaris Sardenberg",
+        role: "Director -  Deal Execution and Field Support",
+        quote: "\"A goal without a plan is just a wish\" -Antoine de Saint-Exupery",
+        bio: "Damaris is passionate about helping others to discover their full potential leveraging Technology and Finance. She currently enables the digital transformation journey of Microsoft’s customers, partners & vendors in the Americas . She  is passionate for programs and organizations that support the protection and development of children and women from Latin America. She works closely with the Nuevo Foundation team providing pro-bono Financial support and she is also very active providing volunteering hours to increase diversity in the workplace.",
+        img: "damaris",
+        cartoon: "damaris-cartoon"
       }
     ];
 
