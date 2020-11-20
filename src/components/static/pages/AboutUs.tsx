@@ -165,7 +165,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Damaris Sardenberg",
-        role: "Director -  Deal Execution and Field Support",
+        role: "Finance Officer",
         quote: "\"A goal without a plan is just a wish\" -Antoine de Saint-Exupery",
         bio: "Damaris is passionate about helping others to discover their full potential leveraging Technology and Finance. She currently enables the digital transformation journey of Microsoft’s customers, partners & vendors in the Americas . She  is passionate for programs and organizations that support the protection and development of children and women from Latin America. She works closely with the Nuevo Foundation team providing pro-bono Financial support and she is also very active providing volunteering hours to increase diversity in the workplace.",
         img: "damaris",
