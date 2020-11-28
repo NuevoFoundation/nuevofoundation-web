@@ -7,6 +7,13 @@ import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Ad
 import Percent13 from "../../../assets/images/home/13percent.png";
 import Percent36 from "../../../assets/images/home/36percent.png";
 import Percent76 from "../../../assets/images/home/76percent.png";
+import MicrosoftLogoImage from "../../../assets/images/home/MicrosoftLogo.png";
+import ForbesLogoImage from "../../../assets/images/home/ForbesLogo.png";
+import HolaUSALogoImage from "../../../assets/images/home/HolaUSALogo.png";
+import MarieClaireLogoImage from "../../../assets/images/home/MarieClaireLogo.png";
+import TelemundoLogoImage from "../../../assets/images/home/TelemundoLogo.png";
+import AAASLogoImage from "../../../assets/images/home/AAASIFTHENLogo.png";
+import CSForAllLogoImage from "../../../assets/images/home/CSForAllLogo.png";
 import Earth from "../../../assets/images/home/Earth.png";
 import ArrowCircle from "../../../assets/icons/Group211.png";
 import "../../../assets/stylesheets/Home.css";
@@ -41,36 +48,49 @@ const AboveFoldContent = styled.div`
 
 const CountUpComponentToSeventyFour = () => (
   <>
-    <CountUp start={10} end={74} redraw={true}>
-        {({ countUpRef, start }) => (
-            <VisibilitySensor onChange={start} delayedCall>
-                <span ref={countUpRef} />
-            </VisibilitySensor>
-        )}
+    <CountUp start={10} duration={5} end={74} redraw={true}>
+      {({ countUpRef, start }) => (
+        <VisibilitySensor onChange={start} delayedCall>
+          <span ref={countUpRef} />
+        </VisibilitySensor>
+      )}
     </CountUp>
   </>
 );
 
 const CountUpComponentToThirtySix = () => (
   <>
-    <CountUp start={10} end={36} redraw={true}>
-        {({ countUpRef, start }) => (
-            <VisibilitySensor onChange={start} delayedCall>
-                <span ref={countUpRef} />
-            </VisibilitySensor>
-        )}
+    <CountUp start={10} duration={5} end={36} redraw={true}>
+      {({ countUpRef, start }) => (
+        <VisibilitySensor onChange={start} delayedCall>
+          <span ref={countUpRef} />
+        </VisibilitySensor>
+      )}
     </CountUp>
   </>
 );
 
 const CountUpComponentToThirteen = () => (
   <>
-    <CountUp start={10} end={13} redraw={true}>
-        {({ countUpRef, start }) => (
-            <VisibilitySensor onChange={start} delayedCall>
-                <span ref={countUpRef} />
-            </VisibilitySensor>
-        )}
+    <CountUp start={10} duration={5} end={13} redraw={true}>
+      {({ countUpRef, start }) => (
+        <VisibilitySensor onChange={start} delayedCall>
+          <span ref={countUpRef} />
+        </VisibilitySensor>
+      )}
+    </CountUp>
+  </>
+);
+
+
+const CountUpComponentCountries = () => (
+  <>
+    <CountUp start={1} duration={5} end={30} redraw={true}>
+      {({ countUpRef, start }) => (
+        <VisibilitySensor onChange={start} delayedCall>
+          <div ref={countUpRef}></div>
+        </VisibilitySensor>
+      )}
     </CountUp>
   </>
 );
@@ -118,6 +138,18 @@ const StatsSectionDescription = styled.div`
   }
 `
 
+const LogoSection = styled.div`
+display: flex;
+flex-flow: row wrap;
+justify-content: space-around;
+align-items: center;
+padding: 20px;
+`
+
+const LogoSectionImageContent = styled.div`
+padding: 20px;
+`
+
 const StatsSectionStats = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -134,6 +166,7 @@ const StatsSectionStatsTitle = styled.div`
   font-size: 36px;
   padding-bottom: 20px;
   color: #FFFFFF;
+
 
   div {
     transform:translate(-180%,35%);
@@ -247,22 +280,22 @@ export class Home extends React.Component<{}, StatProps> {
 
   static readonly ImpactStats: ImpactStatInterface[] = [
     {
-        title: "students",
-        titleBoldened: "Diverse",
-        stat: "6,382",
-        description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
+      title: "students",
+      titleBoldened: "Diverse",
+      stat: "6,382",
+      description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
     },
     {
-        title: "in STEM",
-        titleBoldened: "More interested",
-        stat: "80%",
-        description: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
+      title: "in STEM",
+      titleBoldened: "More interested",
+      stat: "80%",
+      description: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
     },
     {
-        title: "learned to code",
-        titleBoldened: "Believed they",
-        stat: "91%",
-        description: "Students feel that they are able to learn completely new computer science concepts in our 2 hour coding workshops."
+      title: "learned to code",
+      titleBoldened: "Believed they",
+      stat: "91%",
+      description: "Students feel that they are able to learn completely new computer science concepts in our 2 hour coding workshops."
     }
   ]
 
@@ -290,7 +323,7 @@ export class Home extends React.Component<{}, StatProps> {
                   <ContentWrapper>
                     <div className="main-title">
                       Inspiring kids to be curious, confident, and courageous by discovering the world of STEM.
-                    </div> 
+                    </div>
                   </ContentWrapper>
                 </Col>
               </Row>
@@ -315,7 +348,7 @@ export class Home extends React.Component<{}, StatProps> {
             <img src={ArrowCircle} alt="arrow indicator" />
           </Link>
         </AboveFoldContent>
-        <ContentSection style={{backgroundColor: "#FFBB00"}} id="challenge" >
+        <ContentSection style={{ backgroundColor: "#FFBB00" }} id="challenge" >
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The challenge kids face</div>
@@ -328,36 +361,37 @@ export class Home extends React.Component<{}, StatProps> {
           </StatsSectionInfo>
           <StatsSectionStats>
 
-          <StatsSectionStatsInfo>
-            <StatsSectionStatsTitle>
-              <img src={Percent76} alt="percent" />
-              <div><CountUpComponentToSeventyFour></CountUpComponentToSeventyFour>%</div>
-            </StatsSectionStatsTitle>
-               <span>74% of middle school girls</span> express an interest in engineering,
+            <StatsSectionStatsInfo>
+              <StatsSectionStatsTitle>
+                <img src={Percent76} alt="percent" />
+                <div><CountUpComponentToSeventyFour></CountUpComponentToSeventyFour>%</div>
+              </StatsSectionStatsTitle>
+              <span>74% of middle school girls</span> express an interest in engineering,
                 science, and math. But only 0.3% choose computer science as a major when they
                 get to college
           </StatsSectionStatsInfo>
 
 
-              <StatsSectionStatsInfo>
-                <StatsSectionStatsTitle>
-                  <img src={Percent36} alt="percent" />
-                  <div><CountUpComponentToThirtySix></CountUpComponentToThirtySix>%</div>
-                  </StatsSectionStatsTitle>
-                <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
+            <StatsSectionStatsInfo>
+              <StatsSectionStatsTitle>
+                <img src={Percent36} alt="percent" />
+                <div><CountUpComponentToThirtySix></CountUpComponentToThirtySix>%</div>
+              </StatsSectionStatsTitle>
+              <span>Only 36% of all high school grads</span> are ready to take a college-level science course. Additionally, US universities are expected to produce only 29% of the required number of grads.
           </StatsSectionStatsInfo>
 
 
-              <StatsSectionStatsInfo>
-                <StatsSectionStatsTitle>
-                  <img src={Percent13} alt="percent" />
-                  <div><CountUpComponentToThirteen></CountUpComponentToThirteen>%</div>
-                </StatsSectionStatsTitle>
-                <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
+            <StatsSectionStatsInfo>
+              <StatsSectionStatsTitle>
+                <img src={Percent13} alt="percent" />
+                <div><CountUpComponentToThirteen></CountUpComponentToThirteen>%</div>
+              </StatsSectionStatsTitle>
+              <span>STEM jobs are projected to grow by 13%.</span> Currently, there are approximately 1.4 million tech job openings which make them the fastest growing jobs in the US.
           </StatsSectionStatsInfo>
           </StatsSectionStats>
         </ContentSection>
-        <ContentSection  style={{backgroundColor: "#D2D2D2"}}>
+
+        <ContentSection style={{ backgroundColor: "#D2D2D2" }}>
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The solution we found</div>
@@ -373,7 +407,7 @@ export class Home extends React.Component<{}, StatProps> {
           </StatsSectionInfo>
         </ContentSection>
 
-        <ContentSection  style={{backgroundColor: "#FFFFFF"}}>
+        <ContentSection style={{ backgroundColor: "#FFFFFF" }}>
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The impact we had:</div>
@@ -392,20 +426,54 @@ export class Home extends React.Component<{}, StatProps> {
             })}
           </ImpactSectionStats>
         </ContentSection>
-        <ContentSection style={{backgroundColor: "#070706"}} color={"#FFFFFF"}>
+        <ContentSection style={{ backgroundColor: "#070706" }} color={"#FFFFFF"}>
           <ClosingSectionBackground >
             <ClosingSectionInfo>
               <div>
-                <span>30+ Countries</span>
+                <span>35+ Countries</span>
                 <span>3 Chapters</span>
                 <span>3 Languages</span>
-              </div>
-              <div>
-                We are looking forward to working with you wherever you are!
               </div>
             </ClosingSectionInfo>
           </ClosingSectionBackground>
         </ContentSection >
+
+        <ContentSection style={{ backgroundColor: "#FFFFFF" }} id="challenge" >
+          <LogoSection>
+          
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://www.forbes.com/sites/viviannunez/2019/12/24/beatris-alejandre-mendez-gandica-on-4-lessons-she-shares-with-latinas-who-want-a-stem-career/?sh=682376079ba8" target="_blank"><img src={ForbesLogoImage} alt="Forbes Magazine Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://blogs.microsoft.com/latinx/2019/10/23/over-100-latinx-middle-schoolers-participate-in-coding-workshop-at-microsoft/" target="_blank"><img src={MicrosoftLogoImage} alt="Microsoft Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://www.aaas.org/news/125-women-stem-selected-aaas-ifthen-ambassadors" target="_blank"><img src={AAASLogoImage} alt="AAAS If/Then Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/pulse/marie-claire-magazine-march-2020-edition-beatris-a-mendez-gandica/" target="_blank"><img src={MarieClaireLogoImage} alt="Marie Claire Magazine Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/pulse/hola-usa-kicking-off-hispanic-heritage-month-mendez-gandica/" target="_blank"><img src={HolaUSALogoImage} alt="HOLA USA Magazine Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://csforall.medium.com/the-national-computer-science-education-community-announces-165-new-efforts-to-achieve-computer-484c6057ce24" target="_blank"><img src={CSForAllLogoImage} alt="CS For All Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://twitter.com/_mujerimparable/status/1281265366753312770?s=20" target="_blank"><img src={TelemundoLogoImage} alt="Telemundo Logo" /></a></div>
+            </LogoSectionImageContent>
+
+
+          </LogoSection>
+        </ContentSection>
+
       </Grid>
     );
   }
