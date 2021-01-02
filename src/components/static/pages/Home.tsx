@@ -282,7 +282,7 @@ export class Home extends React.Component<{}, StatProps> {
     {
       title: "students",
       titleBoldened: "Diverse",
-      stat: "6,382",
+      stat: "7,974",
       description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
     },
     {
@@ -430,7 +430,8 @@ export class Home extends React.Component<{}, StatProps> {
           <ClosingSectionBackground >
             <ClosingSectionInfo>
               <div>
-                <span>35+ Countries</span>
+                <span>30 Countries</span>
+                <span>6 Territories</span>
                 <span>3 Chapters</span>
                 <span>3 Languages</span>
               </div>
