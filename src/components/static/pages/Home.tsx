@@ -289,7 +289,7 @@ export class Home extends React.Component<{}, StatProps> {
       title: "in STEM",
       titleBoldened: "More interested",
       stat: "92.2%",
-      descripton: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
+      description: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
     },
     {
       title: "learned to code",
