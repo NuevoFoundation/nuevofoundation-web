@@ -282,14 +282,14 @@ export class Home extends React.Component<{}, StatProps> {
     {
       title: "students",
       titleBoldened: "Diverse",
-      stat: "9,698",
+      stat: "10,665",
       description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
     },
     {
       title: "in STEM",
       titleBoldened: "More interested",
-      stat: "90.7%",
-      description: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
+      stat: "92.2%",
+      descripton: "Our students leave our events feeling like they have better understanding of the STEM opportunities available to them."
     },
     {
       title: "learned to code",
