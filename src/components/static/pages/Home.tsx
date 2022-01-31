@@ -430,7 +430,7 @@ export class Home extends React.Component<{}, StatProps> {
           <ClosingSectionBackground >
             <ClosingSectionInfo>
               <div>
-                <span>31 Countries</span>
+                <span>32 Countries</span>
                 <span>6 Territories</span>
                 <span>3 Chapters</span>
                 <span>3 Languages</span>
