@@ -169,7 +169,7 @@ export class AboutUs extends React.Component {
         quote: "-\"Straight roads do not make skillful drivers.\"-Paula Coelho",
         bio: "Eden is a Software Engineer at Microsoft working on the Threat and Vulnerability Management team. Prior to that he studied Computer Science at The University of Texas at Austin with a focus on Systems and Security. He is passionate about volunteering with students, leading outreach efforts at UT and being a part of Nuevo since 2019. In his free time, he loves spending time with his cat, Mimi, going to the gym, and learning new languages.",
         img: "eden",
-        cartoon: "eden"
+        cartoon: "eden-cartoon"
       },
       {
         name: "Lulu Espinoza",
