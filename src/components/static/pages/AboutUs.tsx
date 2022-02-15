@@ -177,7 +177,7 @@ export class AboutUs extends React.Component {
         quote: "-\"Maybe it's time to believe that you can have everything you want.\" -Unknown",
         bio: "Born in 1994, Guatemala, first child, and an art enthusiast. At 7, read a book called \"I want to be famous\" and could never stop reading literature since. Always been amazed by the aesthetic of surrealism and contemporary art. Graduated from International Affairs but worked as a journalist for a year, been a tutor/ teacher for over 8 years. Passion for working with kids, doing and learning many things at the same time! Believes in the power of education and how we use it to inspire others.",
         img: "lulu",
-        cartoon: "lulu"
+        cartoon: "lulu-cartoon"
       },
       {
         name: "Savoy Schuler",
