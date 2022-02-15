@@ -161,7 +161,7 @@ export class AboutUs extends React.Component {
         quote: "-\"No matter what your ability is, effort is what ignites that ability and turns it into accomplishment.\" -Carol Dweck",
         bio: "Joaquín is passionate about coding, explaining technical concepts simply, and designing user experiences to minimize user error. After having programmed web apps, robots, calculators, and mathematical art, he is now volunteering with Nuevo Foundation to participate in the redesign of their Workshops website. In his spare time, he enjoys playing speed chess and learning how to pronounce words in foreign languages.",
         img: "joaquin",
-        cartoon: "joaquin"
+        cartoon: "joaquin-cartoon"
       },
       {
         name: "Eden Garza",
