@@ -153,7 +153,7 @@ export class AboutUs extends React.Component {
         quote: "-\"Your voice matters. What you do matters. So what are you going to do?\" -Anita Hill",
         bio: "América started Microsoft as a new graduate during the fall of 2021 where she currently works for Bing Ads as a software engineer. América has had a passion for technology since she was little and that led her to a path in STEM which included studying computer science at UT Austin. She also found a huge passion for diversity & inclusion and helping others. This passion led her to working with the Nuevo Foundation during one of her summer internships at Microsoft and to becoming the president of the Hispanic Association of Computer Scientists at her university during her senior year. She enjoys working with the Nuevo Foundation because it allows her to share her unique experience with kids and to share her love for technology, with hopes of inspiring others to do great things.",
         img: "america",
-        cartoon: "america"
+        cartoon: "america-cartoon"
       },
       {
         name: "Joaquin Ruales",
