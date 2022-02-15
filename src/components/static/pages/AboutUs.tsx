@@ -94,23 +94,15 @@ export class AboutUs extends React.Component {
       {
         name: "Izzy Beltran",
         role: "Creative Director and Master of Fun",
-        quote: "-It's not about where you came from, it's about where you are going",
+        quote: "-\"It's not about where you came from, it's about where you are going\"",
         bio: "Izzy is a Chicano Visual UX designer from Santa Ana, CA. He is passionate about design and the impact that it has on the world and to communities on a granular level. Izzy has many hobbies that keep him occupied on his free time that range from cooking, painting, playing music, and shooting monsters online on his Xbox. He has recently started reading and did not realize how enjoyable it is. It helps him stay relevant and knowledgeable in his career.",
         img: "izzy",
         cartoon: "izzy-cartoon"
       },
       {
-        name: "Savoy Schuler",
-        role: "Manager of Communication",
-        quote: "-When human beings are exposed to opportunities to create and innovate curiosity compels them to do so.",
-        bio: "Savoy is passionate about creating these opportunities for tomorrows youth and -in particular- those least likely to be otherwise exposed to science and technology. An entrepreneur, engineer, public speaker, and humanitarian, Savoy can be found anywhere from developing Windows UI, to kindling the fire of a new foundation or business, to managing Nuevo Foundation's communication, branding, and media or coaching a debate team. He plays Quidditch on Wednesdays (Beaters are best) and spends his evenings trying to teach a made-up sign language to his deaf cat.",
-        img: "savoy",
-        cartoon: "savoy-cartoon"
-      },
-      {
         name: "Deliana Escobari",
         role: "VP Web Development, Curriculum Designer, and Content Creator",
-        quote: "-Everyone has the potential for greatness, they just need the right tools to unlock that potential.",
+        quote: "-\"Everyone has the potential for greatness, they just need the right tools to unlock that potential.\"",
         bio: "Dee started volunteering with Nuevo Foundation soon after moving to the Pacific Northwest in 2018. Her passion for education and technology lead her to contribute in many areas. She created the Web Basics Curriculum and the cartoons you see on this page. She is helping with the website redesign and implementation as part of her larger goal to spread the Nuevo Foundation mission and values as far as possible.",
         img: "dee",
         cartoon: "dee-cartoon"
@@ -131,22 +123,6 @@ export class AboutUs extends React.Component {
         img: "ximena",
         cartoon: "ximena-cartoon"
       },
-      {
-        name: "Amira Najar",
-        role: "Social Media Co-chair",
-        quote: "-\"I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel\" -Maya Angelou",
-        bio: "Amira is a recent college grad and has been with Nuevo Foundation since December 2019. She is very passionate about giving back to her community and the power education has. She believes everyone deserves an equal opportunity in life, and hopes through her marketing efforts with NF, she is enabling the younger generations to believe in themselves and strive for their aspirations. Outside of being a product marketing manager, Amira enjoys working out, traveling all over the world and learning about better ways to self-improve.",
-        img: "amira",
-        cartoon: "amira-cartoon"
-      },
-      {	
-        name: "Isabel Laurent",	
-        role: "Social Media Co-chair",	
-        quote: "She believed she could so she did",	
-        bio: "Isabel joined Nuevo Foundation to help students discover new strengths and passions. By helping students develop their creativity, curiosity and confidence, Isabel believes they can unlock their full potential and erase any self-doubt. While focusing on mentorship, Isabel strives to guide students to accomplish their career aspirations and biggest dreams.",	
-        img: "isabel",	
-        cartoon: "isabel-cartoon"	
-      },
       {	
         name: "Kathryn Baldauf",	
         role: "Curriculum Genius",	
@@ -158,7 +134,7 @@ export class AboutUs extends React.Component {
       {	
         name: "Madeleyne Vaca",	
         role: "Hardware Lead",	
-        quote: "-\"Strive for significance, not success\" -Miller Templeton",	
+        quote: "-\"Strive for significance, not success\"-Miller Templeton",
         bio: "Madeleyne got her engineering interest from her parents. Throughout grade school and college, she built robots and machines that fly, swim, drive, detect air quality, interpret sign language, and even survive in space. This was in large part due to the investment that the Georgia Tech College of Computing made in her early on in high school through their outreach programs. Recognizing this, Madeleyne began working for them, first as a high school assistant, eventually making her way up to leading her own workshops. Researching new topics to teach led her to the (day) job that she loves! Now, Nuevo Foundation gives her the opportunity to keep introducing kids to the wonderful world of hardware in hopes their lives can be changed for the better too.",	
         img: "madeleyne",	
         cartoon: "madeleyne-cartoon"	
@@ -170,7 +146,63 @@ export class AboutUs extends React.Component {
         bio: "Damaris is passionate about helping others to discover their full potential leveraging Technology and Finance. She currently enables the digital transformation journey of Microsoft’s customers, partners & vendors in the Americas . She  is passionate for programs and organizations that support the protection and development of children and women from Latin America. She works closely with the Nuevo Foundation team providing pro-bono Financial support and she is also very active providing volunteering hours to increase diversity in the workplace.",
         img: "damaris",
         cartoon: "damaris-cartoon"
-      }
+      },
+      {
+        name: "América Quistiano",
+        role: "Community Lead",
+        quote: "-\"Your voice matters. What you do matters. So what are you going to do?\" -Anita Hill",
+        bio: "América started Microsoft as a new graduate during the fall of 2021 where she currently works for Bing Ads as a software engineer. América has had a passion for technology since she was little and that led her to a path in STEM which included studying computer science at UT Austin. She also found a huge passion for diversity & inclusion and helping others. This passion led her to working with the Nuevo Foundation during one of her summer internships at Microsoft and to becoming the president of the Hispanic Association of Computer Scientists at her university during her senior year. She enjoys working with the Nuevo Foundation because it allows her to share her unique experience with kids and to share her love for technology, with hopes of inspiring others to do great things.",
+        img: "america",
+        cartoon: "america"
+      },
+      {
+        name: "Joaquin Ruales",
+        role: "Front-end Ninja",
+        quote: "-\"No matter what your ability is, effort is what ignites that ability and turns it into accomplishment.\" -Carol Dweck",
+        bio: "Joaquín is passionate about coding, explaining technical concepts simply, and designing user experiences to minimize user error. After having programmed web apps, robots, calculators, and mathematical art, he is now volunteering with Nuevo Foundation to participate in the redesign of their Workshops website. In his spare time, he enjoys playing speed chess and learning how to pronounce words in foreign languages.",
+        img: "joaquin",
+        cartoon: "joaquin"
+      },
+      {
+        name: "Eden Garza",
+        role: "Curriculum Genius",
+        quote: "-\"Straight roads do not make skillful drivers.\"-Paula Coelho",
+        bio: "Eden is a Software Engineer at Microsoft working on the Threat and Vulnerability Management team. Prior to that he studied Computer Science at The University of Texas at Austin with a focus on Systems and Security. He is passionate about volunteering with students, leading outreach efforts at UT and being a part of Nuevo since 2019. In his free time, he loves spending time with his cat, Mimi, going to the gym, and learning new languages.",
+        img: "eden",
+        cartoon: "eden"
+      },
+      {
+        name: "Lulu Espinoza",
+        role: "Social Media Guru",
+        quote: "-\"Maybe it's time to believe that you can have everything you want.\" -Unknown",
+        bio: "Born in 1994, Guatemala, first child, and an art enthusiast. At 7, read a book called \"I want to be famous\" and could never stop reading literature since. Always been amazed by the aesthetic of surrealism and contemporary art. Graduated from International Affairs but worked as a journalist for a year, been a tutor/ teacher for over 8 years. Passion for working with kids, doing and learning many things at the same time! Believes in the power of education and how we use it to inspire others.",
+        img: "lulu",
+        cartoon: "lulu"
+      },
+      {
+        name: "Savoy Schuler",
+        role: "Honorary Manager of Communication",
+        quote: "-\"When human beings are exposed to opportunities to create and innovate curiosity compels them to do so.\"",
+        bio: "Savoy is passionate about creating these opportunities for tomorrows youth and -in particular- those least likely to be otherwise exposed to science and technology. An entrepreneur, engineer, public speaker, and humanitarian, Savoy can be found anywhere from developing Windows UI, to kindling the fire of a new foundation or business, to managing Nuevo Foundation's communication, branding, and media or coaching a debate team. He plays Quidditch on Wednesdays (Beaters are best) and spends his evenings trying to teach a made-up sign language to his deaf cat.",
+        img: "savoy",
+        cartoon: "savoy-cartoon"
+      },
+      {
+        name: "Amira Najar",
+        role: "Honorary Social Media Co-chair",
+        quote: "-\"I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel\" -Maya Angelou",
+        bio: "Amira is a recent college grad and has been with Nuevo Foundation since December 2019. She is very passionate about giving back to her community and the power education has. She believes everyone deserves an equal opportunity in life, and hopes through her marketing efforts with NF, she is enabling the younger generations to believe in themselves and strive for their aspirations. Outside of being a product marketing manager, Amira enjoys working out, traveling all over the world and learning about better ways to self-improve.",
+        img: "amira",
+        cartoon: "amira-cartoon"
+      },
+      {
+        name: "Isabel Laurent",
+        role: "Honorary Social Media Co-chair",
+        quote: "\"She believed she could so she did\"",
+        bio: "Isabel joined Nuevo Foundation to help students discover new strengths and passions. By helping students develop their creativity, curiosity and confidence, Isabel believes they can unlock their full potential and erase any self-doubt. While focusing on mentorship, Isabel strives to guide students to accomplish their career aspirations and biggest dreams.",
+        img: "isabel",
+        cartoon: "isabel-cartoon"
+      },
     ];
 
     return (
