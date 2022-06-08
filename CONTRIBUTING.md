@@ -11,7 +11,7 @@ I'll assume you already have git installed on your machine. To verify you can ru
 
 ### Clone the Repo
 
-From your terminal clone the [nuevofounation-web repo](https://github.com/NuevoFoundation/nuevofoundation-web) to any directory on your machine.
+From your terminal clone the [nuevofoundation-web repo](https://github.com/NuevoFoundation/nuevofoundation-web) to any directory on your machine.
 ```
 $ git clone https://github.com/NuevoFoundation/nuevofoundation-web.git
 ```
