@@ -3,7 +3,8 @@ import {
   faInstagram,
   faLinkedin,
   faTwitter,
-  faYoutube
+  faYoutube,
+  faGithub
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
@@ -62,6 +63,14 @@ export class Footer extends React.Component {
                       className={"footer-pics"}
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-2x"} />
+                  </a>
+                                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/NuevoFoundation"
+                      className={"footer-pics"}
+                  >
+                    <FontAwesomeIcon icon={faGithub} className={"fa-2x"} />
                   </a>
                 </div>
                 <div className="App-footer-small">
