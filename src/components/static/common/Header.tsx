@@ -17,7 +17,8 @@ import {
   faInstagram,
   faLinkedin,
   faTwitter,
-  faYoutube
+  faYoutube,
+  faGithub
 } from "@fortawesome/free-brands-svg-icons";
 import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "../../../helpers/SessionStorageHelper";
@@ -232,6 +233,15 @@ export class Header extends React.Component<IHeaderProps> {
                       href="https://www.youtube.com/nuevofoundation?sub_confirmation=1"
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/NuevoFoundation"
+                  >
+                    <FontAwesomeIcon icon={faGithub} className={"fa-1x"} />
                   </AboveHeaderLink>
                 </AboveHeaderItem>
                 <AboveHeaderItem>
