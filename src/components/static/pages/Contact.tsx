@@ -153,7 +153,7 @@ export class Contact extends React.Component<{}, IContactState> {
             <Row>
               <Col xs={12}>
                 <Row>
-                  <Col xs={12} sm={5} smOffset={6}>
+                  <Col sm={6} smOffset={3}>
                     {!this.state.submitted ? <form>
 
 
