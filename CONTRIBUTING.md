@@ -1,6 +1,6 @@
 ### Installing Dependencies
 
-- [Node JS](https://nodejs.org/en/download/)
+- [Node JS](https://nodejs.org/en/download/) (Ensure you're using version 14)
 - NPM (included with Node JS installation)
 - Git 
 - Preferred Text Editor, [try VS Code](https://code.visualstudio.com/download)
