@@ -20,7 +20,6 @@
     "handlebars": "^4.7.7",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
-    "react-bootstrap-validation": "^0.1.11",
     "react-countup": "^4.3.3",
     "react-dom": "^16.5.2",
     "react-ga": "^2.5.7",
@@ -28,7 +27,6 @@
     "react-pdf": "^4.1.0",
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.2",
-    "react-scripts": "^5.0.1",
     "react-table": "^6.10.0",
     "react-visibility-sensor": "^5.1.1",
     "serialize-javascript": "^3.1.0",
@@ -56,7 +54,8 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "typescript": "^3.3.3333",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "react-scripts": "^5.0.1"
   },
   "resolutions": {
     "@types/react": "*"
