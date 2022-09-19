@@ -57,6 +57,9 @@
     "uuid": "^3.3.2",
     "react-scripts": "^5.0.1"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "resolutions": {
     "@types/react": "*"
   },
