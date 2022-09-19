@@ -16,7 +16,7 @@ interface BlogPostsState {
   lastPage: number;
 }
 
-const ActionButton = styled.div`
+const ActionButton = styled.div<{active: boolean}>`
   font-family: 'Lato', sans-serif;
   border: none;
   padding: 15px 32px;

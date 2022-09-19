@@ -69,7 +69,7 @@ interface ActionButtonProps {
   active: boolean;
 }
 
-const ActionButton = styled.div`
+const ActionButton = styled.div<{active: boolean}>`
   font-family: 'Lato', sans-serif;
   border: none;
   border-radius: 4px;

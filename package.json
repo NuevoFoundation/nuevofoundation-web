@@ -14,6 +14,7 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/react-router-hash-link": "^1.2.1",
     "@types/react-table": "^6.8.5",
+    "@types/styled-components": "^5.1.26",
     "emailjs-com": "^2.2.4",
     "env-cmd": "^8.0.2",
     "eslint": "^6.8.0",
@@ -32,7 +33,7 @@
     "react-table": "^6.10.0",
     "react-visibility-sensor": "^5.1.1",
     "serialize-javascript": "^3.1.0",
-    "styled-components": "^3.4.9"
+    "styled-components": "^5.3.5"
   },
   "scripts": {
     "watch": "react-scripts start",
