@@ -14,13 +14,12 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/react-router-hash-link": "^1.2.1",
     "@types/react-table": "^6.8.5",
+    "@types/styled-components": "^5.1.26",
     "emailjs-com": "^2.2.4",
     "env-cmd": "^8.0.2",
-    "eslint": "^6.8.0",
     "handlebars": "^4.7.7",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
-    "react-bootstrap-validation": "^0.1.11",
     "react-countup": "^4.3.3",
     "react-dom": "^16.5.2",
     "react-ga": "^2.5.7",
@@ -28,11 +27,10 @@
     "react-pdf": "^4.1.0",
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.2",
-    "react-scripts": "^3.4.4",
     "react-table": "^6.10.0",
     "react-visibility-sensor": "^5.1.1",
     "serialize-javascript": "^3.1.0",
-    "styled-components": "^3.4.9"
+    "styled-components": "^5.3.5"
   },
   "scripts": {
     "watch": "react-scripts start",
@@ -51,15 +49,16 @@
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@types/uuid": "^3.4.4",
-    "@typescript-eslint/eslint-plugin": "^2.16.0",
-    "@typescript-eslint/parser": "^2.16.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "1.16.4",
     "typescript": "^3.3.3333",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "react-scripts": "^5.0.1"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "resolutions": {
     "@types/react": "*"

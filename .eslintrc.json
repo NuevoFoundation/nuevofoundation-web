@@ -5,13 +5,7 @@
     "es6": true
   },
   "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "react-app",
-    "plugin:prettier/recommended"
+    "react-app"
   ],
-  "plugins": ["@typescript-eslint", "react"],
-  "rules": {
-    "indent": ["error", 2],
-    "@typescript-eslint/indent": ["error", 2]
-  }
+  "plugins": ["react"]
 }
