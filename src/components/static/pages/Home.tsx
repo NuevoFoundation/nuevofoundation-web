@@ -14,6 +14,7 @@ import MarieClaireLogoImage from "../../../assets/images/home/MarieClaireLogo.pn
 import TelemundoLogoImage from "../../../assets/images/home/TelemundoLogo.png";
 import AAASLogoImage from "../../../assets/images/home/AAASIFTHENLogo.png";
 import CSForAllLogoImage from "../../../assets/images/home/CSForAllLogo.png";
+import SeattleSeahawksLogoImage from "../../../assets/images/home/SeattleSeahawksLogo.png";
 import GeekWireLogoImage from "../../../assets/images/home/GeekWireLogo.png";
 import Earth from "../../../assets/images/home/Earth.png";
 import ArrowCircle from "../../../assets/icons/Group211.png";
@@ -470,6 +471,10 @@ export class Home extends React.Component<{}, StatProps> {
 
             <LogoSectionImageContent>
               <div className="apply-logo-css-filter"><a href="https://twitter.com/_mujerimparable/status/1281265366753312770?s=20" target="_blank"><img src={TelemundoLogoImage} alt="Telemundo Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/posts/seattle-seahawks_gohawks-activity-7043662515146276864-CWMZ" target="_blank"><img src={SeattleSeahawksLogoImage} alt="Seattle Seahawks Logo" /></a></div>
             </LogoSectionImageContent>
             
             <LogoSectionImageContent>
