@@ -196,6 +196,14 @@ export class AboutUs extends React.Component {
         cartoon: "lulu-cartoon"
       },
       {
+        name: "Sushmasri Katakam",
+        role: "Coding Crusader of the Curriculum Realm",
+        quote: "-\"Hiya oooh yes! I can do that tonight!!\"",
+        bio: "With unwavering dedication to empowering students and a knack for infusing a sense of fun into learning, Sushma is the organization's superhero. She excels at transforming ordinary coding materials into extraordinary learning adventures, turning coding into an exhilarating quest.  She sprinkled her magic over the Python Earsketch curriculum, successfully making it a student favorite with a kid-friendly approach. Sushma's infectious positivity, quick wit, and unyielding commitment to student empowerment have rightfully earned her the title of Nuevo Foundation's heart and humor. She is more than a volunteer; she's a coding superhero dedicated to making learning a laughter-filled adventure with a profound impact.",
+        img: "sushma",
+        cartoon: "sushma-cartoon"
+      },
+      {
         name: "Savoy Schuler",
         role: "Honorary Manager of Communication",
         quote: "-\"When human beings are exposed to opportunities to create and innovate curiosity compels them to do so.\"",
