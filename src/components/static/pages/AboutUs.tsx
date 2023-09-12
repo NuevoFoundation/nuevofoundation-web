@@ -100,6 +100,14 @@ export class AboutUs extends React.Component {
         cartoon: "izzy-cartoon"
       },
       {
+        name: "Paola Ramirez",
+        role: "Design Alchemist and Pixel Perfectionist",
+        quote: "-\"You don't have to be great to start, but you have to start to be great.\"",
+        bio: "Paola is a Visual Designer from Puerto Rico with a bachelor’s degree in digital graphic design. Passionate about everything design and how it connects us to the world, she joined the Nuevo Foundation to help with their mission through design. In her free time, she likes to play video games and read a good book on a rainy day.",
+        img: "paola",
+        cartoon: "paola-cartoon"
+      },
+      {
         name: "Deliana Escobari",
         role: "VP Web Development, Curriculum Designer, and Content Creator",
         quote: "-\"Everyone has the potential for greatness, they just need the right tools to unlock that potential.\"",
