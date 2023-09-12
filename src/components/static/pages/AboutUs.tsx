@@ -188,20 +188,20 @@ export class AboutUs extends React.Component {
         cartoon: "adrian-cartoon"
       },
       {
+        name: "Sushmasri Katakam",
+        role: "Coding Crusader of the Curriculum Realm",
+        quote: "-\"Hiya oooh yes! I can do that tonight!!\"",
+        bio: "With an unwavering dedication to empowering students and a knack for infusing a sense of fun into learning, Sushma is the organization's superhero. She excels at transforming ordinary coding materials into extraordinary learning adventures, turning coding into an exhilarating quest.  She sprinkled her magic over the Python Earsketch curriculum, successfully making it a student favorite with a kid-friendly approach. Sushma's infectious positivity, quick wit, and unyielding commitment to student empowerment have rightfully earned her the title of Nuevo Foundation's heart and humor. She is more than a volunteer; she's a coding superhero dedicated to making learning a laughter-filled adventure with a profound impact.",
+        img: "sushma",
+        cartoon: "sushma-cartoon"
+      },
+      {
         name: "Lulu Espinoza",
         role: "Social Media Guru",
         quote: "\"Maybe it's time to believe that you can have everything you want.\" - Unknown",
         bio: "Born in 1994, Guatemala, first child, and an art enthusiast. At 7, read a book called \"I want to be famous\" and could never stop reading literature since. Always been amazed by the aesthetic of surrealism and contemporary art. Graduated from International Affairs but worked as a journalist for a year, been a tutor/ teacher for over 8 years. Passion for working with kids, doing and learning many things at the same time! Believes in the power of education and how we use it to inspire others.",
         img: "lulu",
         cartoon: "lulu-cartoon"
-      },
-      {
-        name: "Sushmasri Katakam",
-        role: "Coding Crusader of the Curriculum Realm",
-        quote: "-\"Hiya oooh yes! I can do that tonight!!\"",
-        bio: "With unwavering dedication to empowering students and a knack for infusing a sense of fun into learning, Sushma is the organization's superhero. She excels at transforming ordinary coding materials into extraordinary learning adventures, turning coding into an exhilarating quest.  She sprinkled her magic over the Python Earsketch curriculum, successfully making it a student favorite with a kid-friendly approach. Sushma's infectious positivity, quick wit, and unyielding commitment to student empowerment have rightfully earned her the title of Nuevo Foundation's heart and humor. She is more than a volunteer; she's a coding superhero dedicated to making learning a laughter-filled adventure with a profound impact.",
-        img: "sushma",
-        cartoon: "sushma-cartoon"
       },
       {
         name: "Savoy Schuler",
