@@ -7,15 +7,23 @@
 <br>
 <br>
 
-Nuevo Foundation UI
+Nuevo Foundation
 
 </h1>
 
-<h3 align="center">Frontend for Nuevo Foundation website</h3>
+<h3 align="center">Welcome to the Frontend for the Official Nuevo Foundation Website</h3>
 
 <p align="center">
   <a href="https://dev.azure.com/project-unicorn/nuevo/_build/latest?definitionId=3&branchName=master">
     <img src="https://dev.azure.com/project-unicorn/nuevo/_apis/build/status/NuevoFoundation.nuevofoundation-web?branchName=master" alt="Azure DevOps">
+  </a>
+
+  <a href="https://uptimerobot.com/dashboard.php">
+    <img src="https://img.shields.io/uptimerobot/status/m795338142-320d0e1e6e99445154a6ac55" alt="Nuevo Foundation Production Website">
+  </a>
+
+  <a href="https://uptimerobot.com/dashboard.php">
+    <img alt="Uptime Robot ratio (30 days)" src="https://img.shields.io/uptimerobot/ratio/m795338142-320d0e1e6e99445154a6ac55">
   </a>
 
   <a href="https://www.nuevofoundation.org">
