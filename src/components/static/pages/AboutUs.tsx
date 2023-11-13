@@ -85,7 +85,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Anvesha Sinha",
-        role: "Curriculum Ninja",
+        role: "Logicstics Ninja",
         quote: "\"Be the change that you wish to see in the world.\" - Mahatma Gandhi",
         bio: "Anvesha joined Nuevo Foundation with the intention of inspiring and coaching students to pursue a career in STEM. She helps out with Nuevo's workshops experience, focusing mainly on coding. A proud holder of master's in computer science (CS), she tries to make complex concepts fun and interesting for beginners. She is passionate about educating kids around the globe about careers in computer science and giving them a fair chance in choosing the best career path. In her free time, she like going on hikes, reading & solving puzzles.",
         img:"anvesha",
@@ -108,14 +108,6 @@ export class AboutUs extends React.Component {
         cartoon: "paola-cartoon"
       },
       {
-        name: "Deliana Escobari",
-        role: "VP Web Development, Curriculum Designer, and Content Creator",
-        quote: "-\"Everyone has the potential for greatness, they just need the right tools to unlock that potential.\"",
-        bio: "Dee started volunteering with Nuevo Foundation soon after moving to the Pacific Northwest in 2018. Her passion for education and technology lead her to contribute in many areas. She created the Web Basics Curriculum and the cartoons you see on this page. She is helping with the website redesign and implementation as part of her larger goal to spread the Nuevo Foundation mission and values as far as possible.",
-        img: "dee",
-        cartoon: "dee-cartoon"
-      },
-      {
         name: "Aaron Malveaux",
         role: "Community Lead",
         quote: "\"Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.\" - Albert Einstein",
@@ -132,28 +124,12 @@ export class AboutUs extends React.Component {
         cartoon: "ximena-cartoon"
       },
       {	
-        name: "Kathryn Baldauf",	
-        role: "Curriculum Genius",	
-        quote: "\"Let us remember: One book, one pen, one child, and one teacher can change the world.\" - Malala Yousafzai",	
-        bio: "Kathryn started at Microsoft as a new graduate in the summer of 2019. She works on Microsoft's open source Container Platform team as a software engineer. She's passionate about spreading education and positive change in the world. In her free time she enjoys hydroponic gardening, drinking tea, reading about a variety of topics, listening to music, and spending time with her friends",	
-        img: "kathryn",	
-        cartoon: "kathryn-cartoon"	
-      },	
-      {	
         name: "Madeleyne Vaca",	
         role: "Hardware Lead",	
         quote: "\"Strive for significance, not success.\"- Miller Templeton",
         bio: "Madeleyne got her engineering interest from her parents. Throughout grade school and college, she built robots and machines that fly, swim, drive, detect air quality, interpret sign language, and even survive in space. This was in large part due to the investment that the Georgia Tech College of Computing made in her early on in high school through their outreach programs. Recognizing this, Madeleyne began working for them, first as a high school assistant, eventually making her way up to leading her own workshops. Researching new topics to teach led her to the (day) job that she loves! Now, Nuevo Foundation gives her the opportunity to keep introducing kids to the wonderful world of hardware in hopes their lives can be changed for the better too.",	
         img: "madeleyne",	
         cartoon: "madeleyne-cartoon"	
-      },
-      {
-        name: "Damaris Sardenberg",
-        role: "Finance Officer",
-        quote: "\"A goal without a plan is just a wish.\" - Antoine de Saint-Exupery",
-        bio: "Damaris is passionate about helping others to discover their full potential leveraging Technology and Finance. She currently enables the digital transformation journey of Microsoft’s customers, partners & vendors in the Americas . She  is passionate for programs and organizations that support the protection and development of children and women from Latin America. She works closely with the Nuevo Foundation team providing pro-bono Financial support and she is also very active providing volunteering hours to increase diversity in the workplace.",
-        img: "damaris",
-        cartoon: "damaris-cartoon"
       },
       {
         name: "América Quistiano",
@@ -187,6 +163,14 @@ export class AboutUs extends React.Component {
         img: "adrian",
         cartoon: "adrian-cartoon"
       },
+      {	
+        name: "Kathryn Baldauf",	
+        role: "Curriculum Genius",	
+        quote: "\"Let us remember: One book, one pen, one child, and one teacher can change the world.\" - Malala Yousafzai",	
+        bio: "Kathryn started at Microsoft as a new graduate in the summer of 2019. She works on Microsoft's open source Container Platform team as a software engineer. She's passionate about spreading education and positive change in the world. In her free time she enjoys hydroponic gardening, drinking tea, reading about a variety of topics, listening to music, and spending time with her friends",	
+        img: "kathryn",	
+        cartoon: "kathryn-cartoon"	
+      },	
       {
         name: "Sushmasri Katakam",
         role: "Coding Crusader of the Curriculum Realm",
@@ -202,6 +186,22 @@ export class AboutUs extends React.Component {
         bio: "Born in 1994, Guatemala, first child, and an art enthusiast. At 7, read a book called \"I want to be famous\" and could never stop reading literature since. Always been amazed by the aesthetic of surrealism and contemporary art. Graduated from International Affairs but worked as a journalist for a year, been a tutor/ teacher for over 8 years. Passion for working with kids, doing and learning many things at the same time! Believes in the power of education and how we use it to inspire others.",
         img: "lulu",
         cartoon: "lulu-cartoon"
+      },
+      {
+        name: "Deliana Escobari",
+        role: "Honorary VP Web Development, Curriculum Designer, and Content Creator",
+        quote: "-\"Everyone has the potential for greatness, they just need the right tools to unlock that potential.\"",
+        bio: "Dee started volunteering with Nuevo Foundation soon after moving to the Pacific Northwest in 2018. Her passion for education and technology lead her to contribute in many areas. She created the Web Basics Curriculum and the cartoons you see on this page. She is helping with the website redesign and implementation as part of her larger goal to spread the Nuevo Foundation mission and values as far as possible.",
+        img: "dee",
+        cartoon: "dee-cartoon"
+      },
+      {
+        name: "Damaris Sardenberg",
+        role: "Honorary Finance Officer",
+        quote: "\"A goal without a plan is just a wish.\" - Antoine de Saint-Exupery",
+        bio: "Damaris is passionate about helping others to discover their full potential leveraging Technology and Finance. She currently enables the digital transformation journey of Microsoft’s customers, partners & vendors in the Americas . She  is passionate for programs and organizations that support the protection and development of children and women from Latin America. She works closely with the Nuevo Foundation team providing pro-bono Financial support and she is also very active providing volunteering hours to increase diversity in the workplace.",
+        img: "damaris",
+        cartoon: "damaris-cartoon"
       },
       {
         name: "Savoy Schuler",
