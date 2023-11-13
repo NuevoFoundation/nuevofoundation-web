@@ -188,6 +188,14 @@ export class AboutUs extends React.Component {
         cartoon: "lulu-cartoon"
       },
       {
+        name: "Roy Moran",
+        role: "Honorary Head of Technology",
+        quote: "-Do something small but useful now.",
+        bio: "I'm a software developer who grew up in Bridgeport, a south side neighborhood of Chicago. I like to build and ship software that I find meaningful and work on ideas that I care about. One of them being equal access to STEM education across underserved communities. Having had the opportunity to work at Microsoft writing software, I enjoy taking what I've learned and sharing that experience with students that may not otherwise see the possibilities of a STEM education. Working with Nuevo Foundation, I'm excited to build technology that helps support its mission and helps us continue to scale our reach to more students in these communities.",
+        img: "roy",
+        cartoon: "roy-cartoon"
+      },
+      {
         name: "Deliana Escobari",
         role: "Honorary VP Web Development, Curriculum Designer, and Content Creator",
         quote: "-\"Everyone has the potential for greatness, they just need the right tools to unlock that potential.\"",
