@@ -117,7 +117,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Ximena Cortez",
-        role: "Web Developer and Bug Interceptor",
+        role: "Program Lead, Chicago Initiatives",
         quote: "\"Learning is a treasure that will follow its owner everywhere.\" - Chinese Proverb",
         bio: "When Ximena was in high school, one of her teachers introduced her to a coding game that made coding fun. She continued to play that game through senior year and then decided to study Computer Science during college. She joined Nuevo Foundation because she knows the importance of introducing students to STEM fields. She currently works as a Software Test Engineer in Chicago and helps with the development of the Nuevo Foundation website. Ximena enjoys finding and fixing bugs and teaching others about cybersecurity.",
         img: "ximena",
