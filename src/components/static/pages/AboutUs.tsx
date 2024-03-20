@@ -188,6 +188,14 @@ export class AboutUs extends React.Component {
         cartoon: "lulu-cartoon"
       },
       {
+        name: "Gabe Rodriguez",
+        role: "Light Whisperer (aka Photographer)",
+        quote: "-\"Live slow. Be present.\"",
+        bio: "Before working in Customer Support at Microsoft, Gabe worked as a professional photographer. He is drawn to the intersection where people and technology meet. After hearing about the mission of Nuevo Foundation, he joined to help by providing photography. When he’s not at the office, you can find Gabe running around town with his own kids, on the water fishing, or rooting for the Seattle Mariners.",
+        img: "gabe",
+        cartoon: "gabe-cartoon"
+      },
+      {
         name: "Roy Moran",
         role: "Honorary Head of Technology",
         quote: "-Do something small but useful now.",
