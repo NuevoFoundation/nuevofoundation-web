@@ -157,7 +157,7 @@ export class AboutUs extends React.Component {
       },
       {
         name: "Adrian Tirado-Medina ",
-        role: "Digital Hype Dynamo and Coding Showtime Maestro",
+        role: "Designated Showsman/Hypeman",
         quote: "-\"Luck is the intersection between preparation and opportunity.\"",
         bio: "Adrian is a software engineer from Microsoft who has been sharing his passion for STEM with through Nuevo since the summer of 2019. He started teaching when he was in the 4th grade, showing pre-school students how to make origami animals and shapes. Since then, he has grown to run STEM outreach programs for underrepresented kids and teens, inspiring them to pursue careers in science and technology. Adrian is enthusiastic about creating innovative solutions that can make a positive impact on the world. He is originally from Juncos, Puerto Rico and in his free time he loves to dance, play video games and powerlift.",
         img: "adrian",
