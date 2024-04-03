@@ -15,11 +15,12 @@ import { withRouter } from 'react-router-dom';
 import {
   faFacebookF,
   faInstagram,
+  faXTwitter,
   faLinkedin,
-  faTwitter,
   faYoutube,
   faGithub
 } from "@fortawesome/free-brands-svg-icons";
+
 import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "../../../helpers/SessionStorageHelper";
 
@@ -205,7 +206,7 @@ export class Header extends React.Component<IHeaderProps> {
                       rel="noopener noreferrer"
                       href="https://twitter.com/nuevofoundation"
                   >
-                    <FontAwesomeIcon icon={faTwitter} className={"fa-1x"} />
+                    <FontAwesomeIcon icon={faXTwitter} className={"fa-1x"} />
                   </AboveHeaderLink>
                 </AboveHeaderItem>
                 <AboveHeaderItem>

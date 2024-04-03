@@ -2,7 +2,7 @@ import {
   faFacebookF,
   faInstagram,
   faLinkedin,
-  faTwitter,
+  faXTwitter,
   faYoutube,
   faGithub
 } from "@fortawesome/free-brands-svg-icons";
@@ -36,7 +36,7 @@ export class Footer extends React.Component {
                       href="https://twitter.com/nuevofoundation"
                       className={"footer-pics"}
                   >
-                    <FontAwesomeIcon icon={faTwitter} className={"fa-2x"} />
+                    <FontAwesomeIcon icon={faXTwitter} className={"fa-2x"} />
                   </a>
 
                   <a
