@@ -284,7 +284,7 @@ export class Home extends React.Component<{}, StatProps> {
     {
       title: "students",
       titleBoldened: "Diverse",
-      stat: "18,379",
+      stat: "18,609",
       description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
     },
     {
@@ -435,7 +435,7 @@ export class Home extends React.Component<{}, StatProps> {
                 <span>33 Countries</span>
                 <span>6 Territories</span>
                 <span>3 Chapters</span>
-                <span>3 Languages</span>
+                <span>7 Languages</span>
               </div>
             </ClosingSectionInfo>
           </ClosingSectionBackground>
@@ -444,7 +444,6 @@ export class Home extends React.Component<{}, StatProps> {
         <ContentSection style={{ backgroundColor: "#FFFFFF" }} id="challenge" >
           <LogoSection>
           
-
             <LogoSectionImageContent>
               <div className="apply-logo-css-filter"><a href="https://www.forbes.com/sites/viviannunez/2019/12/24/beatris-alejandre-mendez-gandica-on-4-lessons-she-shares-with-latinas-who-want-a-stem-career/?sh=682376079ba8" target="_blank"><img src={ForbesLogoImage} alt="Forbes Magazine Logo" /></a></div>
             </LogoSectionImageContent>
@@ -480,7 +479,6 @@ export class Home extends React.Component<{}, StatProps> {
             <LogoSectionImageContent>
               <div className="apply-logo-css-filter"><a href="https://www.geekwire.com/2022/wtia-picks-30-of-washington-states-best-and-brightest-tech-startups-for-founder-cohort/" target="_blank"><img src={GeekWireLogoImage} alt="GeekWire Logo" /></a></div>
             </LogoSectionImageContent>
-
 
           </LogoSection>
         </ContentSection>
