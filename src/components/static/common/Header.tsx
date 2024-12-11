@@ -18,6 +18,7 @@ import {
   faXTwitter,
   faLinkedin,
   faYoutube,
+  faSpotify,
   faGithub
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -234,6 +235,15 @@ export class Header extends React.Component<IHeaderProps> {
                       href="https://www.youtube.com/nuevofoundation?sub_confirmation=1"
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://open.spotify.com/playlist/0uQ8AwLs4SIpY4A4G52pTB?si=e30542420a8c40b1"
+                  >
+                    <FontAwesomeIcon icon={faSpotify} className={"fa-1x"} />
                   </AboveHeaderLink>
                 </AboveHeaderItem>
                 <AboveHeaderItem>
