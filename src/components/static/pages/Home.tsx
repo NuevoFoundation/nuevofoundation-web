@@ -486,10 +486,6 @@ export class Home extends React.Component<{}, StatProps> {
               <div className="apply-logo-css-filter"><a href="https://boldjourney.com/meet-beatris-mendez-gandica/" target="_blank"><img src={BoldJourneyLogoImage} alt="Bold Journey Logo" /></a></div>
             </LogoSectionImageContent>
 
-            <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://open.spotify.com/playlist/4QBuV4CIJvHzKTpjLBB0Ia?si=dafe47e3aa9a49d1" target="_blank"><img src={SpotifyLogoImage} alt="Spotify Logo" /></a></div>
-            </LogoSectionImageContent>a
-
           </LogoSection>
         </ContentSection>
 
