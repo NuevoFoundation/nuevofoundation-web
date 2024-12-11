@@ -4,6 +4,7 @@ import {
   faLinkedin,
   faXTwitter,
   faYoutube,
+  faSpotify,
   faGithub
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +31,7 @@ export class Footer extends React.Component {
                   >
                     <FontAwesomeIcon icon={faInstagram} className={"fa-2x"} />
                   </a>
+                  
                   <a
                       target="_blank"
                       rel="noopener noreferrer"
@@ -47,6 +49,7 @@ export class Footer extends React.Component {
                   >
                     <FontAwesomeIcon icon={faFacebookF} className={"fa-2x"} />
                   </a>
+                  
                   <a
                       target="_blank"
                       rel="noopener noreferrer"
@@ -64,7 +67,17 @@ export class Footer extends React.Component {
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-2x"} />
                   </a>
-                                    <a
+                  
+                  <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://open.spotify.com/playlist/0uQ8AwLs4SIpY4A4G52pTB?si=e30542420a8c40b1"
+                      className={"footer-pics"}
+                  >
+                    <FontAwesomeIcon icon={faSpotify} className={"fa-2x"} />
+                  </a>
+                  
+                  <a
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://github.com/NuevoFoundation"
@@ -72,6 +85,7 @@ export class Footer extends React.Component {
                   >
                     <FontAwesomeIcon icon={faGithub} className={"fa-2x"} />
                   </a>
+                  
                 </div>
                 <div className="App-footer-small">
                   © Copyright {new Date().getFullYear()}, All Rights Reserved by
