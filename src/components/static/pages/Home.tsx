@@ -16,6 +16,8 @@ import AAASLogoImage from "../../../assets/images/home/AAASIFTHENLogo.png";
 import CSForAllLogoImage from "../../../assets/images/home/CSForAllLogo.png";
 import SeattleSeahawksLogoImage from "../../../assets/images/home/SeattleSeahawksLogo.png";
 import GeekWireLogoImage from "../../../assets/images/home/GeekWireLogo.png";
+import BoldJourneyLogoImage from "../../../assets/images/home/BoldJourneyLogo.png";
+import SpotifyLogoImage from "../../../assets/images/home/SpotifyLogo.png";
 import Earth from "../../../assets/images/home/Earth.png";
 import ArrowCircle from "../../../assets/icons/Group211.png";
 import "../../../assets/stylesheets/Home.css";
@@ -479,6 +481,14 @@ export class Home extends React.Component<{}, StatProps> {
             <LogoSectionImageContent>
               <div className="apply-logo-css-filter"><a href="https://www.geekwire.com/2022/wtia-picks-30-of-washington-states-best-and-brightest-tech-startups-for-founder-cohort/" target="_blank"><img src={GeekWireLogoImage} alt="GeekWire Logo" /></a></div>
             </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://boldjourney.com/meet-beatris-mendez-gandica/" target="_blank"><img src={BoldJourneyLogoImage} alt="Bold Journey Logo" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter"><a href="https://open.spotify.com/playlist/4QBuV4CIJvHzKTpjLBB0Ia?si=dafe47e3aa9a49d1" target="_blank"><img src={SpotifyLogoImage} alt="Spotify Logo" /></a></div>
+            </LogoSectionImageContent>a
 
           </LogoSection>
         </ContentSection>
