@@ -14,90 +14,86 @@ variables:
   productionBuildConfiguration: '$(ProductionBuildConfig)'
 
 steps:
-# Use a cached Node.js installation to speed up build times
+# Checkout the repository to make sure the files (including package.json) are available
+- checkout: self
+  fetchDepth: 1
+  displayName: 'Checkout Repository'
+
+# Install Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
 
-# Use npm ci instead of npm install for faster and deterministic installs
+# Use npm ci for faster and deterministic installs
 - script: |
     npm ci
   displayName: 'npm ci'
-
-# Optionally, you can run eslint here if it's part of your CI process
-# - script : | 
-#    ./node_modules/.bin/eslint src/**/*.{ts,tsx}
-#  displayName: 'run eslint'
+  workingDirectory: $(Build.SourcesDirectory)  # Ensure it runs from the correct directory
 
 # Run tests
 - script: |
     npm run test-ci
   displayName: 'npm run test-ci'
 
-# Run optimized build for staging
+# Build for staging configuration
 - script: |
     npm run "$(stageBuildConfiguration)"
   displayName: 'npm run optimized $(stageBuildConfiguration)'
 
-# Cache node_modules to speed up the next build
+# Cache node_modules for staging build (Optional optimization)
 - task: Cache@2
   inputs:
     key: 'npm | "$(Agent.OS)" | package-lock.json'
     restoreKeys: |
       npm | "$(Agent.OS)"
     path: $(Pipeline.Workspace)/.npm
-  displayName: 'Cache node_modules'
+  displayName: 'Cache node_modules for staging'
 
-# Parallelize the build steps for staging and production
+# Publish build artifacts for staging
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory) (Staging)'
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory) for Staging'
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
     overWrite: true
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory) (Staging)'
+  displayName: 'Publish Staging Artifacts'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'stage'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
-# Run optimized build for production
+# Build for production configuration
 - script: |
     npm run "$(productionBuildConfiguration)"
   displayName: 'npm run optimized $(productionBuildConfiguration)'
 
-# Cache node_modules for production build to speed up subsequent runs
+# Cache node_modules for production build (Optional optimization)
 - task: Cache@2
   inputs:
     key: 'npm | "$(Agent.OS)" | package-lock.json'
     restoreKeys: |
       npm | "$(Agent.OS)"
     path: $(Pipeline.Workspace)/.npm
-  displayName: 'Cache node_modules (Production)'
+  displayName: 'Cache node_modules for production'
 
-# Parallelize copying files for production
+# Publish build artifacts for production
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory) (Production)'
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory) for Production'
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
     overWrite: true
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory) (Production)'
+  displayName: 'Publish Production Artifacts'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'production'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-
-# Shallow clone to reduce checkout time
-- checkout: self
-  fetchDepth: 1
-  displayName: 'Shallow Clone Repository'
