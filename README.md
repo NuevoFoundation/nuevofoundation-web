@@ -16,26 +16,18 @@ Nuevo Foundation
 <p align="center">
   <a href="https://dev.azure.com/project-unicorn/nuevo/_build/latest?definitionId=3&branchName=master">
     <img src="https://dev.azure.com/project-unicorn/nuevo/_apis/build/status/NuevoFoundation.nuevofoundation-web?branchName=master" alt="Azure DevOps">
-    <br>
-    Azure DevOps: This badge shows the current build status of the project.
   </a>
 
   <a href="https://uptimerobot.com/dashboard.php">
     <img src="https://img.shields.io/uptimerobot/status/m795338142-320d0e1e6e99445154a6ac55" alt="Nuevo Foundation Production Website">
-    <br>
-    Uptime Robot: This badge shows the current status of the Nuevo Foundation Production Website.
   </a>
 
   <a href="https://uptimerobot.com/dashboard.php">
     <img alt="Uptime Robot ratio (30 days)" src="https://img.shields.io/uptimerobot/ratio/m795338142-320d0e1e6e99445154a6ac55">
-    <br>
-    Uptime Robot Ratio: This badge shows the uptime ratio of the Nuevo Foundation Production Website over the last 30 days.
   </a>
 
   <a href="https://www.nuevofoundation.org">
     <img src="https://img.shields.io/badge/website-https://www.nuevofoundation.org/-blue.svg" alt="Nuevo Foundation Website">
-    <br>
-    Nuevo Foundation Website: This badge provides a link to the official Nuevo Foundation website.
   </a>
 </p>
 
