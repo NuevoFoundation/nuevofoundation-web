@@ -13,88 +13,90 @@ variables:
   stageBuildConfiguration: '$(StageBuildConfig)'
   productionBuildConfiguration: '$(ProductionBuildConfig)'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
+jobs:
+- job: Build
+  displayName: 'Shipping happiness to the world!'  # Updated description
+  steps:
+  - script: |
+      echo "Nuevo Foundation"
+      echo "                                            @@@%%%%%%%%@@@                                          "
+      echo "                                          @%*:..........:*@@                                        "
+      echo "                                        @%-..            ..-%@                                      "
+      echo "                                       @%++++++++++++++:.   .*@                                     "
+      echo "                        @@@@@@@@@@@@@@@#===============-:::::-%@@@@@@@@@@@@                         "
+      echo "                       %#-------------------------------------------------#@                       "
+      echo "                       %+                                                .*@                        "
+      echo "                       %+                                                .*@                        "
+      echo "                       %+ .:------------------------------------------:. .*@                        "
+      echo "                      @%+ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*@@                       "
+      echo "                    @%**+ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*-=#%                     "
+      echo "                   @%:.++ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*=#:=%                    "
+      echo "                   @-.=++ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*=#:.-@                   "
+      echo "                  @%.:#++ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*=#:..%@                  "
+      echo "                   @.:#++ :%@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#@@@@@%- .*=#:..%                   "
+      echo "                   @*:#++ :%@@@@#==+@@@@@@@@@@@@@@@@@@@@@@@@@@%==+@@@@%- .*=#:.#@                   "
+      echo "                    @##++ :%@@@@*===%@@@@@@@@@@@@@@@@@@@@@@@@@*==+%@@@%- .*=#+#@                    "
+      echo "                     @%#+ :%@@@@#===%@@@@@@@@@@@@@@@@@@@@@@@@@#==+@@@@%- .*#%@@                     "
+      echo "                       %+ :%@@@@@#*%@@@@@@@@@@@@@@@@@@@@@@@@@@@#*%@@@@%- .*@                         "
+      echo "                       %+ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*@                         "
+      echo "                       %+ .+##########################################+: .*@                         "
+      echo "                       %+.................................................*@                         "
+      echo "                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         "
+    displayName: 'Nuvi enters the chat'
 
-- script: |
-    npm install
-  displayName: 'npm install'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+    displayName: 'Install Node.js'
 
-# Display Nuevo Foundation and Current Year
-- script: |
-    echo "Nuevo Foundation $(Build.BuildDate)"
-    echo "                                            @@@%%%%%%%%@@@                                          "
-    echo "                                          @%*:..........:*@@                                        "
-    echo "                                        @%-..            ..-%@                                      "
-    echo "                                       @%++++++++++++++:.   .*@                                     "
-    echo "                        @@@@@@@@@@@@@@@#===============-:::::-%@@@@@@@@@@@@                         "
-    echo "                       %#-------------------------------------------------#@                       "
-    echo "                       %+                                                .*@                        "
-    echo "                       %+                                                .*@                        "
-    echo "                       %+ .:------------------------------------------:. .*@                        "
-    echo "                      @%+ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*@@                       "
-    echo "                    @%**+ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*-=#%                     "
-    echo "                   @%:.++ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*=#:=%                    "
-    echo "                   @-.=++ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*=#:.-@                   "
-    echo "                  @%.:#++ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*=#:..%@                  "
-    echo "                   @.:#++ :%@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#@@@@@%- .*=#:..%                   "
-    echo "                   @*:#++ :%@@@@#==+@@@@@@@@@@@@@@@@@@@@@@@@@@%==+@@@@%- .*=#:.#@                   "
-    echo "                    @##++ :%@@@@*===%@@@@@@@@@@@@@@@@@@@@@@@@@*==+%@@@%- .*=#+#@                    "
-    echo "                     @%#+ :%@@@@#===%@@@@@@@@@@@@@@@@@@@@@@@@@#==+@@@@%- .*#%@@                     "
-    echo "                       %+ :%@@@@@#*%@@@@@@@@@@@@@@@@@@@@@@@@@@@#*%@@@@%- .*@                         "
-    echo "                       %+ :%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%- .*@                         "
-    echo "                       %+ .+##########################################+: .*@                         "
-    echo "                       %+.................................................*@                         "
-    echo "                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         "
-  displayName: 'Nuevo Foundation $(Build.BuildDate)'
+  - script: |
+      npm install
+    displayName: 'npm install'
 
-#- script : | 
-#    ./node_modules/.bin/eslint src/**/*.{ts,tsx}
-#  displayName: 'run eslint'
+  #- script : | 
+  #    ./node_modules/.bin/eslint src/**/*.{ts,tsx}
+  #  displayName: 'run eslint'
 
-- script: |
-    npm run test-ci
-  displayName: 'npm run test-ci'
+  - script: |
+      npm run test-ci
+    displayName: 'npm run test-ci'
 
-- script: |
-    npm run "$(stageBuildConfiguration)"
-  displayName: 'npm run optimized $(stageBuildConfiguration)'
+  - script: |
+      npm run "$(stageBuildConfiguration)"
+    displayName: 'npm run optimized $(stageBuildConfiguration)'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    contents: '**/build/**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-    cleanTargetFolder: true 
-    overWrite: true 
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      contents: '**/build/**'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+      cleanTargetFolder: true 
+      overWrite: true 
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'stage' 
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+      artifactName: 'stage' 
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
-- script: |
-    npm run "$(productionBuildConfiguration)"
-  displayName: 'npm run optimized $(productionBuildConfiguration)'
+  - script: |
+      npm run "$(productionBuildConfiguration)"
+    displayName: 'npm run optimized $(productionBuildConfiguration)'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    contents: '**/build/**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-    cleanTargetFolder: true 
-    overWrite: true
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      contents: '**/build/**'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+      cleanTargetFolder: true 
+      overWrite: true
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'production' 
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+      artifactName: 'production' 
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
