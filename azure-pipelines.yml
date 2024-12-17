@@ -14,86 +14,59 @@ variables:
   productionBuildConfiguration: '$(ProductionBuildConfig)'
 
 steps:
-# Checkout the repository to make sure the files (including package.json) are available
-- checkout: self
-  fetchDepth: 1
-  displayName: 'Checkout Repository'
-
-# Install Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
 
-# Use npm ci for faster and deterministic installs
 - script: |
-    npm ci
-  displayName: 'npm ci'
-  workingDirectory: $(Build.SourcesDirectory)  # Ensure it runs from the correct directory
+    npm install
+  displayName: 'npm install'
 
-# Cache node_modules for staging build (Optional optimization) - after npm ci
-- task: Cache@2
-  inputs:
-    key: 'npm | "$(Agent.OS)" | package-lock.json'
-    restoreKeys: |
-      npm | "$(Agent.OS)"
-    path: $(Pipeline.Workspace)/.npm
-  displayName: 'Cache node_modules for staging'
+#- script : | 
+#    ./node_modules/.bin/eslint src/**/*.{ts,tsx}
+#  displayName: 'run eslint'
 
-# Run tests
 - script: |
     npm run test-ci
   displayName: 'npm run test-ci'
 
-# Build for staging configuration
 - script: |
     npm run "$(stageBuildConfiguration)"
   displayName: 'npm run optimized $(stageBuildConfiguration)'
 
-# Publish build artifacts for staging
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory) for Staging'
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
-    cleanTargetFolder: true
-    overWrite: true
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    cleanTargetFolder: true 
+    overWrite: true 
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Staging Artifacts'
+  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'stage'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'stage' 
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
-# Build for production configuration
 - script: |
     npm run "$(productionBuildConfiguration)"
   displayName: 'npm run optimized $(productionBuildConfiguration)'
 
-# Cache node_modules for production build (Optional optimization) - after npm ci
-- task: Cache@2
-  inputs:
-    key: 'npm | "$(Agent.OS)" | package-lock.json'
-    restoreKeys: |
-      npm | "$(Agent.OS)"
-    path: $(Pipeline.Workspace)/.npm
-  displayName: 'Cache node_modules for production'
-
-# Publish build artifacts for production
 - task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory) for Production'
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     contents: '**/build/**'
     targetFolder: $(Build.ArtifactStagingDirectory)
-    cleanTargetFolder: true
+    cleanTargetFolder: true 
     overWrite: true
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Production Artifacts'
+  displayName: 'Publish src to: $(Build.ArtifactStagingDirectory)'
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'production'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'production' 
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
