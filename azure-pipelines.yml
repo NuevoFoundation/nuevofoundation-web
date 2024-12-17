@@ -31,6 +31,15 @@ steps:
   displayName: 'npm ci'
   workingDirectory: $(Build.SourcesDirectory)  # Ensure it runs from the correct directory
 
+# Cache node_modules for staging build (Optional optimization) - after npm ci
+- task: Cache@2
+  inputs:
+    key: 'npm | "$(Agent.OS)" | package-lock.json'
+    restoreKeys: |
+      npm | "$(Agent.OS)"
+    path: $(Pipeline.Workspace)/.npm
+  displayName: 'Cache node_modules for staging'
+
 # Run tests
 - script: |
     npm run test-ci
@@ -40,15 +49,6 @@ steps:
 - script: |
     npm run "$(stageBuildConfiguration)"
   displayName: 'npm run optimized $(stageBuildConfiguration)'
-
-# Cache node_modules for staging build (Optional optimization)
-- task: Cache@2
-  inputs:
-    key: 'npm | "$(Agent.OS)" | package-lock.json'
-    restoreKeys: |
-      npm | "$(Agent.OS)"
-    path: $(Pipeline.Workspace)/.npm
-  displayName: 'Cache node_modules for staging'
 
 # Publish build artifacts for staging
 - task: CopyFiles@2
@@ -72,7 +72,7 @@ steps:
     npm run "$(productionBuildConfiguration)"
   displayName: 'npm run optimized $(productionBuildConfiguration)'
 
-# Cache node_modules for production build (Optional optimization)
+# Cache node_modules for production build (Optional optimization) - after npm ci
 - task: Cache@2
   inputs:
     key: 'npm | "$(Agent.OS)" | package-lock.json'
