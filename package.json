@@ -17,7 +17,7 @@
     "@types/react-table": "^6.8.5",
     "@types/styled-components": "^5.1.26",
     "emailjs-com": "^2.2.4",
-    "env-cmd": "^8.0.2",
+    "env-cmd": "^10.1.0",
     "handlebars": "^4.7.7",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
