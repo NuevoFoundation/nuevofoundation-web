@@ -108,14 +108,6 @@ export class AboutUs extends React.Component {
         cartoon: "paola-cartoon"
       },
       {
-        name: "Aaron Malveaux",
-        role: "Community Lead",
-        quote: "\"Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.\" - Albert Einstein",
-        bio: "Aaron is the most charismatic team member with broad experience in data privacy. He always ensures that every student is having a great time while learning new computer science concepts. Aaron works on reaching out to potential partners at schools and other nonprofit organizations",
-        img: "aaron",
-        cartoon: "aaron-cartoon"
-      },
-      {
         name: "Ximena Cortez",
         role: "Program Lead, Chicago Initiatives",
         quote: "\"Learning is a treasure that will follow its owner everywhere.\" - Chinese Proverb",
@@ -148,14 +140,6 @@ export class AboutUs extends React.Component {
         cartoon: "joaquin-cartoon"
       },
       {
-        name: "Eden Garza",
-        role: "Curriculum Genius",
-        quote: "\"Straight roads do not make skillful drivers.\"- Paula Coelho",
-        bio: "Eden is a Software Engineer at Microsoft working on the Threat and Vulnerability Management team. Prior to that he studied Computer Science at The University of Texas at Austin with a focus on Systems and Security. He is passionate about volunteering with students, leading outreach efforts at UT and being a part of Nuevo since 2019. In his free time, he loves spending time with his cat, Mimi, going to the gym, and learning new languages.",
-        img: "eden",
-        cartoon: "eden-cartoon"
-      },
-      {
         name: "Adrian Tirado-Medina ",
         role: "Designated Showsman/Hypeman",
         quote: "-\"Luck is the intersection between preparation and opportunity.\"",
@@ -171,22 +155,6 @@ export class AboutUs extends React.Component {
         img: "kathryn",	
         cartoon: "kathryn-cartoon"	
       },	
-      {
-        name: "Sushmasri Katakam",
-        role: "Coding Crusader of the Curriculum Realm",
-        quote: "-\"Hiya oooh yes! I can do that tonight!!\"",
-        bio: "With an unwavering dedication to empowering students and a knack for infusing a sense of fun into learning, Sushma is the organization's superhero. She excels at transforming ordinary coding materials into extraordinary learning adventures, turning coding into an exhilarating quest. She sprinkled her magic over the Python Turtle curriculum, successfully making it a student favorite with a kid-friendly approach. Sushma's infectious positivity, quick wit, and unyielding commitment to student empowerment have rightfully earned her the title of Nuevo Foundation's heart and humor. She is more than a volunteer; she's a coding superhero dedicated to making learning a laughter-filled adventure with a profound impact.",
-        img: "sushma",
-        cartoon: "sushma-cartoon"
-      },
-      {
-        name: "Lulu Espinoza",
-        role: "Social Media Guru",
-        quote: "\"Maybe it's time to believe that you can have everything you want.\" - Unknown",
-        bio: "Born in 1994, Guatemala, first child, and an art enthusiast. At 7, read a book called \"I want to be famous\" and could never stop reading literature since. Always been amazed by the aesthetic of surrealism and contemporary art. Graduated from International Affairs but worked as a journalist for a year, been a tutor/ teacher for over 8 years. Passion for working with kids, doing and learning many things at the same time! Believes in the power of education and how we use it to inspire others.",
-        img: "lulu",
-        cartoon: "lulu-cartoon"
-      },
       {
         name: "Gabe Rodriguez",
         role: "Light Whisperer (aka Photographer)",
@@ -210,38 +178,6 @@ export class AboutUs extends React.Component {
         bio: "Dee started volunteering with Nuevo Foundation soon after moving to the Pacific Northwest in 2018. Her passion for education and technology lead her to contribute in many areas. She created the Web Basics Curriculum and the cartoons you see on this page. She is helping with the website redesign and implementation as part of her larger goal to spread the Nuevo Foundation mission and values as far as possible.",
         img: "dee",
         cartoon: "dee-cartoon"
-      },
-      {
-        name: "Damaris Sardenberg",
-        role: "Honorary Finance Officer",
-        quote: "\"A goal without a plan is just a wish.\" - Antoine de Saint-Exupery",
-        bio: "Damaris is passionate about helping others to discover their full potential leveraging Technology and Finance. She currently enables the digital transformation journey of Microsoft’s customers, partners & vendors in the Americas . She  is passionate for programs and organizations that support the protection and development of children and women from Latin America. She works closely with the Nuevo Foundation team providing pro-bono Financial support and she is also very active providing volunteering hours to increase diversity in the workplace.",
-        img: "damaris",
-        cartoon: "damaris-cartoon"
-      },
-      {
-        name: "Savoy Schuler",
-        role: "Honorary Manager of Communication",
-        quote: "-\"When human beings are exposed to opportunities to create and innovate curiosity compels them to do so.\"",
-        bio: "Savoy is passionate about creating these opportunities for tomorrows youth and -in particular- those least likely to be otherwise exposed to science and technology. An entrepreneur, engineer, public speaker, and humanitarian, Savoy can be found anywhere from developing Windows UI, to kindling the fire of a new foundation or business, to managing Nuevo Foundation's communication, branding, and media or coaching a debate team. He plays Quidditch on Wednesdays (Beaters are best) and spends his evenings trying to teach a made-up sign language to his deaf cat.",
-        img: "savoy",
-        cartoon: "savoy-cartoon"
-      },
-      {
-        name: "Amira Najar",
-        role: "Honorary Social Media Co-chair",
-        quote: "\"I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.\" - Maya Angelou",
-        bio: "Amira is a recent college grad and has been with Nuevo Foundation since December 2019. She is very passionate about giving back to her community and the power education has. She believes everyone deserves an equal opportunity in life, and hopes through her marketing efforts with NF, she is enabling the younger generations to believe in themselves and strive for their aspirations. Outside of being a product marketing manager, Amira enjoys working out, traveling all over the world and learning about better ways to self-improve.",
-        img: "amira",
-        cartoon: "amira-cartoon"
-      },
-      {
-        name: "Isabel Laurent",
-        role: "Honorary Social Media Co-chair",
-        quote: "-\"She believed she could so she did.\"",
-        bio: "Isabel joined Nuevo Foundation to help students discover new strengths and passions. By helping students develop their creativity, curiosity and confidence, Isabel believes they can unlock their full potential and erase any self-doubt. While focusing on mentorship, Isabel strives to guide students to accomplish their career aspirations and biggest dreams.",
-        img: "isabel",
-        cartoon: "isabel-cartoon"
       },
     ];
 
