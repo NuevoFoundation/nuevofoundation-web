@@ -17,7 +17,6 @@ import CSForAllLogoImage from "../../../assets/images/home/CSForAllLogo.png";
 import SeattleSeahawksLogoImage from "../../../assets/images/home/SeattleSeahawksLogo.png";
 import GeekWireLogoImage from "../../../assets/images/home/GeekWireLogo.png";
 import BoldJourneyLogoImage from "../../../assets/images/home/BoldJourneyLogo.png";
-import SpotifyLogoImage from "../../../assets/images/home/SpotifyLogo.png";
 import Earth from "../../../assets/images/home/Earth.png";
 import ArrowCircle from "../../../assets/icons/Group211.png";
 import "../../../assets/stylesheets/Home.css";
@@ -86,18 +85,6 @@ const CountUpComponentToThirteen = () => (
   </>
 );
 
-
-const CountUpComponentCountries = () => (
-  <>
-    <CountUp start={1} duration={5} end={30} redraw={true}>
-      {({ countUpRef, start }) => (
-        <VisibilitySensor onChange={start} delayedCall>
-          <div ref={countUpRef}></div>
-        </VisibilitySensor>
-      )}
-    </CountUp>
-  </>
-);
 
 const ContentSection = styled.div`
   color: ${(props: StatProps) => props.color ? props.color : "#000000"};
@@ -260,13 +247,6 @@ const ContentWrapper = styled.div`
   font-size: 24px;
 `;
 
-interface ContentSectionProps {
-  color?: string;
-  height?: string;
-  backgroundColor: string;
-}
-
-
 interface StatProps {
   color?: string;
   metaData?: MetaDataInterface
@@ -423,10 +403,21 @@ export class Home extends React.Component<{}, StatProps> {
             </StatsSectionDescription>
           </StatsSectionInfo>
           <ImpactSectionStats>
+            {/* eslint-disable-next-line security/detect-object-injection */}
             {Home.ImpactStats.map((stat: ImpactStatInterface, index: number) => {
+              // Securely validate index before using it to access impactColors
+              const safeIndex = Number.isInteger(index) && index >= 0 && index < impactColors.length ? index : 0;
               return (
-                <ImpactSectionStatsTitleInfo key={index}><ImpactSectionStatsTitle color={impactColors[index]}>{stat.stat}<span><span>{stat.titleBoldened}</span>{stat.title}</span></ImpactSectionStatsTitle>{stat.description}</ImpactSectionStatsTitleInfo>
-              )
+                <ImpactSectionStatsTitleInfo key={index}>
+                  <ImpactSectionStatsTitle color={impactColors[safeIndex]}>
+                    {stat.stat}
+                    <span>
+                      <span>{stat.titleBoldened}</span>{stat.title}
+                    </span>
+                  </ImpactSectionStatsTitle>
+                  {stat.description}
+                </ImpactSectionStatsTitleInfo>
+              );
             })}
           </ImpactSectionStats>
         </ContentSection>
@@ -447,43 +438,43 @@ export class Home extends React.Component<{}, StatProps> {
           <LogoSection>
           
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://www.forbes.com/sites/viviannunez/2019/12/24/beatris-alejandre-mendez-gandica-on-4-lessons-she-shares-with-latinas-who-want-a-stem-career/?sh=682376079ba8" target="_blank"><img src={ForbesLogoImage} alt="Forbes Magazine Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://www.forbes.com/sites/viviannunez/2019/12/24/beatris-alejandre-mendez-gandica-on-4-lessons-she-shares-with-latinas-who-want-a-stem-career/?sh=682376079ba8" target="_blank" rel="noreferrer"><img src={ForbesLogoImage} alt="Forbes Magazine Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://blogs.microsoft.com/latinx/2019/10/23/over-100-latinx-middle-schoolers-participate-in-coding-workshop-at-microsoft/" target="_blank"><img src={MicrosoftLogoImage} alt="Microsoft Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://blogs.microsoft.com/latinx/2019/10/23/over-100-latinx-middle-schoolers-participate-in-coding-workshop-at-microsoft/" target="_blank" rel="noreferrer"><img src={MicrosoftLogoImage} alt="Microsoft Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://www.aaas.org/news/125-women-stem-selected-aaas-ifthen-ambassadors" target="_blank"><img src={AAASLogoImage} alt="AAAS If/Then Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://www.aaas.org/news/125-women-stem-selected-aaas-ifthen-ambassadors" target="_blank" rel="noreferrer"><img src={AAASLogoImage} alt="AAAS If/Then Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/pulse/marie-claire-magazine-march-2020-edition-beatris-a-mendez-gandica/" target="_blank"><img src={MarieClaireLogoImage} alt="Marie Claire Magazine Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/pulse/marie-claire-magazine-march-2020-edition-beatris-a-mendez-gandica/" target="_blank" rel="noreferrer"><img src={MarieClaireLogoImage} alt="Marie Claire Magazine Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/pulse/hola-usa-kicking-off-hispanic-heritage-month-mendez-gandica/" target="_blank"><img src={HolaUSALogoImage} alt="HOLA USA Magazine Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/pulse/hola-usa-kicking-off-hispanic-heritage-month-mendez-gandica/" target="_blank" rel="noreferrer"><img src={HolaUSALogoImage} alt="HOLA USA Magazine Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://csforall.medium.com/the-national-computer-science-education-community-announces-165-new-efforts-to-achieve-computer-484c6057ce24" target="_blank"><img src={CSForAllLogoImage} alt="CS For All Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://csforall.medium.com/the-national-computer-science-education-community-announces-165-new-efforts-to-achieve-computer-484c6057ce24" target="_blank" rel="noreferrer"><img src={CSForAllLogoImage} alt="CS For All Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://twitter.com/_mujerimparable/status/1281265366753312770?s=20" target="_blank"><img src={TelemundoLogoImage} alt="Telemundo Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://twitter.com/_mujerimparable/status/1281265366753312770?s=20" target="_blank" rel="noreferrer"><img src={TelemundoLogoImage} alt="Telemundo Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/posts/seattle-seahawks_gohawks-activity-7043662515146276864-CWMZ" target="_blank"><img src={SeattleSeahawksLogoImage} alt="Seattle Seahawks Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://www.linkedin.com/posts/seattle-seahawks_gohawks-activity-7043662515146276864-CWMZ" target="_blank" rel="noreferrer"><img src={SeattleSeahawksLogoImage} alt="Seattle Seahawks Logo" /></a></div>
             </LogoSectionImageContent>
             
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://www.geekwire.com/2022/wtia-picks-30-of-washington-states-best-and-brightest-tech-startups-for-founder-cohort/" target="_blank"><img src={GeekWireLogoImage} alt="GeekWire Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://www.geekwire.com/2022/wtia-picks-30-of-washington-states-best-and-brightest-tech-startups-for-founder-cohort/" target="_blank" rel="noreferrer"><img src={GeekWireLogoImage} alt="GeekWire Logo" /></a></div>
             </LogoSectionImageContent>
 
             <LogoSectionImageContent>
-              <div className="apply-logo-css-filter"><a href="https://boldjourney.com/meet-beatris-mendez-gandica/" target="_blank"><img src={BoldJourneyLogoImage} alt="Bold Journey Logo" /></a></div>
+              <div className="apply-logo-css-filter"><a href="https://boldjourney.com/meet-beatris-mendez-gandica/" target="_blank" rel="noreferrer"><img src={BoldJourneyLogoImage} alt="Bold Journey Logo" /></a></div>
             </LogoSectionImageContent>
 
           </LogoSection>

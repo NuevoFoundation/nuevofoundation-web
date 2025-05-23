@@ -46,7 +46,7 @@ jobs:
 
   - task: NodeTool@0
     inputs:
-      versionSpec: '14.x'
+      versionSpec: '20.x'
     displayName: 'Install Node.js'
 
   - script: |
@@ -99,4 +99,4 @@ jobs:
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
       artifactName: 'production' 
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))  
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

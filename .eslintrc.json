@@ -5,7 +5,8 @@
     "es6": true
   },
   "extends": [
-    "react-app"
+    "react-app",
+    "plugin:security/recommended-legacy"
   ],
-  "plugins": ["react"]
+  "plugins": ["react", "security"]
 }

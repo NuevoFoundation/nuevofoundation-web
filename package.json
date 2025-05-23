@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.26.10",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
@@ -17,7 +18,6 @@
     "@types/react-table": "^6.8.5",
     "@types/styled-components": "^5.1.26",
     "emailjs-com": "^2.2.4",
-    "env-cmd": "^8.0.2",
     "handlebars": "^4.7.7",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
@@ -39,7 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:staging": "env-cmd .env.staging npm run build",
+    "build:staging": "react-scripts build",
     "test-ci": "CI=true react-scripts test"
   },
   "devDependencies": {
@@ -50,13 +50,16 @@
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@types/uuid": "^3.4.4",
-    "@typescript-eslint/parser": "^5.38.0",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint-plugin-security": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^3.3.3333",
-    "uuid": "^3.3.2",
-    "react-scripts": "^5.0.1"
+    "uuid": "^3.3.2"
   },
   "engines": {
     "node": "14.x"
