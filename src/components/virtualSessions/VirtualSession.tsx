@@ -163,6 +163,7 @@ export class VirtualSession extends React.Component<RouteComponentProps<IVirtual
           <PageWrapper >
             <Title>Select time preference</Title>
             <TimePreferences>
+              {/* eslint-disable-next-line security/detect-object-injection */}
               {timePreferences!.map((timePreference?: string, key?: number) => {
                 return <TimePreference key={key}>
                   <TimeWeekday>{DateFormattingHelper.formatToTimeDay(timePreference)}</TimeWeekday>

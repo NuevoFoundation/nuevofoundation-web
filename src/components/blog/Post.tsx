@@ -68,6 +68,7 @@ export class Post extends React.Component<
     var images = blogPostDocument!.getElementsByTagName("img");
 
     for (var i = 0; i < images.length; i++) {
+      // eslint-disable-next-line security/detect-object-injection
       images[i].className += " img-responsive";
     }
     return;
