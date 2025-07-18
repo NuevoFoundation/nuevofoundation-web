@@ -19,7 +19,8 @@ import {
   faLinkedin,
   faYoutube,
   faSpotify,
-  faGithub
+  faGithub,
+  faStore
 } from "@fortawesome/free-brands-svg-icons";
 
 import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
@@ -253,6 +254,15 @@ export class Header extends React.Component<IHeaderProps> {
                       href="https://github.com/NuevoFoundation"
                   >
                     <FontAwesomeIcon icon={faGithub} className={"fa-1x"} />
+                  </AboveHeaderLink>
+                </AboveHeaderItem>
+                 <AboveHeaderItem>
+                  <AboveHeaderLink
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.stickermule.com/nuevofoundation"
+                  >
+                    <FontAwesomeIcon icon={faStore} className={"fa-1x"} />
                   </AboveHeaderLink>
                 </AboveHeaderItem>
                 <AboveHeaderItem>
