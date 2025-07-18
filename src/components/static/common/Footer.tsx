@@ -5,7 +5,8 @@ import {
   faXTwitter,
   faYoutube,
   faSpotify,
-  faGithub
+  faGithub,
+  faStore
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
@@ -84,6 +85,15 @@ export class Footer extends React.Component {
                       className={"footer-pics"}
                   >
                     <FontAwesomeIcon icon={faGithub} className={"fa-2x"} />
+                  </a>
+
+                  <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.stickermule.com/nuevofoundation"
+                      className={"footer-pics"}
+                  >
+                    <FontAwesomeIcon icon={faStore} className={"fa-2x"} />
                   </a>
                   
                 </div>
