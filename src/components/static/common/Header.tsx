@@ -19,9 +19,10 @@ import {
   faLinkedin,
   faYoutube,
   faSpotify,
-  faGithub,
-  faStore
+  faGithub
 } from "@fortawesome/free-brands-svg-icons";
+
+import { faStore } from "@fortawesome/free-solid-svg-icons";
 
 import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "../../../helpers/SessionStorageHelper";
