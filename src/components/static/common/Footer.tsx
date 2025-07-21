@@ -5,9 +5,9 @@ import {
   faXTwitter,
   faYoutube,
   faSpotify,
-  faGithub,
-  faStore
+  faGithub
 } from "@fortawesome/free-brands-svg-icons";
+import { faStore } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { Col, Grid, Row } from "react-bootstrap";
