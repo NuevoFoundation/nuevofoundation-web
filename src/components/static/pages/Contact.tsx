@@ -1,4 +1,4 @@
-import { send } from "emailjs-com";
+import emailjs from '@emailjs/browser';
 import * as React from "react";
 import {
   Col,
@@ -119,21 +119,23 @@ export class Contact extends React.Component<{}, IContactState> {
 
     const templateParams = {
       name: name,
-      reply: email,
+      email: email,
       subject: subject,
       message: message
     };
 
-    this.sendFeedback("template_nt0OyEy1", templateParams);
+    this.sendFeedback("template_7txsx24", templateParams);
   };
 
-  public sendFeedback(templateId: string, templateParams: any) {
-    send(
-      "mailgun",
-      templateId,
-      templateParams,
-      "user_WIHlUqAJII4vopia1uIUe"
-    ).then(() => {
+public sendFeedback(templateId: string, templateParams: any) {
+  emailjs.send(
+    "service_wdpyhgp",          // ✅ Your Service ID from EmailJS
+    templateId,                 // ✅ Template ID (e.g., "template_7txsx24")
+    templateParams,             // ✅ Must include { name, email, subject, message }
+    "3YzjZvDYoArRahjiw"         // ✅ Your Public Key
+  )
+    .then(() => {
+      console.log("EmailJS send success");
       this.setState({
         email: "",
         message: "",
@@ -141,8 +143,13 @@ export class Contact extends React.Component<{}, IContactState> {
         subject: "",
         submitted: true
       });
+    })
+    .catch((err) => {
+      console.error("EmailJS send failed:", err);
+      alert("Sorry, sending failed. Check console for details.");
     });
-  }
+}
+
 
   public render() {
     return (

@@ -27,6 +27,7 @@ import { JwtTokenHelper } from "./helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "./helpers/SessionStorageHelper";
 import { MemberAccount } from "./components/member/MemberAccount";
 import { MobileNav } from "./components/static/common/MobileNav";
+import { TestEmail } from "./components/TestEmail";
 import styled from "styled-components";
 import "./assets/stylesheets/MobileNav.css";
 
@@ -122,6 +123,7 @@ class App extends React.Component<{}, AppState> {
                 <Route exact={true} path={Const.BlogPage} component={Blog} />
                 <Route exact={true} path={Const.BlogPost} component={Post} />
                 <Route exact={true} path={Const.ContactPage} component={Contact} />
+                <Route exact={true} path="/test-email" component={TestEmail} />
                 <Route exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />
                 <Route exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
                 {/* <Route component={NoMatch} /> */}
