@@ -13,7 +13,7 @@ export class DateFormattingHelper {
     if (time === undefined) {
       return "";
     }
-    const options = {
+    const options: Intl.DateTimeFormatOptions = {
       weekday: "short",
       hour: "numeric",
       minute: "numeric",
@@ -27,7 +27,7 @@ export class DateFormattingHelper {
     if (time === undefined) {
       return "";
     }
-    const options = { month: "short", day: "numeric" };
+    const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" };
     const date = new Date(time).toLocaleDateString("en-us", options);
     return date;
   }

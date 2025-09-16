@@ -77,7 +77,7 @@ export class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
     }
     catch (e) {
       this.setState({
-        validationMessage: e.message
+        validationMessage: e instanceof Error ? e.message : 'An error occurred'
       })
     }
   }

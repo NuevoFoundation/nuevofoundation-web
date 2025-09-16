@@ -83,7 +83,7 @@ export class RegistrationForm extends React.Component<RegistrationFormProps, Reg
     }
     catch (e) {
       this.setState({
-        validationMessage: e.message
+        validationMessage: e instanceof Error ? e.message : 'An error occurred'
       })
     }
   }
