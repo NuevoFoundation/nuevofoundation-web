@@ -55,6 +55,8 @@
     "cross-env": "^10.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-watch-typeahead": "^3.0.1",
     "react-scripts": "^5.0.1",
     "typescript": "^3.3.3333",
     "uuid": "^3.3.2"
@@ -70,5 +72,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(undici|@emailjs|@babel)/)"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
+  }
 }
