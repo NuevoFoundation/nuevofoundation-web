@@ -40,7 +40,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:staging": "env-cmd .env.staging npm run build",
-    "test-ci": "CI=true react-scripts test"
+    "test-ci": "cross-env CI=true react-scripts test --watchAll=false --passWithNoTests"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.4",
@@ -52,6 +52,7 @@
     "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "cross-env": "^10.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "react-scripts": "^5.0.1",
