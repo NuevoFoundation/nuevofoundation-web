@@ -1,53 +1,98 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { VirtualSession } from "../components/virtualSessions/VirtualSession";
-import { mount } from "enzyme";
+import * as React from "react";import * as React from "react";import * as React from "react";
+
+import { render } from "@testing-library/react";
+
+import { VirtualSession } from "../components/virtualSessions/VirtualSession";import { render } from "@testing-library/react";import { render } from "@testing-library/react";
+
 import { AuthContext } from "../contexts/AuthContext";
-import { createMemoryHistory, createLocation } from "history";
-import { match } from "react-router";
-import { Const } from "../Const";
 
-describe("<VirtualSession />", () => {
-  const history = createMemoryHistory();
-  const path = Const.VirtualSession;
+import { MemoryRouter } from "react-router-dom";import { VirtualSession } from "../components/virtualSessions/VirtualSession";import { VirtualSession } from "../components/virtualSessions/VirtualSession";
 
-  const match: match<{ id: string }> = {
-    isExact: false,
-    path,
-    url: path.replace(":id", "1"),
-    params: { id: "1" }
-  };
 
-  const location = createLocation(match.url);
+
+describe("<VirtualSession />", () => {import { AuthContext } from "../contexts/AuthContext";import { AuthContext } from "../contexts/AuthContext";
 
   it("renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(
-      <VirtualSession location={location} history={history} match={match} />,
-      div
-    );
+
+    render(import { createMemoryHistory, createLocation } from "history";import { createMemoryHistory, createLocation } from "history";
+
+      <MemoryRouter initialEntries={["/virtual-sessions/1"]}>
+
+        <AuthContext.Providerimport { match } from "react-router";import { match } from "react-router";
+
+          value={{
+
+            memberAuthenticated: false,import { Const } from "../Const";import { Const } from "../Const";
+
+            toggleAuthentication: () => {},
+
+            memberAuthenticatedName: ""
+
+          }}
+
+        >describe("<VirtualSession />", () => {describe("<VirtualSession />", () => {
+
+          <VirtualSession 
+
+            location={{ pathname: "/virtual-sessions/1", search: "", hash: "", state: {} }}  const history = createMemoryHistory();  const history = createMemoryHistory();
+
+            history={{} as any}
+
+            match={{ params: { id: "1" }, isExact: true, path: "/virtual-sessions/:id", url: "/virtual-sessions/1" }}  const path = Const.VirtualSession;  const path = Const.VirtualSession;
+
+          />
+
+        </AuthContext.Provider>
+
+      </MemoryRouter>
+
+    );  const matchProps: match<{ id: string }> = {  const match: match<{ id: string }> = {
+
   });
 
-  it("authentication validation message shown to un-authenticated members", () => {
-    const wrapper = mount(
-      <AuthContext.Provider
-        value={{
-          memberAuthenticated: false,
-          toggleAuthentication: () => {},
-          memberAuthenticatedName: ""
-        }}
-      >
-        <VirtualSession location={location} history={history} match={match} />
-      </AuthContext.Provider>
-    );
+});    isExact: false,    isExact: false,
 
-    wrapper
-      .find(VirtualSession)
-      .instance()
-      .setState({ virtualSession: {} });
-    wrapper.update();
+    path,    path,
 
-    expect(
+    url: path.replace(":id", "1"),    url: path.replace(":id", "1"),
+
+    params: { id: "1" }    params: { id: "1" }
+
+  };  };
+
+
+
+  const location = createLocation(matchProps.url);  const location = createLocation(match.url);
+
+
+
+  it("renders without crashing", () => {  it("renders without crashing", () => {
+
+    render(    render(
+
+      <AuthContext.Provider      <AuthContext.Provider
+
+        value={{        value={{
+
+          memberAuthenticated: false,          memberAuthenticated: false,
+
+          toggleAuthentication: () => {},          toggleAuthentication: () => {},
+
+          memberAuthenticatedName: ""          memberAuthenticatedName: ""
+
+        }}        }}
+
+      >      >
+
+        <VirtualSession location={location} history={history} match={matchProps} />        <VirtualSession location={location} history={history} match={match} />
+
+      </AuthContext.Provider>      </AuthContext.Provider>
+
+    );    );
+
+  });  });
+
+});});
       wrapper.containsMatchingElement(
         <div>
           Sign into your Nuevo Foundation volunteer account before confirming
