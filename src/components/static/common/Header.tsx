@@ -143,12 +143,14 @@ const StyledSpan = styled.span`
   cursor: pointer;
 `;
 
-interface IHeaderProps extends RouteComponentProps {
+interface IHeaderProps {
   hamburgerMenuOpen: boolean;
   handleHamburgerIconClick: () => void;
 }
 
-export class Header extends React.Component<IHeaderProps> {
+interface IHeaderPropsWithRouter extends IHeaderProps, RouteComponentProps {}
+
+export class Header extends React.Component<IHeaderPropsWithRouter> {
   public renderNavItems(): JSX.Element[] {
     return NavItems.map((navItem: INavItem, index: number) => {
       return (
@@ -331,4 +333,5 @@ export class Header extends React.Component<IHeaderProps> {
   }
 }
 
-export default withRouter(Header)
+const HeaderWithRouter = withRouter(Header);
+export default HeaderWithRouter as React.ComponentType<IHeaderProps>;
