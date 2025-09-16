@@ -112,6 +112,7 @@ class App extends React.Component<{}, AppState> {
           <div className={mobileNavVisible ? 'app-brightness' : ''}>
             <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
               <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
+              {/* @ts-ignore - React Router v5 Switch component compatibility with TypeScript 4.9 */}
               <Switch>
                 <Route exact={true} path={Const.RootPage} component={Home} />
                 <Route exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />
