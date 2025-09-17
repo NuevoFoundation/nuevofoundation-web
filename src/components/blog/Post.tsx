@@ -76,8 +76,8 @@ export class Post extends React.Component<
   public render() {
     const { post } = this.state;
     return (
-      <Grid fluid={true}>
-        <Row>
+      React.createElement(Grid as any, { fluid: true }, [
+        <Row key="row">
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <PostWrapper id={"BlogPostDocument"}>
               <BlogPostItem>
@@ -93,7 +93,7 @@ export class Post extends React.Component<
             </PostWrapper>
           </Col>
         </Row>
-      </Grid>
+      ])
     );
   }
 }
