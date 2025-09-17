@@ -50,14 +50,6 @@ jobs:
       versionSpec: '22.x'
     displayName: 'Install Node.js'
 
-  - task: Cache@2
-    displayName: 'Cache npm dependencies'
-    inputs:
-      key: 'npm | "$(Agent.OS)" | package-lock.json'
-      restoreKeys: |
-        npm | "$(Agent.OS)"
-      path: ~/.npm
-
   - script: |
       npm ci --legacy-peer-deps
     displayName: 'npm ci (clean install)'
