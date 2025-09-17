@@ -111,21 +111,23 @@ class App extends React.Component<{}, AppState> {
           <MobileNav visible={mobileNavVisible} handleMenuClose={this.handleHamburgerIconClick} />
           <div className={mobileNavVisible ? 'app-brightness' : ''}>
             <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
-              <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
-              {React.createElement(Switch as any, {}, [
-                <Route key="home" exact={true} path={Const.RootPage} component={Home} />,
-                <Route key="whatwedo" exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />,
-                <Route key="virtual" path={Const.VirtualSessionPage} component={VirtualSessions} />,
-                <Route key="members" path={Const.MembersAccount} component={MemberAccount} />,
-                <Route key="about" exact={true} path={Const.AboutUsPage} component={AboutUs} />,
-                <Route key="support" exact={true} path={Const.SupportUsPage} component={SupportUs} />,
-                <Route key="blog" exact={true} path={Const.BlogPage} component={Blog} />,
-                <Route key="post" exact={true} path={Const.BlogPost} component={Post} />,
-                <Route key="contact" exact={true} path={Const.ContactPage} component={Contact} />,
-                <Route key="involved" exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />,
-                <Route key="coming" exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
-              ])}
-              <Footer />
+              <React.Fragment>
+                <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
+                {React.createElement(Switch as any, {}, [
+                  <Route key="home" exact={true} path={Const.RootPage} component={Home} />,
+                  <Route key="whatwedo" exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />,
+                  <Route key="virtual" path={Const.VirtualSessionPage} component={VirtualSessions} />,
+                  <Route key="members" path={Const.MembersAccount} component={MemberAccount} />,
+                  <Route key="about" exact={true} path={Const.AboutUsPage} component={AboutUs} />,
+                  <Route key="support" exact={true} path={Const.SupportUsPage} component={SupportUs} />,
+                  <Route key="blog" exact={true} path={Const.BlogPage} component={Blog} />,
+                  <Route key="post" exact={true} path={Const.BlogPost} component={Post} />,
+                  <Route key="contact" exact={true} path={Const.ContactPage} component={Contact} />,
+                  <Route key="involved" exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />,
+                  <Route key="coming" exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
+                ])}
+                <Footer />
+              </React.Fragment>
             </AppContainer>
           </div>
         </AuthContext.Provider>
