@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import ReactTable from 'react-table';
-import 'react-table/react-table.css';
+import { Table } from "react-bootstrap";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { JwtTokenHelper } from "../../helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "../../helpers/SessionStorageHelper";
@@ -38,23 +37,27 @@ export class MemberAccount extends React.Component<{}, MemberAccountState> {
     })
   };
   public render() {
-    const columns = [{
-      Header: 'Volunteer',
-      accessor: 'volunteerId'
-    },
-    {
-      Header: 'Time Scheduled',
-      accessor: 'timePreferenceSelected'
-    }];
     return (
       <PageWrapper>
         <SessionsWrappper>
           <h3>Past Sessions</h3>
           <PastSessionsWrapper>
-            {React.createElement(ReactTable as any, {
-              data: this.state?.virtualSessions || [],
-              columns: columns
-            })}
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Volunteer</th>
+                  <th>Time Scheduled</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state?.virtualSessions?.map((session, index) => (
+                  <tr key={index}>
+                    <td>{session.volunteerId}</td>
+                    <td>{session.timePreferenceSelected}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
           </PastSessionsWrapper>
         </SessionsWrappper>
       </PageWrapper>
