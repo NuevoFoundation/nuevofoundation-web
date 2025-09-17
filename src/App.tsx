@@ -114,17 +114,17 @@ class App extends React.Component<{}, AppState> {
               <React.Fragment>
                 <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
                 {React.createElement(Switch as any, {}, [
-                  <Route key="home" exact={true} path={Const.RootPage} component={Home} />,
-                  <Route key="whatwedo" exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />,
-                  <Route key="virtual" path={Const.VirtualSessionPage} component={VirtualSessions} />,
-                  <Route key="members" path={Const.MembersAccount} component={MemberAccount} />,
-                  <Route key="about" exact={true} path={Const.AboutUsPage} component={AboutUs} />,
-                  <Route key="support" exact={true} path={Const.SupportUsPage} component={SupportUs} />,
-                  <Route key="blog" exact={true} path={Const.BlogPage} component={Blog} />,
-                  <Route key="post" exact={true} path={Const.BlogPost} component={Post} />,
-                  <Route key="contact" exact={true} path={Const.ContactPage} component={Contact} />,
-                  <Route key="involved" exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />,
-                  <Route key="coming" exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
+                  React.createElement(Route as any, { key: "home", exact: true, path: Const.RootPage, component: Home }),
+                  React.createElement(Route as any, { key: "whatwedo", exact: true, path: Const.WhatWeDoPage, component: WhatWeDo }),
+                  React.createElement(Route as any, { key: "virtual", path: Const.VirtualSessionPage, component: VirtualSessions }),
+                  React.createElement(Route as any, { key: "members", path: Const.MembersAccount, component: MemberAccount }),
+                  React.createElement(Route as any, { key: "about", exact: true, path: Const.AboutUsPage, component: AboutUs }),
+                  React.createElement(Route as any, { key: "support", exact: true, path: Const.SupportUsPage, component: SupportUs }),
+                  React.createElement(Route as any, { key: "blog", exact: true, path: Const.BlogPage, component: Blog }),
+                  React.createElement(Route as any, { key: "post", exact: true, path: Const.BlogPost, component: Post }),
+                  React.createElement(Route as any, { key: "contact", exact: true, path: Const.ContactPage, component: Contact }),
+                  React.createElement(Route as any, { key: "involved", exact: true, path: Const.GetInvolvedPage, component: GetInvolved }),
+                  React.createElement(Route as any, { key: "coming", exact: true, path: Const.ComingSoonPage, component: ComingSoon })
                 ])}
                 <Footer />
               </React.Fragment>
