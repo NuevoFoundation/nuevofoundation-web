@@ -34,6 +34,6 @@ export class DateFormattingHelper {
 
   public static formatToMMDDYYYY(dateTime: string) {
     const d = new Date(dateTime);
-    return `${d.getMonth() + 1}/${d.getDay()}/${d.getFullYear()}`;
+    return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
   }
 }

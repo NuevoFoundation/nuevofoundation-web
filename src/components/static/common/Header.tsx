@@ -1,8 +1,8 @@
 import { faBars, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { Col, Grid, Row } from "react-bootstrap";
-import { NavLink, RouteComponentProps } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
 import { ButtonCta } from "./ButtonCta";
@@ -10,7 +10,7 @@ import { AuthenticationModal } from "../../registration/AuthenticationModal";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Const } from "../../../Const";
 import { NavItems, INavItem } from "./NavItems";
-import { withRouter } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import {
   faFacebookF,
@@ -148,7 +148,9 @@ interface IHeaderProps {
   handleHamburgerIconClick: () => void;
 }
 
-interface IHeaderPropsWithRouter extends IHeaderProps, RouteComponentProps {}
+interface IHeaderPropsWithRouter extends IHeaderProps {
+  location: { pathname: string };
+}
 
 export class Header extends React.Component<IHeaderPropsWithRouter> {
   public renderNavItems(): JSX.Element[] {
@@ -192,7 +194,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
   public render() {
     return (
 
-        <Grid fluid={true}>
+        <Container fluid={true}>
           <Row>
             <Col xs={12}>
               <AboveHeaderContainer>
@@ -280,7 +282,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
             </Col>
           </Row>
           <Row>
-            <Col sm={12} xsHidden={true}>
+            <Col sm={12} className="d-none d-sm-block">
               <HeaderWrapper>
                 <StyledNavLink to={"/"}>
                   <NavLogo src={NuevoFoundationLogo} height={"60px"} />
@@ -307,7 +309,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
               </AuthContext.Consumer>
             </ButtonWrapper>
                 </Col> */}
-            <Col xs={12} smHidden={true} mdHidden={true} lgHidden={true}>
+            <Col xs={12} className="d-block d-sm-none">
               <Row>
                 <Col xs={10}>
                   <StyledNavLink to={"/"}>
@@ -328,10 +330,14 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
               </Row>
             </Col>
           </Row>
-        </Grid>
+        </Container>
     );
   }
 }
 
-const HeaderWithRouter = withRouter(Header);
-export default HeaderWithRouter as React.ComponentType<IHeaderProps>;
+function HeaderWithRouter(props: IHeaderProps) {
+  const location = useLocation();
+  return <Header {...props} location={location} />;
+}
+
+export default HeaderWithRouter;

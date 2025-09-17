@@ -1,13 +1,13 @@
 import * as React from "react";
-import { Col, Grid, Row } from "react-bootstrap";
-import { RouteComponentProps } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
 import { Const } from "../../Const";
 import ReactGA from "react-ga";
 
-interface PostParams {
+interface PostProps {
   id: string;
 }
 
@@ -40,14 +40,14 @@ const PostWrapper = styled.div`
   min-height: 500px;
 `;
 
-export class Post extends React.Component<
-  RouteComponentProps<PostParams>,
+class PostComponent extends React.Component<
+  PostProps,
   PostState
   > {
   public wordpressService = new ServiceResolver().WordpressService();
-  constructor(props: RouteComponentProps<PostParams>) {
+  constructor(props: PostProps) {
     super(props);
-    ReactGA.pageview(`${Const.BlogPost}-${this.props.match.params.id}`);
+    ReactGA.pageview(`${Const.BlogPost}-${this.props.id}`);
     this.state = {
       post: []
     };
@@ -56,7 +56,7 @@ export class Post extends React.Component<
 
   public async componentDidMount() {
     const response = await this.wordpressService.getPost(
-      this.props.match.params.id
+      this.props.id
     );
     this.setState({
       post: response
@@ -64,10 +64,10 @@ export class Post extends React.Component<
   }
 
   public addResponsiveClass() {
-    var blogPostDocument = document.getElementById("BlogPostDocument");
-    var images = blogPostDocument!.getElementsByTagName("img");
+    const blogPostDocument = document.getElementById("BlogPostDocument");
+    const images = blogPostDocument!.getElementsByTagName("img");
 
-    for (var i = 0; i < images.length; i++) {
+    for (let i = 0; i < images.length; i++) {
       images[i].className += " img-responsive";
     }
     return;
@@ -76,9 +76,9 @@ export class Post extends React.Component<
   public render() {
     const { post } = this.state;
     return (
-      React.createElement(Grid as any, { fluid: true }, [
+      React.createElement(Container as any, { fluid: true }, [
         <Row key="row">
-          <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+          <Col xs={10} sm={6} className="offset-1 offset-sm-3">
             <PostWrapper id={"BlogPostDocument"}>
               <BlogPostItem>
                 <BlogPostTitle>{post.title}</BlogPostTitle>
@@ -97,3 +97,9 @@ export class Post extends React.Component<
     );
   }
 }
+
+// Functional wrapper to provide useParams hook data to the class component
+export const Post: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  return <PostComponent id={id || ''} />;
+};

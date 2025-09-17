@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Post } from "./components/blog/Post";
 import { Footer } from "./components/static/common";
@@ -113,19 +113,19 @@ class App extends React.Component<{}, AppState> {
             <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
               <React.Fragment>
                 <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
-                {React.createElement(Switch as any, {}, [
-                  React.createElement(Route as any, { key: "home", exact: true, path: Const.RootPage, component: Home }),
-                  React.createElement(Route as any, { key: "whatwedo", exact: true, path: Const.WhatWeDoPage, component: WhatWeDo }),
-                  React.createElement(Route as any, { key: "virtual", path: Const.VirtualSessionPage, component: VirtualSessions }),
-                  React.createElement(Route as any, { key: "members", path: Const.MembersAccount, component: MemberAccount }),
-                  React.createElement(Route as any, { key: "about", exact: true, path: Const.AboutUsPage, component: AboutUs }),
-                  React.createElement(Route as any, { key: "support", exact: true, path: Const.SupportUsPage, component: SupportUs }),
-                  React.createElement(Route as any, { key: "blog", exact: true, path: Const.BlogPage, component: Blog }),
-                  React.createElement(Route as any, { key: "post", exact: true, path: Const.BlogPost, component: Post }),
-                  React.createElement(Route as any, { key: "contact", exact: true, path: Const.ContactPage, component: Contact }),
-                  React.createElement(Route as any, { key: "involved", exact: true, path: Const.GetInvolvedPage, component: GetInvolved }),
-                  React.createElement(Route as any, { key: "coming", exact: true, path: Const.ComingSoonPage, component: ComingSoon })
-                ])}
+                <Routes>
+                  <Route path={Const.RootPage} element={<Home />} />
+                  <Route path={Const.WhatWeDoPage} element={<WhatWeDo />} />
+                  <Route path={Const.VirtualSessionPage} element={<VirtualSessions />} />
+                  <Route path={Const.MembersAccount} element={<MemberAccount />} />
+                  <Route path={Const.AboutUsPage} element={<AboutUs />} />
+                  <Route path={Const.SupportUsPage} element={<SupportUs />} />
+                  <Route path={Const.BlogPage} element={<Blog />} />
+                  <Route path={Const.BlogPost} element={<Post />} />
+                  <Route path={Const.ContactPage} element={<Contact />} />
+                  <Route path={Const.GetInvolvedPage} element={<GetInvolved />} />
+                  <Route path={Const.ComingSoonPage} element={<ComingSoon />} />
+                </Routes>
                 <Footer />
               </React.Fragment>
             </AppContainer>

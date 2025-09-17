@@ -10,13 +10,13 @@ import {
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { Col, Grid, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import "../../../assets/stylesheets/Footer.css";
 
 export class Footer extends React.Component {
   public render() {
     return (
-        <Grid fluid={true}>
+        <Container fluid={true}>
           <Row>
             <Col xs={12}>
               <div className="App-footer">
@@ -104,7 +104,7 @@ export class Footer extends React.Component {
               </div>
             </Col>
           </Row>
-        </Grid>
+        </Container>
     );
   }
 }

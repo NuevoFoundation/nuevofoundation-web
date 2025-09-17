@@ -25,6 +25,7 @@ export interface JwtAuthToken {
 
 interface AuthenticationModalProps {
   toggleAuthentication: () => void;
+  children?: React.ReactNode;
 }
 
 interface AuthenticationModalState {

@@ -2,10 +2,8 @@ import emailjs from '@emailjs/browser';
 import * as React from "react";
 import {
   Col,
-  ControlLabel,
-  FormControl,
-  FormGroup,
-  Grid,
+  Form,
+  Container,
   Image,
   Row
 } from "react-bootstrap";
@@ -106,7 +104,7 @@ export class Contact extends React.Component<{}, IContactState> {
   public handleMessage = (e: any) => {
     this.setState({ message: e.target.value });
   };
-  public handleToggle = (e: any) => {
+  public handleToggle = (_e: any) => {
     this.setState({ submitted: false });
   }
 
@@ -156,18 +154,18 @@ public sendFeedback(templateId: string, templateParams: any) {
       <React.Fragment>
         <PageTitle title={"Contact us"} />
         <Background>
-          <Grid fluid={true}>
+          <Container fluid={true}>
             <Row>
               <Col xs={12}>
                 <Row>
-                  <Col sm={6} smOffset={3}>
+                  <Col sm={6} className="offset-sm-3">
                     {!this.state.submitted ? <form>
 
 
                       <FormTitle>Say hello!</FormTitle>
-                      <FormGroup controlId="formBasicText">
-                        <ControlLabel>Name</ControlLabel>
-                        <FormControl
+                      <Form.Group controlId="formBasicText">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
                           type="text"
                           name="name"
                           placeholder="Enter name"
@@ -175,8 +173,8 @@ public sendFeedback(templateId: string, templateParams: any) {
                           value={this.state.name}
                         />
                         <Space />
-                        <ControlLabel>Email</ControlLabel>
-                        <FormControl
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
                           type="email"
                           name="email"
                           placeholder="Enter valid email"
@@ -184,16 +182,16 @@ public sendFeedback(templateId: string, templateParams: any) {
                           value={this.state.email}
                         />
                         <Space />
-                        <ControlLabel>Subject</ControlLabel>
-                        <FormControl
+                        <Form.Label>Subject</Form.Label>
+                        <Form.Control
                           type="text"
                           placeholder="What are you interested in?"
                           onChange={this.handleSubject}
                           value={this.state.subject}
                         />
                         <Space />
-                        <FormControl
-                          type="textarea"
+                        <Form.Control
+                          as="textarea"
                           style={{ height: "150px" }}
                           placeholder="Enter message"
                           onChange={this.handleMessage}
@@ -209,7 +207,7 @@ public sendFeedback(templateId: string, templateParams: any) {
                         >
                           SEND
                       </button>
-                      </FormGroup>
+                      </Form.Group>
                     </form>
                       :
                       <ConfirmationContainer
@@ -222,12 +220,12 @@ public sendFeedback(templateId: string, templateParams: any) {
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs={10} xsOffset={1}>
+                  <Col xs={10} className="offset-1">
                     <hr
                       style={{ height: "10px", borderTop: "2px solid #5D5D5D" }}
                     />
                   </Col>
-                  <Col xs={11} xsOffset={1}>
+                  <Col xs={11} className="offset-1">
                     <ContactInfo>
                       The Nuevo Foundation is based in Seattle, Washington.
                     <br />
@@ -249,7 +247,7 @@ public sendFeedback(templateId: string, templateParams: any) {
                 </Row>
               </Col>
             </Row>
-          </Grid>
+          </Container>
         </Background>
       </React.Fragment>
     );

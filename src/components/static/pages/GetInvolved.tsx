@@ -6,12 +6,10 @@ import volunteer from "../../../assets/images/getinvolved/volunteers.png";
 import { PageTitle } from "../common/PageTitle";
 import {
   Col,
-  Grid,
+  Container,
   Row,
   Image, 
-  Button,
-  ListGroup,
-  ListGroupItem
+  ListGroup
 } from "react-bootstrap";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
@@ -49,7 +47,7 @@ const RoleHeader = styled.div`
     font-size: 1.75em;
 `;
 
-const RoleButton = styled(Button)`
+const RoleButton = styled.a`
     font-family: "Lato", sans-serif;
     color: black;
     background-color: #FCC600;
@@ -57,6 +55,13 @@ const RoleButton = styled(Button)`
     border: 2px solid black;
     padding: .5em;
     margin: 1em;
+    text-decoration: none;
+    display: inline-block;
+    
+    &:hover {
+        color: black;
+        text-decoration: none;
+    }
 `;
 
 const RoleItems = styled(ListGroup)`
@@ -128,17 +133,17 @@ export class GetInvolved extends React.Component {
       return (
         <Col xs={0} md={4} key={index}>
           <RolePic>
-            <Image src={role.img} alt={role.role} circle responsive />
+            <Image src={role.img} alt={role.role} roundedCircle fluid />
           </RolePic>
           <RoleContainer>
             <RoleHeader>{role.role}</RoleHeader>
             <RoleItems>
-              <ListGroupItem href="#">{role.optionOne}</ListGroupItem>
-              <ListGroupItem href="#">{role.optionTwo}</ListGroupItem>
-              <ListGroupItem href="#">{role.optionThree}</ListGroupItem>
-              <ListGroupItem href="#">
+              <ListGroup.Item href="#">{role.optionOne}</ListGroup.Item>
+              <ListGroup.Item href="#">{role.optionTwo}</ListGroup.Item>
+              <ListGroup.Item href="#">{role.optionThree}</ListGroup.Item>
+              <ListGroup.Item href="#">
               <RoleButton href={role.buttonLink} target="_blank">{role.buttonText}</RoleButton>
-              </ListGroupItem>
+              </ListGroup.Item>
             </RoleItems>
           </RoleContainer>
         </Col>
@@ -152,11 +157,11 @@ export class GetInvolved extends React.Component {
       <React.Fragment>
         <PageTitle title={"Get involved"} />
         <GetInvolvedContainer>
-          <Grid fluid={true}>
+          <Container fluid={true}>
             <Row>
               {this.roleList()}
             </Row>
-          </Grid>
+          </Container>
         </GetInvolvedContainer>
       </React.Fragment>
     );

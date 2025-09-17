@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Col, Grid, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Lottie from "react-lottie";
 import styled from "styled-components";
 import { jsonAnimation } from "../../../assets/animations/data";
@@ -318,7 +318,7 @@ export class Home extends React.Component<{}, StatProps> {
     const impactColors: string[] = ["#EBA300", "#00BED5", "#E13126"];
 
     return (
-      <Grid fluid={true}>
+      <Container fluid={true}>
         <AboveFoldContent>
           <Row>
             <Col xs={12} sm={12} md={6} lg={6}>
@@ -334,12 +334,10 @@ export class Home extends React.Component<{}, StatProps> {
             </Col>
             <Col
               xs={8}
-              xsOffset={4}
               sm={8}
-              smOffset={4}
               md={6}
-              mdOffset={0}
               lg={6}
+              className="offset-4 offset-sm-4 offset-md-0"
             >
               <Lottie
                 options={defaultOptions}
@@ -489,7 +487,7 @@ export class Home extends React.Component<{}, StatProps> {
           </LogoSection>
         </ContentSection>
 
-      </Grid>
+      </Container>
     );
   }
 }

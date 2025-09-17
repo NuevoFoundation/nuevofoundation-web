@@ -7,9 +7,8 @@ import { WordpressService, ApiService, AuthService } from "./";
 
 export class ServiceResolver {
   private UseMock: boolean =
-    !process.env.NODE_ENV ||
-    process.env.NODE_ENV === "development" ||
-    process.env.NODE_ENV === "test";
+    process.env.REACT_APP_USE_MOCK_DATA === "true" ||
+    (!process.env.NODE_ENV || process.env.NODE_ENV === "test");
 
   public WordpressService(): WordpressService | MockWordpressService {
     return this.UseMock ? new MockWordpressService() : new WordpressService();

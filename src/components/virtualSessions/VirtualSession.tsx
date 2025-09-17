@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ServiceResolver } from "../../services/ServiceResolver";
-import { RouteComponentProps } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { VirtualSessionInterface } from "../../models/VirtualSession";
 import styled from "styled-components";
 import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
@@ -85,7 +85,7 @@ const ActionButton = styled.div<{active: boolean}>`
     props.active ? "#000000" : "#666666"};
 `;
 
-interface IVirtualSessionParams {
+interface IVirtualSessionProps {
   id: string;
 }
 
@@ -97,9 +97,9 @@ interface IVirtualSessionState {
   actionButtonText: string;
 }
 
-export class VirtualSession extends React.Component<RouteComponentProps<IVirtualSessionParams>, IVirtualSessionState> {
+class VirtualSessionComponent extends React.Component<IVirtualSessionProps, IVirtualSessionState> {
   public apiService = new ServiceResolver().ApiService();
-  constructor(props: RouteComponentProps<IVirtualSessionParams>) {
+  constructor(props: IVirtualSessionProps) {
     super(props);
     this.state = {
       virtualSession: undefined,
@@ -111,7 +111,7 @@ export class VirtualSession extends React.Component<RouteComponentProps<IVirtual
   }
 
   public async componentDidMount() {
-    const virtualSession = await this.apiService.getVirtualSession(this.props.match.params.id);
+    const virtualSession = await this.apiService.getVirtualSession(this.props.id);
     const virtualSessionValid = virtualSession.volunteerId === "00000000-0000-0000-0000-000000000000";
     const timePreferences = [virtualSession.timePreferenceOne!, virtualSession.timePreferenceTwo!, virtualSession.timePreferenceThree!];
     this.setState({
@@ -140,7 +140,7 @@ export class VirtualSession extends React.Component<RouteComponentProps<IVirtual
     virtualSession!.timePreferenceSelected = timePreferences![preferenceSelected];
 
     try {
-      await this.apiService.updateVirtualSession(this.props.match.params.id, virtualSession!);
+      await this.apiService.updateVirtualSession(this.props.id, virtualSession!);
       this.setState({
         virtualSessionValid: false,
         actionButtonText: 'Confirmed'
@@ -196,3 +196,9 @@ export class VirtualSession extends React.Component<RouteComponentProps<IVirtual
     );
   }
 }
+
+// Functional wrapper to provide useParams hook data to the class component
+export const VirtualSession: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  return <VirtualSessionComponent id={id || ''} />;
+};

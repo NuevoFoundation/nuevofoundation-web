@@ -1,11 +1,36 @@
 {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true,
+    "jest": true
   },
   "extends": [
     "react-app"
   ],
-  "plugins": ["react"]
+  "rules": {
+    // TypeScript specific rules - warnings instead of errors
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    
+    // React specific rules  
+    "react/jsx-no-target-blank": ["warn", { "allowReferrer": true }],
+    
+    // General code quality rules - warnings instead of errors
+    "no-console": "warn",
+    "prefer-const": "warn",
+    "no-var": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

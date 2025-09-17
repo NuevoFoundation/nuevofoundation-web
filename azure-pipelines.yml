@@ -1,5 +1,6 @@
 # Node.js with React
 # Build a Node.js project that uses React.
+# Updated to Node.js 22.x for TypeScript 5.x and modern dependency compatibility
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -46,12 +47,20 @@ jobs:
 
   - task: NodeTool@0
     inputs:
-      versionSpec: '14.x'
+      versionSpec: '22.x'
     displayName: 'Install Node.js'
 
+  - task: Cache@2
+    displayName: 'Cache npm dependencies'
+    inputs:
+      key: 'npm | "$(Agent.OS)" | package-lock.json'
+      restoreKeys: |
+        npm | "$(Agent.OS)"
+      path: ~/.npm
+
   - script: |
-      npm install
-    displayName: 'npm install'
+      npm ci --legacy-peer-deps
+    displayName: 'npm ci (clean install)'
 
   #- script : | 
   #    ./node_modules/.bin/eslint src/**/*.{ts,tsx}

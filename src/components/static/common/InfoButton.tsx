@@ -20,6 +20,7 @@ interface IInfoButtonProps {
   borderColor?: string;
   backgroundColor?: string;
   textColor?: string;
+  children?: React.ReactNode;
 }
 
 export class InfoButton extends React.Component<IInfoButtonProps, {}> {

@@ -5,7 +5,7 @@ import "../../../assets/stylesheets/AboutUs.css";
 import backgroundImageWithNuvi from "../../../assets/images/2018_0814_Pattern_Adjusted.svg";
 
 import {
-  Grid,
+  Container,
 } from "react-bootstrap";
 import { PageTitle } from "../common/PageTitle";
 import { Const } from "../../../Const";
@@ -50,7 +50,7 @@ export class AboutUs extends React.Component {
   }
 
   teamMemberList() {
-    var Team: TeamMember[] = [
+    const Team: TeamMember[] = [
       {
         name: "Beatris Mendez Gandica",
         role: "CEO/Founder",
@@ -207,9 +207,9 @@ export class AboutUs extends React.Component {
       <React.Fragment>
         <PageTitle title={"Our team"} />
         <Background>
-          <Grid fluid={true}>
+          <Container fluid={true}>
             {this.teamMemberList()}
-          </Grid>
+          </Container>
         </Background>
       </React.Fragment>
     );

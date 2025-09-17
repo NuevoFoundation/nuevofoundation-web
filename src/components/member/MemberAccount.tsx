@@ -5,9 +5,7 @@ import 'react-table/react-table.css';
 import { ServiceResolver } from "../../services/ServiceResolver";
 import { JwtTokenHelper } from "../../helpers/JwtTokenHelper";
 import { SessionStorageHelper } from "../../helpers/SessionStorageHelper";
-import { VirtualSession } from "../virtualSessions";
 import { VirtualSessionInterface } from "../../models/VirtualSession";
-import { MemberInterface } from "../../models/Member";
 
 
 const PageWrapper = styled.div`
@@ -48,9 +46,8 @@ interface MemberAccountState {
 
 export class MemberAccount extends React.Component<{}, MemberAccountState> {
   public apiService = new ServiceResolver().ApiService();
-  virtualSessions: {}[] | undefined;
 
-  public async componentWillMount() {
+  public async componentDidMount() {
     const id = JwtTokenHelper.decodeMemberId(SessionStorageHelper.GetJwt()!.token);
     const allVirtualSessions = await this.apiService.getAllVirtualSessions(id);
     //const memberId = this.apiService.getMember(id);
@@ -69,16 +66,13 @@ export class MemberAccount extends React.Component<{}, MemberAccountState> {
     }];
     return (
       <PageWrapper>
-        <div>{ this.virtualSessions }</div>
         <SessionsWrappper>
           <h3>Past Sessions</h3>
           <PastSessionsWrapper>
-            <ReactTable
-            // TODO: change the way the data is represented in order for correct format of data var for table?
-            // virtual sessions don't appear
-            // format example: https://www.npmjs.com/package/react-table#example
-            data={this.virtualSessions}
-            columns={columns}/>
+            {React.createElement(ReactTable as any, {
+              data: this.state?.virtualSessions || [],
+              columns: columns
+            })}
           </PastSessionsWrapper>
         </SessionsWrappper>
       </PageWrapper>

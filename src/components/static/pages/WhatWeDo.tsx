@@ -11,7 +11,7 @@ import getInvolvedVirtualSession from "../../../assets/images/getinvolved/Virtua
 import "../../../assets/stylesheets/WhatWeDo.css";
 import {
   Col,
-  Grid,
+  Container,
   Row,
   Image,
   Button
@@ -122,7 +122,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
         <Col key={index} className="services">
           <Link to={`#${service.title}`} smooth>
             <div>
-              <Image src={service.icon} circle responsive alt={service.title} className="servicesLogo" />
+              <Image src={service.icon} roundedCircle fluid alt={service.title} className="servicesLogo" />
               {
                 isMobile ? <h3>{service.title}</h3> : <h2>{service.title}</h2>
               }
@@ -169,7 +169,7 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
                 </WorskshopAlignment>
               </Col>
               <Col md={6} xs={12} style={{ overflow: "hidden" }}>
-                <Image src={service.img} responsive alt={service.imgAltText} />
+                <Image src={service.img} fluid alt={service.imgAltText} />
               </Col>
             </Row>
           </Col>
@@ -185,13 +185,13 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
 
         <Background>
           <PageTitle title={"What we do"} />
-          <Grid fluid={true}>
+          <Container fluid={true}>
             <Row className="services">
               {this.serviceList(isMobile)}
             </Row>
 
             {this.serviceDescription(isMobile)}
-          </Grid>
+          </Container>
         </Background>
       );
     }
@@ -200,13 +200,13 @@ export class WhatWeDo extends React.Component<{}, { width: number }>  {
       <React.Fragment>
         <PageTitle title={"What we do"} />
         <Background>
-          <Grid fluid={true}>
+          <Container fluid={true}>
             <Row className="services">
               {this.serviceList(isMobile)}
             </Row>
 
             {this.serviceDescription(isMobile)}
-          </Grid>
+          </Container>
         </Background>
       </React.Fragment>
     );
