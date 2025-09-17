@@ -12,6 +12,7 @@
     "@types/react-router-hash-link": "^1.2.1",
     "@types/react-table": "^6.8.5",
     "bootstrap": "^5.3.8",
+    "dotenv-cli": "^10.0.0",
     "env-cmd": "^11.0.0",
     "handlebars": "^4.7.7",
     "react": "^18.3.1",
@@ -34,7 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:staging": "env-cmd .env.staging npm run build",
+    "build:staging": "dotenv -e .env.staging npm run build",
+    "build:production": "dotenv -e .env.production npm run build",
     "test-ci": "cross-env CI=true react-scripts test --watchAll=false --passWithNoTests"
   },
   "devDependencies": {

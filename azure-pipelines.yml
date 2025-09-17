@@ -72,7 +72,7 @@ jobs:
 
   - script: |
       npm run "$(stageBuildConfiguration)"
-    displayName: 'npm run optimized $(stageBuildConfiguration)'
+    displayName: 'npm run $(stageBuildConfiguration) - staging build'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -92,7 +92,7 @@ jobs:
 
   - script: |
       npm run "$(productionBuildConfiguration)"
-    displayName: 'npm run optimized $(productionBuildConfiguration)'
+    displayName: 'npm run $(productionBuildConfiguration) - production build'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
