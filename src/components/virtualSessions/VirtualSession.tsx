@@ -174,7 +174,7 @@ class VirtualSessionComponent extends React.Component<IVirtualSessionProps, IVir
               })}
             </TimePreferences>
             <AuthContext.Consumer>
-              {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+              {({ memberAuthenticated, toggleAuthentication: _toggleAuthentication, memberAuthenticatedName: _memberAuthenticatedName }) => (
                 <React.Fragment>
                   <ConfirmSection>
                     <ConfirmButton disabled={!virtualSessionValid || !memberAuthenticated} onClick={this.handleConfirmClick}>{actionButtonText}</ConfirmButton>

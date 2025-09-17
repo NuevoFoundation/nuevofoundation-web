@@ -4,15 +4,15 @@ import { authenticationResponse } from "./responses/authentication";
 import { JwtAuthToken } from "../components/registration/AuthenticationModal";
 
 export class MockAuthService {
-  public login(loginForm: LoginFormInterface): Promise<any> {
+  public login(_loginForm: LoginFormInterface): Promise<any> {
     return Promise.resolve(authenticationResponse);
   }
 
-  public register(registration: RegistrationFormInterface): Promise<any> {
+  public register(_registration: RegistrationFormInterface): Promise<any> {
     return Promise.resolve(authenticationResponse);
   }
 
-  public async refreshSession(jwtAuthToken: JwtAuthToken): Promise<any> {
+  public async refreshSession(_jwtAuthToken: JwtAuthToken): Promise<any> {
     return Promise.resolve();
   }
 }

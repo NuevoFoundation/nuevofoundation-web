@@ -133,7 +133,7 @@ public sendFeedback(templateId: string, templateParams: any) {
     "3YzjZvDYoArRahjiw"         // ✅ Your Public Key
   )
     .then(() => {
-      console.log("EmailJS send success");
+      // Email sent successfully
       this.setState({
         email: "",
         message: "",
@@ -142,9 +142,9 @@ public sendFeedback(templateId: string, templateParams: any) {
         submitted: true
       });
     })
-    .catch((err) => {
-      console.error("EmailJS send failed:", err);
-      alert("Sorry, sending failed. Check console for details.");
+    .catch((_err) => {
+      // Email sending failed - could log to external service instead
+      alert("Sorry, sending failed. Please try again or contact us directly.");
     });
 }
 

@@ -21,24 +21,6 @@ const PastSessionsWrapper = styled.div`
   font-family: "Lato", sans-serif;
 `;
 
-const Select = styled.select`
-  background: transparent;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  height: 48px;
-  color: #2C3E50;
-  font-size: 13px;
-  display: block;
-  width: 200px;
-
-
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-`;
-
 interface MemberAccountState {
   virtualSessions: VirtualSessionInterface[];
   //MemberId: MemberInterface;

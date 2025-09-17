@@ -187,7 +187,7 @@ export class NewVirtualSession extends React.Component<{}, NewVirtualSessionStat
               <div className="col-12 text-center">
                 <p>To complete registration for a virtual session click the button below, we will reach out to our virtual session STEM field experts! You will hear from us soon!</p>
                 <AuthContext.Consumer>
-                  {({ memberAuthenticated, toggleAuthentication, memberAuthenticatedName }) => (
+                  {({ memberAuthenticated, toggleAuthentication: _toggleAuthentication, memberAuthenticatedName: _memberAuthenticatedName }) => (
                     <React.Fragment>
                       <SubmitButton type="submit" disabled={submitDisabled || !memberAuthenticated} onClick={this.handleSubmit}>Submit Virtual Session Request</SubmitButton>
                       <br />

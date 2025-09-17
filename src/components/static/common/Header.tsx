@@ -5,9 +5,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NuevoFoundationLogo from "../../../assets/logos/Logo_long.svg";
-import { ButtonCta } from "./ButtonCta";
-import { AuthenticationModal } from "../../registration/AuthenticationModal";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { Const } from "../../../Const";
 import { NavItems, INavItem } from "./NavItems";
 import { useLocation } from 'react-router-dom';
@@ -23,9 +20,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import { faStore } from "@fortawesome/free-solid-svg-icons";
-
-import { JwtTokenHelper } from "../../../helpers/JwtTokenHelper";
-import { SessionStorageHelper } from "../../../helpers/SessionStorageHelper";
 
 const AboveHeaderContainer = styled.div`
   display: flex;
@@ -114,11 +108,6 @@ const NavIcon = styled.span`
   padding-left: 10px;
 `;
 
-const ButtonWrapper = styled.div`
-  float: right;
-  padding: 0 20px 10px 0;
-`;
-
 const StyledExternalLink = styled.a`
 color: #535353;
   text-decoration: none;
@@ -137,10 +126,6 @@ const StyledNavLink = styled(NavLink)`
   &:active {
     text-decoration: none;
   }
-`;
-
-const StyledSpan = styled.span`
-  cursor: pointer;
 `;
 
 interface IHeaderProps {
