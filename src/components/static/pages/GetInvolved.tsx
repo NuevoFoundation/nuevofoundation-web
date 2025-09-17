@@ -16,7 +16,7 @@ import ReactGA from "react-ga";
 
 const GetInvolvedContainer = styled.div`
   padding-top: 50px;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
   background-color: #FCC600;
 `
 
@@ -131,18 +131,18 @@ export class GetInvolved extends React.Component {
   roleList() {
     return GetInvolved.Role.map((role, index) => {
       return (
-        <Col xs={0} md={4} key={index}>
+        <Col xs={12} md={4} key={index}>
           <RolePic>
             <Image src={role.img} alt={role.role} roundedCircle fluid />
           </RolePic>
           <RoleContainer>
             <RoleHeader>{role.role}</RoleHeader>
             <RoleItems>
-              <ListGroup.Item href="#">{role.optionOne}</ListGroup.Item>
-              <ListGroup.Item href="#">{role.optionTwo}</ListGroup.Item>
-              <ListGroup.Item href="#">{role.optionThree}</ListGroup.Item>
-              <ListGroup.Item href="#">
-              <RoleButton href={role.buttonLink} target="_blank">{role.buttonText}</RoleButton>
+              <ListGroup.Item>{role.optionOne}</ListGroup.Item>
+              <ListGroup.Item>{role.optionTwo}</ListGroup.Item>
+              <ListGroup.Item>{role.optionThree}</ListGroup.Item>
+              <ListGroup.Item>
+                <RoleButton href={role.buttonLink} target="_blank">{role.buttonText}</RoleButton>
               </ListGroup.Item>
             </RoleItems>
           </RoleContainer>

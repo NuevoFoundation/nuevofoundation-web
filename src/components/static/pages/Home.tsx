@@ -92,7 +92,7 @@ const CountUpComponentCountries = () => (
     <CountUp start={1} duration={5} end={30} redraw={true}>
       {({ countUpRef, start }) => (
         <VisibilitySensor onChange={start} delayedCall>
-          <div ref={countUpRef}></div>
+          <div ref={countUpRef as React.RefObject<HTMLDivElement>}></div>
         </VisibilitySensor>
       )}
     </CountUp>
