@@ -112,20 +112,19 @@ class App extends React.Component<{}, AppState> {
           <div className={mobileNavVisible ? 'app-brightness' : ''}>
             <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
               <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
-              <Switch>
-                <Route exact={true} path={Const.RootPage} component={Home} />
-                <Route exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />
-                <Route path={Const.VirtualSessionPage} component={VirtualSessions} />
-                <Route path={Const.MembersAccount} component={MemberAccount} />
-                <Route exact={true} path={Const.AboutUsPage} component={AboutUs} />
-                <Route exact={true} path={Const.SupportUsPage} component={SupportUs} />
-                <Route exact={true} path={Const.BlogPage} component={Blog} />
-                <Route exact={true} path={Const.BlogPost} component={Post} />
-                <Route exact={true} path={Const.ContactPage} component={Contact} />
-                <Route exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />
-                <Route exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
-                {/* <Route component={NoMatch} /> */}
-              </Switch>
+              {React.createElement(Switch as any, {}, [
+                <Route key="home" exact={true} path={Const.RootPage} component={Home} />,
+                <Route key="whatwedo" exact={true} path={Const.WhatWeDoPage} component={WhatWeDo} />,
+                <Route key="virtual" path={Const.VirtualSessionPage} component={VirtualSessions} />,
+                <Route key="members" path={Const.MembersAccount} component={MemberAccount} />,
+                <Route key="about" exact={true} path={Const.AboutUsPage} component={AboutUs} />,
+                <Route key="support" exact={true} path={Const.SupportUsPage} component={SupportUs} />,
+                <Route key="blog" exact={true} path={Const.BlogPage} component={Blog} />,
+                <Route key="post" exact={true} path={Const.BlogPost} component={Post} />,
+                <Route key="contact" exact={true} path={Const.ContactPage} component={Contact} />,
+                <Route key="involved" exact={true} path={Const.GetInvolvedPage} component={GetInvolved} />,
+                <Route key="coming" exact={true} path={Const.ComingSoonPage} component={ComingSoon} />
+              ])}
               <Footer />
             </AppContainer>
           </div>
