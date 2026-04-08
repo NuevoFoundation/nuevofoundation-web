@@ -163,6 +163,7 @@ class VirtualSessionComponent extends React.Component<IVirtualSessionProps, IVir
           <PageWrapper >
             <Title>Select time preference</Title>
             <TimePreferences>
+
               {timePreferences!.map((timePreference?: string, key?: number) => {
                 return <TimePreference key={key}>
                   <TimeWeekday>{DateFormattingHelper.formatToTimeDay(timePreference)}</TimeWeekday>
