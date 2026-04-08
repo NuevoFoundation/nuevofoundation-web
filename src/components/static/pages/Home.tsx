@@ -266,7 +266,7 @@ export class Home extends React.Component<{}, StatProps> {
     {
       title: "students",
       titleBoldened: "Diverse",
-      stat: "23,092",
+      stat: "23,093",
       description: "This means inclusively reflecting diversity of gender, ethnicity, age, and ability in our foundation, volunteers, speakers and workshop leaders."
     },
     {
@@ -401,10 +401,21 @@ export class Home extends React.Component<{}, StatProps> {
             </StatsSectionDescription>
           </StatsSectionInfo>
           <ImpactSectionStats>
+
             {Home.ImpactStats.map((stat: ImpactStatInterface, index: number) => {
+              // Securely validate index before using it to access impactColors
+              const safeIndex = Number.isInteger(index) && index >= 0 && index < impactColors.length ? index : 0;
               return (
-                <ImpactSectionStatsTitleInfo key={index}><ImpactSectionStatsTitle color={impactColors[index]}>{stat.stat}<span><span>{stat.titleBoldened}</span>{stat.title}</span></ImpactSectionStatsTitle>{stat.description}</ImpactSectionStatsTitleInfo>
-              )
+                <ImpactSectionStatsTitleInfo key={index}>
+                  <ImpactSectionStatsTitle color={impactColors[safeIndex]}>
+                    {stat.stat}
+                    <span>
+                      <span>{stat.titleBoldened}</span>{stat.title}
+                    </span>
+                  </ImpactSectionStatsTitle>
+                  {stat.description}
+                </ImpactSectionStatsTitleInfo>
+              );
             })}
           </ImpactSectionStats>
         </ContentSection>
