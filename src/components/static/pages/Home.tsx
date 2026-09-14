@@ -276,7 +276,7 @@ export class Home extends React.Component<{}, StatProps> {
       }
     };
 
-    const impactColors: string[] = ["#EBA300", "#00BED5", "#E13126"];
+    const impactColors: string[] = ["#BE8300", "#00A2B5", "#E13126"];
 
     return (
       <Container fluid={true}>
