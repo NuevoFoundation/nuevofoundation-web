@@ -16,10 +16,38 @@ const SupportUsContent = styled.div`
   font-size: 28px;
 `
 
+const DonationFormLink = styled.a`
+  margin-bottom: 24px;
+  color: #005ea8;
+  font-size: 18px;
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 4px;
+  }
+`;
+
+const DonationForm = styled.iframe`
+  max-width: 500px;
+  min-width: 310px;
+  max-height: none;
+  border: 0;
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 4px;
+  }
+`;
+
 export class SupportUs extends React.Component {
   constructor(props: {}) {
     super(props);
     ReactGA.pageview(Const.SupportUsPage);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    document.getElementById(Const.SiteHeaderStartId)?.focus();
   }
   
   public render() {
@@ -27,7 +55,21 @@ export class SupportUs extends React.Component {
       <React.Fragment>
         <PageTitle title={"Support us"} />
         <SupportUsContent>
-          <iframe src="https://donorbox.org/embed/nuevo-foundation-fundraising" height="685px" width="100%" style={{ maxWidth: "500px", minWidth: "310px", maxHeight: "none !important" }} seamless={true} name="donorbox" frameBorder="0" scrolling="no" title={"donorbox-iframe"}></iframe>
+          <DonationFormLink
+            href="https://donorbox.org/nuevo-foundation-fundraising"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open the donation form in a new tab
+          </DonationFormLink>
+          <DonationForm
+            src="https://donorbox.org/embed/nuevo-foundation-fundraising"
+            height="685px"
+            width="100%"
+            name="donorbox"
+            scrolling="no"
+            title="Nuevo Foundation donation form"
+          />
         </SupportUsContent>
       </React.Fragment>
     )
