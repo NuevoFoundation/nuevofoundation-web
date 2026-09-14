@@ -16,7 +16,7 @@ interface BlogPostsState {
   lastPage: number;
 }
 
-const ActionButton = styled.div<{ $active: boolean }>`
+const ActionButton = styled.button<{ $active: boolean }>`
   font-family: 'Lato', sans-serif;
   border: none;
   padding: 15px 32px;
@@ -29,6 +29,15 @@ const ActionButton = styled.div<{ $active: boolean }>`
     props.$active ? "#fcc600" : "#cccccc"};
   color: ${(props: ActionButtonProps) =>
     props.$active ? "#000000" : "#565656"};
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 3px;
+  }
 `;
 
 const PageIndicator = styled.div`
@@ -196,16 +205,20 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
         })}
         <PagingContainer>
           <ActionButton
+            type="button"
             onClick={this.getPreviousPage}
             $active={currentPage !== 1}
+            disabled={currentPage === 1}
           >
             Back
           </ActionButton>
           <PageIndicator>{`${currentPage} of ${isNaN(lastPage) ? " ∞" : lastPage}`}</PageIndicator>
 
           <ActionButton
+            type="button"
             onClick={this.getNextPage}
             $active={currentPage !== lastPage}
+            disabled={currentPage === lastPage}
           >
             Next
           </ActionButton>

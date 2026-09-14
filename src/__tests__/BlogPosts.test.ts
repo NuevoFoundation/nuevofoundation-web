@@ -1,6 +1,10 @@
 jest.mock("react-router-dom", () => ({ Link: "a" }));
 
+import * as React from "react";
+import { act, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { getBlogPostThumbnailAltText } from "../components/blog/BlogPosts";
+import { BlogPosts } from "../components/blog/BlogPosts";
 
 describe("Blog post thumbnail alt text", () => {
   it("uses WordPress alt text when provided", () => {
@@ -19,5 +23,28 @@ describe("Blog post thumbnail alt text", () => {
         post_thumbnail: {}
       })
     ).toBe("Nuevo & Microsoft");
+  });
+
+  it("includes active paging controls in the keyboard tab order", async () => {
+    const user = userEvent.setup();
+    const blogPosts = React.createRef<BlogPosts>();
+    render(React.createElement(BlogPosts, { ref: blogPosts }));
+
+    act(() => {
+      blogPosts.current?.setState({
+        found: 20,
+        posts: [],
+        currentPage: 1,
+        lastPage: 2
+      });
+    });
+
+    const back = screen.getByRole("button", { name: "Back" });
+    const next = screen.getByRole("button", { name: "Next" });
+    expect(back).toBeDisabled();
+    expect(next).toBeEnabled();
+
+    await user.tab();
+    expect(next).toHaveFocus();
   });
 });
