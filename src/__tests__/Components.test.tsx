@@ -6,6 +6,7 @@ import { Header } from "../components/static/common/Header";
 import { GetInvolved } from "../components/static/pages/GetInvolved";
 import { SupportUs } from "../components/static/pages/SupportUs";
 import { AboutUs } from "../components/static/pages/AboutUs";
+import { Contact } from "../components/static/pages/Contact";
 import { Const } from "../Const";
 
 jest.mock("react-router-dom", () => ({
@@ -30,6 +31,7 @@ describe("Components Tests", () => {
       </div>
     );
   });
+
 
 
 
@@ -121,6 +123,21 @@ describe("Components Tests", () => {
       .mockImplementation(() => undefined);
 
     new AboutUs({}).componentDidMount();
+
+    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
+    expect(scrollTo).toHaveBeenCalledWith(0, 0);
+    scrollTo.mockRestore();
+  });
+
+  it("resets Contact focus to the first header link", () => {
+    document.body.innerHTML = `
+      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
+    `;
+    const scrollTo = jest
+      .spyOn(window, "scrollTo")
+      .mockImplementation(() => undefined);
+
+    new Contact({}).componentDidMount();
 
     expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
     expect(scrollTo).toHaveBeenCalledWith(0, 0);
