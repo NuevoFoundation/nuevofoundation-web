@@ -3,6 +3,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Footer } from "../components/static/common/Footer";
 import { Header } from "../components/static/common/Header";
+import { GetInvolved } from "../components/static/pages/GetInvolved";
+import { Const } from "../Const";
 
 jest.mock("react-router-dom", () => ({
   NavLink: ({ children, to }: { children: React.ReactNode; to: string }) => (
@@ -11,6 +13,7 @@ jest.mock("react-router-dom", () => ({
   useLocation: () => ({ pathname: "/" })
 }));
 jest.mock("../assets/logos/Logo_long.svg", () => "logo.svg");
+jest.mock("react-ga", () => ({ pageview: jest.fn() }));
 
 describe("Components Tests", () => {
   it("renders basic components without errors", () => {
@@ -25,6 +28,7 @@ describe("Components Tests", () => {
       </div>
     );
   });
+
 
   it("renders keyboard-reachable header links and valid navigation list structure", async () => {
     const user = userEvent.setup();
@@ -70,4 +74,20 @@ describe("Components Tests", () => {
       expect(link).toHaveFocus();
     }
   });
+
+  it("resets Get Involved focus to the first header link", () => {
+    document.body.innerHTML = `
+      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
+    `;
+    const scrollTo = jest
+      .spyOn(window, "scrollTo")
+      .mockImplementation(() => undefined);
+
+    new GetInvolved({}).componentDidMount();
+
+    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
+    expect(scrollTo).toHaveBeenCalledWith(0, 0);
+    scrollTo.mockRestore();
+  });
+
 });

@@ -12,6 +12,7 @@ export class Const {
   public static MembersAccount: string = "/members/:id";
   public static GetInvolvedPage: string = "/get-involved";
   public static ComingSoonPage: string = "/coming-soon";
+  public static SiteHeaderStartId: string = "site-header-start";
 
   public static WordpressEndpoint?: string =
     process.env.REACT_APP_WORDPRESS_ENDPOINT;

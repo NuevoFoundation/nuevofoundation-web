@@ -97,6 +97,11 @@ export class GetInvolved extends React.Component {
     super(props);
     ReactGA.pageview(Const.GetInvolvedPage);
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    document.getElementById(Const.SiteHeaderStartId)?.focus();
+  }
   
   static readonly Role: Role[] = [
     {
