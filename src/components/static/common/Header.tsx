@@ -56,6 +56,7 @@ const HeaderWrapper = styled.div`
   font-family: "lato-semibold", sans-serif;
   color: #707070;
   font-size: 16px;
+  background-color: #ffffff;
 `;
 
 const NavLogo = styled.img`
@@ -66,6 +67,8 @@ const NavList = styled.ul`
   float: right;
   text-align: center;
   padding-top: 20px;
+  margin-bottom: 0;
+  background-color: #ffffff;
 `;
 
 const NavItem = styled.li`
@@ -109,21 +112,35 @@ const NavIcon = styled.span`
 `;
 
 const StyledExternalLink = styled.a`
-color: #535353;
+  display: inline-block;
+  color: #535353;
+  background-color: #ffffff;
   text-decoration: none;
 
-
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
   &:active {
+    color: #535353;
+    background-color: #ffffff;
     text-decoration: none;
   }
 `
 
 const StyledNavLink = styled(NavLink)`
+  display: inline-block;
   color: #535353;
+  background-color: #ffffff;
   text-decoration: none;
 
-
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
   &:active {
+    color: #535353;
+    background-color: #ffffff;
     text-decoration: none;
   }
 `;
