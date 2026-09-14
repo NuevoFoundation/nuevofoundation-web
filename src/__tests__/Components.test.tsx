@@ -26,7 +26,8 @@ describe("Components Tests", () => {
     );
   });
 
-  it("renders accessible header links and valid navigation list structure", () => {
+  it("renders keyboard-reachable header links and valid navigation list structure", async () => {
+    const user = userEvent.setup();
     render(
       <Header
         hamburgerMenuOpen={false}
@@ -41,6 +42,12 @@ describe("Components Tests", () => {
     expect(
       screen.getAllByRole("link", { name: "Nuevo Foundation home" })
     ).toHaveLength(2);
+
+    const headerLinks = screen.getAllByRole("link");
+    for (const link of headerLinks.slice(0, 10)) {
+      await user.tab();
+      expect(link).toHaveFocus();
+    }
 
     const navigationList = screen.getByRole("list");
     expect(Array.from(navigationList.children)).toHaveLength(7);

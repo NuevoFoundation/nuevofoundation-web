@@ -39,6 +39,12 @@ const AboveHeaderItem = styled.div`
 `;
 
 const AboveHeaderLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: 2px;
   color: #000000;
 
   &:focus,
@@ -48,6 +54,11 @@ const AboveHeaderLink = styled.a`
   &:active {
     text-decoration: none;
     color: #000000;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 2px;
   }
 `;
 
@@ -126,6 +137,11 @@ const StyledExternalLink = styled.a`
     background-color: #ffffff;
     text-decoration: none;
   }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 3px;
+  }
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -142,6 +158,11 @@ const StyledNavLink = styled(NavLink)`
     color: #535353;
     background-color: #ffffff;
     text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 3px;
   }
 `;
 
