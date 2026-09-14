@@ -30,6 +30,10 @@ describe("Blog post thumbnail alt text", () => {
     const blogPosts = React.createRef<BlogPosts>();
     render(React.createElement(BlogPosts, { ref: blogPosts }));
 
+    await act(async () => {
+      await Promise.resolve();
+    });
+
     act(() => {
       blogPosts.current?.setState({
         found: 20,
