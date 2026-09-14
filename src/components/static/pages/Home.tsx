@@ -315,13 +315,16 @@ export class Home extends React.Component<{}, StatProps> {
           </Row>
           <ChallengeLink
             to="/#challenge"
-            smooth
+            scroll={(element: HTMLElement) => {
+              element.scrollIntoView({ behavior: "smooth" });
+              element.focus();
+            }}
             aria-label="Skip to the challenge section"
           >
             <img src={ArrowCircle} alt="" />
           </ChallengeLink>
         </AboveFoldContent>
-        <ContentSection style={{ backgroundColor: "#FFBB00" }} id="challenge" >
+        <ContentSection style={{ backgroundColor: "#FFBB00" }} id="challenge" tabIndex={-1}>
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The challenge kids face</div>
