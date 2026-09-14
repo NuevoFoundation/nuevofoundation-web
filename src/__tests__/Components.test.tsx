@@ -1,5 +1,6 @@
 import * as React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Footer } from "../components/static/common/Footer";
 import { Header } from "../components/static/common/Header";
 
@@ -50,14 +51,16 @@ describe("Components Tests", () => {
     ).toBe(true);
   });
 
-  it("renders accessible footer social links", () => {
+  it("renders keyboard-reachable footer social links", async () => {
+    const user = userEvent.setup();
     render(<Footer />);
 
-    expect(
-      screen.getByRole("link", { name: "Nuevo Foundation on Instagram" })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Nuevo Foundation store" })
-    ).toBeInTheDocument();
+    const links = screen.getAllByRole("link");
+    expect(links).toHaveLength(8);
+
+    for (const link of links) {
+      await user.tab();
+      expect(link).toHaveFocus();
+    }
   });
 });

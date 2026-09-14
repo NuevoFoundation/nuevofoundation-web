@@ -28,7 +28,7 @@ const ActionButton = styled.div<{ $active: boolean }>`
   background-color: ${(props: ActionButtonProps) =>
     props.$active ? "#fcc600" : "#cccccc"};
   color: ${(props: ActionButtonProps) =>
-    props.$active ? "#000000" : "#666666"};
+    props.$active ? "#000000" : "#565656"};
 `;
 
 const PageIndicator = styled.div`
@@ -111,6 +111,17 @@ const Divider = styled.hr`
   border-top: 1px solid #707070;
 `;
 
+export const getBlogPostThumbnailAltText = (post: any): string => {
+  const thumbnailAltText = post.post_thumbnail?.alt?.trim();
+  if (thumbnailAltText) {
+    return thumbnailAltText;
+  }
+
+  const titleContainer = document.createElement("div");
+  titleContainer.innerHTML = post.title || "";
+  return titleContainer.textContent?.trim() || "Blog post thumbnail";
+};
+
 export class BlogPosts extends React.Component<{}, BlogPostsState> {
   public wordpressService = new ServiceResolver().WordpressService();
   constructor(props: {}) {
@@ -163,7 +174,10 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
             <React.Fragment key={post.ID}>
               <BlogPostItem>
                 {post.post_thumbnail &&
-                  <BlogPostImage src={post.post_thumbnail.URL} />
+                  <BlogPostImage
+                    src={post.post_thumbnail.URL}
+                    alt={getBlogPostThumbnailAltText(post)}
+                  />
                 }
                 <BlogPostDetails>
                   <StyledLink to={`/blog/post/${post.ID}`}>
