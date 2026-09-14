@@ -5,6 +5,7 @@ import { Footer } from "../components/static/common/Footer";
 import { Header } from "../components/static/common/Header";
 import { GetInvolved } from "../components/static/pages/GetInvolved";
 import { SupportUs } from "../components/static/pages/SupportUs";
+import { AboutUs } from "../components/static/pages/AboutUs";
 import { Const } from "../Const";
 
 jest.mock("react-router-dom", () => ({
@@ -107,6 +108,21 @@ describe("Components Tests", () => {
       screen.getByRole("link", { name: "Open the donation form in a new tab" })
     ).toBeInTheDocument();
     expect(screen.getByTitle("Nuevo Foundation donation form")).toBeInTheDocument();
+    expect(scrollTo).toHaveBeenCalledWith(0, 0);
+    scrollTo.mockRestore();
+  });
+
+  it("resets About Us focus to the first header link", () => {
+    document.body.innerHTML = `
+      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
+    `;
+    const scrollTo = jest
+      .spyOn(window, "scrollTo")
+      .mockImplementation(() => undefined);
+
+    new AboutUs({}).componentDidMount();
+
+    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
     expect(scrollTo).toHaveBeenCalledWith(0, 0);
     scrollTo.mockRestore();
   });

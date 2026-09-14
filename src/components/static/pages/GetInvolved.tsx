@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
+import { RouteFocusHelper } from "../../../helpers/RouteFocusHelper";
 
 const GetInvolvedContainer = styled.div`
   padding-top: 50px;
@@ -99,8 +100,7 @@ export class GetInvolved extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-    document.getElementById(Const.SiteHeaderStartId)?.focus();
+    RouteFocusHelper.focusSiteHeaderStart();
   }
   
   static readonly Role: Role[] = [

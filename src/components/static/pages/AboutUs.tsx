@@ -10,6 +10,7 @@ import {
 import { PageTitle } from "../common/PageTitle";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
+import { RouteFocusHelper } from "../../../helpers/RouteFocusHelper";
 
 const Background = styled.div`
   background-repeat: none;
@@ -43,6 +44,10 @@ export class AboutUs extends React.Component {
     super(props);
     this.flag = true;
     ReactGA.pageview(Const.AboutUsPage);
+  }
+
+  componentDidMount() {
+    RouteFocusHelper.focusSiteHeaderStart();
   }
 
   private formatImgPath(name: string) {
