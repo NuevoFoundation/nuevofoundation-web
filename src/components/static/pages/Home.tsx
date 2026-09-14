@@ -292,9 +292,9 @@ export class Home extends React.Component<{}, StatProps> {
               <Row>
                 <Col xs={11} style={{ padding: "60px 60px 60px 60px" }}>
                   <ContentWrapper>
-                    <div className="main-title">
+                    <h1 className="main-title">
                       Inspiring kids to be curious, confident, and courageous by discovering the world of STEM.
-                    </div>
+                    </h1>
                   </ContentWrapper>
                 </Col>
               </Row>

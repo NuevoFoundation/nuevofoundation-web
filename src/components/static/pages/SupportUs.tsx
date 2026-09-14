@@ -4,7 +4,6 @@ import "../../../assets/stylesheets/SupportUs.css";
 import { PageTitle } from "../common/PageTitle";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
-import { RouteFocusHelper } from "../../../helpers/RouteFocusHelper";
 
 const SupportUsContent = styled.div`
   display: flex;
@@ -46,10 +45,6 @@ export class SupportUs extends React.Component {
     ReactGA.pageview(Const.SupportUsPage);
   }
 
-  componentDidMount() {
-    RouteFocusHelper.focusSiteHeaderStart();
-  }
-  
   public render() {
     return (
       <React.Fragment>

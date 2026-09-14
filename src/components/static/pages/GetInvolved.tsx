@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import { Const } from "../../../Const";
 import ReactGA from "react-ga";
-import { RouteFocusHelper } from "../../../helpers/RouteFocusHelper";
 
 const GetInvolvedContainer = styled.div`
   padding-top: 50px;
@@ -99,10 +98,6 @@ export class GetInvolved extends React.Component {
     ReactGA.pageview(Const.GetInvolvedPage);
   }
 
-  componentDidMount() {
-    RouteFocusHelper.focusSiteHeaderStart();
-  }
-  
   static readonly Role: Role[] = [
     {
       role: "Teacher",

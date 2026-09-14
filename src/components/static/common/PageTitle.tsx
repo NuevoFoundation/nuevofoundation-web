@@ -27,7 +27,7 @@ export class PageTitle extends React.Component<PageTitleProps> {
     render() {
         return (
             <Container>
-                <Title>{this.props.title}</Title>
+                <Title tabIndex={-1}>{this.props.title}</Title>
             </Container>
         );
     }

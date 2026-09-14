@@ -1,19 +1,21 @@
 import * as React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Footer } from "../components/static/common/Footer";
 import { Header } from "../components/static/common/Header";
-import { GetInvolved } from "../components/static/pages/GetInvolved";
 import { SupportUs } from "../components/static/pages/SupportUs";
-import { AboutUs } from "../components/static/pages/AboutUs";
-import { Contact } from "../components/static/pages/Contact";
-import { Const } from "../Const";
+import {
+  RouteFocusManager,
+  RouteMainContent
+} from "../components/static/common/RouteFocusManager";
+
+let mockPathname = "/";
 
 jest.mock("react-router-dom", () => ({
   NavLink: ({ children, to }: { children: React.ReactNode; to: string }) => (
     <a href={to}>{children}</a>
   ),
-  useLocation: () => ({ pathname: "/" })
+  useLocation: () => ({ pathname: mockPathname })
 }));
 jest.mock("../assets/logos/Logo_long.svg", () => "logo.svg");
 jest.mock("react-ga", () => ({ pageview: jest.fn() }));
@@ -80,68 +82,89 @@ describe("Components Tests", () => {
     }
   });
 
-  it("resets Get Involved focus to the first header link", () => {
-    document.body.innerHTML = `
-      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
-    `;
+  it("offers header navigation or a jump to the new page heading", async () => {
+    const user = userEvent.setup();
     const scrollTo = jest
       .spyOn(window, "scrollTo")
       .mockImplementation(() => undefined);
 
-    new GetInvolved({}).componentDidMount();
+    const { rerender } = render(
+      <>
+        <RouteFocusManager />
+        <a href="#header-navigation">First header link</a>
+        <RouteMainContent>
+          <h1>Home</h1>
+          <a href="#first-action">First action</a>
+        </RouteMainContent>
+      </>
+    );
 
-    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
+    const skipLink = screen.getByRole("link", { name: "Skip to main content" });
+    await waitFor(() => expect(skipLink).toHaveFocus());
+
+    await user.tab();
+    expect(
+      screen.getByRole("link", { name: "First header link" })
+    ).toHaveFocus();
+
+    mockPathname = "/get-involved";
+    rerender(
+      <>
+        <RouteFocusManager />
+        <a href="#header-navigation">First header link</a>
+        <RouteMainContent>
+          <h1>Get involved</h1>
+          <a href="#first-action">First action</a>
+        </RouteMainContent>
+      </>
+    );
+
+    await waitFor(() => expect(skipLink).toHaveFocus());
+    await user.click(skipLink);
+
+    const newHeading = screen.getByRole("heading", {
+      name: "Get involved",
+      level: 1
+    });
+    await waitFor(() => expect(newHeading).toHaveFocus());
+    expect(newHeading).toHaveAttribute("tabindex", "-1");
     expect(scrollTo).toHaveBeenCalledWith(0, 0);
+
+    await user.tab();
+    expect(screen.getByRole("link", { name: "First action" })).toHaveFocus();
+    scrollTo.mockRestore();
+    mockPathname = "/";
+  });
+
+  it("uses the main landmark when skip navigation finds no heading", async () => {
+    const user = userEvent.setup();
+    const scrollTo = jest
+      .spyOn(window, "scrollTo")
+      .mockImplementation(() => undefined);
+
+    render(
+      <>
+        <RouteFocusManager />
+        <RouteMainContent>
+          <p>Loading page content</p>
+        </RouteMainContent>
+      </>
+    );
+
+    await user.click(
+      screen.getByRole("link", { name: "Skip to main content" })
+    );
+    await waitFor(() => expect(screen.getByRole("main")).toHaveFocus());
     scrollTo.mockRestore();
   });
 
-  it("resets Support Us focus to the first header link", () => {
-    document.body.innerHTML = `
-      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
-    `;
-    const scrollTo = jest
-      .spyOn(window, "scrollTo")
-      .mockImplementation(() => undefined);
-
+  it("renders the accessible Support Us donation options", () => {
     render(<SupportUs />);
 
-    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
     expect(
       screen.getByRole("link", { name: "Open the donation form in a new tab" })
     ).toBeInTheDocument();
     expect(screen.getByTitle("Nuevo Foundation donation form")).toBeInTheDocument();
-    expect(scrollTo).toHaveBeenCalledWith(0, 0);
-    scrollTo.mockRestore();
-  });
-
-  it("resets About Us focus to the first header link", () => {
-    document.body.innerHTML = `
-      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
-    `;
-    const scrollTo = jest
-      .spyOn(window, "scrollTo")
-      .mockImplementation(() => undefined);
-
-    new AboutUs({}).componentDidMount();
-
-    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
-    expect(scrollTo).toHaveBeenCalledWith(0, 0);
-    scrollTo.mockRestore();
-  });
-
-  it("resets Contact focus to the first header link", () => {
-    document.body.innerHTML = `
-      <a id="${Const.SiteHeaderStartId}" href="https://example.com">First header link</a>
-    `;
-    const scrollTo = jest
-      .spyOn(window, "scrollTo")
-      .mockImplementation(() => undefined);
-
-    new Contact({}).componentDidMount();
-
-    expect(screen.getByRole("link", { name: "First header link" })).toHaveFocus();
-    expect(scrollTo).toHaveBeenCalledWith(0, 0);
-    scrollTo.mockRestore();
   });
 
 });

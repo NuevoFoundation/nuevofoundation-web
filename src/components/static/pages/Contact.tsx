@@ -13,7 +13,6 @@ import nuviMail from "../../../assets/images/nuvimail.png"
 import ReactGA from 'react-ga';
 import "../../../assets/stylesheets/Contact.css";
 import { PageTitle } from "../common/PageTitle";
-import { RouteFocusHelper } from "../../../helpers/RouteFocusHelper";
 
 const Space = styled.div`
   padding-bottom: 10px;
@@ -89,10 +88,6 @@ export class Contact extends React.Component<{}, IContactState> {
       submitted: false
     };
     ReactGA.pageview(Const.ContactPage);
-  }
-
-  componentDidMount() {
-    RouteFocusHelper.focusSiteHeaderStart();
   }
 
   public handleName = (e: any) => {

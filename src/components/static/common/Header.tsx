@@ -213,7 +213,6 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
               <AboveHeaderContainer>
                 <AboveHeaderItem>
                   <AboveHeaderLink
-                      id={Const.SiteHeaderStartId}
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.instagram.com/nuevofoundation"
