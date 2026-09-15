@@ -27,8 +27,8 @@ export const RouteMainContent = styled.main.attrs({
   id: MainContentId,
   tabIndex: -1
 })`
-  &:focus,
-  h1:focus {
+  &:focus-visible,
+  h1:focus-visible {
     outline: 3px solid #005ea8;
     outline-offset: 4px;
   }
