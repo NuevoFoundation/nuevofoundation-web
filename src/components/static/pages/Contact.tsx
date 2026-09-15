@@ -214,7 +214,7 @@ public sendFeedback(templateId: string, templateParams: any) {
                         onClick={this.handleToggle}
                       >
                         <FormTitle>Your message has been sent!</FormTitle>
-                        <Image src={nuviMail} />
+                        <Image src={nuviMail} alt="" />
                       </ConfirmationContainer>
                     }
                   </Col>
