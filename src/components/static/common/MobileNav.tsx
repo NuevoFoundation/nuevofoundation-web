@@ -84,42 +84,37 @@ export class MobileNav extends React.Component<IMobileMenuProps> {
 
         <hr />
         <div>
-          {NavItems.map(navItem => {
-            return (
-              navItem.external ?
-                <StyledExternalLink href={navItem.link} key={navItem.link} onClick={this.props.handleMenuClose}>
-                  <MobileNavList>
-                    <li>
-                      {navItem.text}
-                      {navItem.dropdown && (
-                        <NavIcon>
-                          <FontAwesomeIcon
-                            icon={faChevronDown}
-                            className={"fa-sm"}
-                          />
-                        </NavIcon>
-                      )}
-                    </li>
-                  </MobileNavList>
-                </StyledExternalLink>
-                :
-                <StyledNavLink key={navItem.link} to={navItem.link} onClick={this.props.handleMenuClose}>
-                  <MobileNavList>
-                    <li>
-                      {navItem.text}
-                      {navItem.dropdown && (
-                        <NavIcon>
-                          <FontAwesomeIcon
-                            icon={faChevronDown}
-                            className={"fa-sm"}
-                          />
-                        </NavIcon>
-                      )}
-                    </li>
-                  </MobileNavList>
-                </StyledNavLink>
-            );
-          })}
+          <MobileNavList>
+            {NavItems.map(navItem => {
+              const content = (
+                <>
+                  {navItem.text}
+                  {navItem.dropdown && (
+                    <NavIcon>
+                      <FontAwesomeIcon
+                        icon={faChevronDown}
+                        className={"fa-sm"}
+                      />
+                    </NavIcon>
+                  )}
+                </>
+              );
+
+              return (
+                <li key={navItem.link}>
+                  {navItem.external ? (
+                    <StyledExternalLink href={navItem.link} onClick={this.props.handleMenuClose}>
+                      {content}
+                    </StyledExternalLink>
+                  ) : (
+                    <StyledNavLink to={navItem.link} onClick={this.props.handleMenuClose}>
+                      {content}
+                    </StyledNavLink>
+                  )}
+                </li>
+              );
+            })}
+          </MobileNavList>
         </div>
       </div>
     );
