@@ -28,7 +28,8 @@ const ActionButton = styled.div<{ $active: boolean }>`
   background-color: ${(props: ActionButtonProps) =>
     props.$active ? "#fcc600" : "#cccccc"};
   color: ${(props: ActionButtonProps) =>
-    props.$active ? "#000000" : "#666666"};
+    // #4d4d4d meets the 4.5:1 WCAG AA contrast minimum against the #cccccc disabled background.
+    props.$active ? "#000000" : "#4d4d4d"};
 `;
 
 const PageIndicator = styled.div`
@@ -113,6 +114,11 @@ const Divider = styled.hr`
 
 export class BlogPosts extends React.Component<{}, BlogPostsState> {
   public wordpressService = new ServiceResolver().WordpressService();
+
+  // WordPress titles can contain HTML entities/markup; decode to plain text for use as image alt text.
+  private static getPlainTextTitle(html: string): string {
+    return new DOMParser().parseFromString(html || "", "text/html").body.textContent || "";
+  }
   constructor(props: {}) {
     super(props);
 
@@ -163,7 +169,10 @@ export class BlogPosts extends React.Component<{}, BlogPostsState> {
             <React.Fragment key={post.ID}>
               <BlogPostItem>
                 {post.post_thumbnail &&
-                  <BlogPostImage src={post.post_thumbnail.URL} />
+                  <BlogPostImage
+                    src={post.post_thumbnail.URL}
+                    alt={`Thumbnail for blog post: ${BlogPosts.getPlainTextTitle(post.title)}`}
+                  />
                 }
                 <BlogPostDetails>
                   <StyledLink to={`/blog/post/${post.ID}`}>

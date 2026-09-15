@@ -84,8 +84,8 @@
       "node_modules/(?!(undici|@emailjs|@babel|@testing-library)/)"
     ],
     "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy"
+      "^react-router/dom$": "react-router/dist/development/dom-export.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",

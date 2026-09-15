@@ -276,7 +276,8 @@ export class Home extends React.Component<{}, StatProps> {
       }
     };
 
-    const impactColors: string[] = ["#EBA300", "#00BED5", "#E13126"];
+    // Darker NF gold and cyan meet 3:1 contrast for the 36px impact text on white.
+    const impactColors: string[] = ["#BE8300", "#00A2B5", "#E13126"];
 
     return (
       <Container fluid={true}>
