@@ -82,7 +82,7 @@ describe("Components Tests", () => {
     }
   });
 
-  it("offers header navigation or a jump to the new page heading", async () => {
+  it("stays visually hidden on initial load and moves focus to the new page heading on navigation", async () => {
     const user = userEvent.setup();
     const scrollTo = jest
       .spyOn(window, "scrollTo")
@@ -100,12 +100,10 @@ describe("Components Tests", () => {
     );
 
     const skipLink = screen.getByRole("link", { name: "Skip to main content" });
-    await waitFor(() => expect(skipLink).toHaveFocus());
-
-    await user.tab();
-    expect(
-      screen.getByRole("link", { name: "First header link" })
-    ).toHaveFocus();
+    // On first load nothing should be force-focused (so the skip link
+    // doesn't visibly pop up over the header on every page view).
+    expect(skipLink).not.toHaveFocus();
+    expect(screen.getByRole("heading", { level: 1 })).not.toHaveFocus();
 
     mockPathname = "/get-involved";
     rerender(
@@ -119,9 +117,6 @@ describe("Components Tests", () => {
       </>
     );
 
-    await waitFor(() => expect(skipLink).toHaveFocus());
-    await user.click(skipLink);
-
     const newHeading = screen.getByRole("heading", {
       name: "Get involved",
       level: 1
@@ -132,6 +127,11 @@ describe("Components Tests", () => {
 
     await user.tab();
     expect(screen.getByRole("link", { name: "First action" })).toHaveFocus();
+
+    // The skip link is still present and keyboard-reachable/clickable.
+    await user.click(skipLink);
+    await waitFor(() => expect(newHeading).toHaveFocus());
+
     scrollTo.mockRestore();
     mockPathname = "/";
   });

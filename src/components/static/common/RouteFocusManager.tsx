@@ -51,16 +51,25 @@ const focusMainContent = (): void => {
 
 export const RouteFocusManager: React.FC = () => {
   const location = useLocation();
-  const skipLinkRef = React.useRef<HTMLAnchorElement>(null);
+  const isInitialMount = React.useRef(true);
 
   React.useLayoutEffect(() => {
     window.scrollTo(0, 0);
-    skipLinkRef.current?.focus();
+
+    // Skip on first mount so we don't steal focus from the browser on
+    // initial page load. Only move focus for subsequent in-app navigations,
+    // so screen reader / keyboard users land on the new page's content
+    // instead of staying on stale focus from the previous page.
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    focusMainContent();
   }, [location.pathname]);
 
   return (
     <SkipLink
-      ref={skipLinkRef}
       href={`#${MainContentId}`}
       onClick={event => {
         event.preventDefault();
