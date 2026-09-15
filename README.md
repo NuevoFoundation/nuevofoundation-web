@@ -57,7 +57,7 @@ The Nuevo Foundation is dedicated to inspiring kids to be curious, confident, an
     │   ├── models               # objects used accross app, typically used as types for persistence to Nuevo API
     │   ├── services             # classes to make networks requests to Nuevo API like creating virtual session or fetch blogs from wordpress
     ├── .env.development         # Environment variables used during development
-    ├── .env.straging            # Environment variables used for staging
+    ├── .env.staging             # Environment variables used for staging
     ├── .env.production          # Environment variables used for production
     ├── Const.ts                 # Constants used accross app like API url or Google Analytics Tracking id
     ├── .eslintrc.json           # eslint configuration file

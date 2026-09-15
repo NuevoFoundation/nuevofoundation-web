@@ -94,12 +94,10 @@ Comprehensive modernization of the Nuevo Foundation website codebase, upgrading 
 ## 🔮 Future Upgrade Opportunities
 
 ### Available for Next Cycle
-- **React Router**: `6.30.1` → `7.9.1` (major API changes)
-- **React Table**: `6.10.3` → `7.8.0` (complete rewrite)
+- **React Router**: ✅ Completed — upgraded to `7.18.2` (was listed as a future opportunity; now shipped)
 - **React Core**: `18.3.1` → `19.x` (when stable)
 
 ### Dependencies with Known Issues
-- **react-table**: Version 6.x expects React 15-16, but works with React 18 using --legacy-peer-deps
 - **react-scripts**: Version 5.0.1 has peer dependency conflicts with TypeScript 5.x (resolved with --legacy-peer-deps)
 
 ## 🛡️ Security & Maintenance

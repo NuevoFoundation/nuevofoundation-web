@@ -4,13 +4,13 @@ Thank you for considering contributing to the Nuevo Foundation! Your contributio
 
 ## Code of Conduct
 
-Please read and follow our [Code of Conduct](link-to-code-of-conduct) to ensure a welcoming and inclusive environment for all contributors.
+Please read and follow our [Code of Conduct](/CODE_OF_CONDUCT.md) to ensure a welcoming and inclusive environment for all contributors.
 
 ## Getting Started
 
 ### Installing Dependencies
 
-- [Node JS](https://nodejs.org/en/download/) (Ensure you're using version 14)
+- [Node JS](https://nodejs.org/en/download/) (Ensure you're using version 22.x, matching the `engines` field in `package.json`)
 - NPM (included with Node JS installation)
 - Git 
 - Preferred Text Editor, [try VS Code](https://code.visualstudio.com/download)
