@@ -17,7 +17,7 @@ interface PostState {
 
 const BlogPostItem = styled.div``;
 
-const BlogPostTitle = styled.h2`
+const BlogPostTitle = styled.h1`
   color: #262626;
   font-family: "Lato", sans-serif;
   font-size: 28px;

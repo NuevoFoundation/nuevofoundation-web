@@ -39,6 +39,12 @@ const AboveHeaderItem = styled.div`
 `;
 
 const AboveHeaderLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: 2px;
   color: #000000;
 
   &:focus,
@@ -49,6 +55,11 @@ const AboveHeaderLink = styled.a`
     text-decoration: none;
     color: #000000;
   }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 2px;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -56,6 +67,7 @@ const HeaderWrapper = styled.div`
   font-family: "lato-semibold", sans-serif;
   color: #707070;
   font-size: 16px;
+  background-color: #ffffff;
 `;
 
 const NavLogo = styled.img`
@@ -66,6 +78,8 @@ const NavList = styled.ul`
   float: right;
   text-align: center;
   padding-top: 20px;
+  margin-bottom: 0;
+  background-color: #ffffff;
 `;
 
 const NavItem = styled.li`
@@ -109,22 +123,46 @@ const NavIcon = styled.span`
 `;
 
 const StyledExternalLink = styled.a`
-color: #535353;
+  display: inline-block;
+  color: #535353;
+  background-color: #ffffff;
   text-decoration: none;
 
-
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
   &:active {
+    color: #535353;
+    background-color: #ffffff;
     text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 3px;
   }
 `
 
 const StyledNavLink = styled(NavLink)`
+  display: inline-block;
   color: #535353;
+  background-color: #ffffff;
   text-decoration: none;
 
-
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
   &:active {
+    color: #535353;
+    background-color: #ffffff;
     text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 3px;
   }
 `;
 
@@ -140,40 +178,30 @@ interface IHeaderPropsWithRouter extends IHeaderProps {
 export class Header extends React.Component<IHeaderPropsWithRouter> {
   public renderNavItems(): JSX.Element[] {
     return NavItems.map((navItem: INavItem, index: number) => {
-      return (
-          navItem.external ?
-              <StyledExternalLink key={index} href={navItem.link}>{this.renderNavItem(navItem)}</StyledExternalLink>
-              :
-              <StyledNavLink key={index} to={navItem.link}>
-                {this.renderNavItem(navItem)}
-              </StyledNavLink>
+      const isActive = !navItem.external && navItem.link === this.props.location.pathname;
+      const content = (
+        <>
+          {navItem.text}
+          {navItem.dropdown && (
+            <NavIcon>
+              <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
+            </NavIcon>
+          )}
+          {isActive && <span />}
+        </>
+      );
+      const itemContent = navItem.external ? (
+        <StyledExternalLink href={navItem.link}>{content}</StyledExternalLink>
+      ) : (
+        <StyledNavLink to={navItem.link}>{content}</StyledNavLink>
+      );
+
+      return isActive ? (
+        <ActiveNavItem key={index}>{itemContent}</ActiveNavItem>
+      ) : (
+        <NavItem key={index}>{itemContent}</NavItem>
       );
     });
-  }
-
-  public renderNavItem(navItem: INavItem): JSX.Element {
-    const currentPage = this.props.location.pathname;
-    return (
-        navItem.link === currentPage ?
-            <ActiveNavItem>
-              {navItem.text}
-              {navItem.dropdown && (
-                  <NavIcon>
-                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-                  </NavIcon>
-              )}
-              <span />
-            </ActiveNavItem>
-            :
-            <NavItem>
-              {navItem.text}
-              {navItem.dropdown && (
-                  <NavIcon>
-                    <FontAwesomeIcon icon={faChevronDown} className={"fa-sm"} />
-                  </NavIcon>
-              )}
-            </NavItem>
-    );
   }
 
   public render() {
@@ -188,6 +216,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.instagram.com/nuevofoundation"
+                      aria-label="Nuevo Foundation on Instagram"
                   >
                     <FontAwesomeIcon icon={faInstagram} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -197,6 +226,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://twitter.com/nuevofoundation"
+                      aria-label="Nuevo Foundation on X"
                   >
                     <FontAwesomeIcon icon={faXTwitter} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -206,6 +236,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.facebook.com/NuevoFoundation"
+                      aria-label="Nuevo Foundation on Facebook"
                   >
                     <FontAwesomeIcon icon={faFacebookF} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -215,6 +246,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.linkedin.com/company/nuevofoundation"
+                      aria-label="Nuevo Foundation on LinkedIn"
                   >
                     <FontAwesomeIcon icon={faLinkedin} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -224,6 +256,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.youtube.com/nuevofoundation?sub_confirmation=1"
+                      aria-label="Nuevo Foundation on YouTube"
                   >
                     <FontAwesomeIcon icon={faYoutube} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -233,6 +266,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://open.spotify.com/playlist/0uQ8AwLs4SIpY4A4G52pTB?si=e30542420a8c40b1"
+                      aria-label="Nuevo Foundation on Spotify"
                   >
                     <FontAwesomeIcon icon={faSpotify} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -242,6 +276,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://github.com/NuevoFoundation"
+                      aria-label="Nuevo Foundation on GitHub"
                   >
                     <FontAwesomeIcon icon={faGithub} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -251,6 +286,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://www.stickermule.com/nuevofoundation"
+                      aria-label="Nuevo Foundation store"
                   >
                     <FontAwesomeIcon icon={faStore} className={"fa-1x"} />
                   </AboveHeaderLink>
@@ -270,7 +306,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
             <Col sm={12} className="d-none d-sm-block">
               <HeaderWrapper>
                 <StyledNavLink to={"/"}>
-                  <NavLogo src={NuevoFoundationLogo} height={"60px"} />
+                  <NavLogo src={NuevoFoundationLogo} height={"60px"} alt="Nuevo Foundation home" />
                 </StyledNavLink>
                 <NavList> {this.renderNavItems()} </NavList>
               </HeaderWrapper>
@@ -298,7 +334,7 @@ export class Header extends React.Component<IHeaderPropsWithRouter> {
               <Row>
                 <Col xs={10}>
                   <StyledNavLink to={"/"}>
-                    <NavLogo src={NuevoFoundationLogo} height={"60%"} />
+                    <NavLogo src={NuevoFoundationLogo} height={"60%"} alt="Nuevo Foundation home" />
                   </StyledNavLink>
                 </Col>
                 <Col

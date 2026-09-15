@@ -25,6 +25,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://www.instagram.com/nuevofoundation"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on Instagram"
           >
             <FontAwesomeIcon icon={faInstagram} className={"fa-2x"} />
           </a>
@@ -34,6 +35,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://twitter.com/nuevofoundation"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on X"
           >
             <FontAwesomeIcon icon={faXTwitter} className={"fa-2x"} />
           </a>
@@ -43,6 +45,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://www.facebook.com/NuevoFoundation"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on Facebook"
           >
             <FontAwesomeIcon icon={faFacebookF} className={"fa-2x"} />
           </a>
@@ -52,6 +55,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://www.linkedin.com/company/nuevofoundation"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on LinkedIn"
           >
             <FontAwesomeIcon icon={faLinkedin} className={"fa-2x"} />
           </a>
@@ -61,6 +65,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://www.youtube.com/nuevofoundation?sub_confirmation=1"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on YouTube"
           >
             <FontAwesomeIcon icon={faYoutube} className={"fa-2x"} />
           </a>
@@ -70,6 +75,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://open.spotify.com/playlist/0uQ8AwLs4SIpY4A4G52pTB?si=e30542420a8c40b1"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on Spotify"
           >
             <FontAwesomeIcon icon={faSpotify} className={"fa-2x"} />
           </a>
@@ -79,6 +85,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://github.com/NuevoFoundation"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation on GitHub"
           >
             <FontAwesomeIcon icon={faGithub} className={"fa-2x"} />
           </a>
@@ -88,6 +95,7 @@ export class Footer extends React.Component {
               rel="noopener noreferrer"
               href="https://www.stickermule.com/nuevofoundation"
               className={"footer-pics"}
+              aria-label="Nuevo Foundation store"
           >
             <FontAwesomeIcon icon={faStore} className={"fa-2x"} />
           </a>

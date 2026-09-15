@@ -2,17 +2,34 @@
   display: flex;
   padding: 50px;
   font-weight: 700;
+  font-size: inherit;
+  margin: 0;
   color: #000000;
 }
 
 .apply-logo-css-filter {
+  display: inline-block;
+}
+
+.apply-logo-css-filter img {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
   opacity: 0.7;
 }
 
-.apply-logo-css-filter:hover {
+.apply-logo-css-filter:hover img,
+.apply-logo-css-filter:focus-within img {
   -webkit-filter: grayscale(0);
   filter: grayscale(0);
   opacity: 0.9;
+}
+
+.apply-logo-css-filter a {
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.apply-logo-css-filter a:focus-visible {
+  outline: 3px solid #005ea8;
+  outline-offset: 4px;
 }

@@ -1,8 +1,16 @@
 .footer-pics {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
     margin-right: 20px; 
     color:white !important;
     text-decoration: none;
+}
+
+.footer-pics:focus-visible {
+    outline: 3px solid #fcc600;
+    outline-offset: 3px;
 }
 
 .App-footer {

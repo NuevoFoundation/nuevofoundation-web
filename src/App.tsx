@@ -29,6 +29,10 @@ import { MemberAccount } from "./components/member/MemberAccount";
 import { MobileNav } from "./components/static/common/MobileNav";
 import styled from "styled-components";
 import "./assets/stylesheets/MobileNav.css";
+import {
+  RouteFocusManager,
+  RouteMainContent
+} from "./components/static/common/RouteFocusManager";
 
 interface AppState {
   memberAuthenticated: boolean;
@@ -108,24 +112,27 @@ class App extends React.Component<{}, AppState> {
     return (
       <React.Fragment>
         <AuthContext.Provider value={this.state}>
+          <RouteFocusManager />
           <MobileNav visible={mobileNavVisible} handleMenuClose={this.handleHamburgerIconClick} />
           <div className={mobileNavVisible ? 'app-brightness' : ''}>
             <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
               <React.Fragment>
                 <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
-                <Routes>
-                  <Route path={Const.RootPage} element={<Home />} />
-                  <Route path={Const.WhatWeDoPage} element={<WhatWeDo />} />
-                  <Route path={Const.VirtualSessionPage} element={<VirtualSessions />} />
-                  <Route path={Const.MembersAccount} element={<MemberAccount />} />
-                  <Route path={Const.AboutUsPage} element={<AboutUs />} />
-                  <Route path={Const.SupportUsPage} element={<SupportUs />} />
-                  <Route path={Const.BlogPage} element={<Blog />} />
-                  <Route path={Const.BlogPost} element={<Post />} />
-                  <Route path={Const.ContactPage} element={<Contact />} />
-                  <Route path={Const.GetInvolvedPage} element={<GetInvolved />} />
-                  <Route path={Const.ComingSoonPage} element={<ComingSoon />} />
-                </Routes>
+                <RouteMainContent>
+                  <Routes>
+                    <Route path={Const.RootPage} element={<Home />} />
+                    <Route path={Const.WhatWeDoPage} element={<WhatWeDo />} />
+                    <Route path={Const.VirtualSessionPage} element={<VirtualSessions />} />
+                    <Route path={Const.MembersAccount} element={<MemberAccount />} />
+                    <Route path={Const.AboutUsPage} element={<AboutUs />} />
+                    <Route path={Const.SupportUsPage} element={<SupportUs />} />
+                    <Route path={Const.BlogPage} element={<Blog />} />
+                    <Route path={Const.BlogPost} element={<Post />} />
+                    <Route path={Const.ContactPage} element={<Contact />} />
+                    <Route path={Const.GetInvolvedPage} element={<GetInvolved />} />
+                    <Route path={Const.ComingSoonPage} element={<ComingSoon />} />
+                  </Routes>
+                </RouteMainContent>
                 <Footer />
               </React.Fragment>
             </AppContainer>

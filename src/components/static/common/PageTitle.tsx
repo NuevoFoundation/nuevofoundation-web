@@ -5,12 +5,13 @@ interface PageTitleProps {
   title: string;
 }
 
-const Title = styled.div`
+const Title = styled.h1`
   font-family: 'Space Mono', monospace;
   font-size: 28px;
   font-weight: bold;
   color : #000000;
   padding-left: 22px;
+  margin: 0;
 `
 const Container = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ export class PageTitle extends React.Component<PageTitleProps> {
     render() {
         return (
             <Container>
-                <Title>{this.props.title}</Title>
+                <Title tabIndex={-1}>{this.props.title}</Title>
             </Container>
         );
     }

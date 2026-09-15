@@ -97,7 +97,7 @@ export class GetInvolved extends React.Component {
     super(props);
     ReactGA.pageview(Const.GetInvolvedPage);
   }
-  
+
   static readonly Role: Role[] = [
     {
       role: "Teacher",

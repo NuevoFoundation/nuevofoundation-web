@@ -35,16 +35,22 @@ const AboveFoldContent = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
 
-  img {
-    position: absolute;
-    bottom: 0;
-    right: calc(50% - 15px);
-    padding-bottom: 15px;
-  }
-
   /* override bootstrap cursor pointer on nuvi animation */
   [role="button"] {
     cursor: auto;
+  }
+`;
+
+const ChallengeLink = styled(Link)`
+  position: absolute;
+  right: calc(50% - 15px);
+  bottom: 15px;
+  display: inline-flex;
+  border-radius: 50%;
+
+  &:focus-visible {
+    outline: 3px solid #005ea8;
+    outline-offset: 4px;
   }
 `;
 
@@ -276,7 +282,7 @@ export class Home extends React.Component<{}, StatProps> {
       }
     };
 
-    const impactColors: string[] = ["#EBA300", "#00BED5", "#E13126"];
+    const impactColors: string[] = ["#BE8300", "#00A2B5", "#E13126"];
 
     return (
       <Container fluid={true}>
@@ -286,9 +292,9 @@ export class Home extends React.Component<{}, StatProps> {
               <Row>
                 <Col xs={11} style={{ padding: "60px 60px 60px 60px" }}>
                   <ContentWrapper>
-                    <div className="main-title">
+                    <h1 className="main-title">
                       Inspiring kids to be curious, confident, and courageous by discovering the world of STEM.
-                    </div>
+                    </h1>
                   </ContentWrapper>
                 </Col>
               </Row>
@@ -307,11 +313,18 @@ export class Home extends React.Component<{}, StatProps> {
               />
             </Col>
           </Row>
-          <Link to="/#challenge" smooth >
-            <img src={ArrowCircle} alt="arrow indicator" />
-          </Link>
+          <ChallengeLink
+            to="/#challenge"
+            scroll={(element: HTMLElement) => {
+              element.scrollIntoView({ behavior: "smooth" });
+              element.focus();
+            }}
+            aria-label="Skip to the challenge section"
+          >
+            <img src={ArrowCircle} alt="" />
+          </ChallengeLink>
         </AboveFoldContent>
-        <ContentSection style={{ backgroundColor: "#FFBB00" }} id="challenge" >
+        <ContentSection style={{ backgroundColor: "#FFBB00" }} id="challenge" tabIndex={-1}>
           <StatsSectionInfo>
             <StatsSectionTitle>
               <div>The challenge kids face</div>
