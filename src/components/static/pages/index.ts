@@ -6,3 +6,6 @@ export * from "./WhatWeDo";
 export * from "./Blog";
 export * from "./GetInvolved";
 export * from "./ComingSoon";
+export * from "./WorkshopChecklist";
+export * from "./WorkshopPreparationChecklist";
+export * from "./WorkshopCoordinationChecklist";
