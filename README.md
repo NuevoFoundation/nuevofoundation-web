@@ -68,6 +68,28 @@ The Nuevo Foundation is dedicated to inspiring kids to be curious, confident, an
 
 ## Development Setup
 
+### Workshop organizer checklist
+
+The **Nuevo Foundation: Workshop Delivery Checklist** is available directly at
+`/workshop-checklist` on the main website. It is a public page, not a private
+resource; it intentionally has no menu, footer, or Get Involved link.
+Its subtitle is "For the Nuevo Foundation team member who is delivering a workshop".
+
+Print a fresh blank copy for each workshop, or use the 20 optional on-screen
+checkboxes (11 before, 6 during, 3 after) and print their current state.
+The progress count shows how many items are checked. **Checkmarks are not saved**:
+reloading, closing, or navigating away from the page clears them. Reload the page
+before printing another blank copy. There is no reset button. Printing or
+cancelling the print dialog does not clear the checkmarks.
+
+The checklist uses no browser storage, accounts, or shared tracking, and has no
+fields for student information or uploads. Checkboxes are reminders only: they do
+not obtain photograph permission, submit surveys, upload to NF OneDrive, record
+attendance, or send messages. Existing site-level analytics remain unchanged;
+individual checkmarks are not sent to analytics. Print styling includes every
+entry and permission safeguard and hides site navigation and controls only while
+this page is open.
+
 ### Available Scripts
 
 In the project directory, you can run:

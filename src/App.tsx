@@ -11,6 +11,7 @@ import {
   SupportUs,
   WhatWeDo,
   GetInvolved,
+  WorkshopChecklist,
   ComingSoon
 } from "./components/static/pages";
 import { VirtualSessions } from "./components/virtualSessions/VirtualSessions";
@@ -115,7 +116,7 @@ class App extends React.Component<{}, AppState> {
           <RouteFocusManager />
           <MobileNav visible={mobileNavVisible} handleMenuClose={this.handleHamburgerIconClick} />
           <div className={mobileNavVisible ? 'app-brightness' : ''}>
-            <AppContainer className={mobileNavVisible ? 'app-blur' : ''} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
+            <AppContainer className={mobileNavVisible ? 'app-shell app-blur' : 'app-shell'} onClick={mobileNavVisible ? this.handleHamburgerIconClick : () => { }}>
               <React.Fragment>
                 <Header hamburgerMenuOpen={mobileNavVisible} handleHamburgerIconClick={this.handleHamburgerIconClick} />
                 <RouteMainContent>
@@ -130,6 +131,7 @@ class App extends React.Component<{}, AppState> {
                     <Route path={Const.BlogPost} element={<Post />} />
                     <Route path={Const.ContactPage} element={<Contact />} />
                     <Route path={Const.GetInvolvedPage} element={<GetInvolved />} />
+                    <Route path={Const.WorkshopChecklistPage} element={<WorkshopChecklist />} />
                     <Route path={Const.ComingSoonPage} element={<ComingSoon />} />
                   </Routes>
                 </RouteMainContent>
