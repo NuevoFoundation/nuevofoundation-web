@@ -57,6 +57,11 @@ on-server `npm install`, or environment files. The build root also contains
 root-relative URLs. Only the public canonical origin and public WordPress endpoint
 are recorded in `runtime\config.json`.
 
+IIS uses `runtime\iisnode-entry.js`, which starts the listener even when loaded
+by iisnode's interceptor. The CLI continues to use `runtime\index.js`. A
+`require.main === module` guard must not be used on the IIS entry point: the
+interceptor imports it rather than executing it as the main module.
+
 The WordPress endpoint is restricted to the existing Nuevo Foundation public REST
 API. No authentication tokens, cookies, or request headers are forwarded. The
 selected fields are `ID,status,title,excerpt,featured_image,post_thumbnail`.

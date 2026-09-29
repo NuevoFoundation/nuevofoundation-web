@@ -3,7 +3,10 @@
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { spawnSync } = require('node:child_process');
+const http = require('node:http');
+const { randomBytes } = require('node:crypto');
+const { once } = require('node:events');
+const { spawn, spawnSync } = require('node:child_process');
 const {
   STAGING_SITE_URL, packageRuntime, enableStagingRuntime, enableProductionRuntime,
 } = require('../../server/package-runtime');
@@ -32,7 +35,7 @@ describe('Environment-specific blog runtime packaging', () => {
     expect(readConfig().siteUrl).toBe(STAGING_SITE_URL);
     expect(readWebConfig()).toBe(staticWebConfig);
     expect(fs.readFileSync(path.join(buildDir, '.node-version'), 'utf8').trim()).toBe('22');
-    for (const filename of ['app.js', 'index.js', 'check-node.js', 'node_modules/he/he.js', 'node_modules/he/LICENSE-MIT.txt']) {
+    for (const filename of ['app.js', 'index.js', 'iisnode-entry.js', 'check-node.js', 'node_modules/he/he.js', 'node_modules/he/LICENSE-MIT.txt']) {
       expect(fs.existsSync(path.join(buildDir, 'runtime', filename))).toBe(true);
     }
   });
@@ -41,7 +44,8 @@ describe('Environment-specific blog runtime packaging', () => {
     packageRuntime({ buildDir, siteUrl: STAGING_SITE_URL });
     enableStagingRuntime(buildDir);
     expect(readWebConfig()).toContain('modules="iisnode"');
-    expect(readWebConfig()).toContain('url="runtime/index.js"');
+    expect(readWebConfig()).toContain('path="runtime/iisnode-entry.js"');
+    expect(readWebConfig()).toContain('url="runtime/iisnode-entry.js"');
     expect(readWebConfig()).toContain('name="Preserve API routes"');
     expect(readConfig().siteUrl).toBe(STAGING_SITE_URL);
   });
@@ -54,6 +58,53 @@ describe('Environment-specific blog runtime packaging', () => {
     expect(result.status).toBe(0);
     expect(result.stderr).toBe('');
   });
+
+  it('listens on the IIS pipe when an interceptor requires the packaged entry point', async () => {
+    packageRuntime({ buildDir, siteUrl: STAGING_SITE_URL });
+    const pipe = `\\\\.\\pipe\\nf-${randomBytes(8).toString('hex')}`;
+    const entry = path.join(buildDir, 'runtime', 'iisnode-entry.js');
+    const child = spawn(process.execPath, ['-e', `require(${JSON.stringify(entry)})`], {
+      cwd: buildDir,
+      env: { ...process.env, PORT: pipe, NODE_ENV: 'production', NF_SITE_URL: STAGING_SITE_URL },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    let stderr = '';
+    child.stderr.on('data', chunk => { stderr += chunk; });
+    try {
+      await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error(`No IIS listener: ${stderr}`)), 5000);
+        child.once('error', error => { clearTimeout(timer); reject(error); });
+        child.once('exit', code => {
+          clearTimeout(timer);
+          reject(new Error(`Exited before listening (${code}): ${stderr}`));
+        });
+        child.stdout.on('data', chunk => {
+          if (chunk.toString().includes('listening on the IIS named pipe')) {
+            clearTimeout(timer);
+            resolve();
+          }
+        });
+      });
+      const status = await new Promise((resolve, reject) => {
+        const request = http.get({
+          socketPath: process.platform === 'win32' ? pipe : path.join(buildDir, pipe),
+          path: '/', timeout: 5000,
+        }, response => {
+          response.resume();
+          response.on('end', () => resolve(response.statusCode));
+        });
+        request.on('error', reject);
+        request.on('timeout', () => request.destroy(new Error('IIS pipe request timed out.')));
+      });
+      expect(status).toBe(200);
+    } finally {
+      if (child.pid && child.exitCode === null && child.signalCode === null) {
+        const exited = once(child, 'exit');
+        child.kill();
+        await exited;
+      }
+    }
+  }, 15000);
 
   it('refuses production artifacts without changing their hosting configuration', () => {
     packageRuntime({ buildDir, siteUrl: DEFAULT_SITE_URL });
