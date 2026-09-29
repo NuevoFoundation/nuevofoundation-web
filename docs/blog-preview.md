@@ -74,6 +74,11 @@ selected fields are `ID,status,title,excerpt,featured_image,post_thumbnail`.
   server rejects traversal and blocks runtime, environment, source, test,
   dependency, configuration, and source-map files.
 
+Static assets are indexed from the packaged build at startup, without following
+symbolic links. Request URLs can only select an indexed asset, never construct a
+filesystem path. Restart the Node process after replacing a deployed build;
+publishing or editing WordPress articles still needs no restart or rebuild.
+
 ## Windows Azure App Service: explicit opt-in only
 
 **Nothing here deploys or changes Azure settings. The default `public\web.config`

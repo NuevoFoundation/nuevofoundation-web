@@ -324,6 +324,26 @@ describe('Blog metadata server HTTP responses', () => {
     expect(result.body).not.toContain('"not":"public"');
   });
 
+  it('only serves assets indexed at startup, not paths supplied by later requests', async () => {
+    const request = await serve();
+    const unlisted = path.join(fixture, 'unlisted.json');
+    fs.writeFileSync(unlisted, '{"not":"part of the deployed assets"}');
+    try {
+      const result = await request('/unlisted.json');
+      expect(result.status).toBe(404);
+      expect(result.body).not.toContain('part of the deployed assets');
+    } finally {
+      fs.unlinkSync(unlisted);
+    }
+  });
+
+  it('matches decoded public asset URLs without using query strings as filesystem paths', async () => {
+    const request = await serve();
+    const result = await request('/static/js/%6Dain.123.js?cache=1');
+    expect(result.status).toBe(200);
+    expect(result.body).toBe('console.log("built");');
+  });
+
   it('uses configured staging and local canonical origins instead of request headers', async () => {
     const staging = await serve({ siteUrl: 'https://nuevofoundation-web-staging.azurewebsites.net' });
     expect((await staging('/blog/post/1841')).body)

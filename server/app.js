@@ -237,6 +237,23 @@ function insideRoot(root, target) {
   return relative !== '..' && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative);
 }
 
+function indexStaticFiles(root) {
+  const files = new Map();
+  function visit(directory, prefix = '') {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const pathname = `${prefix}/${entry.name}`;
+      if (forbiddenPath(pathname)) continue;
+      const filename = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(filename, pathname);
+      else if (entry.isFile() && CONTENT_TYPES[path.extname(filename).toLowerCase()]) {
+        files.set(pathname, filename);
+      }
+    }
+  }
+  visit(root);
+  return files;
+}
+
 function createHandler({
   buildDir, template, siteUrl = DEFAULT_SITE_URL, endpoint = WORDPRESS_ENDPOINT,
   fetchImpl = globalThis.fetch, logger = console, ...loaderOptions
@@ -246,6 +263,8 @@ function createHandler({
   if (!/<\/head\s*>/i.test(template)) throw new Error('The CRA index.html template is missing its closing head tag.');
   siteUrl = canonicalOrigin(siteUrl, process.env.NODE_ENV === 'production');
   const posts = createPostLoader({ ...loaderOptions, fetchImpl, siteUrl, endpoint });
+  // Request URLs select packaged assets; they never construct filesystem paths.
+  const staticFiles = indexStaticFiles(root);
 
   function send(req, res, status, content, contentType = 'text/html; charset=utf-8') {
     res.writeHead(status, {
@@ -291,9 +310,9 @@ function createHandler({
         }
       }
       if (pathname === '/' || pathname === '/index.html') return send(req, res, 200, template);
-      const filename = path.resolve(root, `.${pathname}`);
-      const contentType = CONTENT_TYPES[path.extname(filename).toLowerCase()];
-      if (insideRoot(root, filename) && contentType) {
+      const filename = staticFiles.get(pathname);
+      if (filename) {
+        const contentType = CONTENT_TYPES[path.extname(filename).toLowerCase()];
         let real;
         let stat;
         try {
