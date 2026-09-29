@@ -103,8 +103,11 @@ npm run runtime:enable-staging
 
 This verifies that the packaged canonical origin is the staging site before
 copying the candidate over **only** `build\web.config`. It refuses a production
-or other non-staging artifact. A subsequent normal build restores the static
-configuration. The candidate rewrites non-API requests
+or other non-staging artifact. After successful staging and production approval,
+`npm run build:production` followed by `npm run runtime:enable-production`
+selects the handler for a production artifact instead. That command requires
+the exact production origin and refuses staging or other origins.
+A subsequent normal build restores the static configuration. The candidate rewrites non-API requests
 to Node (including static assets, so Node's confinement checks apply), preserves
 `/api`, and passes Node's error status/body through IIS. Runtime URLs themselves
 are denied by the Node handler. Production IIS diagnostic output is disabled.
@@ -148,9 +151,25 @@ remain in place.
 
 The production build runs separately afterwards and restores the static
 `web.config`. The staging parameter never selects the Node handler in the
-`production` artifact. Existing release approvals stay in control. This change
-does not activate production social metadata; that requires a separately
-reviewed production runtime rollout after staging succeeds.
+`production` artifact.
+
+The separate **`enableProductionBlogMetadata`** parameter also defaults to
+**false**. After the handler succeeds in staging, queue a build with **both**
+metadata parameters enabled to produce the final release artifacts. The
+pipeline rejects production metadata without staging metadata, so that release
+also exercises the same handler in Stage before Production. Production selection
+runs only after the production build and checks its canonical origin.
+
+Both App Services must select `WEBSITE_NODE_DEFAULT_VERSION=~22` and
+`NODE_ENV=production`. Apply the production settings through the approved release
+step, not before its approval. Existing release approvals remain in control:
+Stage success is not production approval. Do not approve an older default/static
+release when promoting the explicitly enabled metadata release.
+
+The existing ADO App Service deployment tasks apply these two settings when
+their environment deploys. Changes to the release definition affect newly
+created releases, not older release snapshots. Keep those deployment settings
+aligned with `.node-version` during a future Node major upgrade.
 
 For the staging handoff, confirm the release uses the artifact from the build
 where the parameter was enabled (not an older build). Open an article URL on

@@ -5,11 +5,11 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const {
-  STAGING_SITE_URL, packageRuntime, enableStagingRuntime,
+  STAGING_SITE_URL, packageRuntime, enableStagingRuntime, enableProductionRuntime,
 } = require('../../server/package-runtime');
 const { DEFAULT_SITE_URL, FALLBACK_IMAGE } = require('../../server/app');
 
-describe('Staging-only blog runtime packaging', () => {
+describe('Environment-specific blog runtime packaging', () => {
   let buildDir;
   const readConfig = () => JSON.parse(fs.readFileSync(path.join(buildDir, 'runtime', 'config.json'), 'utf8'));
   const readWebConfig = () => fs.readFileSync(path.join(buildDir, 'web.config'), 'utf8');
@@ -60,6 +60,27 @@ describe('Staging-only blog runtime packaging', () => {
     expect(() => enableStagingRuntime(buildDir)).toThrow('non-staging artifact');
     expect(readWebConfig()).toBe(staticWebConfig);
     expect(readConfig().siteUrl).toBe(DEFAULT_SITE_URL);
+  });
+
+  it('selects production metadata only for an explicitly enabled production artifact', () => {
+    packageRuntime({ buildDir, siteUrl: DEFAULT_SITE_URL });
+    enableProductionRuntime(buildDir);
+    expect(readWebConfig()).toContain('modules="iisnode"');
+    expect(readConfig().siteUrl).toBe(DEFAULT_SITE_URL);
+  });
+
+  it.each([STAGING_SITE_URL, 'https://other.example'])('refuses production activation for origin %s', siteUrl => {
+    packageRuntime({ buildDir, siteUrl });
+    expect(() => enableProductionRuntime(buildDir)).toThrow('non-production artifact');
+    expect(readWebConfig()).toBe(staticWebConfig);
+  });
+
+  it('does not carry a production handler into the next normal staging build', () => {
+    packageRuntime({ buildDir, siteUrl: DEFAULT_SITE_URL });
+    enableProductionRuntime(buildDir);
+    packageRuntime({ buildDir, siteUrl: STAGING_SITE_URL });
+    expect(readWebConfig()).toBe(staticWebConfig);
+    expect(readConfig().siteUrl).toBe(STAGING_SITE_URL);
   });
 
   it('resets the selected staging handler before the same directory becomes a production artifact', () => {

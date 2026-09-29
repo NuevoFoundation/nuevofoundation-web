@@ -38,6 +38,7 @@
     "prepreview": "npm run check:node",
     "preview": "node build/runtime/index.js",
     "runtime:enable-staging": "node server/package-runtime.js --enable-staging",
+    "runtime:enable-production": "node server/package-runtime.js --enable-production",
     "pretest": "npm run check:node",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
