@@ -7,6 +7,12 @@
 trigger:
 - master
 
+parameters:
+- name: enableStagingBlogMetadata
+  displayName: 'Enable on-demand blog metadata in staging (requires Node 22 and iisnode)'
+  type: boolean
+  default: false
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -45,9 +51,19 @@ jobs:
       echo "                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         "
     displayName: 'Nuvi enters the chat'
 
+  - script: |
+      version=$(cat .node-version)
+      if ! [[ "$version" =~ ^[0-9]+$ ]]; then
+        echo "Invalid .node-version: expected a Node.js major version." >&2
+        exit 1
+      fi
+      echo "##vso[task.setvariable variable=nodeVersion]$version"
+    displayName: 'Read project Node version'
+
   - task: UseNode@1
     inputs:
-      version: '22.x'
+      version: '$(nodeVersion)'
+      checkLatest: true
     displayName: 'Install Node.js'
 
   - script: |
@@ -65,6 +81,10 @@ jobs:
   - script: |
       npm run "$(stageBuildConfiguration)"
     displayName: 'npm run $(stageBuildConfiguration) - staging build'
+
+  - ${{ if eq(parameters.enableStagingBlogMetadata, true) }}:
+    - script: npm run runtime:enable-staging
+      displayName: 'Select blog metadata runtime for staging artifact only'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'

@@ -1,5 +1,6 @@
 import { Const } from "../Const";
 import { HttpClient } from "./HttpClient";
+import { WordpressPost, WordpressPostsResponse } from "../models/WordpressPost";
 
 export class WordpressService {
   private headers = {};
@@ -11,7 +12,7 @@ export class WordpressService {
     );
   }
 
-  public getPublishedPosts(page: number): Promise<any> {
+  public getPublishedPosts(page: number): Promise<WordpressPostsResponse> {
     return HttpClient.get(
       `${Const.WordpressEndpoint}/posts?number=${
         Const.BlogPageSize
@@ -20,7 +21,7 @@ export class WordpressService {
     );
   }
 
-  public getPost(id: string): Promise<any> {
+  public getPost(id: string): Promise<WordpressPost> {
     return HttpClient.get(
       Const.WordpressEndpoint + `/posts/${id}`,
       this.headers

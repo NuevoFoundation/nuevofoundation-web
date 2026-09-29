@@ -68,6 +68,27 @@ The Nuevo Foundation is dedicated to inspiring kids to be curious, confident, an
 
 ## Development Setup
 
+Use **Node.js 22.x** for this repository. `.node-version` selects the supported
+major version for local version managers and Azure Pipelines. Dependency installs,
+development/test/build commands, and the packaged server reject other majors;
+`package.json` and the Node type definitions must stay aligned with that pin.
+
+With [fnm](https://github.com/Schniz/fnm) installed, select this project's Node
+version in PowerShell without replacing the system-wide Node installation:
+
+```powershell
+fnm env --shell powershell | Out-String | Invoke-Expression
+fnm install
+fnm use
+npm ci
+```
+
+Alternatively, `fnm exec --using 22 npm.cmd start` selects Node only for that
+command on Windows (`npm` instead of `npm.cmd` on macOS/Linux).
+Other version managers that support `.node-version` can use the same pin.
+Use current Node 22 patch releases; upgrade the major version deliberately across
+the pin, engines, type definitions, and both Azure environments, staging first.
+
 ### Available Scripts
 
 In the project directory, you can run:
@@ -111,11 +132,36 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - **Common Issue 2**: If the app fails to start, check if there are any conflicting processes using the same port (default is 3000). You can change the port by setting the `PORT` environment variable.
 - **Common Issue 3**: If you encounter issues with environment variables, ensure that the `.env` files are correctly set up and contain the necessary variables.
 
+### WordPress blog and social previews
+
+WordPress remains the source for published articles. The website keeps the saved
+article HTML, image dimensions, alternative text, captions, links, and block
+classes rather than rebuilding each image. Styles in
+`src/assets/stylesheets/WordpressContent.css` are scoped to blog content and
+support image alignment, resized images, galleries, columns, media-and-text,
+cover blocks, and responsive video embeds. Article typography uses the NF
+website's fonts and reading width; wide blocks may extend beyond that width.
+
+This is compatibility with standard saved WordPress blocks, not a copy of the
+WordPress.com theme or editor. Theme-specific presets and plugin blocks may need
+additional styles. Interactive WordPress features such as lightboxes are not
+activated by importing article HTML. Compare a representative published article
+with its WordPress version at desktop and phone widths before releasing changes.
+The regression fixture in `src/__tests__/fixtures/wordpress-layout.html` covers
+the shared image and layout behaviors without publishing test content.
+
+`npm start` provides the normal live-reloading article-layout preview. Social
+previews also need article-specific metadata in the **initial HTTP response**;
+adding it after React loads is not sufficient. The on-demand sharing server and
+its local preview, caching behavior, and opt-in Azure deployment requirements are
+described in [Blog preview hosting](docs/blog-preview.md). No WordPress editor
+changes or per-article website rebuilds are needed when that server is enabled.
+
 ### Getting Started Guide
 
 1. **Clone the Repository**: `git clone https://github.com/NuevoFoundation/nuevofoundation-web.git`
 2. **Navigate to the Project Directory**: `cd nuevofoundation-web`
-3. **Install Dependencies**: `npm install`
+3. **Select Node and Install Dependencies**: select Node 22 using the setup above, then `npm ci`
 4. **Start the Development Server**: `npm start`
 5. **Open the App in Your Browser**: [http://localhost:3000](http://localhost:3000)
 
