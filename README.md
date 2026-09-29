@@ -111,6 +111,31 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - **Common Issue 2**: If the app fails to start, check if there are any conflicting processes using the same port (default is 3000). You can change the port by setting the `PORT` environment variable.
 - **Common Issue 3**: If you encounter issues with environment variables, ensure that the `.env` files are correctly set up and contain the necessary variables.
 
+### WordPress blog and social previews
+
+WordPress remains the source for published articles. The website keeps the saved
+article HTML, image dimensions, alternative text, captions, links, and block
+classes rather than rebuilding each image. Styles in
+`src/assets/stylesheets/WordpressContent.css` are scoped to blog content and
+support image alignment, resized images, galleries, columns, media-and-text,
+cover blocks, and responsive video embeds. Article typography uses the NF
+website's fonts and reading width; wide blocks may extend beyond that width.
+
+This is compatibility with standard saved WordPress blocks, not a copy of the
+WordPress.com theme or editor. Theme-specific presets and plugin blocks may need
+additional styles. Interactive WordPress features such as lightboxes are not
+activated by importing article HTML. Compare a representative published article
+with its WordPress version at desktop and phone widths before releasing changes.
+The regression fixture in `src/__tests__/fixtures/wordpress-layout.html` covers
+the shared image and layout behaviors without publishing test content.
+
+`npm start` provides the normal live-reloading article-layout preview. Social
+previews also need article-specific metadata in the **initial HTTP response**;
+adding it after React loads is not sufficient. The on-demand sharing server and
+its local preview, caching behavior, and opt-in Azure deployment requirements are
+described in [Blog preview hosting](docs/blog-preview.md). No WordPress editor
+changes or per-article website rebuilds are needed when that server is enabled.
+
 ### Getting Started Guide
 
 1. **Clone the Repository**: `git clone https://github.com/NuevoFoundation/nuevofoundation-web.git`

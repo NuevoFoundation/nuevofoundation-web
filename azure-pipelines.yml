@@ -7,6 +7,12 @@
 trigger:
 - master
 
+parameters:
+- name: enableStagingBlogMetadata
+  displayName: 'Enable on-demand blog metadata in staging (requires Node 22+ and iisnode)'
+  type: boolean
+  default: false
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -65,6 +71,10 @@ jobs:
   - script: |
       npm run "$(stageBuildConfiguration)"
     displayName: 'npm run $(stageBuildConfiguration) - staging build'
+
+  - ${{ if eq(parameters.enableStagingBlogMetadata, true) }}:
+    - script: npm run runtime:enable-staging
+      displayName: 'Select blog metadata runtime for staging artifact only'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'

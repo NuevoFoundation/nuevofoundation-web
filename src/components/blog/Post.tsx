@@ -1,105 +1,119 @@
 import * as React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useParams } from "react-router-dom";
 import { ServiceResolver } from "../../services/ServiceResolver";
-import { DateFormattingHelper } from "../../helpers/DateFormattingHelper";
+import { WordpressContentHelper } from "../../helpers/WordpressContentHelper";
+import { WordpressPost } from "../../models/WordpressPost";
 import { Const } from "../../Const";
 import ReactGA from "react-ga";
+import "../../assets/stylesheets/Blog.css";
+import "../../assets/stylesheets/WordpressContent.css";
 
 interface PostProps {
   id: string;
 }
 
 interface PostState {
-  post: any;
+  post: WordpressPost | null;
+  status: "loading" | "ready" | "error" | "not-found";
 }
 
-const BlogPostItem = styled.div``;
-
-const BlogPostTitle = styled.h1`
-  color: #262626;
-  font-family: "Lato", sans-serif;
-  font-size: 28px;
-`;
-
-const BlogPostContent = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #262626;
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-`;
-const Divider = styled.hr`
-  width: 40%;
-  height: 0;
-  border: 0;
-  border-top: 1px solid #c1c1c1;
-`;
-const PostWrapper = styled.div`
-  min-height: 500px;
-`;
-
-class PostComponent extends React.Component<
-  PostProps,
-  PostState
-  > {
+export class PostComponent extends React.Component<PostProps, PostState> {
   public wordpressService = new ServiceResolver().WordpressService();
-  constructor(props: PostProps) {
-    super(props);
-    ReactGA.pageview(`${Const.BlogPost}-${this.props.id}`);
-    this.state = {
-      post: []
-    };
-    window.scrollTo(0, 0);
+  public state: PostState = { post: null, status: "loading" };
+  private requestId = 0;
+
+  public componentDidMount() {
+    void this.loadPost();
   }
 
-  public async componentDidMount() {
-    const response = await this.wordpressService.getPost(
-      this.props.id
-    );
-    this.setState({
-      post: response
-    }, this.addResponsiveClass);
-  }
-
-  public addResponsiveClass() {
-    const blogPostDocument = document.getElementById("BlogPostDocument");
-    const images = blogPostDocument!.getElementsByTagName("img");
-
-    for (let i = 0; i < images.length; i++) {
-      images[i].className += " img-responsive";
+  public componentDidUpdate(previousProps: PostProps) {
+    if (previousProps.id !== this.props.id) {
+      void this.loadPost();
     }
-    return;
   }
+
+  public componentWillUnmount() {
+    this.requestId++;
+    document.title = "Nuevo Foundation";
+  }
+
+  public loadPost = async (): Promise<void> => {
+    const requestId = ++this.requestId;
+    const id = this.props.id;
+    this.setState({ post: null, status: "loading" });
+    document.title = "Event blog | Nuevo Foundation";
+
+    if (!/^[1-9]\d*$/.test(id)) {
+      this.setState({ status: "not-found" });
+      return;
+    }
+
+    ReactGA.pageview(Const.BlogPost.replace(":id", id));
+    try {
+      const post = await this.wordpressService.getPost(id);
+      if (requestId !== this.requestId) {
+        return;
+      }
+
+      if (!post.ID || (post.status && post.status !== "publish")) {
+        this.setState({ status: "not-found" });
+        return;
+      }
+
+      document.title = `${WordpressContentHelper.getPlainText(post.title)} | Nuevo Foundation`;
+      this.setState({ post, status: "ready" });
+    } catch (error: unknown) {
+      if (requestId === this.requestId) {
+        this.setState({
+          status: WordpressContentHelper.isMissingPost(error) ? "not-found" : "error"
+        });
+      }
+    }
+  };
 
   public render() {
-    const { post } = this.state;
+    const { post, status } = this.state;
     return (
-      React.createElement(Container as any, { fluid: true }, [
-        <Row key="row">
-          <Col xs={10} sm={6} className="offset-1 offset-sm-3">
-            <PostWrapper id={"BlogPostDocument"}>
-              <BlogPostItem>
-                <BlogPostTitle>{post.title}</BlogPostTitle>
-                <span>
-                  {DateFormattingHelper.formatToMonthDayYear(post.date)}
-                </span>
-                <BlogPostContent
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
-              </BlogPostItem>
-              <Divider />
-            </PostWrapper>
-          </Col>
-        </Row>
-      ])
+      <div className="blog-page">
+        <nav className="blog-article-navigation" aria-label="Blog">
+          <Link to={Const.BlogPage}>Back to event blog</Link>
+        </nav>
+        {status === "loading" && <p role="status">Loading article...</p>}
+        {status === "not-found" && (
+          <div>
+            <h1>Article not found</h1>
+            <p>This article may have been removed or is not published yet.</p>
+          </div>
+        )}
+        {status === "error" && (
+          <div role="alert">
+            <h1>We couldn't load this article</h1>
+            <p>Please try again in a moment.</p>
+            <button className="blog-action" type="button" onClick={this.loadPost}>
+              Try again
+            </button>
+          </div>
+        )}
+        {status === "ready" && post && (
+          <article id="BlogPostDocument" className="blog-article" aria-labelledby="blog-post-title">
+            <header className="blog-article-header">
+              <h1 id="blog-post-title">{WordpressContentHelper.getPlainText(post.title)}</h1>
+              <time dateTime={post.date}>
+                {WordpressContentHelper.formatPublicationDate(post.date)}
+              </time>
+            </header>
+            <div
+              className="wordpress-content"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          </article>
+        )}
+      </div>
     );
   }
 }
 
-// Functional wrapper to provide useParams hook data to the class component
 export const Post: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  return <PostComponent id={id || ''} />;
+  return <PostComponent id={id || ""} />;
 };

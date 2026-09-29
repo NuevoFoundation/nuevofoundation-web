@@ -1,0 +1,44 @@
+.blog-page {
+  margin: 0 auto;
+  max-width: 1168px;
+  min-height: 500px;
+  padding: 32px 24px 64px;
+  color: #262626;
+  font-family: "Lato", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.blog-article-navigation,
+.blog-article-header {
+  max-width: 760px;
+  margin: 0 auto 24px;
+}
+
+.blog-article-header h1 {
+  margin-bottom: 16px;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.25;
+}
+
+.blog-article-header time {
+  color: #565656;
+}
+
+.blog-page a {
+  color: #005ea8;
+}
+
+.blog-page a:focus-visible,
+.blog-page button:focus-visible {
+  outline: 3px solid #005ea8;
+  outline-offset: 4px;
+}
+
+.blog-action {
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 4px;
+  background: #fcc600;
+  color: #000000;
+  font: inherit;
+}

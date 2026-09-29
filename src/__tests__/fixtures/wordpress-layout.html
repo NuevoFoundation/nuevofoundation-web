@@ -1,0 +1,43 @@
+<p>Image sizing, captions, and layout choices are saved by WordPress.</p>
+<figure class="wp-block-image size-large is-resized aligncenter">
+  <img src="/favicons/apple-touch-icon-144x144.png" alt="Centered illustration" width="144" height="144" style="width:240px;height:auto" />
+  <figcaption class="wp-element-caption">A centered image with an author-selected width.</figcaption>
+</figure>
+<figure class="wp-block-image alignleft is-resized">
+  <a href="/favicons/apple-touch-icon-144x144.png"><img src="/favicons/apple-touch-icon-144x144.png" alt="Left-aligned illustration" style="width:180px;height:auto" /></a>
+  <figcaption>Text should wrap beside this image on desktop.</figcaption>
+</figure>
+<p>Text alongside a floated image should follow the author's placement. On a phone the image returns to the normal reading flow, without squeezing the paragraph into an unreadable column. This paragraph deliberately contains enough text to exercise wrapping at a desktop reading width.</p>
+<p style="clear:both">A large, uncropped image must fit inside the article on small screens.</p>
+<figure class="wp-block-image">
+  <img src="/favicons/apple-touch-icon-144x144.png" alt="Large illustration" width="1400" height="1400" />
+  <figcaption>Full-size image, constrained responsively without changing its aspect ratio.</figcaption>
+</figure>
+<div class="wp-block-columns alignwide">
+  <div class="wp-block-column" style="flex-basis:35%">
+    <figure class="wp-block-image"><img src="/favicons/apple-touch-icon-144x144.png" alt="First column" /></figure>
+  </div>
+  <div class="wp-block-column" style="flex-basis:65%">
+    <h2>Two columns</h2>
+    <p>These columns are side by side on desktop and stacked on mobile.</p>
+  </div>
+</div>
+<figure class="wp-block-gallery has-nested-images columns-3 is-cropped">
+  <figure class="wp-block-image"><img src="/favicons/apple-touch-icon-144x144.png" alt="Gallery one" /><figcaption>One</figcaption></figure>
+  <figure class="wp-block-image"><img src="/favicons/apple-touch-icon-144x144.png" alt="Gallery two" /><figcaption>Two</figcaption></figure>
+  <figure class="wp-block-image"><img src="/favicons/apple-touch-icon-144x144.png" alt="Gallery three" /><figcaption>Three</figcaption></figure>
+  <figcaption class="blocks-gallery-caption">A three-column gallery with explicitly cropped images.</figcaption>
+</figure>
+<div class="wp-block-media-text has-media-on-the-right is-stacked-on-mobile" style="grid-template-columns:65% 35%">
+  <figure class="wp-block-media-text__media"><img src="/favicons/apple-touch-icon-144x144.png" alt="Media and text" /></figure>
+  <div class="wp-block-media-text__content"><p>An image beside its text, stacked on a phone.</p></div>
+</div>
+<blockquote class="wp-block-quote"><p>Captions, quotations, and headings belong to the article, not the site header.</p></blockquote>
+<div class="wp-block-cover is-light">
+  <span aria-hidden="true" class="wp-block-cover__background has-background-dim-70 has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background"></span>
+  <div class="wp-block-cover__inner-container"><p>Cover-block text stays above its decorative background.</p></div>
+</div>
+<figure class="wp-block-embed is-type-video wp-has-aspect-ratio wp-embed-aspect-16-9">
+  <div class="wp-block-embed__wrapper"><span class="embed-youtube"><iframe title="Example embedded media" src="about:blank" width="560" height="315"></iframe></span></div>
+</figure>
+<figure class="wp-block-table"><table><tbody><tr><th>Layout</th><th>Expected behavior</th></tr><tr><td>Responsive</td><td>Preserve content without making the page scroll horizontally.</td></tr></tbody></table></figure>
