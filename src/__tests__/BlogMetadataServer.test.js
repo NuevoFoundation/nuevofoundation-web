@@ -311,6 +311,22 @@ describe('Blog metadata server HTTP responses', () => {
     expect((await request('/static/js/main.123.js')).body).toBe('console.log("built");');
   });
 
+  it('uses the native root path so Windows drive aliases do not reject public assets', async () => {
+    const alias = path.join(fixture, 'drive-alias');
+    const resolveNative = fs.realpathSync.native;
+    const native = jest.spyOn(fs.realpathSync, 'native').mockImplementation(filename =>
+      filename === alias ? fixture : resolveNative(filename));
+    try {
+      const request = await serve({ buildDir: alias });
+      const result = await request('/static/js/main.123.js');
+      expect(native).toHaveBeenCalledWith(alias);
+      expect(result.status).toBe(200);
+      expect(result.body).toBe('console.log("built");');
+    } finally {
+      native.mockRestore();
+    }
+  });
+
   it.each([
     '/runtime/config.json', '/RUNTIME/app.js', '/.env', '/package.json', '/web.config',
     '/src/test.tsx', '/static/js/main.123.js.map', '/node_modules/he/he.js',

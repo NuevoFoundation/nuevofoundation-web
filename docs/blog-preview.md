@@ -86,7 +86,9 @@ selected fields are `ID,status,title,excerpt,featured_image,post_thumbnail`.
 
 Static assets are indexed from the packaged build at startup, without following
 symbolic links. Request URLs can only select an indexed asset, never construct a
-filesystem path. Restart the Node process after replacing a deployed build;
+filesystem path. The root and asset paths use native filesystem resolution so
+Azure's `C:\home` / `D:\home` aliases cannot cause false confinement failures.
+Restart the Node process after replacing a deployed build;
 publishing or editing WordPress articles still needs no restart or rebuild.
 
 ## Windows Azure App Service: explicit opt-in only
@@ -148,8 +150,7 @@ and `production` artifacts for the existing release process; it does not deploy
 directly from GitHub Actions.
 
 The build pipeline has a boolean **`enableStagingBlogMetadata`** run parameter,
-defaulting to **false**. Once the staging App Service prerequisites above have
-been confirmed, queue the Azure DevOps pipeline with this parameter enabled.
+defaulting to **true** so normal releases preserve the deployed sharing feature.
 It runs `npm run runtime:enable-staging` after the staging build and before
 publishing the `stage` artifact. Existing master-branch artifact restrictions
 remain in place.
@@ -159,11 +160,16 @@ The production build runs separately afterwards and restores the static
 `production` artifact.
 
 The separate **`enableProductionBlogMetadata`** parameter also defaults to
-**false**. After the handler succeeds in staging, queue a build with **both**
-metadata parameters enabled to produce the final release artifacts. The
+**true**. Normal releases therefore build **both** metadata-enabled artifacts.
+Local `npm run build` still packages static IIS until an explicit runtime
+selection command is run. The
 pipeline rejects production metadata without staging metadata, so that release
 also exercises the same handler in Stage before Production. Production selection
 runs only after the production build and checks its canonical origin.
+
+For an intentional static-hosting rollback, explicitly disable **both**
+parameters. Do not leave them disabled for an ordinary website release, since
+that would remove article-specific sharing metadata.
 
 Both App Services must select `WEBSITE_NODE_DEFAULT_VERSION=~22` and
 `NODE_ENV=production`. Apply the production settings through the approved release

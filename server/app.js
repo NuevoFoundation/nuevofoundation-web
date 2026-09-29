@@ -258,7 +258,8 @@ function createHandler({
   buildDir, template, siteUrl = DEFAULT_SITE_URL, endpoint = WORDPRESS_ENDPOINT,
   fetchImpl = globalThis.fetch, logger = console, ...loaderOptions
 }) {
-  const root = fs.realpathSync(buildDir);
+  // Match the native resolver used below; Azure's C: and D: paths can alias.
+  const root = fs.realpathSync.native(buildDir);
   template = template || fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   if (!/<\/head\s*>/i.test(template)) throw new Error('The CRA index.html template is missing its closing head tag.');
   siteUrl = canonicalOrigin(siteUrl, process.env.NODE_ENV === 'production');

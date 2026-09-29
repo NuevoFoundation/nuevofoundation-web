@@ -11,11 +11,11 @@ parameters:
 - name: enableStagingBlogMetadata
   displayName: 'Enable on-demand blog metadata in staging (requires Node 22 and iisnode)'
   type: boolean
-  default: false
+  default: true
 - name: enableProductionBlogMetadata
   displayName: 'Enable on-demand blog metadata in production (requires staging and production approval)'
   type: boolean
-  default: false
+  default: true
 
 pool:
   vmImage: 'ubuntu-latest'
