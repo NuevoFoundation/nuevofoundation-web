@@ -1,12 +1,16 @@
 # On-demand blog social metadata (local-first)
 
-The React article URL remains `/blog/post/:id`. A small Node.js 22+ HTTP server
+The React article URL remains `/blog/post/:id`. A small Node.js 22.x HTTP server
 reads a public WordPress post **when that URL is requested**, adds metadata to the
 CRA HTML head, and serves the same initial HTML to browsers and crawlers. It does
 not redirect readers to WordPress or use user-agent detection. React still renders
 the article body; this is metadata rendering, not full article SSR.
 
 ## Local validation
+
+Select the version in `.node-version` with your Node version manager first.
+Local commands and runtime startup reject other Node majors, including a newer
+global installation. Azure Pipelines reads the same pin before installing Node.
 
 ```powershell
 npm run test-ci -- --runInBand BlogMetadataServer.test.js
@@ -48,7 +52,8 @@ public HTTPS canonical origin; use the loopback override only while previewing.
 The normal `npm run build` has a `postbuild` hook that copies the runtime into
 `build\runtime`, including its declared `he` entity-decoder dependency and license.
 The resulting server does **not** need root `node_modules`, repository source, an
-on-server `npm install`, or environment files. CRA assets remain at their existing
+on-server `npm install`, or environment files. The build root also contains
+`.node-version`, used by the packaged startup guard. CRA assets remain at their existing
 root-relative URLs. Only the public canonical origin and public WordPress endpoint
 are recorded in `runtime\config.json`.
 
@@ -107,9 +112,10 @@ are denied by the Node handler. Production IIS diagnostic output is disabled.
 **Prerequisites still requiring a hosting-owner review and staging verification:**
 
 1. Windows App Service must have working **iisnode** and IIS URL Rewrite modules.
-2. The selected Node runtime/`WEBSITE_NODE_DEFAULT_VERSION` and iisnode process
-   configuration must actually launch **Node.js 22+ with native fetch**. Neither
-   installed modules nor the live Node setting has been verified by this change.
+2. Set `WEBSITE_NODE_DEFAULT_VERSION=~22` and ensure iisnode actually launches
+   **Node.js 22.x with native fetch**. A supported version being installed is not
+   sufficient if the App Service still selects an old version. The packaged
+   startup guard enforces `.node-version` before importing the HTTP server.
 3. Configure `NODE_ENV=production`; verify the packaged or runtime `NF_SITE_URL`
    matches that site's public origin. An explicit `NF_SITE_URL` application
    setting overrides the packaged value. The runtime accepts iisnode's **string
@@ -119,6 +125,12 @@ are denied by the Node handler. Production IIS diagnostic output is disabled.
    and unrelated `/api` behavior in staging before any production rollout.
 5. The deployment/release pipeline must select the reviewed staging artifact.
    Existing build scripts intentionally do not silently switch the hosting runtime.
+
+Apply runtime settings to staging first; changing App Service settings restarts
+that app. Confirm the selected executable and site health before making the
+equivalent production change under the production release approval. The existing
+static IIS site does not itself execute Node; its legacy Node setting becomes
+relevant when enabling this server.
 
 ### Existing GitHub and Azure DevOps flow
 

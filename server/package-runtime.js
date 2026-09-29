@@ -1,5 +1,7 @@
 'use strict';
 
+require('./check-node').assertNodeVersion();
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { canonicalOrigin, wordpressEndpoint, FALLBACK_IMAGE } = require('./app');
@@ -34,7 +36,8 @@ function packageRuntime({
   endpoint = wordpressEndpoint(endpoint);
   const runtime = path.join(buildDir, 'runtime');
   fs.mkdirSync(path.join(runtime, 'node_modules', 'he'), { recursive: true });
-  for (const filename of ['app.js', 'index.js', 'iisnode.web.config']) {
+  fs.copyFileSync(path.join(root, '.node-version'), path.join(buildDir, '.node-version'));
+  for (const filename of ['app.js', 'index.js', 'check-node.js', 'iisnode.web.config']) {
     fs.copyFileSync(path.join(__dirname, filename), path.join(runtime, filename));
   }
   const decoder = path.dirname(require.resolve('he/package.json'));

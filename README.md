@@ -68,6 +68,27 @@ The Nuevo Foundation is dedicated to inspiring kids to be curious, confident, an
 
 ## Development Setup
 
+Use **Node.js 22.x** for this repository. `.node-version` selects the supported
+major version for local version managers and Azure Pipelines. Dependency installs,
+development/test/build commands, and the packaged server reject other majors;
+`package.json` and the Node type definitions must stay aligned with that pin.
+
+With [fnm](https://github.com/Schniz/fnm) installed, select this project's Node
+version in PowerShell without replacing the system-wide Node installation:
+
+```powershell
+fnm env --shell powershell | Out-String | Invoke-Expression
+fnm install
+fnm use
+npm ci
+```
+
+Alternatively, `fnm exec --using 22 npm.cmd start` selects Node only for that
+command on Windows (`npm` instead of `npm.cmd` on macOS/Linux).
+Other version managers that support `.node-version` can use the same pin.
+Use current Node 22 patch releases; upgrade the major version deliberately across
+the pin, engines, type definitions, and both Azure environments, staging first.
+
 ### Available Scripts
 
 In the project directory, you can run:
@@ -140,7 +161,7 @@ changes or per-article website rebuilds are needed when that server is enabled.
 
 1. **Clone the Repository**: `git clone https://github.com/NuevoFoundation/nuevofoundation-web.git`
 2. **Navigate to the Project Directory**: `cd nuevofoundation-web`
-3. **Install Dependencies**: `npm install`
+3. **Select Node and Install Dependencies**: select Node 22 using the setup above, then `npm ci`
 4. **Start the Development Server**: `npm start`
 5. **Open the App in Your Browser**: [http://localhost:3000](http://localhost:3000)
 

@@ -9,7 +9,7 @@ trigger:
 
 parameters:
 - name: enableStagingBlogMetadata
-  displayName: 'Enable on-demand blog metadata in staging (requires Node 22+ and iisnode)'
+  displayName: 'Enable on-demand blog metadata in staging (requires Node 22 and iisnode)'
   type: boolean
   default: false
 
@@ -51,9 +51,19 @@ jobs:
       echo "                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         "
     displayName: 'Nuvi enters the chat'
 
+  - script: |
+      version=$(cat .node-version)
+      if ! [[ "$version" =~ ^[0-9]+$ ]]; then
+        echo "Invalid .node-version: expected a Node.js major version." >&2
+        exit 1
+      fi
+      echo "##vso[task.setvariable variable=nodeVersion]$version"
+    displayName: 'Read project Node version'
+
   - task: UseNode@1
     inputs:
-      version: '22.x'
+      version: '$(nodeVersion)'
+      checkLatest: true
     displayName: 'Install Node.js'
 
   - script: |

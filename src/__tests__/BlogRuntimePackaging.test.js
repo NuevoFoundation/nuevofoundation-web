@@ -3,6 +3,7 @@
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
+const { spawnSync } = require('node:child_process');
 const {
   STAGING_SITE_URL, packageRuntime, enableStagingRuntime,
 } = require('../../server/package-runtime');
@@ -30,7 +31,8 @@ describe('Staging-only blog runtime packaging', () => {
     packageRuntime({ buildDir, siteUrl: STAGING_SITE_URL });
     expect(readConfig().siteUrl).toBe(STAGING_SITE_URL);
     expect(readWebConfig()).toBe(staticWebConfig);
-    for (const filename of ['app.js', 'index.js', 'node_modules/he/he.js', 'node_modules/he/LICENSE-MIT.txt']) {
+    expect(fs.readFileSync(path.join(buildDir, '.node-version'), 'utf8').trim()).toBe('22');
+    for (const filename of ['app.js', 'index.js', 'check-node.js', 'node_modules/he/he.js', 'node_modules/he/LICENSE-MIT.txt']) {
       expect(fs.existsSync(path.join(buildDir, 'runtime', filename))).toBe(true);
     }
   });
@@ -42,6 +44,15 @@ describe('Staging-only blog runtime packaging', () => {
     expect(readWebConfig()).toContain('url="runtime/index.js"');
     expect(readWebConfig()).toContain('name="Preserve API routes"');
     expect(readConfig().siteUrl).toBe(STAGING_SITE_URL);
+  });
+
+  it('runs the packaged Node guard without access to repository configuration', () => {
+    packageRuntime({ buildDir, siteUrl: STAGING_SITE_URL });
+    const result = spawnSync(process.execPath, [path.join(buildDir, 'runtime', 'check-node.js')], {
+      cwd: os.tmpdir(), encoding: 'utf8',
+    });
+    expect(result.status).toBe(0);
+    expect(result.stderr).toBe('');
   });
 
   it('refuses production artifacts without changing their hosting configuration', () => {
