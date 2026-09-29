@@ -4,24 +4,32 @@ require('./check-node').assertNodeVersion();
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { canonicalOrigin, wordpressEndpoint, FALLBACK_IMAGE } = require('./app');
+const { canonicalOrigin, wordpressEndpoint, FALLBACK_IMAGE, DEFAULT_SITE_URL } = require('./app');
 
 const root = path.resolve(__dirname, '..');
 const build = path.join(root, 'build');
 const STAGING_SITE_URL = 'https://nuevofoundation-web-staging.azurewebsites.net';
 
-function enableStagingRuntime(buildDir = build) {
+function enableRuntime(buildDir, expectedSiteUrl, environment) {
   const runtime = path.join(buildDir, 'runtime');
   const candidate = path.join(runtime, 'iisnode.web.config');
   const configFile = path.join(runtime, 'config.json');
   if (!fs.existsSync(candidate) || !fs.existsSync(configFile)) {
-    throw new Error('Run npm run build:staging before selecting the staging IIS configuration.');
+    throw new Error(`Run npm run build:${environment} before selecting the ${environment} IIS configuration.`);
   }
   const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-  if (canonicalOrigin(config.siteUrl, true) !== STAGING_SITE_URL) {
-    throw new Error('Refusing to enable the staging runtime on a non-staging artifact. Run npm run build:staging first.');
+  if (canonicalOrigin(config.siteUrl, true) !== expectedSiteUrl) {
+    throw new Error(`Refusing to enable the ${environment} runtime on a non-${environment} artifact. Run npm run build:${environment} first.`);
   }
   fs.copyFileSync(candidate, path.join(buildDir, 'web.config'));
+}
+
+function enableStagingRuntime(buildDir = build) {
+  enableRuntime(buildDir, STAGING_SITE_URL, 'staging');
+}
+
+function enableProductionRuntime(buildDir = build) {
+  enableRuntime(buildDir, DEFAULT_SITE_URL, 'production');
 }
 
 function packageRuntime({
@@ -37,7 +45,7 @@ function packageRuntime({
   const runtime = path.join(buildDir, 'runtime');
   fs.mkdirSync(path.join(runtime, 'node_modules', 'he'), { recursive: true });
   fs.copyFileSync(path.join(root, '.node-version'), path.join(buildDir, '.node-version'));
-  for (const filename of ['app.js', 'index.js', 'check-node.js', 'iisnode.web.config']) {
+  for (const filename of ['app.js', 'index.js', 'iisnode-entry.js', 'check-node.js', 'iisnode.web.config']) {
     fs.copyFileSync(path.join(__dirname, filename), path.join(runtime, filename));
   }
   const decoder = path.dirname(require.resolve('he/package.json'));
@@ -45,7 +53,7 @@ function packageRuntime({
     fs.copyFileSync(path.join(decoder, filename), path.join(runtime, 'node_modules', 'he', filename));
   }
   fs.writeFileSync(path.join(runtime, 'config.json'), `${JSON.stringify({ siteUrl, wordpressEndpoint: endpoint }, null, 2)}\n`);
-  // The pipeline reuses build/ for staging and production; never carry the staging handler forward.
+  // Each environment must explicitly select its runtime after its own build.
   fs.copyFileSync(path.join(root, 'public', 'web.config'), path.join(buildDir, 'web.config'));
   return siteUrl;
 }
@@ -58,9 +66,12 @@ if (require.main === module) {
   } else if (args.length === 1 && args[0] === '--enable-staging') {
     enableStagingRuntime();
     console.log('Local staging artifact opts into iisnode. No deployment or Azure changes were made.');
+  } else if (args.length === 1 && args[0] === '--enable-production') {
+    enableProductionRuntime();
+    console.log('Local production artifact opts into iisnode. Deployment still requires the approved production release.');
   } else {
-    throw new Error('Usage: node server/package-runtime.js [--enable-staging]');
+    throw new Error('Usage: node server/package-runtime.js [--enable-staging | --enable-production]');
   }
 }
 
-module.exports = { STAGING_SITE_URL, packageRuntime, enableStagingRuntime };
+module.exports = { STAGING_SITE_URL, packageRuntime, enableStagingRuntime, enableProductionRuntime };

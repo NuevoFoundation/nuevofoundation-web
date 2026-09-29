@@ -12,6 +12,10 @@ parameters:
   displayName: 'Enable on-demand blog metadata in staging (requires Node 22 and iisnode)'
   type: boolean
   default: false
+- name: enableProductionBlogMetadata
+  displayName: 'Enable on-demand blog metadata in production (requires staging and production approval)'
+  type: boolean
+  default: false
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -24,6 +28,12 @@ jobs:
 - job: Build
   displayName: 'Shipping happiness to the world!'  # Updated description
   steps:
+  - ${{ if and(eq(parameters.enableProductionBlogMetadata, true), ne(parameters.enableStagingBlogMetadata, true)) }}:
+    - script: |
+        echo "Production metadata requires enableStagingBlogMetadata=true so this release exercises the same handler in staging first." >&2
+        exit 1
+      displayName: 'Reject production metadata without staging metadata'
+
   - script: |
       echo "Nuevo Foundation"
       echo "                                            @@@%%%%%%%%@@@                                          "
@@ -105,6 +115,10 @@ jobs:
   - script: |
       npm run "$(productionBuildConfiguration)"
     displayName: 'npm run $(productionBuildConfiguration) - production build'
+
+  - ${{ if eq(parameters.enableProductionBlogMetadata, true) }}:
+    - script: npm run runtime:enable-production
+      displayName: 'Select blog metadata runtime for production artifact only'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
