@@ -64,6 +64,49 @@ describe('Blog metadata extraction and cache', () => {
       .toBe('https://nuevofoundationblog.wordpress.com/uploads/a.jpg');
   });
 
+  it('emits author, publish/modified dates, and image dimensions for social crawlers', () => {
+    const post = article('1838', {
+      date: '2026-09-28T03:26:50+00:00',
+      modified: '2026-09-30T18:46:26+00:00',
+      featured_image: 'https://nuevofoundationblog.wordpress.com/wp-content/uploads/2026/09/img.jpg',
+      post_thumbnail: {
+        URL: 'https://nuevofoundationblog.wordpress.com/wp-content/uploads/2026/09/img.jpg',
+        width: 1500, height: 1237, mime_type: 'image/jpeg',
+      },
+    });
+    const metadata = postMetadata(post, '1838', DEFAULT_SITE_URL);
+    expect(metadata).toMatchObject({
+      published: '2026-09-28T12:00:00.000Z',
+      modified: '2026-09-30T12:00:00.000Z',
+      imageWidth: '1500', imageHeight: '1237', imageType: 'image/jpeg',
+    });
+    // The published day must match the calendar day the site renders from date.slice(0, 10).
+    expect(metadata.published.slice(0, 10)).toBe(post.date.slice(0, 10));
+    const html = renderArticle(template, metadata);
+    expect(html).toContain('<meta property="article:author" content="Nuevo Foundation">');
+    expect(html).toContain('<meta name="author" content="Nuevo Foundation">');
+    expect(html).toContain('<meta property="article:published_time" content="2026-09-28T12:00:00.000Z">');
+    expect(html).toContain('<meta property="article:modified_time" content="2026-09-30T12:00:00.000Z">');
+    expect(html).toContain('<meta property="og:image:width" content="1500">');
+    expect(html).toContain('<meta property="og:image:height" content="1237">');
+    expect(html).toContain('<meta property="og:image:type" content="image/jpeg">');
+    expect(html).toContain('<meta property="og:image:secure_url" content="https://nuevofoundationblog.wordpress.com/wp-content/uploads/2026/09/img.jpg">');
+    expect(html).toContain('<meta property="og:image:alt" content="Nuevo &amp; students');
+  });
+
+  it('keeps author constant but omits dates/dimensions when WordPress data is absent or mismatched', () => {
+    const metadata = postMetadata(article('1841', {
+      date: 'not-a-date',
+      post_thumbnail: { URL: 'https://nuevofoundationblog.wordpress.com/uploads/other.jpg', width: 1200, height: 630 },
+    }), '1841', DEFAULT_SITE_URL);
+    expect(metadata).not.toHaveProperty('published');
+    expect(metadata).not.toHaveProperty('imageWidth');
+    const html = renderArticle(template, metadata);
+    expect(html).not.toContain('article:published_time');
+    expect(html).not.toContain('og:image:width');
+    expect(html).toContain('<meta property="article:author" content="Nuevo Foundation">');
+  });
+
   it.each(['0', '-1', '001', 'abc', '1e3', '1/2', '9007199254740992', ''])('rejects invalid ID %p', async id => {
     const fetchImpl = jest.fn();
     expect(validPostId(id)).toBe(false);
@@ -100,7 +143,7 @@ describe('Blog metadata extraction and cache', () => {
     await posts.load('1841');
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     const [url, options] = fetchImpl.mock.calls[0];
-    expect(new URL(url).searchParams.get('fields')).toBe('ID,status,title,excerpt,featured_image,post_thumbnail');
+    expect(new URL(url).searchParams.get('fields')).toBe('ID,status,title,excerpt,featured_image,post_thumbnail,date,modified');
     expect(options.headers).toEqual({ Accept: 'application/json' });
     expect(options.redirect).toBe('error');
     time += 101;

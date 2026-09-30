@@ -9,7 +9,7 @@ const DEFAULT_SITE_URL = 'https://www.nuevofoundation.org';
 const WORDPRESS_ENDPOINT = 'https://public-api.wordpress.com/rest/v1.1/sites/nuevofoundationblog.wordpress.com';
 const WORDPRESS_SITE = 'https://nuevofoundationblog.wordpress.com';
 const FALLBACK_IMAGE = '/favicons/mstile-310x150.png';
-const POST_FIELDS = 'ID,status,title,excerpt,featured_image,post_thumbnail';
+const POST_FIELDS = 'ID,status,title,excerpt,featured_image,post_thumbnail,date,modified';
 const MAX_RESPONSE_BYTES = 256 * 1024;
 const CONTENT_TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'application/javascript; charset=utf-8',
@@ -79,6 +79,39 @@ function imageUrl(value) {
   }
 }
 
+function sameImageFile(a, b) {
+  try {
+    return new URL(a).pathname === new URL(b).pathname;
+  } catch {
+    return false;
+  }
+}
+
+function imageDimensions(thumbnail, image) {
+  if (!thumbnail || typeof thumbnail !== 'object') return {};
+  const thumbUrl = imageUrl(thumbnail.URL);
+  if (!thumbUrl || !sameImageFile(thumbUrl, image)) return {};
+  const width = Math.round(Number(thumbnail.width));
+  const height = Math.round(Number(thumbnail.height));
+  if (!Number.isInteger(width) || !Number.isInteger(height) || width <= 0 || height <= 0) return {};
+  const dimensions = { imageWidth: String(width), imageHeight: String(height) };
+  if (typeof thumbnail.mime_type === 'string' && /^image\/[a-z0-9.+-]+$/i.test(thumbnail.mime_type)) {
+    dimensions.imageType = thumbnail.mime_type;
+  }
+  return dimensions;
+}
+
+function articleDate(value) {
+  if (typeof value !== 'string') return null;
+  const match = value.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return null;
+  // Anchor to noon UTC of the WordPress publication day so social crawlers render the
+  // same calendar date the site shows (WordpressContentHelper.formatPublicationDate
+  // formats date.slice(0, 10) in UTC). Noon avoids a day-earlier shift for west-of-UTC readers.
+  const iso = `${match[1]}-${match[2]}-${match[3]}T12:00:00.000Z`;
+  return Number.isFinite(Date.parse(iso)) ? iso : null;
+}
+
 function postMetadata(post, id, siteUrl) {
   if (!post || typeof post !== 'object' || String(post.ID) !== id || typeof post.status !== 'string') {
     throw new HttpError(502, 'WordPress returned an invalid post response.');
@@ -86,24 +119,32 @@ function postMetadata(post, id, siteUrl) {
   if (post.status !== 'publish') throw new HttpError(404, 'Article not found.');
   const title = plainText(post.title, 200);
   if (!title) throw new HttpError(502, 'WordPress returned an article without a title.');
-  return {
+  const image = imageUrl(post.featured_image) || imageUrl(post.post_thumbnail && post.post_thumbnail.URL) ||
+    new URL(FALLBACK_IMAGE, siteUrl).href;
+  const metadata = {
     title,
     description: plainText(post.excerpt, 240) || 'Read this article from Nuevo Foundation.',
-    image: imageUrl(post.featured_image) || imageUrl(post.post_thumbnail && post.post_thumbnail.URL) ||
-      new URL(FALLBACK_IMAGE, siteUrl).href,
+    image,
+    ...imageDimensions(post.post_thumbnail, image),
     canonical: `${siteUrl}/blog/post/${id}`,
   };
+  const published = articleDate(post.date);
+  if (published) metadata.published = published;
+  const modified = articleDate(post.modified);
+  if (modified) metadata.modified = modified;
+  return metadata;
 }
 
 function cleanTemplate(template) {
   return template.replace(/<title\b[^>]*>[\s\S]*?<\/title\s*>/gi, '')
     .replace(/<meta\b[^>]*>/gi, tag =>
-      /\b(?:name|property)\s*=\s*["'](?:description|robots|og:[^"']*|twitter:[^"']*)["']/i.test(tag) ? '' : tag)
+      /\b(?:name|property)\s*=\s*["'](?:description|robots|author|og:[^"']*|twitter:[^"']*|article:[^"']*)["']/i.test(tag) ? '' : tag)
     .replace(/<link\b[^>]*>/gi, tag => /\brel\s*=\s*["']canonical["']/i.test(tag) ? '' : tag);
 }
 
 function renderArticle(template, metadata) {
-  const { title, description, image, canonical } = Object.fromEntries(
+  const secure = /^https:/i.test(metadata.image || '');
+  const { title, description, image, canonical, imageWidth, imageHeight, imageType, published, modified } = Object.fromEntries(
     Object.entries(metadata).map(([key, value]) => [key, escapeHtml(value)]));
   const tags = [
     `<title>${title} | Nuevo Foundation</title>`,
@@ -112,15 +153,25 @@ function renderArticle(template, metadata) {
     `<meta property="og:title" content="${title}">`,
     `<meta property="og:description" content="${description}">`,
     `<meta property="og:image" content="${image}">`,
+    secure ? `<meta property="og:image:secure_url" content="${image}">` : null,
+    imageType ? `<meta property="og:image:type" content="${imageType}">` : null,
+    imageWidth ? `<meta property="og:image:width" content="${imageWidth}">` : null,
+    imageHeight ? `<meta property="og:image:height" content="${imageHeight}">` : null,
+    `<meta property="og:image:alt" content="${title}">`,
     '<meta property="og:type" content="article">',
+    '<meta property="article:author" content="Nuevo Foundation">',
+    published ? `<meta property="article:published_time" content="${published}">` : null,
+    modified ? `<meta property="article:modified_time" content="${modified}">` : null,
+    '<meta name="author" content="Nuevo Foundation">',
     `<meta property="og:url" content="${canonical}">`,
     '<meta property="og:site_name" content="Nuevo Foundation">',
     '<meta name="twitter:card" content="summary_large_image">',
     `<meta name="twitter:title" content="${title}">`,
     `<meta name="twitter:description" content="${description}">`,
     `<meta name="twitter:image" content="${image}">`,
+    `<meta name="twitter:image:alt" content="${title}">`,
     `<meta name="twitter:url" content="${canonical}">`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
   return cleanTemplate(template).replace(/<\/head\s*>/i, () => `${tags}\n</head>`);
 }
 
