@@ -17,6 +17,7 @@ import CSForAllLogoImage from "../../../assets/images/home/CSForAllLogo.png";
 import SeattleSeahawksLogoImage from "../../../assets/images/home/SeattleSeahawksLogo.png";
 import GeekWireLogoImage from "../../../assets/images/home/GeekWireLogo.png";
 import BoldJourneyLogoImage from "../../../assets/images/home/BoldJourneyLogo.png";
+import FourCultureLogoImage from "../../../assets/images/home/4CultureLogo.png";
 import Earth from "../../../assets/images/home/Earth.png";
 import ArrowCircle from "../../../assets/icons/Group211.png";
 import "../../../assets/stylesheets/Home.css";
@@ -116,12 +117,15 @@ const StatsSectionDescription = styled.div`
   }
 `
 
+// max-width caps rows at 4 logos so wide screens don't leave a sparse, ragged last row.
 const LogoSection = styled.div`
 display: flex;
 flex-flow: row wrap;
 justify-content: space-around;
 align-items: center;
 padding: 20px;
+max-width: 1440px;
+margin: 0 auto;
 `
 
 const LogoSectionImageContent = styled.div`
@@ -471,6 +475,10 @@ export class Home extends React.Component<{}, StatProps> {
 
             <LogoSectionImageContent>
               <div className="apply-logo-css-filter"><a href="https://boldjourney.com/meet-ximena-cortez/" target="_blank" rel="noreferrer"><img src={BoldJourneyLogoImage} alt="Bold Journey Logo - Ximena Cortez" /></a></div>
+            </LogoSectionImageContent>
+
+            <LogoSectionImageContent>
+              <div className="apply-logo-css-filter light-logo"><a href="https://www.4culture.org/" target="_blank" rel="noreferrer"><img src={FourCultureLogoImage} alt="4Culture Logo" /></a></div>
             </LogoSectionImageContent>
 
           </LogoSection>

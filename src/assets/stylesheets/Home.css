@@ -24,6 +24,19 @@
   opacity: 0.9;
 }
 
+/* Light brand colors (e.g. 4Culture's lime green) gray out too faintly, so darken them at rest.
+   brightness(0.48) matches 4Culture's official Cool Gray 11 logo. */
+.apply-logo-css-filter.light-logo img {
+  -webkit-filter: grayscale(1) brightness(0.48);
+  filter: grayscale(1) brightness(0.48);
+}
+
+.apply-logo-css-filter.light-logo:hover img,
+.apply-logo-css-filter.light-logo:focus-within img {
+  -webkit-filter: grayscale(0) brightness(1);
+  filter: grayscale(0) brightness(1);
+}
+
 .apply-logo-css-filter a {
   display: inline-block;
   border-radius: 4px;
